@@ -1,0 +1,115 @@
+body
+{
+    background: white;
+}
+@font-face {
+    font-family: 'Futura PT Light';
+    src: local('Futura PT Light'), local('Futura-PT-Light'),
+    url('/fonts/FuturaPT-Light.woff2') format('woff2'),
+    url('/fonts/FuturaPT-Light.woff') format('woff'),
+    url('/fonts/FuturaPT-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Futura PT Bold';
+    src: local('Futura PT Bold'), local('Futura-PT-Bold'),
+    url('/fonts/ofont.ru_Futura PT.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+.text-fut-bold {
+    font-family: "Futura PT Bold";
+}
+.text-fut-light {
+    font-family: "Futura PT Light";
+}
+.text-fut-book {
+    font-family: "Futura PT Medium";
+}
+.h2-text-media
+{
+    font-size: 140px;
+}
+.cat-btn:hover
+{
+    background-image: url('/images/border-tabactive.png')!important;
+    color:white;
+}
+.height-null
+{
+    opacity: 0;
+    height: 0px!important;
+}
+.solid-nav {
+    background-color: white!important;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.menuse
+{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.owl-two .owl-nav.disabled
+{
+    display: block!important;
+}
+.owl-two .owl-nav .owl-prev
+{
+    position: absolute;
+    left:-10%;
+    top:40%;
+    background-image: url('/images/carousel-prev.png')!important;
+    width:65px;
+    height:20px;
+
+}
+.owl-two .owl-nav .owl-next
+{
+    position: absolute;
+    right:-10%;
+    top:40%;
+    background-image: url('/images/carousel-next.png')!important;
+    width:65px;
+    height:20px;
+}
+.car-nav-close .owl-nav .owl-prev
+{
+    display: none;
+}
+.car-nav-close .owl-nav .owl-next
+{
+    display: none;
+}
+.sells-sector
+{
+    height: 826px;
+}
+.shadow-hover
+{
+    transition: 0.5s;
+}
+.shadow-hover:hover
+{
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (max-width: 700px){
+    .h2-text-media
+    {
+        font-size: 40px;
+    }
+    .cat-btn
+    {
+        height:50px;
+    }
+    .sells-sector
+    {
+        height:100%;
+    }
+}
