@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 
-Route::get('/book/{id}', 'BookController@bookpage')->name('book');
+Route::get('/book/{book}', 'BookController@bookpage')->name('book');
 
 Route::get('/all_stock', function () {
     return view('pages.all_stock_page');

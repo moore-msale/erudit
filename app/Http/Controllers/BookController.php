@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function bookpage($id)
+    public function bookpage(Book $book)
     {
-        $book = Book::find($id);
-
         $sames = Book::where('genre_id', $book->genre_id)->get();
 
         return view('pages/book_page',['book' => $book, 'sames' => $sames]);

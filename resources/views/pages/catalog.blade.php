@@ -110,7 +110,7 @@
                 @foreach($books as $book)
                     <div class="col-lg-4 col-12 item px-1">
                         <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 450px;">
-                            <a href="{{ asset('book/'.$book->id) }}">
+                            <a href="{{ route('book', $book) }}">
                             <img class="w-100" src="{{ asset('storage/'.$book->image) }}" alt="">
                             </a>
                             <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
