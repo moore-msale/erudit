@@ -39,7 +39,7 @@
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                 Регистрация
             </p>
-            <p class="text-fut-bold pb-4 pt-4" style="font-size: 20px;line-height: 120%;letter-spacing: 0.05em;color: #FFFFFF;">
+            <p class="text-fut-bold pb-lg-0 pb-4 pt-lg-0 pt-4" style="font-size: 20px;line-height: 120%;letter-spacing: 0.05em;color: #FFFFFF;">
                 Категории
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">

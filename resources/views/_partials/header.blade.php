@@ -17,7 +17,9 @@
                 </nav>
             </div>
             <div class="col-lg-2 col-8 collapse navbar-collapse"  id="navbarSupportedContent">
+                <a href="/">
                 <img class="logo" src="{{ asset('images/logo.png') }}" alt="">
+                </a>
             </div>
             <div class="col-lg-5 collapse navbar-collapse">
                 <nav class="ml-md-auto ml-0">
@@ -31,10 +33,7 @@
                         <li class="nav-item px-3">
                             <a href="#" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #222222;">+996 501 433 433</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
-                                        src="{{ asset('images/favourite.png') }}" alt=""></a>
-                        </li>
+
                         <li class="nav-item px-3">
                             <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
                                         src="{{ asset('images/cart.png') }}" alt=""></a>
@@ -49,13 +48,10 @@
             <nav class="col-6 pt-1">
                 <ul class="navbar-nav" id="pick">
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
+                        <a href="/" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
-                    </li>
-                    <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Жанры</a>
+                        <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
                     </li>
                     <li class="nav-item px-3">
                         <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Жанры</a>
@@ -66,51 +62,82 @@
                     <li class="nav-item px-3">
                         <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
                     </li>
+                    <li class="nav-item px-3">
+                        <a href="/news" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новости</a>
+                    </li>
 
                 </ul>
             </nav>
-            <div class="col-6 text-right">
+            <div class="col-6">
+                <div class="row justify-content-end">
+                <ul class="navbar-nav text-right" id="pick">
+                <li class="nav-item px-3 mr-4    pt-1 ico-menu" style="display: none;">
+                    <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
+                                src="{{ asset('images/cart.png') }}" alt=""></a>
+                </li>
                 <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
                     Оптовым покупателям
                 </button>
+                </ul>
+                </div>
             </div>
         </div>
     </div>
 </nav>
-{{--<nav class="navbar menuse navbar-expand-xl py-0 w-100 pr-0 bg-white d-md-none d-block" style="z-index: 999; background: black!important; position: fixed;">--}}
-    {{--<div class="container-fluid">--}}
-        {{--<div class="row w-100">--}}
-            {{--<div class="col-md-4 col-6 px-4 py-2">--}}
-                {{--<a href="/">--}}
-                    {{--<img class="w-50 my-auto" src="{{asset('images/MOORE.png')}}" alt="">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="col-auto my-auto ml-auto d-xl-none px-0">--}}
-                {{--<button class="text-white navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-                    {{--<img class="w-75" src="{{ asset('images/humburger.png') }}" alt="">--}}
-                {{--</button>--}}
-            {{--</div>--}}
-            {{--<div class="collapse navbar-collapse col-md-11 col-8"  id="navbarSupportedContent">--}}
-                {{--<nav class="ml-md-auto ml-0">--}}
-                    {{--<ul class="navbar-nav" id="pick">--}}
-                        {{--<li class="nav-item p-2">--}}
-                            {{--<a href="/" class="text-white text-fut-bold" style="text-decoration: none; font-size: 16px;">Главная</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item p-2 ">--}}
-                            {{--<a href="/portfolio" class="text-white text-fut-bold" style="text-decoration: none; font-size: 16px;">Портфолио</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item p-2">--}}
-                            {{--<a href="/jobs" class="text-white text-fut-bold" style="text-decoration: none; font-size: 16px;">Вакансии</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item p-2">--}}
-                            {{--<a href="#" class="text-white text-fut-bold" style="text-decoration: none; font-size: 16px;">Контакты</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</nav>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</nav>--}}
+<nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-md-none d-block" style="z-index: 999; position: fixed;">
+    <div class="container-fluid">
+        <div class="row w-100 justify-content-end">
+            <div class="col-9 text-left pl-0">
+                <a href="/">
+                <img src="{{ asset('images/logo2.png') }}" alt="">
+                </a>
+            </div>
+            <div class="col-auto my-auto d-xl-none">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <i class="fas fa-bars fa-lg text-doc "></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse col-md-11 col-12"  id="navbarSupportedContent">
+                <nav class="mr-auto ml-0">
+                    <ul class="navbar-nav mb-3" id="pick">
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Жанры</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новинки</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
+                        </li>
+
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #222222;">+996 501 433 433</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><i class="fab fa-instagram fa-lg"></i></a>
+                            <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><img
+                                        src="{{ asset('images/cart.png') }}" alt=""></a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                                Оптовым покупателям
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
 {{--<div id="mySidenav" class="sidenav d-md-block d-none">--}}
     {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
     {{--<a class="sf-medium pl-5" href="/jobs">  Вакансии</a>--}}

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row" style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
-        <div class="col-lg-5 col-12" style="padding-left: 10%; padding-top:13.3%;">
+        <div class="col-lg-5 col-12" style="padding-left: 10%; padding-top:16%;">
         <h1 class="text-fut-bold font-weight-bold" style="font-size: 50px; line-height: 100%; letter-spacing: 0.05em;">
             Новые книги каждую неделю
         </h1>
@@ -15,15 +15,17 @@
                 абзацах, которое не получается при простой дубликации "Здесь
                 ваш текст.. Здесь ваш текст.. Здесь
             </p>
+            <a href="/catalog">
             <button class="text-fut-bold font-weight-bold" style="margin-top: 5%; font-size: 16px; line-height: 21px; color:black; padding: 15px 21px; border: 1px #000000 solid; background: transparent;">
                 Смотреть все книги
             </button>
+            </a>
         </div>
     </div>
     <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;" src="{{ asset('images/main-pic.png') }}" alt="">
 </div>
 <div class="container-fluid">
-    <div class="row" style="height: 1524px;">
+    <div class="row pb-5">
         <div class="col-12">
             <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-block d-none" style="position:absolute; left:15%; top:5%; line-height: 179px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                 Бестселлеры
@@ -214,21 +216,21 @@
                 </div>
                 </div>
                 <div class="row mt-4 pt-2">
-                <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                    <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
+                    @foreach($bestsellers as $bestseller)
+
+                <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-width: 259px;">
+                    <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                     <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                        В движении.
-                        <br>
-                        История жизни
+                        {{ $bestseller->name }}
                     </h3>
                     <div class="container-fluid row mr-0 pr-0">
                         <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
+                            <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
+                                {{ $bestseller->price_retail }} сом
+                            </span>
                         </div>
                         <div class="col-2 p-0">
-                            <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
+                            {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
                         </div>
                         <div class="col-1 p-0"></div>
                         <div class="col-2 p-0">
@@ -236,121 +238,7 @@
                         </div>
                     </div>
                 </div>
-
-                    <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-height:414px; max-width: 259px;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -441,8 +329,8 @@
                 <p class="text-fut-light pt-3" style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #000000;">
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
                 </p>
-                <a class="" href="">
-                    <button  class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
+                <a href="/about_us">
+                    <button type="button" class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
                         Подробнее о нас
                     </button>
                 </a>
@@ -555,7 +443,7 @@
     </div>
 
     <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-        <div class="shadow">
+        <div class="shadow-hover">
             <img class="w-100" src="{{ asset('images/shop2.png') }}" alt="">
             <div class="p-3">
                 <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
@@ -573,7 +461,7 @@
     </div>
 
         <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-            <div class="shadow">
+            <div class="shadow-hover">
                 <img class="w-100" src="{{ asset('images/shop3.png') }}" alt="">
                     <div class="p-3">
                         <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
@@ -591,7 +479,7 @@
         </div>
 
         <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-            <div class="shadow">
+            <div class="shadow-hover">
                 <img class="w-100" src="{{ asset('images/shop4.png') }}" alt="">
                 <div class="p-3">
                     <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">

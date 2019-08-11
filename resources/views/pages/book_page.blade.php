@@ -1,45 +1,62 @@
 @extends('layouts.app')
 @section('content')
     <div style="padding-top: 15%; padding-bottom: 10%;">
-        <div class="container">
+        <div class="container mt-lg-0 mt-5">
             <div class="row">
-                <div class="col-3 p-4">
+                <div class="col-12 px-4 d-lg-none d-block">
+                        <span>
+                        <a href="/">Главная</a>
+                        </span>
+                    <span>
+                            <i class="fas fa-arrow-right fa-sm"></i>
+                        </span>
+                    <span>
+                            <a href="">Фантастика</a>
+                        </span>
+                    <span>
+                            <i class="fas fa-arrow-right fa-sm"></i>
+                        </span>
+                    <span>
+                            {{ $book->name }}
+                        </span>
+                </div>
+                <div class="col-lg-3 col-12 p-4">
                     <div>
-                        <img class="w-100 shadow" src="{{ asset('images/book4.png')  }}" alt="">
+                        <img class="w-100 shadow-lg" src="{{ asset('storage/'.$book->image) }}" alt="">
                     </div>
                 </div>
-                <div class="col-9 pt-4">
+                <div class="col-lg-9 col-12 pt-4">
                     <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 d-lg-block d-none">
                         <span>
                         <a href="/">Главная</a>
                         </span>
                         <span>
-                            <i class="fas fa-arrow-right fa-sm"></i>
+                            <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
                         <span>
-                            <a href="">Фантастика</a>
+                            <a href="">{{ $book->genre->name }}</a>
                         </span>
                         <span>
-                            <i class="fas fa-arrow-right fa-sm"></i>
+                            <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
                         <span>
-                            Гарри Поттер и проклятое дитя
+                            {{ $book->name }}
                         </span>
                     </div>
-                        <div class="col-12 pt-3">
+                        <div class="col-12 pt-3 text-lg-left text-center">
                             <h2 class="text-fut-bold" style="font-size: 30px; line-height: 38px; color: #000000;">
-                                Гарри Поттер и проклятое дитя
+                                {{ $book->name }}
                             </h2>
                             <div class="mt-4" style="font-size:16px; color: black; font-family:'Futura PT Medium Italic';">
-                                <p><strong class="text-fut-bold">Автор:</strong> Роулинг Джоан Кэтлин</p>
-                                <p><strong class="text-fut-bold">Издательство:</strong> Bloomsbury, 2014 г</p>
-                                <p><strong class="text-fut-bold">Серия:</strong> The Harry Potter Series</p>
+                                <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
                             </div>
 
                             <div class="mt-4">
                                 <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
-                                    980 сом
+                                    {{ $book->price_retail }} сом
                                 </p>
                             </div>
 
@@ -61,52 +78,7 @@
                 О книге
             </h3>
             <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black;; font-family: 'Futura PT'">
-                Повсюду, где бы мы ни оказались, нас окружают невидимые миры. Населяющие их животные такие крохотные, что их невозможно увидеть невооруженным глазом. И тем не менее они есть везде - на поверхности океана и морском побережье, в лесной подстилке и на кухне у нас дома, в постельном белье и даже на нашей собственной коже. Благодаря кипучей деятельности этих микроскопических существ на планете поддерживается природное равновесие. Книга позволяет не только прочитать о них, но и подробно их рассмотреть. На красочных раскладных страницах с большим увеличением и в масштабе показаны обитатели десяти микроэкосистем. Микроскопические существа изображены очень реалистично, как если бы вы разглядывали их в микроскоп.
-            </p>
-
-            <h3 class="text-fut-book mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                Как читать эту книгу
-            </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                Книга состоит из 10 глав, посвященных жителям десяти микроместообитаний. Главу открывает краткое описание экосистемы. Далее в масштабе изображена жизнь в капельке морской воды и крохотном образце грунта со дна Атлантического океана; в комочке песка с пляжа, частичке лесной подстилки и веточке мха из умеренных широт; в капельке стоячей воды и в капельке чистой речной воды из умеренных широт, а также в образцах из постели, с кожи и с кухни человека. У каждого обитателя есть описание, а в конце книги вы найдете словарь и схема устройства микроскопа.
-            </p>
-
-            <h3 class="text-fut-book mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                Фишки книги
-            </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                Необычная яркая тема увлечет даже взрослого;
-                Откроет невероятный незримый мир и его обитателей: от капли воды до кожи человека;
-                Красивые сочные яркие разворотные иллюстрации;
-                Книга состоит из 10 глав, посвященных жителям десяти микроместообитаний;
-                У каждого обитателя имеется описание, составленное со скрупулезной научной точностью, и номер, по которому его легко отыскать на рисунке;
-                В конце есть словарь, где разъясняются сложные понятия и термины, краткая история микроскопии и схема устройства микроскопа, даются таблицы с точными портретами клещей и простейших, представленных в книге.
-            </p>
-
-            <h3 class="text-fut-book mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                Для кого эта книга
-            </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                Для детей от 7-ми лет.
-            </p>
-
-            <h3 class="text-fut-book mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                Для любопытных любого возраста.
-            </h3>
-
-            <h3 class="text-fut-book mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                Об авторах
-            </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                Элен Ражкак - художник-иллюстратор. Родилась в Париже в 1981 году. Закончила Национальную высшую школу прикладных искусств, изучала технику гравюры в Школе искусств и полиграфии, занималась дизайном тканей.
-            </p>
-
-            <p class="col-10 px-0 mt-4" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                ДамьенЛавердан - писатель и иллюстратор-график, преподаватель прикладного искусства в парижском лицее. Родился в 1978 году в Париже. Учился в Высшей школе прикладных искусств Дюперре, получил диплом Национальной высшей школы прикладных искусств.
-            </p>
-
-            <p class="col-10 px-0 mt-4" style="font-size: 15px; line-height: 140%; color: black; font-family: 'Futura PT';">
-                Объединившись, Элен Ражкак и ДамьенЛавердан создали арт-дуэт TigresGauchers ("Тигры-левши"), и уже стали авторами нескольких успешных книг для детей и подростков.
+                {{ $book->description }}
             </p>
 
 
@@ -115,34 +87,35 @@
                     Сопутствующие товары
                 </h3>
             <div class="row">
-                <div class="col-10">
+                <div class="col-lg-10 col-12">
                     <div class="row">
-                        @for($i =0; $i <4; $i++)
-                        <div class="col-lg-3 col-12">
-                            <div class="p-4 shadow" style="background-color: white;">
-                                <img class="w-100" src="{{ asset('images/book4.png') }}" alt="">
-                                <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                                    В движении.
-                                    <br>
-                                    История жизни
-                                </h3>
-                                <div class="container-fluid row mr-0 pr-0">
-                                    <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
+                        @foreach($sames as $same)
+                            <div class="col-lg-3 col-12 item px-1">
+                                <a href="{{ asset('book/'.$same->id) }}">
+                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 400px;">
+                                        <img class="w-100" src="{{ asset('storage/'.$same->image) }}" alt="">
+                                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                            {{ $same->name }}
+                                        </h3>
+                                        <div class="container-fluid row mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">
+                                            <div class="col-7 p-0 text-left">
+                            <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
+                                {{ $same->price_retail }} сом
+                            </span>
+                                            </div>
+                                            {{--<div class="col-2 p-0">--}}
+                                            {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                                            {{--</div>--}}
+                                            <div class="col-1 p-0"></div>
+                                            <div class="col-2 p-0">
+                                                {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                                                <i style="color: black;" class="fas fa-cart-plus fa-lg"></i>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-2 p-0">
-                                        <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                                    </div>
-                                    <div class="col-1 p-0"></div>
-                                    <div class="col-2 p-0">
-                                        <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                                    </div>
-                                </div>
+                                </a>
                             </div>
-                        </div>
-                            @endfor
+                            @endforeach
                     </div>
                 </div>
             </div>
@@ -158,7 +131,7 @@
                     <span>Понравилось? <span class="text-fut-bold pl-3" style="color: #019D38;">Да</span></span>
                 </p>
 
-                <p class="text-fut-book col-6 px-0" style="font-size: 16px; line-height: 21px; color: #000000;">
+                <p class="text-fut-book col-lg-6 col-12 px-0" style="font-size: 16px; line-height: 21px; color: #000000;">
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст..
                 </p>
 
@@ -169,9 +142,10 @@
                     <hr>
                 </div>
             </div>
-            <button  class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: #3154CF; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
+            <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: #3154CF; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
                 Оставить рецензию
             </button>
         </div>
     </div>
+    @include('modals.book_feedbacks')
 @endsection

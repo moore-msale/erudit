@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div style="padding-top: 15%; padding-bottom: 10%;">
-        <div class="container">
+        <div class="container mt-lg-0 mt-5">
         <div class="col-12">
                         <span>
                         <a href="/">Главная</a>
@@ -18,8 +18,8 @@
         </div>
 
             <div class="row p-3 mt-3">
-                <div class="col-4">
-                    <img src="{{ asset('images/stocks.png') }}" alt="">
+                <div class="col-lg-4 col-12">
+                    <img class="w-100" src="{{ asset('images/stocks.png') }}" alt="">
 
                     <div class="p-3">
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">
@@ -34,8 +34,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-4">
-                    <img src="{{ asset('images/stocks.png') }}" alt="">
+                <div class="col-lg-4 col-12">
+                    <img class="w-100" src="{{ asset('images/stocks.png') }}" alt="">
 
                     <div class="p-3">
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">
@@ -50,8 +50,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-4">
-                    <img src="{{ asset('images/stocks.png') }}" alt="">
+                <div class="col-lg-4 col-12">
+                    <img class="w-100" src="{{ asset('images/stocks.png') }}" alt="">
 
                     <div class="p-3">
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">

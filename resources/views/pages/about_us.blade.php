@@ -1,13 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <div style="padding-top: 15%; padding-bottom: 5%;">
+        <div class="container">
         <div class="row justify-content-center">
-        <h2 class="col-8" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
+        <h2 class="col-10" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
             "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль.."
         </h2>
         </div>
+        </div>
 
-        <div class="container mt-4">
+        <div class="container mt-lg-4 mt-0 p-lg-0 p-5">
             <div class="row justify-content-center">
                 <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #000000;">
                     Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших книг.

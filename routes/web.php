@@ -12,17 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get()]);
 });
 
 
-Route::get('/catalog', function () {
-    return view('pages.catalog');
-});
+//Route::get('/catalog', function () {
+//    return view('pages.catalog');
+//});
 
-Route::get('/book', function () {
-    return view('pages.book_page');
-});
+Route::get('/catalog', 'CatalogController@index')->name('catalog');
+
+Route::get('/book/{id}', 'BookController@bookpage')->name('book');
 
 Route::get('/all_stock', function () {
     return view('pages.all_stock_page');
@@ -39,3 +39,14 @@ Route::get('/news_page', function () {
 Route::get('/news', function () {
     return view('pages.news');
 });
+
+Route::group(['prefix' => 'moo'], function () {
+    Voyager::routes();
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('feedback', 'FeedbackController');

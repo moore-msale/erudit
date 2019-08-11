@@ -1,18 +1,20 @@
 @extends('layouts.app')
 @section('content')
     <div style="padding-top: 15%; padding-bottom: 5%;">
+        <div class="container">
         <div class="row justify-content-center">
-            <h2 class="col-8" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
+            <h2 class="col-10 MonotypeCorsiva" style="font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
                 "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль.."
             </h2>
         </div>
+        </div>
 
-        <div class="container mt-4">
+        <div class="container mt-lg-4 mt-0 p-lg-0 p-5">
             <div class="row justify-content-center">
                 <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #000000;">
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).
                 </p>
-                <img class="w-100 mt-4" src="{{ asset('images/news_page.png') }}" alt="">
+                <img class="w-100 h-100 mt-4" src="{{ asset('images/news_page.png') }}" alt="">
 
             </div>
             <div class="row justify-content-center mt-5" style="color:black;">

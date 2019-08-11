@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
@@ -30,7 +30,7 @@
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+{{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
 <script>
@@ -44,11 +44,13 @@
                 $('.menuse').addClass('shadow');
                 $('.top-menu').addClass('height-null');
                 $('.down-menu').removeClass('pt-4');
+                $('.ico-menu').show(300);
             } else {
                 $('.menuse').removeClass('solid-nav');
                 $('.menuse').removeClass('shadow');
                 $('.top-menu').removeClass('height-null');
                 $('.down-menu').addClass('pt-4');
+                $('.ico-menu').hide(300);
             }
 
         });

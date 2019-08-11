@@ -44,10 +44,12 @@
             <h3 class="text-fut-bold mb-0" style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
                 Жанры
             </h3>
-            <div class="mt-3 text-fut-book" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em;">
-            <p>
+            <div class="mt-3 text-fut-book" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000;">
+            <a href="{{ asset('catalog') }}" style="text-decoration: none;">
+                <p>
                 Фантастика
-            </p>
+                </p>
+            </a>
                 <p>
                     Детские книги
                 </p>
@@ -81,7 +83,7 @@
                 <h3 class="text-fut-bold mb-0" style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
                     Категории
                 </h3>
-                <div class="mt-3 text-fut-book" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em;">
+                <div class="mt-3 text-fut-book" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000;">
                     <p>
                         Новинки
                     </p>
@@ -105,79 +107,118 @@
         </div>
         <div class="col-9">
             <div class="row px-4">
-                    <div class="col-lg-4 col-12">
-                        <div class="p-4 shadow" style="background-color: white;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
+                @foreach($books as $book)
+                    <div class="col-lg-4 col-12 item px-1">
+                        <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 450px;">
+                            <a href="{{ asset('book/'.$book->id) }}">
+                            <img class="w-100" src="{{ asset('storage/'.$book->image) }}" alt="">
+                            </a>
+                            <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                {{ $book->name }}
+                            </h3>
+                            <div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">
+                                <div class="row">
+                                <div class="col-7 p-0 text-left">
+                            <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
+                                {{ $book->price_retail }} сом
+                            </span>
+                                </div>
+                                {{--<div class="col-2 p-0">--}}
+{{--                                    <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                                {{--</div>--}}
+                                {{--<div class="col-1 p-0"></div>--}}
+                                <div class="col-2 p-0">
+{{--                                    <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                                    <a href="">
+                                    <i style="color: black;" class="fas fa-cart-plus fa-lg"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                        </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="p-4 shadow" style="background-color: white;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="p-4 shadow" style="background-color: white;">
-                        <img class="w-100" src="{{ asset('images/book1.png') }}" alt="">
-                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                            В движении.
-                            <br>
-                            История жизни
-                        </h3>
-                        <div class="container-fluid row mr-0 pr-0">
-                            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
-                            </div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-                            </div>
-                            <div class="col-1 p-0"></div>
-                            <div class="col-2 p-0">
-                                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {{--<div class="col-lg-4 col-12 item px-1">--}}
+                        {{--<div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 450px;">--}}
+                           {{----}}
+                            {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
+                                {{--{{ $book->name }}--}}
+                            {{--</h3>--}}
+                            {{--<div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-7 p-0 text-left">--}}
+                            {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
+                                {{--{{ $book->price_retail }} сом--}}
+                            {{--</span>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-2 p-0">--}}
+                                        {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-1 p-0"></div>--}}
+                                    {{--<div class="col-2 p-0">--}}
+                                        {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                                        {{--<a href="">--}}
+                                            {{--<i style="color: black;" class="fas fa-cart-plus fa-lg"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                @endforeach
+                {{--<div class="col-lg-4 col-12">--}}
+                    {{--<div class="p-4 shadow" style="background-color: white;">--}}
+                        {{--<img class="w-100" src="{{ asset('images/book1.png') }}" alt="">--}}
+                        {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
+                            {{--В движении.--}}
+                            {{--<br>--}}
+                            {{--История жизни--}}
+                        {{--</h3>--}}
+                        {{--<div class="container-fluid row mr-0 pr-0">--}}
+                            {{--<div class="col-7 p-0 text-left">--}}
+                                                {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
+                                                    {{--648 сом--}}
+                                                {{--</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-2 p-0">--}}
+                                {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                            {{--</div>--}}
+                            {{--<div class="col-1 p-0"></div>--}}
+                            {{--<div class="col-2 p-0">--}}
+                                {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-lg-4 col-12">--}}
+                    {{--<div class="p-4 shadow" style="background-color: white;">--}}
+                        {{--<img class="w-100" src="{{ asset('images/book1.png') }}" alt="">--}}
+                        {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
+                            {{--В движении.--}}
+                            {{--<br>--}}
+                            {{--История жизни--}}
+                        {{--</h3>--}}
+                        {{--<div class="container-fluid row mr-0 pr-0">--}}
+                            {{--<div class="col-7 p-0 text-left">--}}
+                                                {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
+                                                    {{--648 сом--}}
+                                                {{--</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-2 p-0">--}}
+                                {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                            {{--</div>--}}
+                            {{--<div class="col-1 p-0"></div>--}}
+                            {{--<div class="col-2 p-0">--}}
+                                {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
+            @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                <div class="row">
+                    {{ $books->appends(request()->query())->links() }}
+                </div>
+            @endif
         </div>
     </div>
 </div>
