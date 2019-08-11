@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get()]);
+    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get(), 'news' => \App\News::paginate(3)->reverse()]);
 });
 
 
@@ -36,10 +36,6 @@ Route::get('/news_page', function () {
     return view('pages.news_page');
 });
 
-Route::get('/news', function () {
-    return view('pages.news');
-});
-
 Route::group(['prefix' => 'moo'], function () {
     Voyager::routes();
 });
@@ -50,3 +46,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('feedback', 'FeedbackController');
+Route::resource('news', 'NewsController');

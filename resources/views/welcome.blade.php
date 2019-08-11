@@ -441,60 +441,25 @@
         Интересное
     </h2>
     </div>
-
+@foreach($news as $new)
     <div class="col-lg-4 col-12 pt-lg-0 pt-4">
         <div class="shadow-hover">
-            <img class="w-100" src="{{ asset('images/shop2.png') }}" alt="">
+            <img class="w-100" src="{{ asset('storage/'.$new->preview) }}" alt="">
             <div class="p-3">
                 <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                    Заголовок новости
+                    {{ $new->name }}
                 </h4>
                 <p class="text-fut-book" style="font-family: Futura PT; font-style: normal; font-weight: normal; font-size: 15px; line-height: 130%; letter-spacing: 0.05em;">
-                    Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более
+                    {{ $new->description }}
                 </p>
-                <a href="" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
+                <a href="{{ route('news.show',$new->id) }}" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
                     Читать полностью
                 </a>
             </div>
 
         </div>
     </div>
-
-        <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-            <div class="shadow-hover">
-                <img class="w-100" src="{{ asset('images/shop3.png') }}" alt="">
-                    <div class="p-3">
-                        <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                            Заголовок новости
-                        </h4>
-                        <p class="text-fut-book" style="font-family: Futura PT; font-style: normal; font-weight: normal; font-size: 15px; line-height: 130%; letter-spacing: 0.05em;">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более
-                        </p>
-                        <a href="" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
-                            Читать полностью
-                        </a>
-                    </div>
-
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-            <div class="shadow-hover">
-                <img class="w-100" src="{{ asset('images/shop4.png') }}" alt="">
-                <div class="p-3">
-                    <h4 class="text-fut-bold" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                        Заголовок новости
-                    </h4>
-                    <p class="text-fut-book" style="font-family: Futura PT; font-style: normal; font-weight: normal; font-size: 15px; line-height: 130%; letter-spacing: 0.05em;">
-                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более
-                    </p>
-                    <a href="" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
-                        Читать полностью
-                    </a>
-                </div>
-
-            </div>
-        </div>
+@endforeach
     </div>
 </div>
 

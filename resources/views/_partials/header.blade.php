@@ -63,7 +63,7 @@
                         <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="/news" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новости</a>
+                        <a href="{{ route('news.index') }}" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новости</a>
                     </li>
 
                 </ul>
