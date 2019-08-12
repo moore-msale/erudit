@@ -49,3 +49,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('feedback', 'FeedbackController');
 Route::resource('news', 'NewsController');
+
+Route::get('/cart', 'Api\CartController@index')->name('cart.index');
+Route::get('/cart/add/book', 'Api\CartController@add')->name('cart.add');
+Route::get('/cart/update/book', 'Api\CartController@update')->name('cart.update');
+Route::get('/cart/remove/book', 'Api\CartController@remove')->name('cart.remove');
