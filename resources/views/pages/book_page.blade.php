@@ -55,9 +55,15 @@
                             </div>
 
                             <div class="mt-4">
+                                @guest
                                 <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
                                     {{ $book->price_retail }} сом
                                 </p>
+                                @else
+                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
+                                        {{ $book->price_wholesale }} сом
+                                    </p>
+                                @endguest
                             </div>
 
                             <div class="pt-4 bg-secondary">
@@ -94,14 +100,24 @@
                                 <a href="{{ asset('book/'.$same->id) }}">
                                     <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 400px;">
                                         <img class="w-100" src="{{ asset('storage/'.$same->image) }}" alt="">
-                                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left"
+                                            style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
                                             {{ $same->name }}
                                         </h3>
-                                        <div class="container-fluid row mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">
+                                        <div class="container-fluid row mr-0 pr-0"
+                                             style="position: absolute; bottom:5%; color:black;">
                                             <div class="col-7 p-0 text-left">
-                            <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                {{ $same->price_retail }} сом
-                            </span>
+                                                @guest
+                                                    <span class="text-fut-bold"
+                                                          style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $same->price_retail }} сом
+                                                    </span>
+                                                @else
+                                                    <span class="text-fut-bold"
+                                                          style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $same->price_wholesale }} сом
+                                                    </span>
+                                                @endguest
                                             </div>
                                             {{--<div class="col-2 p-0">--}}
                                             {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
@@ -122,7 +138,7 @@
 
             <div class="" style="margin-top: 10%;">
                 <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
-                    Рецензии на книгу "Гарри Поттер и проклятое дитя"
+                    Рецензии на книгу "{{ $book->name }}"
                 </h3>
                 @if(!count($book->feedbacks))
                     Рецензий нет
