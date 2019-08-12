@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69b6d7675dc1363e6af560b4aee7d56e",
+    "content-hash": "aa39837380dca4439598df347ab1bf16",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -67,6 +67,112 @@
                 "widgets"
             ],
             "time": "2019-03-25T14:20:55+00:00"
+        },
+        {
+            "name": "arsengoian/commerce-ml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arsengoian/commerce-ml.git",
+                "reference": "39bd1aca8bf79dbba130216d4276a4e7b28821c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arsengoian/commerce-ml/zipball/39bd1aca8bf79dbba130216d4276a4e7b28821c7",
+                "reference": "39bd1aca8bf79dbba130216d4276a4e7b28821c7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CommerceML\\": [
+                        "src/CommerceML"
+                    ],
+                    "Test\\": [
+                        "tests/unit"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Arsen Goian",
+                    "email": "arsengoian@gmail.com"
+                }
+            ],
+            "description": "Easy-peasy CommerceML 2.10 PHP library",
+            "time": "2018-11-29T14:06:47+00:00"
+        },
+        {
+            "name": "chumper/zipper",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chumper/Zipper.git",
+                "reference": "6a1733c34d67c3952b8439afb36ad4ea5c3ceacb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chumper/Zipper/zipball/6a1733c34d67c3952b8439afb36ad4ea5c3ceacb",
+                "reference": "6a1733c34d67c3952b8439afb36ad4ea5c3ceacb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^5.0",
+                "illuminate/support": "^5.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Chumper\\Zipper\\ZipperServiceProvider"
+                    ],
+                    "aliases": {
+                        "Zipper": "Chumper\\Zipper\\Zipper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Chumper\\Zipper\\": "src/Chumper/Zipper"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Plaschke",
+                    "role": "Developer",
+                    "email": "github@nilsplaschke.de",
+                    "homepage": "http://nilsplaschke.de"
+                }
+            ],
+            "description": "This is a little neat helper for the ZipArchive methods with handy functions",
+            "homepage": "http://github.com/Chumper/zipper",
+            "keywords": [
+                "archive",
+                "laravel",
+                "zip"
+            ],
+            "time": "2017-07-17T08:05:10+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1761,6 +1867,51 @@
                 "storage"
             ],
             "time": "2019-06-18T20:09:29+00:00"
+        },
+        {
+            "name": "mavsan/laravel-1c-protocol",
+            "version": "0.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mavsan/laravel-1c-protocol.git",
+                "reference": "8c26b206cb36c89c0416faf7312b6d8a217f1c88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mavsan/laravel-1c-protocol/get/8c26b206cb36c89c0416faf7312b6d8a217f1c88.zip",
+                "reference": "8c26b206cb36c89c0416faf7312b6d8a217f1c88",
+                "shasum": ""
+            },
+            "require": {
+                "chumper/zipper": "^1.0",
+                "laravel/framework": "~5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "files": [],
+                "psr-4": {
+                    "Mavsan\\LaProtocol\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maksim Klimenko",
+                    "email": "mavsan@gmail.com"
+                }
+            ],
+            "homepage": "https://bitbucket.org/mavsan/laravel-1c-protocol",
+            "keywords": [
+                "1c",
+                "1С",
+                "framework",
+                "laravel"
+            ],
+            "time": "2017-08-31T03:41:43+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5951,7 +6102,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "arsengoian/commerce-ml": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
