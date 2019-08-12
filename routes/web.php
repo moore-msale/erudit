@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get(), 'news' => \App\News::paginate(3)->reverse()]);
+    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::all(), 'books' => \App\Book::all()]);
 });
 
 
@@ -27,7 +27,9 @@ Route::get('/book/{book}', 'BookController@bookpage')->name('book');
 Route::get('/all_stock', function () {
     return view('pages.all_stock_page');
 });
-
+Route::get('/login', function () {
+    return view('auth.login');
+});
 Route::get('/about_us', function () {
     return view('pages.about_us');
 });

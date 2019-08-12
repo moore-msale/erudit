@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feedback;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -12,8 +13,16 @@ class FeedbackController extends Controller
         $feedback = new Feedback();
 
         $feedback->name = $request->name;
-        $feedback->like = $request->like;
-        $feedback->message = $request->message;
+        if($request->like == 'on')
+        {
+            $feedback->like = true;
+        }
+        else
+        {
+            $feedback->like = false;
+        }
+        $feedback->comment = $request->comment;
+        $feedback->book_id = $request->book_id;
         $feedback->save();
 
         return back();

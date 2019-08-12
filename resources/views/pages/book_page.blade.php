@@ -124,25 +124,41 @@
                 <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
                     Рецензии на книгу "Гарри Поттер и проклятое дитя"
                 </h3>
+                @if(!count($book->feedbacks))
+                    Рецензий нет
+                @endif
+                @foreach($book->feedbacks as $feedback)
                 <p class="text-fut-bold mt-5" style="font-size: 16px; line-height: 21px; color: #000000;">
-                    Фамилия и Имя
+                    {{ $feedback->name }}
                 </p>
                 <p class="text-fut-book" style="font-size: 16px; line-height: 21px; color: #000000;">
-                    <span>Понравилось? <span class="text-fut-bold pl-3" style="color: #019D38;">Да</span></span>
+                    <span>Понравилось?
+                            @if($feedback->like == 1)
+                            <span class="text-fut-bold pl-3" style="color: #019D38;">
+                                Да
+                            </span>
+                                @else
+                            <span class="text-fut-bold pl-3" style="color: #9d0000;">
+                                Нет
+                            </span>
+                            @endif
+                        </span>
                 </p>
 
                 <p class="text-fut-book col-lg-6 col-12 px-0" style="font-size: 16px; line-height: 21px; color: #000000;">
-                    Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст..
+                    {{ $feedback->comment }}
                 </p>
 
                 <p class="text-fut-light" style="font-size: 15px; line-height: 140%; color: #838383;">
-                    14.10.2019г
+                    {{--{{ $feedback->created_at }}--}}
+                    {{ \Carbon\Carbon::make($feedback->created_at)->format('d-m-Y') }}
                 </p>
                 <div class="col-6 p-0">
                     <hr>
                 </div>
+                    @endforeach
             </div>
-            <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: #3154CF; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
+            <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5 pointer" data-aos="fade-up" style="padding: 15px 23px; background-color: #3154CF; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
                 Оставить рецензию
             </button>
         </div>

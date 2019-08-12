@@ -54,7 +54,16 @@
                         <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Жанры</a>
+                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">
+                            <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer" style="border:0; font-size:17px; color: #000000;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Жанры
+                            </a>
+                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
+                                {{--@foreach($genres as $genre)--}}
+                                {{--<a class="dropdown-item" href="#">{{ $genre->name }}</a>--}}
+                                {{--@endforeach--}}
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item px-3">
                         <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новинки</a>
@@ -75,9 +84,15 @@
                     <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
                                 src="{{ asset('images/cart.png') }}" alt=""></a>
                 </li>
-                <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
-                    Оптовым покупателям
-                </button>
+                    @guest
+                            <a href="/login" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                                Оптовым покупателям
+                            </a>
+                    @else
+                            <a class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                                Личный кабинет
+                            </a>
+                    @endguest
                 </ul>
                 </div>
             </div>
@@ -99,7 +114,7 @@
             </div>
             <div class="collapse navbar-collapse col-md-11 col-12"  id="navbarSupportedContent">
                 <nav class="mr-auto ml-0">
-                    <ul class="navbar-nav mb-3" id="pick">
+                    <ul class="navbar-nav mb-3">
                         <li class="nav-item px-3 my-2">
                             <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
                         </li>
@@ -127,11 +142,19 @@
                             <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><img
                                         src="{{ asset('images/cart.png') }}" alt=""></a>
                         </li>
+                        @guest
                         <li class="nav-item px-3 my-2">
-                            <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                            <a href="/login" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
                                 Оптовым покупателям
-                            </button>
+                            </a>
                         </li>
+                            @else
+                            <li class="nav-item px-3 my-2">
+                                <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                                    Личный кабинет
+                                </button>
+                            </li>
+                        @endguest
                     </ul>
                 </nav>
             </div>

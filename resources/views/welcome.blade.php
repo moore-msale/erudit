@@ -27,13 +27,13 @@
 <div class="container-fluid">
     <div class="row pb-5">
         <div class="col-12">
-            <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-block d-none" style="position:absolute; left:15%; top:5%; line-height: 179px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
+            <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-block d-none" style="line-height: 179px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                 Бестселлеры
             </h2>
             <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-none d-block" style="line-height: 139px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                 Бестселлеры
             </h2>
-            <div class="container-fluid d-lg-block d-none" style="padding-top: 13%;">
+            <div class="container-fluid d-lg-block d-none" style="transform: translateY(-140px)">
                 <div class="row justify-content-center">
                     <div class="col-12">
                         @include('books.bestsellers')
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid" style="margin-top:8%; padding: 1% 8%">
+            <div class="container-fluid" style="padding: 1% 8%">
                 <div class="row">
                     <h2 class="font-weight-bold text-fut-bold" style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; padding-right:32px; color:black;">
                         Жанры
@@ -322,8 +322,8 @@
                 </p>
             </div>
             <div class="col-1"></div>
-            <div class="col-lg-3 col-12">
-                <h2 class="font-weight-bold count" style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #000000; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+            <div class="col-lg-3 col-12 numbers">
+                <h2 class="font-weight-bold value" style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #000000; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                     10160
                 </h2>
                 <p class="text-fut-light pt-3" style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #000000;">
@@ -336,8 +336,8 @@
                 </a>
             </div>
             <div class="col-lg-3 col-12 pt-lg-0 pt-4">
-                <h2 class="font-weight-bold" style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #000000; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-                    <span class="count">190</span>+
+                <h2 class="font-weight-bold numbers" style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #000000; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                    <span class="value">190</span>+
                 </h2>
                 <p class="text-fut-light pt-3" style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #000000;">
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
@@ -464,3 +464,36 @@
 </div>
 
 @endsection
+@push('scripts')
+<script>
+    $(window).scroll(testScroll);
+    var viewed = false;
+
+    function isScrolledIntoView(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height()+200;
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    function testScroll() {
+        if (isScrolledIntoView($(".numbers")) && !viewed) {
+            viewed = true;
+            $('.value').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 1000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        }
+    }
+</script>
+@endpush

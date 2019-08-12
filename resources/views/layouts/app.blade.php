@@ -33,6 +33,7 @@
 {{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
+@stack('scripts')
 <script>
     $(document).ready(function() {
         $(window).scroll(function() {
