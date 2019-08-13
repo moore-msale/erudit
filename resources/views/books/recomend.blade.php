@@ -1,6 +1,6 @@
 <div class="owl-one owl-carousel">
     @foreach($bestsellers as $bestseller)
-        <a href="{{ asset('book/'.$bestseller->id) }}">
+        <a href="{{ route('book.show', $bestseller->id) }}">
         <div class="item m-2 p-4 shadow" style="background-color: white; height: 440px;">
             <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
             <h3 class="font-weight-bold text-fut-bold mt-3 text-left"

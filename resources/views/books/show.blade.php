@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href="">Фантастика</a>
+                            <a href=    "">Фантастика</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="mt-4">
-                                <button  class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                <button  class="text-fut-bold mt-5 buy_book" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
                                     Добавить в корзину
                                 </button>
                             </div>
