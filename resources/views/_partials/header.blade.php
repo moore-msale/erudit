@@ -89,7 +89,7 @@
                                 Оптовым покупателям
                             </a>
                     @else
-                            <a class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                            <a href="{{ route('user.index') }}" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
                                 Личный кабинет
                             </a>
                         <a class="text-dark pl-3" style="padding:5px 15px;" href="{{ route('logout') }}"

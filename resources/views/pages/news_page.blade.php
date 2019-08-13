@@ -4,7 +4,7 @@
         <div class="container">
         <div class="row justify-content-center">
             <h2 class="col-10 MonotypeCorsiva" style="font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
-                "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль.."
+                "{{ $news->name }}"
             </h2>
         </div>
         </div>

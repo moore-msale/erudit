@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function bookpage(Book $book)
     {
-        $sames = Book::where('genre_id', $book->genre_id)->get();
+        $sames = Book::where('genre_id', $book->genre_id)->get()->random(4);
 
         return view('pages/book_page',['book' => $book, 'sames' => $sames]);
     }

@@ -98,14 +98,16 @@
                         @foreach($sames as $same)
                             <div class="col-lg-3 col-12 item px-1">
                                 <a href="{{ asset('book/'.$same->id) }}">
-                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 400px;">
-                                        <img class="w-100" src="{{ asset('storage/'.$same->image) }}" alt="">
-                                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left"
-                                            style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 100%;">
+                                        <div class="" style="height: 55%;">
+                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">
+                                        </div>
+                                        <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
+                                            style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
                                             {{ $same->name }}
                                         </h3>
                                         <div class="container-fluid row mr-0 pr-0"
-                                             style="position: absolute; bottom:5%; color:black;">
+                                             style="position: absolute; bottom:3%; color:black;">
                                             <div class="col-7 p-0 text-left">
                                                 @guest
                                                     <span class="text-fut-bold"

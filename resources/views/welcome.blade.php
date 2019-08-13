@@ -2,18 +2,13 @@
 @section('content')
 <div class="container-fluid">
     <div class="row" style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
-        <div class="col-lg-5 col-12" style="padding-left: 10%; padding-top:16%;">
-        <h1 class="text-fut-bold font-weight-bold" style="font-size: 50px; line-height: 100%; letter-spacing: 0.05em;">
-            Новые книги каждую неделю
+        <div class="col-lg-5 col-12" style="padding-left: 10%; padding-top:12%;">
+        <h1 class="text-fut-bold font-weight-bold" style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;">
+            Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших книг.
         </h1>
 
             <p class="text-fut-light" style="padding-top:5%; font-size: 15px; line-height: 140%;">
-                Давно выяснено, что при оценке дизайна и композиции читаемый
-                текст мешает сосредоточиться. Lorem Ipsum используют потому,
-                что тот обеспечивает более или менее стандартное заполнение
-                шаблона, а также реальное распределение букв и пробелов в
-                абзацах, которое не получается при простой дубликации "Здесь
-                ваш текст.. Здесь ваш текст.. Здесь
+                Огромный  ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах максимально комфортно.
             </p>
             <a href="/catalog">
             <button class="text-fut-bold font-weight-bold" style="margin-top: 5%; font-size: 16px; line-height: 21px; color:black; padding: 15px 21px; border: 1px #000000 solid; background: transparent;">
@@ -81,11 +76,7 @@
                     </h2>
                     </div>
                     <div class="col-12">
-                    <p style="font-size: 14px; line-height: 120%; color: #000000;">
-                        Давно выяснено, что при оценке дизайна и
-                        <br>
-                        композиции читаемый текст мешает сосредото
-                    </p>
+
                     </div>
 
                     <div class="container" style="padding-top: 4%;">
@@ -94,7 +85,7 @@
                                 @include('books.recomend')
                             </div>
                             <div class="col-11 d-lg-none d-block">
-                                @include('books.recomend-media  ')
+                                @include('books.recomend-media ')
                             </div>
                     </div>
                 </div>
@@ -217,32 +208,43 @@
                 </div>
                 <div class="row mt-4 pt-2">
                     @foreach($bestsellers as $bestseller)
-
+                        @if($loop->index == 6)
+                            @break
+                            @endif
                 <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-width: 259px;">
-                    <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
-                    <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                        {{ $bestseller->name }}
-                    </h3>
-                    <div class="container-fluid row mr-0 pr-0">
-                        <div class="col-7 p-0 text-left">
-                            @guest
-                            <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                {{ $bestseller->price_retail }} сом
-                            </span>
-                                @else
-                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                {{ $bestseller->price_wholesale }} сом
-                            </span>
-                            @endguest
-                        </div>
-                        <div class="col-2 p-0">
-                            {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                        </div>
-                        <div class="col-1 p-0"></div>
-                        <div class="col-2 p-0">
-                            <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-                        </div>
-                    </div>
+                    <a href="{{ asset('book/'.$bestseller->id) }}">
+                            <div class="" style="height: 65%;">
+                                <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                            </div>
+                            <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
+                                style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                {{ $bestseller->name }}
+                            </h3>
+                            <div class="container-fluid row mr-0 pr-0"
+                                 style="position: absolute; bottom:3%; color:black;">
+                                <div class="col-7 p-0 text-left">
+                                    @guest
+                                        <span class="text-fut-bold"
+                                              style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $bestseller->price_retail }} сом
+                                                    </span>
+                                    @else
+                                        <span class="text-fut-bold"
+                                              style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $bestseller->price_wholesale }} сом
+                                                    </span>
+                                    @endguest
+                                </div>
+                                {{--<div class="col-2 p-0">--}}
+                                {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                                {{--</div>--}}
+                                <div class="col-1 p-0"></div>
+                                <div class="col-2 p-0">
+                                    {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                                    <i style="color: black;" class="fas fa-cart-plus fa-lg"></i>
+                                </div>
+                            </div>
+                    </a>
                 </div>
                     @endforeach
                 </div>
@@ -250,8 +252,8 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="padding-top:10%!important;">
-        <div class="p-lg-5 p-0">
+    <div class="container-fluid">
+        <div class="p-lg-5 p-0 pt-lg-5 pt-5">
         <div class="row p-lg-5">
             <div class="col-lg-6 col-12" style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 294px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                 <div style="position: absolute; bottom: 5%; right: 5%;">
@@ -318,13 +320,7 @@
                     «Эрудит»
                 </h2>
                 <p class="text-fut-light pt-3" style="font-size: 18px; line-height: 140%; letter-spacing: 0.05em; color: #000000;">
-                    Давно выяснено, что при оценке дизайна и композиции
-                    читаемый текст мешает сосредоточиться. Lorem Ipsum
-                    используют потому, что тот обеспечивает более или менее
-                    стандартное заполнение шаблона, а также реальное
-                    распределение букв и пробелов в абзацах, которое не
-                    получается при простой дубликации "Здесь ваш текст..
-                    Здесь ваш текст.. Здесь ваш текс
+                    Мы одними из первых получаем новинки всех главных книжных издательств и всегда идем в ногу со временем. Огромный  ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах максимально комфортно. А оставить довольным каждого – это наша первоочередная задача!
                 </p>
             </div>
             <div class="col-1"></div>
@@ -378,9 +374,9 @@
                         <img src="{{ asset('images/book-ico1.png') }}" alt="">
                     </div>
                     <div class="col-9 text-left">
-                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Заголовок преимущества</h4>
+                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Большой ассортимент</h4>
                         <p class="text-fut-book" style="">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
+                            У нас Вы можете упаковать подарок и заказать доставку по всей стране, купить книги и комиксы на многих языках мира и подобрать лучший вариант, который подойдет только Вам!
                         </p>
                     </div>
                 </div>
@@ -392,9 +388,9 @@
                         <img src="{{ asset('images/book-ico2.png') }}" alt="">
                     </div>
                     <div class="col-9 text-left">
-                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Заголовок преимущества</h4>
+                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Лидеры продаж</h4>
                         <p class="text-fut-book" style="">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
+                            Также наш оптовый склад – самый крупный в стране, мы продаем книги и канцелярские товары во многие страны, такие как Казахстан, Таджикистан и Узбекистан и тд
                         </p>
                     </div>
                 </div>
@@ -406,9 +402,9 @@
                         <img src="{{ asset('images/book-ico3.png') }}" alt="">
                     </div>
                     <div class="col-9 text-left">
-                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Заголовок преимущества</h4>
+                        <h4 class="text-fut-bold pt-3" style="font-size: 17px; line-height: 22px;">Акции и розыгрыши</h4>
                         <p class="text-fut-book" style="">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
+                            В наших социальных сетях регулярно проходят розыгрыши книг и различных подарков.
                         </p>
                     </div>
                 </div>
