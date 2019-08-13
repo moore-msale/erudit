@@ -21,7 +21,11 @@ class Cart
 
     public static function remove(Book $book, $count, $token)
     {
-        if (CartFacade::session($token)->get($book->id)->getQuantity() == $count) {
+        if (CartFacade::session($token)->get($book->id)) {
+            return null;
+        }
+
+        if (CartFacade::session($token)->get($book->id)->quantity == $count) {
             return CartFacade::session($token)->remove($book->id);
         } else {
             return CartFacade::session($token)->update($book->id, [
@@ -32,6 +36,10 @@ class Cart
 
     public static function delete(Book $book, $token)
     {
+        if (!CartFacade::session($token)->get($book->id)) {
+            return null;
+        }
+
         return CartFacade::session($token)->remove($book->id);
     }
 }

@@ -60,6 +60,55 @@
         });
     });
 
+    $('.remove_book').click(e => {
+        e.preventDefault();
+
+        let btn = $(e.currentTarget);
+        let id = btn.data('id');
+        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+        let cart = null;
+
+        $.ajax({
+            url: '{{ route('cart.remove') }}',
+            data: {
+                book_id: id,
+                count: 1,
+                token: token
+            },
+            success: data => {
+                console.log(data);
+                cart = fetchCart();
+            },
+            error: () => {
+                console.log('error');
+            }
+        });
+    });
+
+    $('.delete_book').click(e => {
+        e.preventDefault();
+
+        let btn = $(e.currentTarget);
+        let id = btn.data('id');
+        let token = '{{ Session::has('token') ? Session::get('token') : uniqid() }}';
+        let cart = null;
+
+        $.ajax({
+            url: '{{ route('cart.delete') }}',
+            data: {
+                book_id: id,
+                token: token
+            },
+            success: data => {
+                console.log(data);
+                cart = fetchCart();
+            },
+            error: () => {
+                console.log('error');
+            }
+        })
+    });
+
     function fetchCart() {
         let returnedData = null;
         $.ajax({

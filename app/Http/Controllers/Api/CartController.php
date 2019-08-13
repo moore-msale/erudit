@@ -66,7 +66,14 @@ class CartController extends Controller
         }
         TokenResolve::resolve($token);
 
-        Cart::remove($book, $count, $token);
+        if (!Cart::remove($book, $count, $token)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'book not found in cart',
+                'cart' => CartFacade::session($token)->getContent(),
+                'token' => $token,
+            ]);
+        }
 
         return response()->json([
             'status' => 'success',
@@ -89,7 +96,14 @@ class CartController extends Controller
         }
         TokenResolve::resolve($token);
 
-        Cart::delete($book, $token);
+        if (!Cart::delete($book, $token)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'book not found in cart',
+                'cart' => CartFacade::session($token)->getContent(),
+                'token' => $token,
+            ]);
+        }
 
         return response()->json([
             'status' => 'success',
