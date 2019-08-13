@@ -35,6 +35,26 @@
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
 @stack('scripts')
 <script>
+    $('.buy_book').click(e => {
+        e.preventDefault();
+
+        let btn = $(e.currentTarget);
+        let id = btn.data('id');
+
+        $.ajax({
+            url: '{{ route('cart.add') }}',
+            data: {
+                book_id: id,
+                count: 1
+            },
+            success: data => {
+                console.log(data);
+            },
+            error: () => {
+                console.log('error');
+            }
+        });
+    });
     $(document).ready(function() {
         $(window).scroll(function() {
             var height = 50;
