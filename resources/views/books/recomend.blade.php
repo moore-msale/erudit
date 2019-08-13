@@ -9,9 +9,15 @@
             </h3>
             <div class="container-fluid row mr-0 pr-0" style="position: absolute; bottom:5%;">
                 <div class="col-6 p-0 text-left">
+                    @guest
                     <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em; color: black;">
                         {{ $bestseller->price_retail }} сом
                     </span>
+                    @else
+                        <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em; color: black;">
+                        {{ $bestseller->price_wholesale }} сом
+                    </span>
+                    @endguest
                 </div>
                 <div class="col-2 p-0">
                     {{--<img class="w-75" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
