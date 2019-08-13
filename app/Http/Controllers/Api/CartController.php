@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Book;
-use Darryldecode\Cart\Cart;
+use App\Cart;
+use App\TokenResolve;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,8 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $token = $request->token ? $request->token : uniqid();
+
+        TokenResolve::resolve($token);
 
         CartFacade::session($token);
 
@@ -37,8 +40,9 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
+        TokenResolve::resolve($token);
 
-        CartFacade::session($token)->add($book->id, $book->name, auth()->check() ? $book->price_wholesale : $book->price_retail, $count ? $count : 1);
+        Cart::add($book, $count, $token);
 
         return response()->json([
             'status' => 'success',
@@ -48,7 +52,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function remove(Request $request)
     {
         $book = Book::find($request->book_id);
         $count = $request->count;
@@ -60,10 +64,9 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
+        TokenResolve::resolve($token);
 
-        CartFacade::session($token)->update($book->id, [
-            'quantity' => $count,
-        ]);
+        Cart::remove($book, $count, $token);
 
         return response()->json([
             'status' => 'success',
@@ -73,7 +76,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function remove(Request $request)
+    public function delete(Request $request)
     {
         $book = Book::find($request->book_id);
         $token = $request->token;
@@ -84,8 +87,9 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
+        TokenResolve::resolve($token);
 
-        CartFacade::session($token)->remove($book->id);
+        Cart::delete($book, $token);
 
         return response()->json([
             'status' => 'success',

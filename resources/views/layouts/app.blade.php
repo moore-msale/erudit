@@ -40,21 +40,47 @@
 
         let btn = $(e.currentTarget);
         let id = btn.data('id');
+        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+        let cart = null;
 
         $.ajax({
             url: '{{ route('cart.add') }}',
             data: {
                 book_id: id,
-                count: 1
+                count: 1,
+                token: token
             },
             success: data => {
                 console.log(data);
+                cart = fetchCart();
             },
             error: () => {
                 console.log('error');
             }
         });
     });
+
+    function fetchCart() {
+        let returnedData = null;
+        $.ajax({
+            url: '{{ route('cart.index') }}',
+            data: {
+                token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
+            },
+            success: data => {
+                console.log(data);
+                returnedData = data;
+            },
+            error: () => {
+                console.log('error');
+            }
+        });
+
+        return returnedData;
+    }
+</script>
+<script>
+
     $(document).ready(function() {
         $(window).scroll(function() {
             var height = 50;
@@ -83,16 +109,10 @@
         margin: 10,
         loop: true,
         responsive: {
-            100: {
+            0: {
                 items: 1
             },
-            200: {
-                items: 2
-            },
-            300: {
-                items: 3
-            },
-            400: {
+            700: {
                 items: 4
             }
         }

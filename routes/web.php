@@ -53,5 +53,5 @@ Route::resource('user', 'UserController');
 
 Route::get('/cart', 'Api\CartController@index')->name('cart.index');
 Route::get('/cart/add/book', 'Api\CartController@add')->name('cart.add');
-Route::get('/cart/update/book', 'Api\CartController@update')->name('cart.update');
+Route::get('/cart/delete/book', 'Api\CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'Api\CartController@remove')->name('cart.remove');

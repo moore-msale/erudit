@@ -103,7 +103,7 @@
                     <div class="container" style="padding-top: 4%;">
                         <div class="row justify-content-center">
                             <div class="col-11 d-lg-block d-none">
-                                @include('books.recomend')
+                                @include('books.recomend_carousel')
                             </div>
                             <div class="col-11 d-lg-none d-block">
                                 @include('books.recomend-media ')
