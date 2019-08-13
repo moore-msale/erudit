@@ -17,14 +17,18 @@ class CartController extends Controller
         $token = $request->token ? $request->token : uniqid();
 
         TokenResolve::resolve($token);
+        $cart = CartFacade::session($token)->getContent();
 
-        CartFacade::session($token);
+        Session::put('cart', $cart);
 
         return response()->json([
             'message' => 'Cart',
             'status' => 'success',
-            'cart' => CartFacade::session($token)->getContent(),
+            'cart' => $cart,
             'token' => $token,
+            'html' => view('_partials.cart', [
+                'cart' => $cart,
+            ])->render(),
         ]);
     }
 
@@ -43,6 +47,7 @@ class CartController extends Controller
         TokenResolve::resolve($token);
 
         Cart::add($book, $count, $token);
+        Session::put('cart', CartFacade::session($token)->getContent());
 
         return response()->json([
             'status' => 'success',
@@ -74,6 +79,7 @@ class CartController extends Controller
                 'token' => $token,
             ]);
         }
+        Session::put('cart', CartFacade::session($token)->getContent());
 
         return response()->json([
             'status' => 'success',
@@ -104,6 +110,7 @@ class CartController extends Controller
                 'token' => $token,
             ]);
         }
+        Session::put('cart', CartFacade::session($token)->getContent());
 
         return response()->json([
             'status' => 'success',

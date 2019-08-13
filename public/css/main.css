@@ -101,6 +101,24 @@ body
 {
     height: 90%;
 }
+.cart-btn {
+    color: #6c757d;
+    background-color: #fff;
+}
+.cart-btn:hover {
+    color: #fff;
+    background-color: #6c757d;
+}
+
+.cart-btn:active {
+    background-color: #6c757d90;
+}
+.cart-btn:first-child {
+    margin-left: -4px;
+}
+.cart-btn:last-child {
+    margin-right: -4px;
+}
 .shadow-hover
 {
     transition: 0.5s;

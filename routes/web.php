@@ -51,9 +51,6 @@ Route::resource('feedback', 'FeedbackController');
 Route::resource('news', 'NewsController');
 Route::resource('user', 'UserController');
 
-Route::get('/cartview', function () {
-    return view('_partials.cart');
-});
 
 Route::get('/cart', 'Api\CartController@index')->name('cart.index');
 Route::get('/cart/add/book', 'Api\CartController@add')->name('cart.add');
