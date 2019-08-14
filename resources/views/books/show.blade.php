@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href=    "">Фантастика</a>
+                            <a href="">{{ $book->genre }}</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -49,9 +49,15 @@
                                 {{ $book->name }}
                             </h2>
                             <div class="mt-4" style="font-size:16px; color: black; font-family:'Futura PT Medium Italic';">
-                                <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
-                                <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
-                                <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                @if($book->author)
+                                    <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                @endif
+                                @if($book->publishing)
+                                    <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                @endif
+                                    @if($book->series)
+                                        <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                    @endif
                             </div>
 
                             <div class="mt-4">
@@ -61,14 +67,14 @@
                                 </p>
                                 @else
                                     <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
-                                        {{ $book->price_wholesale }} сом
+                                        {{isset($book->price_wholesale) ? $book->price_wholesale : $book->price_retail }} сом
                                     </p>
                                 @endguest
                             </div>
 
-                            <div class="pt-4 bg-secondary">
+                            {{--<div class="pt-4 bg-secondary">--}}
 
-                            </div>
+                            {{--</div>--}}
 
                             <div class="mt-4">
                                 <button  class="text-fut-bold mt-5 buy_book" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">

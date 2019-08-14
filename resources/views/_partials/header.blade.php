@@ -48,13 +48,13 @@
             <nav class="col-6 pt-1">
                 <ul class="navbar-nav" id="pick">
                     <li class="nav-item px-3">
-                        <a href="/" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
+                        <a href="/" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Главная</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
+                        <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Магазин</a>
                     </li>
                     <li class="nav-item px-3">
-                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">
+                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
                             <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer" style="border:0; font-size:17px; color: #000000;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Жанры
                             </a>
@@ -66,13 +66,13 @@
                         </div>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новинки</a>
+                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Новинки</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
+                        <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Канцтовары</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="{{ route('news.index') }}" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новости</a>
+                        <a href="{{ route('news.index') }}" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Новости</a>
                     </li>
 
                 </ul>
