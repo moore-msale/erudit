@@ -12,13 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['bestsellers' => \App\Book::where('bestseller',1)->get(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::all(), 'books' => \App\Book::all()]);
+    return view('welcome',['books' => \App\Book::all(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::all(), 'books' => \App\Book::all()]);
 });
-
-
-//Route::get('/catalog', function () {
-//    return view('pages.catalog');
-//});
 
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 

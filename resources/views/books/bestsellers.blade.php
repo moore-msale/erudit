@@ -1,5 +1,6 @@
 <div class="owl-one owl-carousel text-center">
-    @foreach($bestsellers as $bestseller)
+    @foreach($books as $bestseller)
+        @if($bestseller->bestseller == 1)
     <div class="item" style="padding:15%;">
         <div style="float: right; padding:10%;">
         <figure class='book'>
@@ -34,6 +35,7 @@
         </figure>
     </div>
     </div>
+        @endif
     @endforeach
     {{--<div class="item" style="padding:10%;">--}}
         {{--<div style="float: right;">--}}

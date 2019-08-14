@@ -1,5 +1,6 @@
 <div class="owl-two owl-carousel car-nav-close">
-    @foreach($bestsellers as $bestseller)
+    @foreach($books as $bestseller)
+        @if($bestseller->$bestseller == 1)
         <a href="{{ asset('book/'.$bestseller->id) }}">
             <div class="item m-2 p-4 shadow" style="background-color: white; height: 100%;">
                 <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
@@ -30,5 +31,6 @@
                 </div>
             </div>
         </a>
+        @endif
     @endforeach
 </div>
