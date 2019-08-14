@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><img
                                         src="{{ asset('images/cart.png') }}" alt=""></a>
                         </li>
                     </ul>
@@ -81,7 +81,7 @@
                 <div class="row justify-content-end">
                 <ul class="navbar-nav text-right" id="pick">
                 <li class="nav-item px-3 mr-4    pt-1 ico-menu" style="display: none;">
-                    <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><img
+                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><img
                                 src="{{ asset('images/cart.png') }}" alt=""></a>
                 </li>
                     @guest
@@ -148,7 +148,7 @@
                             <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg"></i></a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><img
+                            <a href="#" class="text-fut-book cart pl-5" style="text-decoration: none; color: #222222;"><img
                                         src="{{ asset('images/cart.png') }}" alt=""></a>
                         </li>
                         @guest

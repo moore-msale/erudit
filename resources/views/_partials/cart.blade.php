@@ -1,7 +1,6 @@
 <div class="container">
     <h2 class="text-uppercase text-muted h5 py-4">Shop cart</h2>
-
-    @if($cart)
+    @if(count($cartItems))
 
         <div class="row">
             <div class="col-4">
@@ -18,11 +17,11 @@
             </div>
         </div>
 
-        @foreach($cart as $item)
+        @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center">
                 <div class="col-4 d-flex align-items-center">
                     <img src="{{ asset('images/book1.png') }}" style="height: 100px; width: auto;" alt="">
-                    <p class="text-uppercase m-0 ml-3">{{ $item->name }}</p>
+                    <p class="small m-0 ml-3">{{ $item->name }}</p>
                 </div>
                 <div class="col-2">
                     <p class=" m-0">{{ $item->price }} сом</p>
@@ -40,6 +39,15 @@
                 </div>
             </div>
         @endforeach
+
+        <div class="row mt-3">
+            <div class="col-9">
+                Order amount
+            </div>
+            <div class="col-3">
+                {{ $total }} сом
+            </div>
+        </div>
     @else
         <div class="row justify-content-center">
             <p class="h3 text-muted">Your cart is empty!</p>

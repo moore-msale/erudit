@@ -27,6 +27,7 @@
 @yield('content')
     </main>
     @include('_partials.footer')
+    @include('_partials.modals.cart')
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
@@ -35,6 +36,37 @@
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
 @stack('scripts')
 <script>
+    function fetchCart() {
+        $.ajax({
+            url: '{{ route('cart.index') }}',
+            data: {
+                token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
+            },
+            success: data => {
+                freshCartHtml(data.html);
+            },
+            error: () => {
+                console.log('error');
+            }
+        });
+    }
+
+    function freshCartHtml(html) {
+        console.log(html);
+        $('.modal-body-cart').html(html);
+    }
+
+    fetchCart();
+
+    $('.cart').click(e => {
+        e.preventDefault();
+        console.log('click');
+
+        $('#cart-modal').modal('show');
+        // freshCartHtml(fetchedCart);
+    });
+
+
     $('.buy_book').click(e => {
         e.preventDefault();
 
@@ -109,24 +141,7 @@
         })
     });
 
-    function fetchCart() {
-        let returnedData = null;
-        $.ajax({
-            url: '{{ route('cart.index') }}',
-            data: {
-                token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
-            },
-            success: data => {
-                console.log(data);
-                returnedData = data;
-            },
-            error: () => {
-                console.log('error');
-            }
-        });
 
-        return returnedData;
-    }
 </script>
 <script>
 

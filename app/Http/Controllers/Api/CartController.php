@@ -17,17 +17,18 @@ class CartController extends Controller
         $token = $request->token ? $request->token : uniqid();
 
         TokenResolve::resolve($token);
-        $cart = CartFacade::session($token)->getContent();
+        $cart = CartFacade::session($token);
 
-        Session::put('cart', $cart);
+        Session::put('cart', $cart->getContent());
 
         return response()->json([
             'message' => 'Cart',
             'status' => 'success',
-            'cart' => $cart,
+            'cart' => $cart->getContent(),
             'token' => $token,
             'html' => view('_partials.cart', [
-                'cart' => $cart,
+                'cartItems' => $cart->getContent(),
+                'total' => $cart->getTotal(),
             ])->render(),
         ]);
     }
