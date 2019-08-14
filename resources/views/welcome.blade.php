@@ -243,18 +243,19 @@
                     </div>
                 </div>
                 <div class="row mt-4 pt-2">
-                    @foreach($bestsellers as $bestseller)
+                    @foreach($books as $book)
+                        @if($book->new == 1)
                         @if($loop->index == 6)
                             @break
                             @endif
                 <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-width: 259px;">
-                    <a href="{{ asset('book/'.$bestseller->id) }}">
+                    <a href="{{ asset('book/'.$book->id) }}">
                             <div class="" style="height: 65%;">
-                                <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                                <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
                             </div>
                             <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
                                 style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                                {{ $bestseller->name }}
+                                {{ $book->name }}
                             </h3>
                             <div class="container-fluid row mr-0 pr-0"
                                  style="position: absolute; bottom:3%; color:black;">
@@ -262,12 +263,12 @@
                                     @guest
                                         <span class="text-fut-bold"
                                               style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $bestseller->price_retail }} сом
+                                                            {{ $book->price_retail }} сом
                                                     </span>
                                     @else
                                         <span class="text-fut-bold"
                                               style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $bestseller->price_wholesale }} сом
+                                                            {{ $book->price_wholesale }} сом
                                                     </span>
                                     @endguest
                                 </div>
@@ -282,6 +283,7 @@
                             </div>
                     </a>
                 </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
