@@ -28,9 +28,9 @@
                 </div>
                 <div class="col-3">
                     <div class="border d-flex justify-content-between align-items-center" style="width: 80px;">
-                        <span class="pointer cart-btn p-2">-</span>
+                        <span class="pointer cart-btn p-2 remove_book" data-id="{{ $item->id }}">-</span>
                         <span class="mx-2">{{ $item->quantity }}</span>
-                        <span class="pointer cart-btn p-2">+</span>
+                        <span class="pointer cart-btn buy_book p-2" data-id="{{ $item->id }}">+</span>
                     </div>
                 </div>
                 <div class="col-3 d-flex align-items-center">
