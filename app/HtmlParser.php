@@ -5,84 +5,137 @@ namespace App;
 
 
 use Ammadeuss\LaravelHtmlDomParser\Facade as HtmlDomParser;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use Intervention\Image\ImageManagerStatic;
 
 class HtmlParser
 {
-    public static function searchParse($url, $data, $params = [])
+    public static function searchParse($url, $data, $params, $index)
     {
-        $data = preg_replace(['/(\s+)/', '/[,\/]/'], ['%20', '%2C'], $data);
+//        Log::info('Searching for book ... ' . $index);
+//        $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
+//        $replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
+//        $data = preg_replace($replacements, $entities, $data);
+        $data = rawurlencode($data);
         $html = file_get_contents($url.$params['searchUrl'].'/'.$data.'/');
+        $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
+            Log::info('Failed url ... ' . $index);
             return [];
         }
+        Log::info('Found url ... ' . $index);
         $names = null;
         $urls = null;
+        $authors = null;
 
         if ($params['name_search']) {
             if ($params['name_search_count'] !== null) {
-                $names = HtmlDomParser::str_get_html($html)->find($params['name_search'])[0]->nodes[$params['name_search_count']];
+                Log::info('Searching for book name ... ' . $index);
+                $names = $html->find($params['name_search'])[0]->nodes[$params['name_search_count']];
+                Log::info('Found book name ... ' . $index);
             } else {
-                $names = HtmlDomParser::str_get_html($html)->find($params['name_search']);
+                Log::info('Searching for book name ... ' . $index);
+                $names = $html->find($params['name_search']);
+                Log::info('Found book name ... ' . $index);
             }
         }
         if ($params['name_url']) {
             if ($params['name_url_count'] !== null) {
-                $urls = HtmlDomParser::str_get_html($html)->find($params['name_url'])[0]->nodes[$params['name_url_count']];
+                Log::info('Searching for book url ... ' . $index);
+                $urls = $html->find($params['name_url'])[0]->nodes[$params['name_url_count']];
+                Log::info('Found book url ... ' . $index);
             } else {
-                $urls = HtmlDomParser::str_get_html($html)->find($params['name_url']);
+                Log::info('Searching for book url ... ' . $index);
+                $urls = $html->find($params['name_url']);
+                Log::info('Found book url ... ' . $index);
             }
         }
         if ($params['author']) {
             if ($params['author_count'] !== null) {
-                $authors = HtmlDomParser::str_get_html($html)->find($params['author'])[0]->nodes[$params['author_count']];
+                Log::info('Searching for book author ... ' . $index);
+                $authors = $html->find($params['author'])[0]->nodes[$params['author_count']];
+                Log::info('Found book author ... ' . $index);
             } else {
-                $authors = HtmlDomParser::str_get_html($html)->find($params['author']);
+                Log::info('Searching for book author ... ' . $index);
+                $authors = $html->find($params['author']);
+                Log::info('Found book author ... ' . $index);
             }
         }
 
         $result = [];
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                $result[] = [$names[$i]->plaintext, $urls[$i]->href, $authors[$i]->plaintext];
+                $result[] = [$names[$i]->plaintext, $urls[$i]->href];
             }
         }
 
         return $result;
     }
 
-    public static function parse($url, $params = [])
+    public static function parse($url, $params, $index)
     {
+        Log::info('Searching for book in his page ... ' . $index);
+
         $html = file_get_contents($url);
+        $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
+            Log::info('Failed url in his page ... ' . $index);
             return [];
         }
+        Log::info('Found url in his page ... ' . $index);
         $name = null;
         $description = null;
         $image = null;
         $result = [];
 
         if ($params['name']) {
-            if ($params['name_count'] !== null) {
-                $name = HtmlDomParser::str_get_html($html)->find($params['name'])[0]->nodes[$params['name_count']]->plaintext;
+            $name = $html->find($params['name']);
+            if (count($name)) {
+                if ($params['name_count'] !== null) {
+                    Log::info('Searching for book name in his page ... ' . $index);
+                    $name = $name[0]->nodes[$params['name_count']]->plaintext;
+                    Log::info('Found book name in his page ... ' . $index);
+                } else {
+                    Log::info('Searching for book name in his page ... ' . $index);
+                    $name = $name[0]->plaintext;
+                    Log::info('Found book name in his page ... ' . $index);
+                }
             } else {
-                $name = HtmlDomParser::str_get_html($html)->find($params['name'])[0]->plaintext;
+                Log::info('Not found book name in his page ... ' . $index);
+                $name = null;
             }
             $result[] = $name;
         }
 
         if ($params['description']) {
-            if ($params['description_count']) {
-                $description = HtmlDomParser::str_get_html($html)->find($params['description'])[0]->nodes[$params['description_count']]->plaintext;
+            $description = $html->find($params['description']);
+            if (count($description)) {
+                if ($params['description_count']) {
+                    Log::info('Searching for book description in his page ... ' . $index);
+                    $description = $description[0]->nodes[$params['description_count']]->plaintext;
+                    Log::info('Found book description in his page ... ' . $index);
+                } else {
+                    Log::info('Searching for book description in his page ... ' . $index);
+                    $description = $description[0]->plaintext;
+                    Log::info('Found book description in his page ... ' . $index);
+                }
             } else {
-                $description = HtmlDomParser::str_get_html($html)->find($params['description'])[0]->plaintext;
+                Log::info('Not found book description in his page ... ' . $index);
+                $description = null;
             }
             $result[] = $description;
         }
 
         if ($params['image']) {
-            $image = HtmlDomParser::str_get_html($html)->find($params['image'])[0]->src;
+            Log::info('Searching for book image in his page ... ' . $index);
+            $image = $html->find($params['image']);
+            if (count($image)) {
+                $image = $image[0]->src;
+                Log::info('Found book image in his page ... ' . $index);
+            } else {
+                $image = null;
+            }
             $result[] = $image;
         }
 
