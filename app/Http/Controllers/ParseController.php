@@ -63,6 +63,8 @@ class ParseController extends Controller
                                             $newBook = new Book();
                                             $newBook->name = $book[0];
                                             $newBook->description = $book[1];
+                                            $newBook->price_retail = $item[4];
+                                            $newBook->price_wholesale = $item[5];
                                             $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
                                             $newBook->save();
                                             $count++;
@@ -76,6 +78,8 @@ class ParseController extends Controller
                                             $newBook = new Book();
                                             $newBook->name = $book[0];
                                             $newBook->description = $book[1];
+                                            $newBook->price_retail = $item[4];
+                                            $newBook->price_wholesale = $item[5];
                                             $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
                                             $newBook->save();
                                             $count++;
@@ -92,6 +96,8 @@ class ParseController extends Controller
                                 $newBook = new Book();
                                 $newBook->name = $book[0];
                                 $newBook->description = $book[1];
+                                $newBook->price_retail = $item[4];
+                                $newBook->price_wholesale = $item[5];
                                 $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
                                 $newBook->save();
                                 $count++;
