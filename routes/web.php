@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome',['books' => \App\Book::all(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::all(), 'books' => \App\Book::all()]);
 });
 
+Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
+Route::post('/parser/{type}', 'ParseController@parse')->name('parser.parse');
+
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 
 Route::get('/book/{book}', 'BookController@show')->name('book.show');
