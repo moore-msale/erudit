@@ -6,6 +6,8 @@ use App\Book;
 use App\ExcelParser;
 use App\HtmlParser;
 use App\ImageService;
+use App\Jobs\ProcessExcel;
+use App\Parson;
 use App\XmlParser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -28,100 +30,18 @@ class ParseController extends Controller
 
     public function parse(Request $request, $type)
     {
-        $url = $request->urlForParse;
-
-        switch ($type) {
-            case 'xml' :
-                XmlParser::parse($url);
-                break;
-            case 'html' :
-                $params = [
-                    'name' => $request->name,
-                    'name_count' => $request->name_count,
-                    'description' => $request->description,
-                    'description_count' => $request->description_count,
-                    'image' => $request->image,
-                    'name_search' => $request->name_search,
-                    'name_search_count' => $request->name_search_count,
-                    'name_url' => $request->name_url,
-                    'name_url_count' => $request->name_url_count,
-                    'searchUrl' => $request->searchUrl,
-                    'author' => $request->author,
-                    'author_count' => $request->author_count,
-                ];
-                $resultExcel = ExcelParser::parse($request->excel);
-                $count = 0;
-                if ($params['searchUrl']) {
-                    foreach ($resultExcel as $index => $item) {
-                        $products = HtmlParser::searchParse($url, $item[0], $params, $index);
-                        if (count($products)) {
-                            foreach ($products as $product) {
-                                if ($item[1]) {
-                                    if ($product[0] == $item[0]) {
-                                        $book = HtmlParser::parse($url.$product[1], $params, $index);
-                                        if (count($book) && $book[0]) {
-                                            $newBook = new Book();
-                                            $newBook->name = $book[0];
-                                            $newBook->description = $book[1];
-                                            $newBook->price_retail = $item[4];
-                                            $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
-                                            $newBook->save();
-                                            $count++;
-                                        }
-                                        break;
-                                    }
-                                } else {
-                                    if ($product[0] == $item[0]) {
-                                        $book = HtmlParser::parse($url.$product[1], $params, $index);
-                                        if (count($book) && $book[0]) {
-                                            $newBook = new Book();
-                                            $newBook->name = $book[0];
-                                            $newBook->description = $book[1];
-                                            $newBook->price_retail = $item[4];
-                                            $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
-                                            $newBook->save();
-                                            $count++;
-                                        }
-                                        break;
-                                    }
-                                }
-
-                            }
-                        } else {
-                            $data = preg_replace('/(\s+)/', '%20', $item[0]);
-                            $book = HtmlParser::parse($url.$params['searchUrl'].'/'.$data, $params, $index);
-                            if (count($book) && $book[0]) {
-                                $newBook = new Book();
-                                $newBook->name = $book[0];
-                                $newBook->description = $book[1];
-                                $newBook->price_retail = $item[4];
-                                $newBook->price_wholesale = $item[5];
-                                $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
-                                $newBook->save();
-                                $count++;
-                            }
-                        }
-                    }
-                } else {
-                    $book = HtmlParser::parse($url, $params, 0);
-                    if ($book && $book[0]) {
-                        $newBook = new Book();
-                        $newBook->name = $book[0];
-                        $newBook->description = $book[1];
-                        $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
-                        $newBook->save();
-                    }
-                }
-                break;
-            default:
-                view('parser.html');
+        $file = $request->excel;
+        if ($file) {
+            $fileName = uniqid('excel_').'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('excels'), $fileName);
         }
+        $request->files->remove('excel');
+        $request->merge(['excel' => $fileName, 'type' => 'html']);
+        $parson = Parson::create($request->request->all());
 
+        ProcessExcel::dispatch($parson);
 
-
-        echo $count . ' из ' . count($resultExcel);
+        return redirect()->back();
     }
 
     public function parseHtml(Request $request)
