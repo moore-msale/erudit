@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <a class="pl-3 text-fut-bold" href="" style="text-decoration: underline; font-size: 18px;">...еще 3
+                    <a class="pl-3 text-fut-bold" href="all_stock" style="text-decoration: underline; font-size: 18px;">...еще 3
                         акции</a>
                 </div>
             </div>
