@@ -1,8 +1,8 @@
 <div class="col-lg-4 col-12 item px-1 mb-4">
+    <a href="{{ route('book.show', $book) }}">
+
     <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height:100%;">
-        <a href="{{ route('book.show', $book) }}">
             <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image) }}" alt="">
-        </a>
         <h3 class="font-weight-bold text-fut-bold mt-3 text-left pb-5" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
             {{ $book->name }}
         </h3>
@@ -32,4 +32,6 @@
             </div>
         </div>
     </div>
+    </a>
+
 </div>

@@ -73,7 +73,7 @@ class ProcessExcel implements ShouldQueue
                                         $book = HtmlParser::parse($url.$product[1], $params, $index);
                                         if (count($book) && $book[0]) {
                                             $newBook = new Book();
-                                            $newBook->name = $book[0];
+                                            $newBook->name = $item[0];
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
@@ -88,7 +88,7 @@ class ProcessExcel implements ShouldQueue
                                         $book = HtmlParser::parse($url.$product[1], $params, $index);
                                         if (count($book) && $book[0]) {
                                             $newBook = new Book();
-                                            $newBook->name = $book[0];
+                                            $newBook->name = $item[0];
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
@@ -106,7 +106,7 @@ class ProcessExcel implements ShouldQueue
                             $book = HtmlParser::parse($url.$params['searchUrl'].'/'.$data, $params, $index);
                             if (count($book) && $book[0]) {
                                 $newBook = new Book();
-                                $newBook->name = $book[0];
+                                $newBook->name = $item[0];
                                 $newBook->description = $book[1];
                                 $newBook->price_retail = $item[4];
                                 $newBook->price_wholesale = $item[5];

@@ -43,7 +43,16 @@
                 token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
             },
             success: data => {
-                freshCartHtml(data.html);
+                let result = freshCartHtml(data.html);
+                result.find('.buy_book').each((index, item) => {
+                    registerCartBuyButtons($(item));
+                });
+                result.find('.remove_book').each((index, item) => {
+                    registerCartRemoveButtons($(item));
+                });
+                result.find('.delete_book').each((index, item) => {
+                    registerCartDeleteButtons($(item));
+                });
             },
             error: () => {
                 console.log('error');
@@ -51,94 +60,110 @@
         });
     }
 
+    function registerCartBuyButtons(data) {
+
+        data.click(e => {
+            e.preventDefault();
+            console.log('registered');
+
+            let btn = $(e.currentTarget);
+            let id = btn.data('id');
+            let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+            let cart = null;
+
+            $.ajax({
+                url: '{{ route('cart.add') }}',
+                data: {
+                    book_id: id,
+                    count: 1,
+                    token: token
+                },
+                success: data => {
+                    cart = fetchCart();
+                },
+                error: () => {
+                    console.log('error');
+                }
+            });
+        });
+    }
+    function registerCartRemoveButtons(data) {
+
+        data.click(e => {
+            e.preventDefault();
+            console.log('registered');
+
+            let btn = $(e.currentTarget);
+            let id = btn.data('id');
+            let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+            let cart = null;
+
+            $.ajax({
+                url: '{{ route('cart.remove') }}',
+                data: {
+                    book_id: id,
+                    count: 1,
+                    token: token
+                },
+                success: data => {
+                    cart = fetchCart();
+                },
+                error: () => {
+                    console.log('error');
+                }
+            });
+        });
+    }
+
+    function registerCartDeleteButtons(data) {
+
+        data.click(e => {
+            e.preventDefault();
+            console.log('registered');
+
+            let btn = $(e.currentTarget);
+            let id = btn.data('id');
+            let token = '{{ Session::has('token') ? Session::get('token') : uniqid() }}';
+            let cart = null;
+
+            $.ajax({
+                url: '{{ route('cart.delete') }}',
+                data: {
+                    book_id: id,
+                    token: token
+                },
+                success: data => {
+                    cart = fetchCart();
+                },
+                error: () => {
+                    console.log('error');
+                }
+            })
+        });
+    }
+
+    $('.buy_book').each((index, item) => {
+         registerCartBuyButtons($(item));
+    });
+
+    $('.remove_book').each((index, item) => {
+         registerCartRemoveButtons($(item));
+    });
+
+    $('.delete_book').each((index, item) => {
+        registerCartDeleteButtons($(item));
+    });
+
     function freshCartHtml(html) {
-        console.log(html);
-        $('.modal-body-cart').html(html);
+        return $('.modal-body-cart').html(html);
     }
 
     fetchCart();
 
     $('.cart').click(e => {
         e.preventDefault();
-        console.log('click');
-
         $('#cart-modal').modal('show');
         // freshCartHtml(fetchedCart);
-    });
-
-
-    $('.buy_book').click(e => {
-        e.preventDefault();
-
-        let btn = $(e.currentTarget);
-        let id = btn.data('id');
-        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
-        let cart = null;
-
-        $.ajax({
-            url: '{{ route('cart.add') }}',
-            data: {
-                book_id: id,
-                count: 1,
-                token: token
-            },
-            success: data => {
-                console.log(data);
-                cart = fetchCart();
-            },
-            error: () => {
-                console.log('error');
-            }
-        });
-    });
-
-    $('.remove_book').click(e => {
-        e.preventDefault();
-
-        let btn = $(e.currentTarget);
-        let id = btn.data('id');
-        let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
-        let cart = null;
-
-        $.ajax({
-            url: '{{ route('cart.remove') }}',
-            data: {
-                book_id: id,
-                count: 1,
-                token: token
-            },
-            success: data => {
-                console.log(data);
-                cart = fetchCart();
-            },
-            error: () => {
-                console.log('error');
-            }
-        });
-    });
-
-    $('.delete_book').click(e => {
-        e.preventDefault();
-
-        let btn = $(e.currentTarget);
-        let id = btn.data('id');
-        let token = '{{ Session::has('token') ? Session::get('token') : uniqid() }}';
-        let cart = null;
-
-        $.ajax({
-            url: '{{ route('cart.delete') }}',
-            data: {
-                book_id: id,
-                token: token
-            },
-            success: data => {
-                console.log(data);
-                cart = fetchCart();
-            },
-            error: () => {
-                console.log('error');
-            }
-        })
     });
 
 

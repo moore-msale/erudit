@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href="">{{ $book->genre }}</a>
+                            <a href="">{{ $book->genre ?? '' }}</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -35,7 +35,7 @@
                             <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
                         <span>
-                            <a href="">{{ $book->genre->name }}</a>
+                            <a href="">{{ $book->genre->name ?? '' }}</a>
                         </span>
                         <span>
                             <i class="fas fa-arrow-right fa-xs"></i>

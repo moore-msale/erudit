@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-3 d-flex align-items-center">
                     <p class="m-0 text-left">{{ $item->getPriceSum() }} сом</p>
-                    <span class="ml-5 pointer cart-btn p-2">&times;</span>
+                    <span class="ml-5 pointer cart-btn p-2 delete_book" data-id="{{ $item->id }}">&times;</span>
                 </div>
             </div>
         @endforeach
