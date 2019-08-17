@@ -59,9 +59,11 @@ class ProcessExcel implements ShouldQueue
                     'author' => $this->parson->author,
                     'author_count' => $this->parson->author_count,
                 ];
-                $resultExcel = ExcelParser::parse(public_path('excels/'.$this->parson->excel));
-                $count = 0;
-                if ($params['searchUrl']) {
+
+                if ($params['searchUrl'] && $this->parson->excel) {
+                    $count = 0;
+
+                    $resultExcel = ExcelParser::parse(public_path('excels/'.$this->parson->excel));
                     foreach ($resultExcel as $index => $item) {
                         $products = HtmlParser::searchParse($url, $item[0], $params, $index);
                         if (count($products)) {
