@@ -7,28 +7,23 @@
             {{ $book->name }}
         </h3>
         </a>
-        <div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">
-            <div class="row">
-                <div class="col-7 p-0 text-left">
+        <div class="container-fluid mr-0 pr-0">
+            <div class="row" style="width:70%;position: absolute; bottom:5%; color:black;">
+                <div class="p-0 text-left">
                     @guest
-                        <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: black;">
-                                {{ $book->price_retail }} сом
-                            </span>
+                        <span class="text-fut-book"
+                              style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $book->price_retail }} сом
+                                                    </span>
                     @else
-                        <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: black;">
-                                {{ $book->price_wholesale }} сом
-                            </span>
+                        <span class="text-fut-book"
+                              style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $book->price_wholesale }} сом
+                                                    </span>
                     @endguest
                 </div>
-                {{--<div class="col-2 p-0">--}}
-                {{--                                    <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                {{--</div>--}}
-                {{--<div class="col-1 p-0"></div>--}}
-                <div class="col-2 p-0">
-                    {{--                                    <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                    <a href="">
-                        <i style="color: black;" class="fas fa-cart-plus fa-lg buy_book"  data-id="{{ $book->id }}"></i>
-                    </a>
+                <div class=" p-0 ml-auto buy_book">
+                    <i style="color: black; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $book->id }}"></i>
                 </div>
             </div>
         </div>

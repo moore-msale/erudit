@@ -1,6 +1,6 @@
 <div class="owl-two owl-carousel car-nav-close">
     @foreach($books as $bestseller)
-        @if($bestseller->$bestseller == 1)
+        @if($bestseller->bestseller == 1)
         <a href="{{ asset('book/'.$bestseller->id) }}">
             <div class="item m-2 p-4 shadow text-scale" style="background-color: white; height: 100%;">
                 <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
@@ -26,7 +26,7 @@
                     {{--<div class="col-1 p-0"></div>--}}
                     <div class="col-2 p-0">
                         {{--<img class="w-75" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                        <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg buy_book"  data-id="{{ $book->id }}"></i>
+                        <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg buy_book"  data-id="{{ $bestseller->id }}"></i>
                     </div>
                 </div>
             </div>

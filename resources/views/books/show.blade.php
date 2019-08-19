@@ -11,7 +11,9 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href="">{{ $book->genre }}</a>
+                        @if($book->genre)
+                            <a href="">{{ $book->genre->name }}</a>
+                            @endif
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -104,43 +106,38 @@
                 <div class="col-lg-10 col-12">
                     <div class="row">
                         @foreach($sames as $same)
-                            <div class="col-lg-3 col-12 item px-1">
-                                    <div class="p-4 m-2 shadow text-scale"  style="background-color: white; max-width: 259px; height: 100%;">
-                                        <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
-                                        <div class="" style="height: 55%;">
+                            <div class="col-lg-3 col-12 item mt-3" style="background-color: white; height:100%;">
+                                <div class="shadow text-scale p-4">
+                                <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
+                                    <div class="" style="height: 65%;">
                                         <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">
-                                        </div>
-                                        <h3 class="text-fut-book mt-3 pb-5 text-left"
-                                            style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-                                            {{ $same->name }}
-                                        </h3>
+                                    </div>
+                                    <h3 class="text-fut-book mt-3 pb-5 text-left"
+                                        style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                        {{ $same->name }}
+                                    </h3>
                                 </a>
-                                        <div class="container-fluid row mr-0 pr-0"
-                                             style="position: absolute; bottom:3%; color:black;">
-                                            <div class="col-7 p-0 text-left">
-                                                @guest
-                                                    <span class="text-fut-book"
-                                                          style="font-size:18px; letter-spacing: 0.05em;">
+                                <div class="container-fluid mr-0 pr-0">
+                                    <div class="row" style="width:70%;position: absolute; bottom:5%; color:black;">
+                                        <div class="p-0 text-left">
+                                            @guest
+                                                <span class="text-fut-book"
+                                                      style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_retail }} сом
                                                     </span>
-                                                @else
-                                                    <span class="text-fut-book"
-                                                          style="font-size:18px; letter-spacing: 0.05em;">
+                                            @else
+                                                <span class="text-fut-book"
+                                                      style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_wholesale }} сом
                                                     </span>
-                                                @endguest
-                                            </div>
-                                            {{--<div class="col-2 p-0">--}}
-                                            {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                                            {{--</div>--}}
-                                            <div class="col-1 p-0"></div>
-                                            <div class="col-2 p-0">
-                                                {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                                                <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip"></i>
-                                            </div>
+                                            @endguest
+                                        </div>
+                                        <div class=" p-0 ml-auto buy_book">
+                                            <i style="color: black; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $same->id }}"></i>
                                         </div>
                                     </div>
-
+                                </div>
+                            </div>
                             </div>
                             @endforeach
                     </div>
@@ -177,7 +174,7 @@
                 </p>
 
                 <p class="text-fut-light" style="font-size: 15px; line-height: 140%; color: #838383;">
-                    {{--{{ $feedback->created_at }}--}}
+                    {{ $feedback->created_at }}
                     {{ \Carbon\Carbon::make($feedback->created_at)->format('d-m-Y') }}
                 </p>
                 <div class="col-6 p-0">

@@ -10,7 +10,6 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $sames = Book::where('genre_id', $book->genre_id)->get()->take(4);
-
         return view('books/show', [
             'book' => $book,
             'sames' => $sames
