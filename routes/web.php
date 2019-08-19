@@ -21,6 +21,7 @@ Route::get('/', function () {
 //});
 
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
+Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
 
 Route::get('/book/{book}', 'BookController@bookpage')->name('book');
 
