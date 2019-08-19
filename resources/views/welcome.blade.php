@@ -11,7 +11,7 @@
                 Огромный  ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах максимально комфортно.
             </p>
             <a href="/catalog">
-            <button class="text-fut-bold font-weight-bold" style="margin-top: 5%; font-size: 16px; line-height: 21px; color:black; padding: 15px 21px; border: 1px #000000 solid; background: transparent;">
+            <button class="text-fut-bold font-weight-bold but-hov" style="margin-top: 5%; font-size: 16px; line-height: 21px; color:black; padding: 15px 21px; border: 1px #000000 solid; background: transparent; cursor: pointer;">
                 Смотреть все книги
             </button>
             </a>
@@ -50,7 +50,7 @@
                             Жанры
                         </h2>
                         <span style="padding-top: 10px; font-size: 16px; line-height: 21px; text-align: center; text-decoration-line: underline;">
-                        <a href="" style=" color: #CC4B8B;">
+                        <a href="" class="text-scale" style=" color: #CC4B8B;">
                         Смотреть все книги
                             </a>
                     </span>
@@ -126,7 +126,8 @@
                     Акции на сегодня
                 </h3>
                 <div class="pr-3" style="border-right: 1px solid rgba(255, 255, 255, 0.4);">
-                    <div class="row p-3 mt-5 mb-4 ml-1 mr-4" style="background-color: white;">
+                    <a href="" style="text-decoration: none;">
+                    <div class="row p-3 mt-5 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
                                 <p class="text-fut-bold"
@@ -145,8 +146,9 @@
                             </p>
                         </div>
                     </div>
-
-                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4" style="background-color: white;">
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
                                 <p class="text-fut-bold"
@@ -165,7 +167,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4" style="background-color: white;">
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
                                 <p class="text-fut-bold"
@@ -184,7 +188,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4" style="background-color: white;">
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
                                 <p class="text-fut-bold"
@@ -203,7 +209,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4" style="background-color: white;">
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                    <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
                                 <p class="text-fut-bold"
@@ -222,8 +230,9 @@
                             </p>
                         </div>
                     </div>
+                    </a>
 
-                    <a class="pl-3 text-fut-bold" href="all_stock" style="text-decoration: underline; font-size: 18px;">...еще 3
+                    <a class="pl-3 text-fut-bold text-scale" href="all_stock" style="text-decoration: underline; font-size: 18px;">...еще 3
                         акции</a>
                 </div>
             </div>
@@ -236,9 +245,11 @@
                         </h3>
                     </div>
                     <div class="col-lg-4 col-12 pt-lg-2 pt-4">
-                        <a class="text-fut-bold py-3 px-5" href=""
-                           style="background: #3154CF; box-shadow: 0px 4px 45px rgba(0, 0, 0, 0.4); color: white;">
+                        <a href="/catalog">
+                        <button class="text-fut-bold py-3 px-5 but-hov" href=""
+                           style="background: #3154CF; color: white; border:0px; cursor: pointer;">
                             Смотреть все
+                        </button>
                         </a>
                     </div>
                 </div>
@@ -248,40 +259,37 @@
                         @if($loop->index == 6)
                             @break
                             @endif
-                <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-width: 259px;">
-                    <a href="{{ asset('book/'.$book->id) }}">
+                <div class="col-lg-3 col-12 item m-2 p-4 shadow text-scale" style="background-color: white; max-width: 259px;">
+                    <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
                             <div class="" style="height: 65%;">
                                 <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
                             </div>
-                            <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
+                            <h3 class="text-fut-book mt-3 pb-5 text-left"
                                 style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
                                 {{ $book->name }}
                             </h3>
-                            <div class="container-fluid row mr-0 pr-0"
+                    </a>
+                            <div class="container-fluid mr-0 pr-0"
                                  style="position: absolute; bottom:3%; color:black;">
-                                <div class="col-7 p-0 text-left">
+                                <div class="row" style="width:85%;">
+                                <div class="p-0 text-left">
                                     @guest
-                                        <span class="text-fut-bold"
+                                        <span class="text-fut-book"
                                               style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $book->price_retail }} сом
                                                     </span>
                                     @else
-                                        <span class="text-fut-bold"
+                                        <span class="text-fut-book"
                                               style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $book->price_wholesale }} сом
                                                     </span>
                                     @endguest
                                 </div>
-                                {{--<div class="col-2 p-0">--}}
-                                {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                                {{--</div>--}}
-                                <div class="col-1 p-0"></div>
-                                <div class="col-2 p-0">
-                                    {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                                    <i style="color: black;" class="fas fa-cart-plus fa-lg"></i>
+                                <div class=" p-0 ml-auto buy_book">
+                                    <i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i>
+                                </div>
                                 </div>
                             </div>
-                    </a>
                 </div>
                         @endif
                     @endforeach
@@ -294,14 +302,16 @@
         <div class="p-lg-5 p-0 pt-lg-5 pt-5">
         <div class="row p-lg-5">
             <div class="col-lg-6 col-12" style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 294px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                <div style="position: absolute; bottom: 5%; right: 5%;">
+                <div style="position: absolute; bottom: 5%; right: 6%;">
                     <h3 class="text-fut-bold" style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
                         Товары для
                         <br>
                         творчества
                     </h3>
-                    <p class="text-fut-bold" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
+                    <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
+                        <a href="">
                         Смотреть
+                        </a>
                     </p>
                 </div>
             </div>
@@ -315,9 +325,10 @@
                             <br>
                             товары
                         </h3>
-                        <p class="text-fut-bold"
-                           style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                            Смотреть
+                        <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
+                            <a href="">
+                                Смотреть
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -331,9 +342,10 @@
                             <br>
                             игры
                         </h3>
-                        <p class="text-fut-bold"
-                           style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                            Смотреть
+                        <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
+                            <a href="">
+                                Смотреть
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -347,9 +359,10 @@
                             <br>
                             материалы
                         </h3>
-                        <p class="text-fut-bold"
-                           style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #fefefe;">
-                            Смотреть
+                        <p class="text-fut-bold text-scale-white" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em;">
+                            <a href="" style=" color: #fefefe;">
+                                Смотреть
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -382,8 +395,8 @@
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
                 </p>
                 <a href="/about_us">
-                    <button type="button" class="text-fut-bold mt-5" data-aos="fade-up"
-                            style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
+                    <button type="button" class="text-fut-bold mt-5 but-hov" data-aos="fade-up"
+                            style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid; cursor: pointer;">
                         Подробнее о нас
                     </button>
                 </a>
@@ -397,9 +410,9 @@
                    style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #000000;">
                     Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
                 </p>
-                <a class="" href="">
-                    <button class="text-fut-bold mt-5" data-aos="fade-up"
-                            style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                <a class="" href="/catalog">
+                    <button class="text-fut-bold mt-5 but-hov" data-aos="fade-up"
+                            style="padding: 15px 23px; background-color: #F7E600; border:0; cursor: pointer;">
                         Смотреть все книги
                     </button>
                 </a>
@@ -513,7 +526,7 @@
                                style="font-family: Futura PT; font-style: normal; font-weight: normal; font-size: 15px; line-height: 130%; letter-spacing: 0.05em;">
                                 {{ $new->description }}
                             </p>
-                            <a href="{{ route('news.show',$new->id) }}" class="text-fut-book"
+                            <a href="{{ route('news.show',$new->id) }}" class="text-fut-book text-scale"
                                style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
                                 Читать полностью
                             </a>

@@ -1,6 +1,6 @@
 <div class="owl-one owl-carousel text-center">
     @foreach($books as $bestseller)
-        @if($bestseller->bestseller == 1)
+        @if($bestseller->bestseller ==  1)
     <div class="item" style="padding:15%;">
         <div style="float: right; padding:10%;">
         <figure class='book'>
@@ -18,7 +18,7 @@
                     <p class="pt-3 text-fut-book px-3">
                         {{ $bestseller->name }}
                     </p>
-                    <a class="btn" href="{{ asset('book/'.$bestseller->id) }}">Посмотреть</a>
+                    <a class="btn but-hov" href="{{ asset('book/'.$bestseller->id) }}">Посмотреть</a>
                 </li>
                 <li></li>
                 <li></li>

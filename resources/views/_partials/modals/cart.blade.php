@@ -7,6 +7,7 @@
             <div class="modal-body modal-body-cart">
 
             </div>
+
         </div>
     </div>
 </div>

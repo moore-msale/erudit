@@ -1,26 +1,26 @@
 <div class="container">
-    <h2 class="text-uppercase text-muted h5 py-4">Shop cart</h2>
+    <h2 class="text-uppercase text-muted h5 py-4">Корзина</h2>
     @if(count($cartItems))
 
         <div class="row">
             <div class="col-4">
-                Product
+                Товар
             </div>
             <div class="col-2">
-                Price
+                Цена
             </div>
             <div class="col-3">
-                Quantity
+                Кол-во
             </div>
             <div class="col-3">
-                Amount
+                Цена
             </div>
         </div>
 
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center">
                 <div class="col-4 d-flex align-items-center">
-                    <img src="{{ asset('images/book1.png') }}" style="height: 100px; width: auto;" alt="">
+                    <img src="{{ asset('storage/'.$item->image) }}" style="height: 100px; width: auto;" alt="">
                     <p class="small m-0 ml-3">{{ $item->name }}</p>
                 </div>
                 <div class="col-2">
@@ -42,7 +42,7 @@
 
         <div class="row mt-3">
             <div class="col-9">
-                Order amount
+                Итоговая цена:
             </div>
             <div class="col-3">
                 {{ $total }} сом
@@ -50,7 +50,14 @@
         </div>
     @else
         <div class="row justify-content-center">
-            <p class="h3 text-muted">Your cart is empty!</p>
+            <p class="h3 text-muted">Корзина пуста!</p>
         </div>
     @endif
+    <div class="text-right pt-4">
+        <a href="/">
+            <button class="m-3 bg-success p-2 text-fut-book text-white but-hov" style="border:0; cursor: pointer;">
+                Оформить заказ
+            </button>
+        </a>
+    </div>
 </div>

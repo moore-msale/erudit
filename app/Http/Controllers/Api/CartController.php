@@ -71,6 +71,7 @@ class CartController extends Controller
             ]);
         }
         TokenResolve::resolve($token);
+        Cart::remove($book, $count, $token);
 
         if (!Cart::remove($book, $count, $token)) {
             return response()->json([

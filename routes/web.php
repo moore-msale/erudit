@@ -19,6 +19,7 @@ Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
 Route::post('/parser/{type}', 'ParseController@parse')->name('parser.parse');
 
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
+Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
 
 Route::get('/book/{book}', 'BookController@show')->name('book.show');
 

@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href="">{{ $book->genre ?? '' }}</a>
+                            <a href="">{{ $book->genre }}</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -35,7 +35,9 @@
                             <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
                         <span>
-                            <a href="">{{ $book->genre->name ?? '' }}</a>
+                            @if($book->genre)
+                            <a href="">{{ $book->genre->name }}</a>
+                                @endif
                         </span>
                         <span>
                             <i class="fas fa-arrow-right fa-xs"></i>
@@ -62,11 +64,11 @@
 
                             <div class="mt-4">
                                 @guest
-                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
+                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
                                     {{ $book->price_retail }} сом
                                 </p>
                                 @else
-                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
+                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
                                         {{isset($book->price_wholesale) ? $book->price_wholesale : $book->price_retail }} сом
                                     </p>
                                 @endguest
