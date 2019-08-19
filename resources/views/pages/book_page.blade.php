@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            <a href="">Фантастика</a>
+                            <a href="">{{ $book->genre }}</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
@@ -35,7 +35,9 @@
                             <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
                         <span>
+                            @if($book->genre)
                             <a href="">{{ $book->genre->name }}</a>
+                                @endif
                         </span>
                         <span>
                             <i class="fas fa-arrow-right fa-xs"></i>
@@ -49,29 +51,35 @@
                                 {{ $book->name }}
                             </h2>
                             <div class="mt-4" style="font-size:16px; color: black; font-family:'Futura PT Medium Italic';">
-                                <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
-                                <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
-                                <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                @if($book->author)
+                                    <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                @endif
+                                @if($book->publishing)
+                                    <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                @endif
+                                    @if($book->series)
+                                        <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                    @endif
                             </div>
 
                             <div class="mt-4">
                                 @guest
-                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
+                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
                                     {{ $book->price_retail }} сом
                                 </p>
                                 @else
-                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%;">
-                                        {{ $book->price_wholesale }} сом
+                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
+                                        {{isset($book->price_wholesale) ? $book->price_wholesale : $book->price_retail }} сом
                                     </p>
                                 @endguest
                             </div>
 
-                            <div class="pt-4 bg-secondary">
+                            {{--<div class="pt-4 bg-secondary">--}}
 
-                            </div>
+                            {{--</div>--}}
 
                             <div class="mt-4">
-                                <button  class="text-fut-bold mt-5" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                <button  class="text-fut-bold mt-5 buy_book" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
                                     Добавить в корзину
                                 </button>
                             </div>
@@ -98,14 +106,16 @@
                         @foreach($sames as $same)
                             <div class="col-lg-3 col-12 item px-1">
                                 <a href="{{ asset('book/'.$same->id) }}">
-                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 400px;">
-                                        <img class="w-100" src="{{ asset('storage/'.$same->image) }}" alt="">
-                                        <h3 class="font-weight-bold text-fut-bold mt-3 text-left"
-                                            style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 100%;">
+                                        <div class="" style="height: 55%;">
+                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">
+                                        </div>
+                                        <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
+                                            style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
                                             {{ $same->name }}
                                         </h3>
                                         <div class="container-fluid row mr-0 pr-0"
-                                             style="position: absolute; bottom:5%; color:black;">
+                                             style="position: absolute; bottom:3%; color:black;">
                                             <div class="col-7 p-0 text-left">
                                                 @guest
                                                     <span class="text-fut-bold"

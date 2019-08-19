@@ -1,24 +1,36 @@
 <div class="owl-two owl-carousel car-nav-close">
-    <div class="item m-2 p-4 shadow" style="background-color: white;">
-        <img src="{{ asset('images/book1.png') }}" alt="">
-        <h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
-            В движении.
-            <br>
-            История жизни
-        </h3>
-        <div class="container-fluid row mr-0 pr-0">
-            <div class="col-7 p-0 text-left">
-                                                <span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">
-                                                    648 сом
-                                                </span>
+    @foreach($books as $bestseller)
+        @if($bestseller->$bestseller == 1)
+        <a href="{{ asset('book/'.$bestseller->id) }}">
+            <div class="item m-2 p-4 shadow text-scale" style="background-color: white; height: 100%;">
+                <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                <h3 class="text-fut-book mt-3 text-left pb-5"
+                    style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                    {{ $bestseller->name }}
+                </h3>
+                <div class="container-fluid row mr-0 pr-0" style="position: absolute; bottom:5%;">
+                    <div class="col-6 p-0 text-left">
+                        @guest
+                            <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: black;">
+                        {{ $bestseller->price_retail }} сом
+                    </span>
+                        @else
+                            <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: black;">
+                        {{ $bestseller->price_wholesale }} сом
+                    </span>
+                        @endguest
+                    </div>
+                    <div class="col-2 p-0">
+                        {{--<img class="w-75" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
+                    </div>
+                    {{--<div class="col-1 p-0"></div>--}}
+                    <div class="col-2 p-0">
+                        {{--<img class="w-75" src="{{ asset('images/tobasket.png') }}" alt="">--}}
+                        <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg buy_book"  data-id="{{ $book->id }}"></i>
+                    </div>
+                </div>
             </div>
-            <div class="col-2 p-0">
-                <img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">
-            </div>
-            <div class="col-1 p-0"></div>
-            <div class="col-2 p-0">
-                <img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">
-            </div>
-        </div>
-    </div>
+        </a>
+        @endif
+    @endforeach
 </div>
