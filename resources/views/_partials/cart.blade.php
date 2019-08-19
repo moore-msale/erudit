@@ -20,7 +20,7 @@
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center">
                 <div class="col-4 d-flex align-items-center">
-                    <img src="{{ asset('storage/'.$item->image) }}" style="height: 100px; width: auto;" alt="">
+                    <img src="{{ file_exists(asset('storage/'.$item->image)) ? asset('storage/'.$item->image) : asset('images/default_book.png') }}" style="height: 100px; width: auto;" alt="">
                     <p class="small m-0 ml-3">{{ $item->name }}</p>
                 </div>
                 <div class="col-2">
@@ -53,11 +53,11 @@
             <p class="h3 text-muted">Корзина пуста!</p>
         </div>
     @endif
-    <div class="text-right pt-4">
-        <a href="/">
-            <button class="m-3 bg-success p-2 text-fut-book text-white but-hov" style="border:0; cursor: pointer;">
+    @if(!Session::has('cart_checkout'))
+        <div class="text-right pt-4">
+            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
                 Оформить заказ
-            </button>
-        </a>
-    </div>
+            </a>
+        </div>
+    @endif
 </div>

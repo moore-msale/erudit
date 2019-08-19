@@ -12,6 +12,22 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    public function checkout(Request $request)
+    {
+        $token = $request->token ? $request->token : uniqid();
+
+        TokenResolve::resolve($token);
+        $cart = CartFacade::session($token);
+
+        Session::put('cart', $cart->getContent());
+        Session::flash('cart_checkout', true);
+
+        return view('cart.checkout', [
+            'cartItems' => $cart->getContent(),
+            'total' => $cart->getTotal(),
+        ]);
+    }
+
     public function index(Request $request)
     {
         $token = $request->token ? $request->token : uniqid();
@@ -20,6 +36,9 @@ class CartController extends Controller
         $cart = CartFacade::session($token);
 
         Session::put('cart', $cart->getContent());
+        if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {
+            Session::flash('cart_checkout', true);
+        }
 
         return response()->json([
             'message' => 'Cart',
@@ -49,6 +68,9 @@ class CartController extends Controller
 
         Cart::add($book, $count, $token);
         Session::put('cart', CartFacade::session($token)->getContent());
+        if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {
+            Session::flash('cart_checkout', true);
+        }
 
         return response()->json([
             'status' => 'success',
@@ -81,6 +103,9 @@ class CartController extends Controller
             ]);
         }
         Session::put('cart', CartFacade::session($token)->getContent());
+        if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {
+            Session::flash('cart_checkout', true);
+        }
 
         return response()->json([
             'status' => 'success',
@@ -112,6 +137,9 @@ class CartController extends Controller
             ]);
         }
         Session::put('cart', CartFacade::session($token)->getContent());
+        if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {
+            Session::flash('cart_checkout', true);
+        }
 
         return response()->json([
             'status' => 'success',
