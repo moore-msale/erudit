@@ -25,7 +25,7 @@
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">
                             Ражкак, Лавердан: Живой мир под микроскопом
                         </h3>
-                        <button class="text-fut-bold w-100 mt-3" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
+                        <button class="text-fut-bold w-100 mt-3 but-hov" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid; cursor: pointer;">
                             Подробнее о нас
                         </button>
 
@@ -41,7 +41,7 @@
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">
                             Александр Полярный: Мятная сказка
                         </h3>
-                        <button class="text-fut-bold w-100 mt-3" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
+                        <button class="text-fut-bold w-100 mt-3 but-hov" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid; cursor: pointer;">
                             Подробнее о нас
                         </button>
 
@@ -57,7 +57,7 @@
                         <h3 class="text-fut-bold" style="font-size: 18px; line-height: 140%; color: black;">
                             СтейсКрамер: Абиссаль
                         </h3>
-                        <button class="text-fut-bold w-100 mt-3" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid;">
+                        <button class="text-fut-bold w-100 mt-3 but-hov" data-aos="fade-up" style="padding: 15px 23px; background-color: transparent; border: 1px #000000 solid; cursor: pointer;">
                             Подробнее о нас
                         </button>
 

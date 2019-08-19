@@ -26,9 +26,11 @@ Route::get('/book/{book}', 'BookController@show')->name('book.show');
 Route::get('/all_stock', function () {
     return view('pages.all_stock_page');
 });
+
 Route::get('/login', function () {
     return view('auth.login');
 });
+
 Route::get('/about_us', function () {
     return view('pages.about_us');
 });

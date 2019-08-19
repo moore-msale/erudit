@@ -58,9 +58,13 @@
                                 Жанры
                             </a>
                             <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
-                                {{--@foreach($genres as $genre)--}}
-                                {{--<a class="dropdown-item" href="#">{{ $genre->name }}</a>--}}
-                                {{--@endforeach--}}
+                                @foreach(\App\Genre::all() as $genre)
+                                    <p class="px-3 pb-2 mb-0">
+                                        <a href="/catalog">
+                                    {{ $genre->name }}
+                                        </a>
+                                    </p>
+                                @endforeach
                             </div>
                         </div>
                     </li>
@@ -124,31 +128,43 @@
                 <nav class="mr-auto ml-0">
                     <ul class="navbar-nav mb-3">
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
+                            <a href="/" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Главная</a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
+                            <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Магазин</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
+                                <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #000000;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Жанры
+                                </a>
+                                <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
+                                    @foreach(\App\Genre::all() as $genre)
+                                        <p class="px-3 pb-2 mb-0">
+                                            <a href="/catalog">
+                                                {{ $genre->name }}
+                                            </a>
+                                        </p>
+                                    @endforeach
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Жанры</a>
+                            <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новинки</a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Новинки</a>
-                        </li>
-                        <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
+                            <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #222222; font-size: 17px;">Канцтовары</a>
                         </li>
 
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #222222;">+996 501 433 433</a>
+                            <a href="tel:+996 501 433 433" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #222222;">+996 501 433 433</a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #222222;"><i class="fab fa-instagram fa-lg"></i></a>
-                            <a href="#" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg"></i></a>
+                            <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book" style="text-decoration: none; color: #222222;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book cart pl-5" style="text-decoration: none; color: #222222;"><img
-                                        src="{{ asset('images/cart.png') }}" alt=""></a>
+                            <a href="#" class="text-fut-book cartcart" style="text-decoration: none; color: #222222;"><i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                         @guest
                         <li class="nav-item px-3 my-2">
@@ -169,44 +185,5 @@
         </div>
     </div>
 </nav>
-{{--<div id="mySidenav" class="sidenav d-md-block d-none">--}}
-    {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
-    {{--<a class="sf-medium pl-5" href="/jobs">  Вакансии</a>--}}
-    {{--<a class="sf-medium pl-5" href="/portfolio"> Портфолио</a>--}}
-    {{--<a class="sf-medium pl-5" href="tel: +996 709 111 143"> +996 709 111 143</a>--}}
-    {{--<a class="sf-medium pl-5" href="tel: +996 771 044 429">+996 771 044 429</a>--}}
-    {{--<a class="sf-medium pl-5" href="mailto: info@to-moore.com">info@to-moore.com</a>--}}
-    {{--<div class="container-fluid pt-5 pl-4 ml-2">--}}
-        {{--<div class="row">--}}
-
-            {{--<div class="col-3 p-0">--}}
-                {{--<a href="" class="ics">--}}
-                    {{--<p>--}}
-                        {{--<i class="fab fa-behance fa-sm"></i>--}}
-                    {{--</p>--}}
-                {{--</a>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-3 p-0">--}}
-                {{--<a href="" class="ics">--}}
-                    {{--<p>--}}
-                        {{--<i class="fab fa-instagram fa-sm"></i>--}}
-                    {{--</p>--}}
-                {{--</a>--}}
-            {{--</div>--}}
-
-            {{--<div class="col-3 p-0">--}}
-                {{--<a href="" class="ics">--}}
-                    {{--<p>--}}
-                        {{--<i class="fab fa-facebook-f fa-sm"></i>--}}
-                    {{--</p>--}}
-                {{--</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<img class="w-100" style="margin-top: 17%;" src="{{ asset('images/wedo.png') }}" alt="">--}}
-{{--</div>--}}
-
 
 

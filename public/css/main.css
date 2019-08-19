@@ -185,4 +185,8 @@ body
     {
         height:100%;
     }
+    .main-blog
+    {
+        padding-top:20%!important;
+    }
 }

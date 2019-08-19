@@ -105,25 +105,26 @@
                     <div class="row">
                         @foreach($sames as $same)
                             <div class="col-lg-3 col-12 item px-1">
-                                <a href="{{ asset('book/'.$same->id) }}">
-                                    <div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 100%;">
+                                    <div class="p-4 m-2 shadow text-scale"  style="background-color: white; max-width: 259px; height: 100%;">
+                                        <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                         <div class="" style="height: 55%;">
                                         <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">
                                         </div>
-                                        <h3 class="font-weight-bold text-fut-bold mt-3 pb-5 text-left"
+                                        <h3 class="text-fut-book mt-3 pb-5 text-left"
                                             style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
                                             {{ $same->name }}
                                         </h3>
+                                </a>
                                         <div class="container-fluid row mr-0 pr-0"
                                              style="position: absolute; bottom:3%; color:black;">
                                             <div class="col-7 p-0 text-left">
                                                 @guest
-                                                    <span class="text-fut-bold"
+                                                    <span class="text-fut-book"
                                                           style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_retail }} сом
                                                     </span>
                                                 @else
-                                                    <span class="text-fut-bold"
+                                                    <span class="text-fut-book"
                                                           style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_wholesale }} сом
                                                     </span>
@@ -135,11 +136,11 @@
                                             <div class="col-1 p-0"></div>
                                             <div class="col-2 p-0">
                                                 {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                                                <i style="color: black;" class="fas fa-cart-plus fa-lg"></i>
+                                                <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip"></i>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+
                             </div>
                             @endforeach
                     </div>
