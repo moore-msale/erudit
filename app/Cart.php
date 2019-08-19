@@ -5,9 +5,14 @@ namespace App;
 
 
 use Darryldecode\Cart\Facades\CartFacade;
+use Illuminate\Database\Eloquent\Model;
 
-class Cart
+class Cart extends Model
 {
+    protected $casts = [
+        'cart',
+    ];
+
     public static function add(Book $book, $count = 1, $token)
     {
         if (CartFacade::session($token)->get($book->id)) {
@@ -34,7 +39,7 @@ class Cart
         }
     }
 
-    public static function delete(Book $book, $token)
+    public static function deleteBook(Book $book, $token)
     {
         if (!CartFacade::session($token)->get($book->id)) {
             return null;

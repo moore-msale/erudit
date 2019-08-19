@@ -28,6 +28,30 @@ class CartController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $token = $request->token ? $request->token : uniqid();
+
+        TokenResolve::resolve($token);
+        $cart = CartFacade::session($token);
+
+        $newCart = new Cart();
+        $newCart->cart = json_encode([
+            'cart' => $cart->getContent(),
+            'total' => $cart->getTotal(),
+        ], true);
+        $newCart->name = $request->name;
+        $newCart->email = $request->email;
+        $newCart->phone = $request->phone;
+        $newCart->address = $request->address;
+        $newCart->save();
+
+        Session::forget(['cart', 'token']);
+        Session::flash('cart_success', 'Your info has successfully created!');
+
+        return redirect('/');
+    }
+
     public function index(Request $request)
     {
         $token = $request->token ? $request->token : uniqid();
@@ -128,7 +152,7 @@ class CartController extends Controller
         }
         TokenResolve::resolve($token);
 
-        if (!Cart::delete($book, $token)) {
+        if (!Cart::deleteBook($book, $token)) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'book not found in cart',
