@@ -63,10 +63,11 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Сортировка
                         </a>
-                        <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Пункт 1</a>
-                            <a class="dropdown-item" href="#">Пункт 2</a>
-                            <a class="dropdown-item" href="#">Пункт 3</a>
+                        <div class="dropdown-menu text-fut-book" style="cursor: pointer;" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="asc">Название: по возрастанию</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">Название: по убыванию</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Стоимость: по возрастанию</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="desc">Стоимость: по убыванию</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +87,7 @@
                 <div class="col-3">
                     <p class="text-fut-book"
                        style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: black;">
-                        Поиск
+                        <input type="text" class="border-bottom form-control" id="search_input" placeholder="Поиск">
                     </p>
                 </div>
             </div>
@@ -137,85 +138,8 @@
                     </div>
                 </div>
                 <div class="col-9">
-                    <div class="row px-4">
-                        @foreach($books as $book)
-                            @include('books.single')
-                            {{--<div class="col-lg-4 col-12 item px-1">--}}
-                            {{--<div class="p-4 m-2 shadow"  style="background-color: white; max-width: 259px; height: 450px;">--}}
-                            {{----}}
-                            {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
-                            {{--{{ $book->name }}--}}
-                            {{--</h3>--}}
-                            {{--<div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:5%; color:black;">--}}
-                            {{--<div class="row">--}}
-                            {{--<div class="col-7 p-0 text-left">--}}
-                            {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
-                            {{--{{ $book->price_retail }} сом--}}
-                            {{--</span>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-2 p-0">--}}
-                            {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                            {{--</div>--}}
-                            {{--<div class="col-1 p-0"></div>--}}
-                            {{--<div class="col-2 p-0">--}}
-                            {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                            {{--<a href="">--}}
-                            {{--<i style="color: black;" class="fas fa-cart-plus fa-lg"></i>--}}
-                            {{--</a>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                        @endforeach
-                        {{--<div class="col-lg-4 col-12">--}}
-                        {{--<div class="p-4 shadow" style="background-color: white;">--}}
-                        {{--<img class="w-100" src="{{ asset('images/book1.png') }}" alt="">--}}
-                        {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
-                        {{--В движении.--}}
-                        {{--<br>--}}
-                        {{--История жизни--}}
-                        {{--</h3>--}}
-                        {{--<div class="container-fluid row mr-0 pr-0">--}}
-                            {{--<div class="col-7 p-0 text-left">--}}
-                                                {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
-                                                    {{--648 сом--}}
-                                                {{--</span>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-2 p-0">--}}
-                                {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                            {{--</div>--}}
-                            {{--<div class="col-1 p-0"></div>--}}
-                            {{--<div class="col-2 p-0">--}}
-                                {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-lg-4 col-12">--}}
-                        {{--<div class="p-4 shadow" style="background-color: white;">--}}
-                        {{--<img class="w-100" src="{{ asset('images/book1.png') }}" alt="">--}}
-                        {{--<h3 class="font-weight-bold text-fut-bold mt-3 text-left" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">--}}
-                        {{--В движении.--}}
-                        {{--<br>--}}
-                        {{--История жизни--}}
-                        {{--</h3>--}}
-                        {{--<div class="container-fluid row mr-0 pr-0">--}}
-                        {{--<div class="col-7 p-0 text-left">--}}
-                        {{--<span class="text-fut-bold" style="font-size:18px; letter-spacing: 0.05em;">--}}
-                        {{--648 сом--}}
-                        {{--</span>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-2 p-0">--}}
-                        {{--<img class="w-100" src="{{ asset('images/inactivelike.png') }}" alt="">--}}
-                        {{--</div>--}}
-                        {{--<div class="col-1 p-0"></div>--}}
-                        {{--<div class="col-2 p-0">--}}
-                        {{--<img class="w-100" src="{{ asset('images/tobasket.png') }}" alt="">--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
+                    <div class="row px-4" id="books_catalog">
+
 
                     </div>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
@@ -229,6 +153,66 @@
     </div>
 @endsection
 @push('scripts')
+    <script>
+        let params = {};
+
+        $('#search_input').keyup(e => {
+            e.preventDefault();
+
+            let input = $(e.currentTarget);
+            let val = input.val();
+
+            params.search = val;
+            getProducts(params);
+        });
+
+        $('.sort_products').click(e => {
+            e.preventDefault();
+
+            let btn = $(e.currentTarget);
+            let val = btn.data('value');
+            let type = btn.data('type');
+            if (type == 'Name') {
+                params.sortName = val;
+                params.sortPrice = null;
+            } else {
+                params.sortPrice = val;
+                params.sortName = null;
+            }
+            getProducts(params);
+        });
+
+        $('#myRange').change(e => {
+            let range = $(e.currentTarget);
+            let val = range.val();
+
+            params.min = val;
+            params.max = 15000;
+
+            getProducts(params)
+        });
+    </script>
+    <script>
+        getProducts();
+        function getProducts(params = {})
+        {
+            $.ajax({
+                url: '{{ route('book.all') }}',
+                data: params,
+                success: data => {
+                    console.log(data.filters);
+                    result = $('#books_catalog').html(data.html);
+                    result.find('.buy_book').each((e, i) => {
+                        registerCartBuyButtons($(i));
+                    });
+                },
+                error: () => {
+                    console.log('error');
+                }
+            });
+        }
+    </script>
+
     <script>
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
