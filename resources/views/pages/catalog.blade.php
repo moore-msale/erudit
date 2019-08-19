@@ -95,12 +95,13 @@
                 <div class="col-lg-3 col-12 p-0 d-lg-none d-block">
                     <div class=" bg-white">
                         <div class="d-lg-none d-block">
+                            <div class="container-fluid">
                             <div class="row">
                                 <div class="col-6">
                             <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
                                 <div class="card bg-transparent border-0 ">
                                     <div class="card-header bg-transparent border-0" id="headingOne">
-                                        <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 18px;" type="button" data-toggle="collapse"
+                                        <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 17px;" type="button" data-toggle="collapse"
                                                 data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="fas fa-angle-down mr-2"></i>Жанры
                                         </button>
@@ -110,7 +111,12 @@
                                          data-parent="#accordionExample">
                                         <div class="card-body font-weight-light text-dark pt-0">
                                             <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
-                                            @foreach($genres as $genre)
+                                                <a href="" class="genre_btn"  data-value="{{null}}">
+                                                    <p class="text-scale">
+                                                        Все жанры
+                                                    </p>
+                                                </a>
+                                                @foreach($genres as $genre)
                                                 <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
                                                     <p class="text-scale">
                                                         {{ $genre->name }}
@@ -127,7 +133,7 @@
                                     <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
                                         <div class="card bg-transparent border-0 ">
                                             <div class="card-header bg-transparent border-0" id="headingOne">
-                                                <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 18px;" type="button" data-toggle="collapse"
+                                                <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 17px;" type="button" data-toggle="collapse"
                                                         data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                                     <i class="fas fa-angle-down mr-2"></i>Категории
                                                 </button>
@@ -163,6 +169,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,6 +181,11 @@
                         </h3>
                         <div class="mt-3 text-fut-book"
                              style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000; cursor: pointer;">
+                            <a href="" class="genre_btn"  data-value="{{null}}">
+                                <p class="text-scale">
+                                    Все жанры
+                                </p>
+                            </a>
                             @foreach($genres as $genre)
                             <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
                                 <p class="text-scale">
@@ -212,9 +224,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
-                    <div class="row px-4" id="books_catalog">
-                        
+                <div class="col-lg-9 col-12">
+                    <div class="row px-lg-4 px-1" id="books_catalog">
+
                     </div>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
                         <div class="row pl-4 ml-0 pt-3">

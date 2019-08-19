@@ -189,4 +189,12 @@ body
     {
         padding-top:20%!important;
     }
+    .text-desc
+    {
+        font-size: 12px!important;
+    }
+    .cart-range
+    {
+        width:60%!important;
+    }
 }
