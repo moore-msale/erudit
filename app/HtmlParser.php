@@ -63,10 +63,16 @@ class HtmlParser
             }
         }
 
+        if ($params['search_image']) {
+            Log::info('Searching for book image... ' . $index);
+            $images = $html->find($params['search_image']);
+            Log::info('Found book image ... ' . $index);
+        }
+
         $result = [];
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                $result[] = [$names[$i]->plaintext, $urls[$i]->href];
+                $result[] = [$names[$i]->plaintext, $urls[$i]->href, $images[$i]->src];
             }
         }
 

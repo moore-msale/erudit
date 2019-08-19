@@ -36,13 +36,15 @@ class ParseController extends Controller
             $file->move(public_path('excels'), $fileName);
             $request->files->remove('excel');
             $request->merge(['excel' => $fileName]);
-            $request->merge(['type' => $type]);
-
-            $parson = Parson::create($request->request->all());
         }
-        XmlParser::parse($request->urlForParse);
 
-//        ProcessExcel::dispatch($parson);
+        $request->merge(['type' => $type]);
+        if (!$request->has('name')) {
+            $request->merge(['name' => uniqid('xml_')]);
+        }
+
+        $parson = Parson::create($request->request->all());
+        ProcessExcel::dispatch($parson);
 
         return redirect()->back();
     }

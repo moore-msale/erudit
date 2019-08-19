@@ -83,6 +83,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="search_image">Селектор для картинки</label>
+                                <input type="text" name="search_image" class="form-control" id="search_image">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="fileExcel">Файл поиска</label>
                                 <input type="file" class="form-control" id="fileExcel" name="excel">
                             </div>

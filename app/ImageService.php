@@ -5,6 +5,7 @@ namespace App;
 
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\ImageManagerStatic;
 use mysql_xdevapi\Exception;
@@ -15,7 +16,9 @@ class ImageService
     {
         $fileName = 'books\\'.uniqid($prefix).'.jpg';
         try {
-            ImageManagerStatic::make($file)->save(storage_path('app\\public\\'.$fileName));
+            $file = ImageManagerStatic::make($file)->stream('jpg', 40);
+
+            Storage::disk('local')->put('public/books/'.$fileName, $file);
             Log::info('Image saved');
         } catch (NotReadableException $exception) {
             echo "Exception caught with message: " . $exception->getMessage() . "\n";

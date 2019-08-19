@@ -55,6 +55,7 @@ class ProcessExcel implements ShouldQueue
                     'name_search_count' => $this->parson->name_search_count,
                     'name_url' => $this->parson->name_url,
                     'name_url_count' => $this->parson->name_url_count,
+                    'search_image' => $this->parson->search_image,
                     'searchUrl' => $this->parson->searchUrl,
                     'author' => $this->parson->author,
                     'author_count' => $this->parson->author_count,
@@ -77,7 +78,7 @@ class ProcessExcel implements ShouldQueue
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
+                                            $newBook->image = $product[2] ? ImageService::store(file_get_contents($product[2]), 'book_') : null;
                                             $newBook->save();
                                             $count++;
                                         }
@@ -92,7 +93,7 @@ class ProcessExcel implements ShouldQueue
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
+                                            $newBook->image = $product[2] ? ImageService::store(file_get_contents($product[2]), 'book_') : null;
                                             $newBook->save();
                                             $count++;
                                         }
