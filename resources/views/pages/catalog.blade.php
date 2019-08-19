@@ -49,15 +49,15 @@
     @endpush
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
-            <div class="row bg-white shadow p-3">
-                <div class="col-3">
-                    <h3 class="text-fut-bold pl-3 mb-0"
+            <div class="row bg-white shadow p-3 mt-lg-0 mt-5">
+                <div class="col-lg-3 col-12 pb-4">
+                    <h3 class="text-fut-bold pl-3 mb-0 text-lg-left text-center"
                         style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
                         Магазин
                     </h3>
                 </div>
-                <div class="col-2 text-center pt-2">
-                    <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">
+                <div class="col-lg-2 col-12 text-center pt-2">
+                    <div class="dropdown open pb-4" style=" display: flex; align-items: center; text-align: center;">
                         <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto"
                            style="border:0; font-size:20px; color: #000000;" id="dropdownMenuButton"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,20 +71,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-1 pr-0 text-right">
+                <div class="col-lg-1 col-12 pr-0 text-lg-right text-center">
                     <p class="text-fut-book"
                        style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: black;">
                         Цена
                     </p>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3 col-12 pb-4">
                     <div class="slidecontainer">
                         <span class="text-fut-book" style="font-size: 14px;">мин: <span id="demo"></span> сом</span>
                         <span class="text-fut-book" style="float:right; font-size: 14px;">макс: 15000 сом</span>
                         <input type="range" min="0" max="15000" value="0" class="slider" id="myRange">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3 col-12">
                     <p class="text-fut-book"
                        style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: black;">
                         <input type="text" class="border-bottom form-control" id="search_input" placeholder="Поиск">
@@ -92,8 +92,82 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-3 p-0">
-                    <div class=" bg-white p-5">
+                <div class="col-lg-3 col-12 p-0 d-lg-none d-block">
+                    <div class=" bg-white">
+                        <div class="d-lg-none d-block">
+                            <div class="row">
+                                <div class="col-6">
+                            <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
+                                <div class="card bg-transparent border-0 ">
+                                    <div class="card-header bg-transparent border-0" id="headingOne">
+                                        <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 18px;" type="button" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="fas fa-angle-down mr-2"></i>Жанры
+                                        </button>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse pt-3" aria-labelledby="headingOne"
+                                         data-parent="#accordionExample">
+                                        <div class="card-body font-weight-light text-dark pt-0">
+                                            <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
+                                            @foreach($genres as $genre)
+                                                <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
+                                                    <p class="text-scale">
+                                                        {{ $genre->name }}
+                                                    </p>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
+                                        <div class="card bg-transparent border-0 ">
+                                            <div class="card-header bg-transparent border-0" id="headingOne">
+                                                <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 18px;" type="button" data-toggle="collapse"
+                                                        data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                    <i class="fas fa-angle-down mr-2"></i>Категории
+                                                </button>
+                                            </div>
+
+                                            <div id="collapseTwo" class="collapse pt-3" aria-labelledby="headingOne"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body font-weight-light text-dark pt-0">
+                                                    <div class="mt-3 text-fut-book"
+                                                         style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#000000; cursor: pointer;">
+                                                        <p class="text-scale">
+                                                            Новинки
+                                                        </p>
+                                                        <p class="text-scale">
+                                                            Бестселлеры
+                                                        </p>
+                                                        <p class="text-scale">
+                                                            Товары для творчества
+                                                        </p>
+                                                        <p class="text-scale">
+                                                            Канцелярские товары
+                                                        </p>
+                                                        <p class="text-scale">
+                                                            Настольные игры
+                                                        </p>
+                                                        <p class="text-scale">
+                                                            Учебные материалы
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-3 col-12 p-0 d-lg-block d-none">
+                            <div class="bg-white p-5">
                         <h3 class="text-fut-bold mb-0"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
                             Жанры
@@ -108,8 +182,9 @@
                             </a>
                             @endforeach
                         </div>
+
                     </div>
-                    <div class=" bg-white p-5 mt-4">
+                    <div class="bg-white p-5 mt-4 d-lg-block d-none">
                         <h3 class="text-fut-bold mb-0"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
                             Категории
@@ -139,8 +214,7 @@
                 </div>
                 <div class="col-9">
                     <div class="row px-4" id="books_catalog">
-
-
+                        
                     </div>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
                         <div class="row pl-4 ml-0 pt-3">

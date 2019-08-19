@@ -27,7 +27,7 @@
                     @endguest
                 </div>
                     <div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">
-                    <i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>
+                    <i style="color: black; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>
                 </div>
                 </div>
             </div>

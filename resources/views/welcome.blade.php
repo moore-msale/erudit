@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid main-blog">
     <div class="row" style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
-        <div class="col-lg-5 col-12" style="padding-left: 10%; padding-top:12%;">
-        <h1 class="text-fut-bold font-weight-bold" style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;">
+        <div class="col-lg-5 col-12" style="padding-left: 7%; padding-top:15%;">
+        <h1 class="text-fut-bold font-weight-bold" style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;color: black;">
             Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших книг.
         </h1>
 
-            <p class="text-fut-light" style="padding-top:5%; font-size: 15px; line-height: 140%;">
+            <p class="text-fut-light" style="padding-top:5%; font-size: 15px; line-height: 140%; color: black;">
                 Огромный  ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах максимально комфортно.
             </p>
             <a href="/catalog">
@@ -58,34 +58,34 @@
                     <div class="row justify-content-center">
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">фантастика</a>
+                           href="/catalog" aria-controls="" aria-selected="true">фантастика</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">детективы и боевики</a>
+                           href="/catalog" aria-controls="" aria-selected="true">детективы и боевики</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">проза</a>
+                           href="/catalog" aria-controls="" aria-selected="true">проза</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">любовные романы</a>
+                           href="/catalog" aria-controls="" aria-selected="true">любовные романы</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">приключения</a>
+                           href="/catalog" aria-controls="" aria-selected="true">приключения</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">детские книги</a>
+                           href="/catalog" aria-controls="" aria-selected="true">детские книги</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">поэзия, драматургия</a>
+                           href="/catalog" aria-controls="" aria-selected="true">поэзия, драматургия</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">документальное</a>
+                           href="/catalog" aria-controls="" aria-selected="true">документальное</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">юмор</a>
+                           href="/catalog" aria-controls="" aria-selected="true">юмор</a>
                         <a class="cat-btn mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:black;"
-                           href="#" aria-controls="" aria-selected="true">религия</a>
+                           href="/catalog" aria-controls="" aria-selected="true">религия</a>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                     Акции на сегодня
                 </h3>
                 <div class="pr-3" style="border-right: 1px solid rgba(255, 255, 255, 0.4);">
-                    <a href="" style="text-decoration: none;">
+                    <a href="/all_stock" style="text-decoration: none;">
                     <div class="row p-3 mt-5 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     </a>
-                    <a href="" style="text-decoration: none;">
+                    <a href="/all_stock" style="text-decoration: none;">
                     <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     </a>
-                    <a href="" style="text-decoration: none;">
+                    <a href="/all_stock" style="text-decoration: none;">
                     <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
@@ -189,7 +189,7 @@
                         </div>
                     </div>
                     </a>
-                    <a href="" style="text-decoration: none;">
+                    <a href="/all_stock" style="text-decoration: none;">
                     <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                     </a>
-                    <a href="" style="text-decoration: none;">
+                    <a href="/all_stock" style="text-decoration: none;">
                     <div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
                         <div class="col-8 p-0">
                             <div>
@@ -286,7 +286,7 @@
                                     @endguest
                                 </div>
                                 <div class=" p-0 ml-auto buy_book">
-                                    <i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i>
+                                    <i style="color: black; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $book->id }}"></i>
                                 </div>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@
                         творчества
                     </h3>
                     <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                        <a href="">
+                        <a href="/catalog">
                         Смотреть
                         </a>
                     </p>
@@ -326,7 +326,7 @@
                             товары
                         </h3>
                         <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                            <a href="">
+                            <a href="/catalog">
                                 Смотреть
                             </a>
                         </p>
@@ -343,7 +343,7 @@
                             игры
                         </h3>
                         <p class="text-fut-bold text-scale" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
-                            <a href="">
+                            <a href="/catalog">
                                 Смотреть
                             </a>
                         </p>
@@ -360,7 +360,7 @@
                             материалы
                         </h3>
                         <p class="text-fut-bold text-scale-white" style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em;">
-                            <a href="" style=" color: #fefefe;">
+                            <a href="/catalog" style=" color: #fefefe;">
                                 Смотреть
                             </a>
                         </p>
