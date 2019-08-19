@@ -101,7 +101,7 @@
                         <div class="mt-3 text-fut-book"
                              style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000; cursor: pointer;">
                             @foreach($genres as $genre)
-                            <a href="{{ route('genre',$genre) }}">
+                            <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
                                 <p class="text-scale">
                                     {{ $genre->name }}
                                 </p>
@@ -155,6 +155,16 @@
 @push('scripts')
     <script>
         let params = {};
+
+        $('.genre_btn').click(e => {
+            e.preventDefault();
+
+            let btn = $(e.currentTarget);
+            let val = btn.data('value');
+
+            params.genre = val;
+            getProducts(params);
+        });
 
         $('#search_input').keyup(e => {
             e.preventDefault();

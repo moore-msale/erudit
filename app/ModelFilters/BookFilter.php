@@ -30,8 +30,16 @@ class BookFilter extends Collection
         if ($sortPrice = $request->sortPrice) {
             $model = $this->sortByPrice($model, $sortPrice);
         }
+        if ($genre = $request->genre) {
+            $model = $this->filterByGenre($model, $genre);
+        }
 
         return $model;
+    }
+
+    public function filterByGenre($model, $genre)
+    {
+        return $model->where('genre_id', $genre);
     }
 
     public function searchFilter($model, $name)
