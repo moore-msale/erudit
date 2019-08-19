@@ -21,7 +21,7 @@ class BookFilter extends Collection
         if ($search = $request->search) {
             $model = $this->searchFilter($model, $search);
         }
-        if ($min = $request->min && $max = $request->max) {
+        if (($min = $request->min) && ($max = $request->max)) {
             $model = $this->rangeCost($model, $min, $max);
         }
         if ($sortName = $request->sortName) {
@@ -30,13 +30,21 @@ class BookFilter extends Collection
         if ($sortPrice = $request->sortPrice) {
             $model = $this->sortByPrice($model, $sortPrice);
         }
+        if ($genre = $request->genre) {
+            $model = $this->filterByGenre($model, $genre);
+        }
 
         return $model;
     }
 
+    public function filterByGenre($model, $genre)
+    {
+        return $model->where('genre_id', $genre);
+    }
+
     public function searchFilter($model, $name)
     {
-        return $model->where('name', 'like', '%'.$name.'%');
+        return $model->where('name', 'like', ''.$name.'%');
     }
 
     public function rangeCost($model, $min, $max)

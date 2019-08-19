@@ -10,7 +10,7 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $books = Book::paginate(9);
+        $books = Book::all();
         $genres = Genre::all();
         return view('pages.catalog',['books' => $books, 'genres' => $genres]);
     }
