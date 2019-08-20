@@ -289,7 +289,12 @@
         });
     </script>
     <script>
-        getProducts();
+        @if(request()->query('genre'))
+            params.genre = '{{ request()->query('genre') }}';
+            getProducts(params);
+        @else
+            getProducts();
+        @endif
         function getProducts(params = {})
         {
             $.ajax({

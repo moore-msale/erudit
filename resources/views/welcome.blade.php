@@ -57,9 +57,9 @@
                     </div>
                     <div class="row justify-content-center">
                         @foreach($genres as $genre)
-                        <a href="{{ route('genre',$genre) }}" class="cat-btn d-flex align-items-center mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
+                        <a href="{{ route('catalog', ['genre' => $genre->id]) }}" class="cat-btn d-flex align-items-center mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                            style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:#222;"
-                           href="/catalog" aria-controls="" aria-selected="true"><span class="mx-auto">{{ $genre->name }}</span></a>
+                           aria-controls="" aria-selected="true"><span class="mx-auto">{{ $genre->name }}</span></a>
                         @endforeach
                     </div>
                 </div>
