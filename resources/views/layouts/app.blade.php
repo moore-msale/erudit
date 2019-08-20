@@ -79,6 +79,8 @@
                     token: token
                 },
                 success: data => {
+                    btn.addClass('cart-success');
+                    $('.carts').addClass('cart-success');
                     cart = fetchCart();
                 },
                 error: () => {

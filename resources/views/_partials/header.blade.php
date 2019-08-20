@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -88,7 +88,7 @@
                 <ul class="navbar-nav text-right" id="pick">
 
                 <li class="nav-item px-3 mr-4 pt-1 ico-menu" style="display: none;">
-                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg icon-flip"></i></a>
                 </li>
                     @guest
                             <a href="/login" class="text-fut-book but-hov" data-aos="fade-up" style="color: #222!important; padding: 5px 15px; background-color: transparent; border: 1px #222 solid; text-decoration:none;">
@@ -167,7 +167,7 @@
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                         @guest
                         <li class="nav-item px-3 my-2">

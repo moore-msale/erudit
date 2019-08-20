@@ -166,6 +166,9 @@ body
     text-decoration: underline!important;
     transition: text-shadow 200ms linear 0ms;
 }
+.cart-success {
+    color: #0fbf4d !important;
+}
 .text-scale-white
 {
     transition: all 200ms linear 0ms;
