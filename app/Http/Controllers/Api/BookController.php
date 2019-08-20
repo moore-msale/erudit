@@ -10,12 +10,13 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $books = Book::all()->sortByDesc('id')->filterCollection($request);
+        $books = Book::all()->sortByDesc('id')->filterCollection($request)->paginate(15);
 
         return response()->json([
             'html' => view('api.books', [
                 'books' => $books,
             ])->render(),
+            'books' => $books,
             'filters' => $request->query->all(),
         ]);
     }

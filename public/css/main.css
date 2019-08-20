@@ -171,7 +171,7 @@ body
 }
 .cart-animate
 {
-    animation: trans 2s infinite;
+    animation: trans 2s;
 }
 @keyframes trans {
     0%{

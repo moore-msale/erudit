@@ -228,6 +228,19 @@
                     <div class="row px-lg-4 px-1" id="books_catalog">
 
                     </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
                         <div class="row pl-4 ml-0 pt-3">
                             {{ $books->appends(request()->query())->links() }}
@@ -239,6 +252,7 @@
     </div>
 @endsection
 @push('scripts')
+    <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
     <script>
         let params = {};
 
@@ -287,6 +301,19 @@
 
             getProducts(params)
         });
+
+        function registerPageButtons(data) {
+            data.click(e => {
+                e.preventDefault();
+
+                let btn = $(e.currentTarget);
+                let page = btn.data('page');
+
+                params.page = page;
+
+                getProducts(params);
+            })
+        }
     </script>
     <script>
         @if(request()->query('genre'))
@@ -301,8 +328,22 @@
                 url: '{{ route('book.all') }}',
                 data: params,
                 success: data => {
-                    console.log(data.filters);
-                    result = $('#books_catalog').html(data.html);
+                    console.log(data);
+                    let pagination = $('ul.pagination');
+                    pagination.empty();
+                    pagination.append('<li class="page-item"><a class="page-link" href="#">Пред</a></li>');
+                    for (let i = 0; i < data.books.last_page; i++) {
+                        if (data.books.current_page == (i + 1)) {
+                            pagination.append('<li class="page-item active"><a class="page-link" data-page="'+(i + 1)+'" href="#">'+(i + 1)+'</a></li>');
+                        } else {
+                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+(i + 1)+'" href="#">'+(i + 1)+'</a></li>');
+                        }
+                    }
+                    pagination.append('<li class="page-item"><a class="page-link" href="#">След</a></li>');
+                    pagination.find('.page-link').each((e, i) => {
+                        registerPageButtons($(i));
+                    });
+                    let result = $('#books_catalog').html(data.html);
                     result.find('.buy_book').each((e, i) => {
                         registerCartBuyButtons($(i));
                     });
@@ -312,6 +353,8 @@
                 }
             });
         }
+
+
     </script>
 
     <script>

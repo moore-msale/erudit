@@ -79,8 +79,8 @@
                     token: token
                 },
                 success: data => {
-                    btn.addClass('cart-success');
-                    $('.carts').addClass('cart-success');
+                    btn.find('i.fas').addClass('cart-success').addClass('cart-animate').delay(1000).removeClass('cart-animate');
+                    $('.carts').addClass('cart-success').addClass('cart-animate').delay(1000).removeClass('cart-animate');
                     cart = fetchCart();
                 },
                 error: () => {
