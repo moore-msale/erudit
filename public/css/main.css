@@ -169,7 +169,7 @@ body
 .cart-success {
     color: #0fbf4d !important;
 }
-.cloud-left
+.cart-animate
 {
     animation: trans 2s infinite;
 }
