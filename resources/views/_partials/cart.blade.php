@@ -20,7 +20,7 @@
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center">
                 <div class="col-4 d-flex align-items-center">
-                    <img src="{{ file_exists(asset('storage/'.$item->image)) ? asset('storage/'.$item->image) : asset('images/default_book.png') }}" style="height: 100px; width: auto;" alt="">
+                    <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
                     <p class="small m-0 ml-3">{{ $item->name }}</p>
                 </div>
                 <div class="col-2">
