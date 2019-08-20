@@ -111,11 +111,11 @@
                 <div class="col-lg-10 col-12">
                     <div class="row">
                         @foreach($sames as $same)
-                            <div class="col-lg-3 col-12 item mt-3 h-100" style="background-color: white;">
-                                <div class="shadow text-scale p-4">
+                            <div class="col-lg-3 col-12 item mt-3" style="background-color: white;">
+                                <div class="shadow text-scale p-4 h-100">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
-                                        <img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$same->image)) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
+                                        <img class="w-100 h-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$same->image)) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
 
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>

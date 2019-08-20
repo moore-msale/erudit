@@ -169,6 +169,22 @@ body
 .cart-success {
     color: #0fbf4d !important;
 }
+.cloud-left
+{
+    animation: trans 2s infinite;
+}
+@keyframes trans {
+    0%{
+        transform: translateY(0px) rotateY(0deg);
+    }
+    50%
+    {
+        transform: translateY(-15px) rotateY(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotateY(360deg);
+    }
+}
 .text-scale-white
 {
     transition: all 200ms linear 0ms;

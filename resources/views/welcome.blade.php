@@ -28,7 +28,7 @@
             <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-none d-block" style="line-height: 139px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                 Бестселлеры
             </h2>
-            <div class="container-fluid d-lg-block d-none" style="transform: translateY(-140px)">
+            <div class="container-fluid d-lg-block d-none" style="margin-top:-140px;">
                 <div class="row justify-content-center">
                     <div class="col-12">
                         @include('books.bestsellers')
