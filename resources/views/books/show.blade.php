@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-3 col-12 p-4">
                     <div>
-                        <img class="w-100 shadow-lg" src="{{ asset('storage/'.$book->image) }}" alt="">
+                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-9 col-12 pt-4">
@@ -106,11 +106,11 @@
                 <div class="col-lg-10 col-12">
                     <div class="row">
                         @foreach($sames as $same)
-                            <div class="col-lg-3 col-12 item mt-3" style="background-color: white; height:100%;">
+                            <div class="col-lg-3 col-12 item mt-3 h-100" style="background-color: white;">
                                 <div class="shadow text-scale p-4">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
-                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">
+                                        <img class="w-100 h-100" src="{{ asset('storage/books/'.$same->image) }}" alt="">
                                     </div>
                                     <h3 class="text-fut-book mt-3 pb-5 text-left"
                                         style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
