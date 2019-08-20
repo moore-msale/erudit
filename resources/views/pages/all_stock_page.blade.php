@@ -21,7 +21,7 @@
                 @foreach($discounts as $discount)
                 <div class="col-lg-4 col-12">
                     <div class="shadow text-center h-100" style="position: relative;">
-                    <img src="{{ asset('storage/books/'.$discount->image) }}" alt="">
+                    <img src="{{ asset('storage/'.$discount->image) }}" alt="">
                         <div class="discount-plate d-flex align-items-center" style="background-color: #3154CF; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$discount->discount}}%</span></div>
 
                     <div class="p-3">
