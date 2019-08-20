@@ -24,7 +24,9 @@
                 </div>
                 <div class="col-lg-3 col-12 p-4">
                     <div style="position: relative;">
-                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">
+                        <img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$book->image)) ? asset('storage/'.$book->image) : asset('images/default_book.png') }}" alt="">
+
+{{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
                         @if(isset($book->discount))
                         <div class="discount-plate d-flex align-items-center" style="background-color: #3154CF; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
                         @endif
@@ -113,7 +115,9 @@
                                 <div class="shadow text-scale p-4">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
-                                        <img class="w-100 h-100" src="{{ asset('storage/books/'.$same->image) }}" alt="">
+                                        <img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$same->image)) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
+
+{{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>
                                     <h3 class="text-fut-book mt-3 pb-5 text-left"
                                         style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
