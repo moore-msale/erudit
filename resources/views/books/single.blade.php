@@ -1,7 +1,8 @@
 <div class="col-lg-4 col-6 item px-1 mb-4">
     <div class="p-4 m-2 shadow text-scale"  style="background-color: white; height:100%;">
         <a href="{{ route('book.show', $book) }}" style="text-decoration: none;">
-            <img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app\\public\\books\\'.$book->image)) ? asset('storage/books/'.$book->image) : asset('images/default_book.png') }}" alt="">
+            {{--<img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app\\public\\books\\'.$book->image)) ? asset('storage/books/'.$book->image) : asset('images/default_book.png') }}" alt="">--}}
+            <img class="w-100" style="height: 60%;" src="{{ asset('storage/books/'.$book->image) }}" alt="">
         {{--@php--}}
         {{--var_dump(file_exists(storage_path('app\\public\\books\\'.$book->image)))--}}
         {{--@endphp--}}
