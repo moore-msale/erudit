@@ -60,7 +60,7 @@
                             <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #222;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Жанры
                             </a>
-                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton" style="overflow-y:scroll; height:300px;">
                                 @foreach(\App\Genre::all() as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="/catalog">
