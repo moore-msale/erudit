@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg cart-animate"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg"></i></a>
                         </li>
                     </ul>
                 </nav>
