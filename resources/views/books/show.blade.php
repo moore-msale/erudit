@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-3 col-12 p-4">
                     <div style="position: relative;">
-                        <img class="w-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$book->image)) ? asset('storage/'.$book->image) : asset('images/default_book.png') }}" alt="">
+                        <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
 
 {{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
                         @if(isset($book->discount))
