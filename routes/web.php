@@ -24,7 +24,7 @@ Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
 Route::get('/book/{book}', 'BookController@show')->name('book.show');
 
 Route::get('/all_stock', function () {
-    return view('pages.all_stock_page');
+    return view('pages.all_stock_page',['discounts' => \App\Book::where('discount','!=',null)->get()->reverse()]);
 });
 
 Route::get('/login', function () {

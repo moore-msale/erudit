@@ -39,8 +39,8 @@
             }
 
             .slider::-moz-range-thumb {
-                width: 25px;
-                height: 25px;
+                width: 10px;
+                height: 10px;
                 border-radius: 50%;
                 background: #5f6362;
                 cursor: pointer;
@@ -49,17 +49,17 @@
     @endpush
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
-            <div class="row bg-white shadow p-3 mt-lg-0 mt-5">
-                <div class="col-lg-3 col-12 pb-4">
+            <div class="row bg-white shadow px-3 pt-3 mt-lg-0 mt-5">
+                <div class="col-lg-3 col-12 pb-1">
                     <h3 class="text-fut-bold pl-3 mb-0 text-lg-left text-center"
-                        style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
+                        style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                         Магазин
                     </h3>
                 </div>
                 <div class="col-lg-2 col-12 text-center pt-2">
-                    <div class="dropdown open pb-4" style=" display: flex; align-items: center; text-align: center;">
+                    <div class="dropdown open pb-1" style=" display: flex; align-items: center; text-align: center; cursor: pointer;">
                         <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto"
-                           style="border:0; font-size:20px; color: #000000;" id="dropdownMenuButton"
+                           style="border:0; font-size:20px; color: #222;" id="dropdownMenuButton"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Сортировка
                         </a>
@@ -73,11 +73,11 @@
                 </div>
                 <div class="col-lg-1 col-12 pr-0 text-lg-right text-center">
                     <p class="text-fut-book"
-                       style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: black;">
+                       style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: #222;">
                         Цена
                     </p>
                 </div>
-                <div class="col-lg-3 col-12 pb-4">
+                <div class="col-lg-3 col-12 pb-1">
                     <div class="slidecontainer">
                         <span class="text-fut-book" style="font-size: 14px;">мин: <span id="demo"></span> сом</span>
                         <span class="text-fut-book" style="float:right; font-size: 14px;">макс: 15000 сом</span>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-lg-3 col-12">
                     <p class="text-fut-book"
-                       style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: black;">
+                       style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: #222;">
                         <input type="text" class="border-bottom form-control" id="search_input" placeholder="Поиск">
                     </p>
                 </div>
@@ -110,7 +110,7 @@
                                     <div id="collapseOne" class="collapse pt-3" aria-labelledby="headingOne"
                                          data-parent="#accordionExample">
                                         <div class="card-body font-weight-light text-dark pt-0">
-                                            <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
+                                            <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                                                 <a href="" class="genre_btn"  data-value="{{null}}">
                                                     <p class="text-scale">
                                                         Все жанры
@@ -143,7 +143,7 @@
                                                  data-parent="#accordionExample">
                                                 <div class="card-body font-weight-light text-dark pt-0">
                                                     <div class="mt-3 text-fut-book"
-                                                         style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#000000; cursor: pointer;">
+                                                         style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222; cursor: pointer;">
                                                         <p class="text-scale">
                                                             Новинки
                                                         </p>
@@ -176,11 +176,11 @@
                         <div class="col-lg-3 col-12 p-0 d-lg-block d-none">
                             <div class="bg-white p-5">
                         <h3 class="text-fut-bold mb-0"
-                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
+                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                             Жанры
                         </h3>
                         <div class="mt-3 text-fut-book"
-                             style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000; cursor: pointer;">
+                             style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
                             <a href="" class="genre_btn"  data-value="{{null}}">
                                 <p class="text-scale">
                                     Все жанры
@@ -198,11 +198,11 @@
                     </div>
                     <div class="bg-white p-5 mt-4 d-lg-block d-none">
                         <h3 class="text-fut-bold mb-0"
-                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:black;">
+                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                             Категории
                         </h3>
                         <div class="mt-3 text-fut-book"
-                             style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#000000; cursor: pointer;">
+                             style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
                             <p class="text-scale">
                                 Новинки
                             </p>

@@ -23,8 +23,11 @@
                         </span>
                 </div>
                 <div class="col-lg-3 col-12 p-4">
-                    <div>
+                    <div style="position: relative;">
                         <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">
+                        @if(isset($book->discount))
+                        <div class="discount-plate d-flex align-items-center" style="background-color: #3154CF; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-9 col-12 pt-4">
@@ -49,10 +52,10 @@
                         </span>
                     </div>
                         <div class="col-12 pt-3 text-lg-left text-center">
-                            <h2 class="text-fut-bold" style="font-size: 30px; line-height: 38px; color: #000000;">
+                            <h2 class="text-fut-bold" style="font-size: 30px; line-height: 38px; color: #222;">
                                 {{ $book->name }}
                             </h2>
-                            <div class="mt-4" style="font-size:16px; color: black; font-family:'Futura PT Medium Italic';">
+                            <div class="mt-4" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
                                 @if($book->author)
                                     <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
                                 @endif
@@ -66,11 +69,11 @@
 
                             <div class="mt-4">
                                 @guest
-                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
+                                <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
                                     {{ $book->price_retail }} сом
                                 </p>
                                 @else
-                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:black;">
+                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
                                         {{isset($book->price_wholesale) ? $book->price_wholesale : $book->price_retail }} сом
                                     </p>
                                 @endguest
@@ -90,16 +93,16 @@
                 </div>
             </div>
 
-            <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
+            <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
                 О книге
             </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: black;; font-family: 'Futura PT'">
+            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
                 {{ $book->description }}
             </p>
 
 
 
-                <h3 class="text-fut-bold mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
+                <h3 class="text-fut-bold mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
                     Сопутствующие товары
                 </h3>
             <div class="row">
@@ -113,12 +116,12 @@
                                         <img class="w-100 h-100" src="{{ asset('storage/books/'.$same->image) }}" alt="">
                                     </div>
                                     <h3 class="text-fut-book mt-3 pb-5 text-left"
-                                        style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                                        style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
                                         {{ $same->name }}
                                     </h3>
                                 </a>
                                 <div class="container-fluid mr-0 pr-0">
-                                    <div class="row" style="width:70%;position: absolute; bottom:5%; color:black;">
+                                    <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
                                         <div class="p-0 text-left">
                                             @guest
                                                 <span class="text-fut-book"
@@ -133,7 +136,7 @@
                                             @endguest
                                         </div>
                                         <div class=" p-0 ml-auto buy_book">
-                                            <i style="color: black; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $same->id }}"></i>
+                                            <i style="color: #222; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $same->id }}"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -145,17 +148,17 @@
             </div>
 
             <div class="" style="margin-top: 10%;">
-                <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: black;">
+                <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
                     Рецензии на книгу "{{ $book->name }}"
                 </h3>
                 @if(!count($book->feedbacks))
                     Рецензий нет
                 @endif
                 @foreach($book->feedbacks as $feedback)
-                <p class="text-fut-bold mt-5" style="font-size: 16px; line-height: 21px; color: #000000;">
+                <p class="text-fut-bold mt-5" style="font-size: 16px; line-height: 21px; color: #222;">
                     {{ $feedback->name }}
                 </p>
-                <p class="text-fut-book" style="font-size: 16px; line-height: 21px; color: #000000;">
+                <p class="text-fut-book" style="font-size: 16px; line-height: 21px; color: #222;">
                     <span>Понравилось?
                             @if($feedback->like == 1)
                             <span class="text-fut-bold pl-3" style="color: #019D38;">
@@ -169,7 +172,7 @@
                         </span>
                 </p>
 
-                <p class="text-fut-book col-lg-6 col-12 px-0" style="font-size: 16px; line-height: 21px; color: #000000;">
+                <p class="text-fut-book col-lg-6 col-12 px-0" style="font-size: 16px; line-height: 21px; color: #222;">
                     {{ $feedback->comment }}
                 </p>
 

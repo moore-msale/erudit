@@ -25,6 +25,13 @@ body
     font-weight: 600;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Futura PT Medium';
+    src: local('Futura PT Medium'), local('Futura-PT-Medium'),
+    url('/fonts/FuturaPTMedium.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
 .MonotypeCorsiva
 {
     font-family: "Monotype Corsiva";
@@ -78,7 +85,7 @@ body
     background-image: url('/images/carousel-prev.png')!important;
     width:65px;
     height:20px;
-
+    outline: none;
 }
 .owl-two .owl-nav .owl-next
 {
@@ -88,6 +95,7 @@ body
     background-image: url('/images/carousel-next.png')!important;
     width:65px;
     height:20px;
+    outline: none;
 }
 .car-nav-close .owl-nav .owl-prev
 {
@@ -151,24 +159,20 @@ body
 }
 .text-scale
 {
-    text-shadow: 0px 1px 0px rgba(51, 51, 51, 0.5);
     transition: all 200ms linear 0ms;
 }
 .text-scale:hover
 {
-    text-shadow: 0px 5px 5px rgba(0,0,0,0.1),
-    10px 10px 5px rgba(0,0,0,0.05), -10px 10px 5px rgba(0,0,0,0.05);
+    text-decoration: underline!important;
     transition: text-shadow 200ms linear 0ms;
 }
 .text-scale-white
 {
-    text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.5);
     transition: all 200ms linear 0ms;
 }
 .text-scale-white:hover
 {
-    text-shadow: 0px 5px 5px rgba(255, 255, 255, 0.32),
-    10px 10px 5px rgba(255, 255, 255, 0.19), -10px 10px 5px rgba(255, 255, 255, 0.05);
+    text-decoration: underline!important;
     transition: text-shadow 200ms linear 0ms;
 }
 
@@ -187,7 +191,7 @@ body
     }
     .main-blog
     {
-        padding-top:20%!important;
+        padding-top:16%!important;
     }
     .text-desc
     {

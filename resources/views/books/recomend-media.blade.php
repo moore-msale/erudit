@@ -5,7 +5,7 @@
             <div class="item m-2 p-4 shadow text-scale" style="background-color: white; height: 100%;">
                 <img class="w-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                 <h3 class="text-fut-book mt-3 text-left pb-5"
-                    style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #000000;">
+                    style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
                     {{ $bestseller->name }}
                 </h3>
                 <div class="container-fluid row mr-0 pr-0" style="position: absolute; bottom:5%;">

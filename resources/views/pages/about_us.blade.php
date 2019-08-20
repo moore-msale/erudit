@@ -3,7 +3,7 @@
     <div style="padding-top: 15%; padding-bottom: 5%;">
         <div class="container">
         <div class="row justify-content-center">
-        <h2 class="col-10" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #000000;">
+        <h2 class="col-10" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #222;">
             "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль.."
         </h2>
         </div>
@@ -11,11 +11,11 @@
 
         <div class="container mt-lg-4 mt-0 p-lg-0 p-5">
             <div class="row justify-content-center">
-                <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #000000;">
+                <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
                     Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших книг.
                     Мы одними из первых получаем новинки всех главных книжных издательств и всегда идем в ногу со временем. Огромный  ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах максимально комфортно. А оставить довольным каждого – это наша первоочередная задача! Открытие нашего первого магазина состоялось 29 сентября 2018 года. Именно с этой даты мы пишем свою историю и гордимся тем, что так быстро вошли в число любимых магазинов для многих, как в Бишкеке, так и за его пределами.
                 </p>
-                <p class="mt-2" style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #000000;">
+                <p class="mt-2" style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
                     Второй магазин открылся 10 августа 2019 года. Несмотря на то, чтоон кардинально отличается по дизайну от первого магазина, но огромный ассортимент и гарантия качественного обслуживания каждого клиента остались прежними.
                     У нас Вы можете упаковать подарок и заказать доставку по всей стране, купить книги и комиксы на многих языках мира и подобрать лучший вариант, который подойдет только Вам! Также наш оптовый склад – самый крупный в стране, мы продаем книги и канцелярские товары во многие страны, такие как Казахстан, Таджикистан и Узбекистан и т.д.
                     В наших социальных сетях регулярно проходят розыгрыши книг и различных подарков.
@@ -24,8 +24,8 @@
                 <img class="w-100 mt-4" src="{{ asset('images/about_us.png') }}" alt="">
 
             </div>
-            <div class="row mt-4" style="color:black;">
-            <h3 class="text-fut-book col-12 p-0 mb-4" style="font-size: 18px; line-height: 140%; color: black;">
+            <div class="row mt-4" style="color:#222;">
+            <h3 class="text-fut-book col-12 p-0 mb-4" style="font-size: 18px; line-height: 140%; color: #222;">
                 Мы будем рады видеть Вас всегда с 10:00 до 22:00 каждый день, без перерывов и выходных по адресу:
             </h3>
                 <div class="mb-4 col-12 px-0">

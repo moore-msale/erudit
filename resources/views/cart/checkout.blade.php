@@ -68,7 +68,11 @@
                         </div>
                     @endif
 
-                    <button type="submit" class="btn btn-primary">Оформить</button>
+                    <div class="text-left pt-4">
+                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
+                            Оформить заказ
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>

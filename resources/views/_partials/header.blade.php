@@ -5,13 +5,16 @@
                 <nav class="mr-md-auto ml-0">
                     <ul class="navbar-nav" id="pick">
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book text-scale" style="text-decoration: none; color: #686868;">Контакты</a>
+                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Контакты</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
+                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
+                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Сотрудничество</a>
                         </li>
                     </ul>
                 </nav>
@@ -35,7 +38,7 @@
                         </li>
 
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -54,7 +57,7 @@
                     </li>
                     <li class="nav-item px-3">
                         <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
-                            <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #000000;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #222;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Жанры
                             </a>
                             <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
@@ -69,10 +72,10 @@
                         </div>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book text-scale" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Новинки</a>
+                        <a href="/catalog" class="text-fut-book text-scale" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Новинки</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="#" class="text-fut-book text-scale" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Канцтовары</a>
+                        <a href="/catalog" class="text-fut-book text-scale" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Канцтовары</a>
                     </li>
                     <li class="nav-item px-3">
                         <a href="{{ route('news.index') }}" class="text-fut-book text-scale" style="text-decoration: none; color: #222222; font-size: 17px; width:70px;">Новости</a>
@@ -85,14 +88,14 @@
                 <ul class="navbar-nav text-right" id="pick">
 
                 <li class="nav-item px-3 mr-4 pt-1 ico-menu" style="display: none;">
-                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
                 </li>
                     @guest
-                            <a href="/login" class="text-fut-book but-hov" data-aos="fade-up" style="color: black!important; padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                            <a href="/login" class="text-fut-book but-hov" data-aos="fade-up" style="color: #222!important; padding: 5px 15px; background-color: transparent; border: 1px #222 solid; text-decoration:none;">
                                 Оптовым покупателям
                             </a>
                     @else
-                            <a href="{{ route('user.index') }}" class="text-fut-book but-hov" data-aos="fade-up" style="color:black!important; padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                            <a href="{{ route('user.index') }}" class="text-fut-book but-hov" data-aos="fade-up" style="color:#222!important; padding: 5px 15px; background-color: transparent; border: 1px #222 solid; text-decoration: none;">
                                 Личный кабинет
                             </a>
                         <a class="text-dark pl-3 text-scale" style="padding:5px 15px;" href="{{ route('logout') }}"
@@ -135,7 +138,7 @@
                         </li>
                         <li class="nav-item px-3">
                             <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
-                                <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #000000;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #222;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Жанры
                                 </a>
                                 <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
@@ -164,17 +167,17 @@
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book pl-5" style="text-decoration: none; color: #222222;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="#" class="text-fut-book cartcart" style="text-decoration: none; color: #222222;"><i style="color: black;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                         @guest
                         <li class="nav-item px-3 my-2">
-                            <a href="/login" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                            <a href="/login" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #222 solid;">
                                 Оптовым покупателям
                             </a>
                         </li>
                             @else
                             <li class="nav-item px-3 my-2">
-                                <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #000000 solid;">
+                                <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #222 solid;">
                                     Личный кабинет
                                 </button>
                             </li>

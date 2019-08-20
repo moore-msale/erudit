@@ -12,7 +12,7 @@
                 <span>
                 Все новости
             </span>
-                <h2 class="text-fut-bold mt-3" style="font-size: 30px; line-height: 38px; color: #000000;">
+                <h2 class="text-fut-bold mt-3" style="font-size: 30px; line-height: 38px; color: #222;">
                     Все новости
                 </h2>
             </div>
@@ -23,13 +23,13 @@
                     <div class="shadow-hover pb-4">
                         <img class="w-100" src="{{ asset('storage/'.$new->preview)  }}" alt="">
                         <div class="p-3">
-                            <h4 class="text-fut-bold mb-3" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #000000;">
+                            <h4 class="text-fut-bold mb-3" style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color: #222;">
                                 {{ $new->name }}
                             </h4>
                             <p class="text-fut-book" style="font-family: Futura PT; font-style: normal; font-weight: normal; font-size: 15px; line-height: 130%; letter-spacing: 0.05em;">
                                 {{ $new->description }}
                             </p>
-                            <a href="{{ route('news.show', $new->id) }}" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #000000; text-decoration: underline;">
+                            <a href="{{ route('news.show', $new->id) }}" class="text-fut-book" style="font-size: 15px; line-height: 130%; letter-spacing: 0.05em; color: #222; text-decoration: underline;">
                                 Читать полностью
                             </a>
                         </div>
