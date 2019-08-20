@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg cart-animate"></i></a>
+                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #222222;"><i style="color: #222;" class="fas carts fa-cart-plus fa-lg"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -60,7 +60,7 @@
                             <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #222;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Жанры
                             </a>
-                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton" style="overflow-y:scroll; height:300px;">
                                 @foreach(\App\Genre::all() as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="/catalog">
