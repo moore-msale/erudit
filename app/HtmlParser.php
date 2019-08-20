@@ -28,6 +28,7 @@ class HtmlParser
         $names = null;
         $urls = null;
         $authors = null;
+        $images = null;
 
         if ($params['name_search']) {
             if ($params['name_search_count'] !== null) {
@@ -68,11 +69,10 @@ class HtmlParser
             $images = $html->find($params['search_image']);
             Log::info('Found book image ... ' . $index);
         }
-
         $result = [];
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                $result[] = [$names[$i]->plaintext, $urls[$i]->href, $images[$i]->src];
+                $result[] = [$names[$i]->plaintext, $urls[$i]->href, $images[$i]->attr['data-src']];
             }
         }
 
@@ -137,7 +137,7 @@ class HtmlParser
             Log::info('Searching for book image in his page ... ' . $index);
             $image = $html->find($params['image']);
             if (count($image)) {
-                $image = $image[0]->src;
+                $image = $image[0]->attr['data-src'];
                 Log::info('Found book image in his page ... ' . $index);
             } else {
                 $image = null;

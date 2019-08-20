@@ -14,10 +14,10 @@ class ImageService
 {
     public static function store($file, $prefix)
     {
+
         $fileName = 'books\\'.uniqid($prefix).'.jpg';
         try {
             $file = ImageManagerStatic::make($file)->stream('jpg', 40);
-
             Storage::disk('local')->put('public/books/'.$fileName, $file);
             Log::info('Image saved');
         } catch (NotReadableException $exception) {
