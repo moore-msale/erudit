@@ -88,8 +88,10 @@
             </nav>
             <div class="col-6">
                 <div class="row justify-content-end">
-                <ul class="navbar-nav text-right" id="pick">
-
+                <ul class="navbar-nav text-right d-flex align-items-center" id="pick">
+                    <li class="nav-item px-3 mr-4">
+                        @include('_partials.search')
+                    </li>
                 <li class="nav-item px-3 mr-4 pt-1 ico-menu" style="display: none;">
                     <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
