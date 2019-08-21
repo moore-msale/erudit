@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
 Route::post('/parser/{type}', 'ParseController@parse')->name('parser.parse');
 
+Route::get('/search', 'MainController@search')->name('search');
+
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
 
