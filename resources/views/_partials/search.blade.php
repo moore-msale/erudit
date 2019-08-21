@@ -32,7 +32,7 @@
         });
 
         $(document).click(function(event) {
-            if (!$(event.target).is("#search-result-select2, #search-result-ajax")) {
+            if (!$(event.target).is("#search-result-select2, #search-result-ajax, .collapses, .collapse, .products")) {
                 $("#search-result-select2").addClass('d-none');
             }
         });

@@ -3,12 +3,12 @@
     @foreach($result as $key => $items)
         <div class="position-relative">
             @if(count($items))
-                <a class="nav-link bg-grey-light font-weight-bold  mb-2 mt-0 py-0 disabled h4 position-sticky w-100" style="z-index: 9; top: 0; left: 0;" data-toggle="collapse" data-target="#collapseAjax{{ $loop->index }}" aria-expanded="false" aria-controls="collapseAjax{{ $loop->index }}" tabindex="-1" aria-disabled="true">{{ $key }}</a>
+                <a class="nav-link bg-grey-light collapses font-weight-bold  mb-2 mt-0 py-2 disabled h4 position-sticky w-100" style="z-index: 9; top: 0; left: 0;" data-toggle="collapse" data-target="#collapseAjax{{ $loop->index }}" aria-expanded="false" aria-controls="collapseAjax{{ $loop->index }}" tabindex="-1" aria-disabled="true">{{ $key }}</a>
             @endif
 
             <div class="collapse collapse-multi show" id="collapseAjax{{ $loop->index }}">
                 @foreach($items as $value)
-                    <a class="nav-link border-bottom py-2" href="{{ route('book.show', $value->id) }}">
+                    <a class="nav-link border-bottom products py-2" href="{{ route('book.show', $value->id) }}">
                 <span class="d-flex align-items-center">
                     <span class="col-3 p-0">
                         <img src="{{ asset('storage/'.$value->image) }}" class="img-fluid" alt="">
