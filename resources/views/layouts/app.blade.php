@@ -199,6 +199,10 @@
     owl.owlCarousel({
         margin: 10,
         loop: true,
+        // autoplay:true,
+        // autoplayTimeout:5000,
+        // autoplaySpeed: 1500,
+        // autoplayHoverPause:true,
         responsive: {
             0: {
                 items: 1

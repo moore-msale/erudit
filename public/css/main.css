@@ -73,6 +73,40 @@ body
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+.owl-one .owl-nav.disabled
+{
+    display: block!important;
+}
+.owl-one .owl-nav .owl-prev
+{
+    position: absolute;
+    left:-10%;
+    top:35%;
+    background-image: url('/images/prev-books.png')!important;
+    width:70px;
+    height:70px;
+    outline: none;
+    transition: 0.5s;
+}
+.owl-one .owl-nav .owl-prev:hover
+{
+    transform: scale(1.1);
+}
+.owl-one .owl-nav .owl-next
+{
+    position: absolute;
+    right:-10%;
+    top:35%;
+    background-image: url('/images/next-books.png')!important;
+    width:70px;
+    height:70px;
+    outline: none;
+    transition: 0.5s;
+}
+.owl-one .owl-nav .owl-next:hover
+{
+    transform: scale(1.1);
+}
 .owl-two .owl-nav.disabled
 {
     display: block!important;
@@ -165,6 +199,18 @@ body
 {
     text-decoration: underline!important;
     transition: text-shadow 200ms linear 0ms;
+}
+.cat-scale
+{
+    transition: 0.3s;
+}
+.cat-scale:hover
+{
+    z-index: 100;
+    -webkit-transform: scale(1.008);
+    -moz-transform: scale(1.008);
+    -o-transform: scale(1.008);
+    transform: scale(1.008);
 }
 .cart-success {
     color: #0fbf4d !important;

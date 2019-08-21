@@ -1,4 +1,4 @@
-<div class="container-fluid foter" style="padding:5%; background-color: #000000;">
+<div class="container-fluid foter" style="padding:5%; background-color: #222;">
     <div class="row">
         <div class="col-lg-3 col-12 pb-lg-0 pb-5">
             <img src="{{ asset('images/logo-white.png') }}" alt="">
