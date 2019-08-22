@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid main-blog">
+<div class="container-fluid main-blog position-relative">
+    <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down" style="bottom: -6%; left: 24%; z-index: 1;" alt="">
     <div class="row" style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
         <div class="col-lg-5 col-12" style="padding-left: 7%; padding-top:15%;">
         <h1 class="text-fut-bold font-weight-bold text-white" style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;">
@@ -19,7 +20,8 @@
     </div>
     <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;" src="{{ asset('images/main-pic.png') }}" alt="">
 </div>
-<div class="container-fluid">
+<div class="container-fluid pt-5 position-relative">
+    <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 5%;" alt="">
     <div class="row pb-5">
         <div class="col-12">
             <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-block d-none" style="line-height: 179px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
@@ -28,14 +30,20 @@
             <h2 class="font-weight-bold text-fut-bold h2-text-media d-lg-none d-block" style="line-height: 139px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                 Бестселлеры
             </h2>
-            <div class="container-fluid d-lg-block d-none" style="margin-top:-140px;">
+            <div class="container-fluid d-lg-block d-none position-relative" style="margin-top:-140px;">
+                <img src="{{ asset('images/svg/4.svg') }}" class="position-absolute scroll-svg-down" style="left: 35%; bottom: 0;" alt="">
+                <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-up" style="right: 0; bottom: 0;" alt="">
+
                 <div class="row justify-content-center">
                     <div class="col-12">
                         @include('books.bestsellers')
                     </div>
                 </div>
             </div>
-            <div class="container-fluid d-lg-none d-block">
+            <div class="container-fluid d-lg-none d-block position-relative">
+                <img src="{{ asset('images/svg/4.svg') }}" class="position-absolute scroll-svg-up" style="left: 35%; bottom: 0;" alt="">
+                <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down" style="right: 0; bottom: 0;" alt="">
+
                 <div class="row justify-content-center">
                     <div class="col-12">
                         @include('books.bestseller-media')
@@ -64,7 +72,9 @@
                     </div>
                 </div>
 
-            <div class="container-fluid" style="padding-top:7%;">
+            <div class="container-fluid position-relative" style="padding-top:7%;">
+                <img src="{{ asset('images/svg/5.svg') }}" class="position-absolute scroll-svg-up" style="top: 15%; left: 6%;" alt="">
+                <img src="{{ asset('images/svg/6.svg') }}" class="position-absolute scroll-svg-down" style="bottom: -3%; right: -3%;" alt="">
                 <div class="row justify-content-center text-center">
                     <div class="col-12">
                     <h2 class="font-weight-bold text-fut-bold" style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; padding-right:32px; color:#444;">
@@ -92,9 +102,11 @@
 </div>
 </div>
 
-    <div class="container-fluid sells-sector"
+    <div class="container-fluid sells-sector position-relative"
          style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
-        <div class="row p-lg-5 py-5">
+        <img src="{{ asset('images/svg/7.svg') }}" class="position-absolute scroll-svg-up" style="left: -2%; top: 45%;" alt="">
+        <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-down" style="right: -2%; top: 45%;" alt="">
+        <div class="row pt-lg-5 pb-lg-0 pt-5 pb-0">
             <div class="col-lg-3 col-12 pr-0">
                 <h3 class="text-fut-bold"
                     style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
@@ -279,7 +291,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid position-relative py-5 my-5">
+        <img src="{{ asset('images/svg/8.svg') }}" class="position-absolute scroll-svg-down" style="left: 20%; top: 2%;" alt="">
+        <img src="{{ asset('images/svg/9.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 42%;" alt="">
+        <img src="{{ asset('images/svg/10.svg') }}" class="position-absolute scroll-svg-down" style="left: 30%; bottom: 7%;" alt="">
+        <img src="{{ asset('images/svg/11.svg') }}" class="position-absolute scroll-svg-up" style="right: -2%; bottom: 7%;" alt="">
         <div class="p-lg-5 p-0 pt-lg-5 pt-5">
         <div class="row p-lg-5">
             <div class="col-lg-6 col-12 cat-scale" style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
@@ -398,6 +414,9 @@
 
 
     <div class="container pt-lg-0 pt-4" id="schet" style="margin-top: 5%;">
+        <img src="{{ asset('images/svg/12.svg') }}" class="position-absolute scroll-svg-down" style="left: 0;" alt="">
+        <img src="{{ asset('images/svg/13.svg') }}" class="position-absolute scroll-svg-up" style="left: 40%;" alt="">
+        <img src="{{ asset('images/svg/9.svg') }}" class="position-absolute scroll-svg-down" style="right: -4%; width: 194px; height: 194px; -webkit-transform: rotate(83deg);-moz-transform: rotate(83deg);-ms-transform: rotate(83deg);-o-transform: rotate(83deg);transform: rotate(83deg);" alt="">
         <div class="row pb-5">
             <div class="col-lg-5 col-12">
                 <h2 class="text-fut-bold"
@@ -509,7 +528,11 @@
     </div>
 
 
-    <div class="container px-5" style="padding-top:5%;">
+    <div class="container position-relative px-5" style="padding-top:5%;">
+        <img src="{{ asset('images/svg/13.svg') }}" class="position-absolute scroll-svg-down svg feedback-icon" alt="">
+        <img src="{{ asset('images/svg/14.svg') }}" class="position-absolute scroll-svg-up" style="right: 10%; top: 0;" alt="">
+        <img src="{{ asset('images/svg/9.svg') }}" class="position-absolute scroll-svg-down" style="left: -14%; bottom: 0; width: 194px; height: 194px; -webkit-transform: rotate(83deg);-moz-transform: rotate(83deg);-ms-transform: rotate(83deg);-o-transform: rotate(83deg);transform: rotate(83deg);" alt="">
+        <img src="{{ asset('images/svg/plus.svg') }}" class="position-absolute scroll-svg-up" style="right: 0; bottom: 0;" alt="">
         <div class="row">
             <img class="d-lg-block d-none" style="position: absolute;" src="{{ asset('images/feedback.png') }}" alt="">
             <img class="d-lg-none d-block" style="position: absolute; width:85%;"

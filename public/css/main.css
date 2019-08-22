@@ -161,6 +161,15 @@ body
 .cart-btn:last-child {
     margin-right: -4px;
 }
+.feedback-icon path {
+    fill: #F7E600;
+}
+.feedback-icon {
+    right: 45%;
+}
+.scroll-svg-down, .scroll-svg-up {
+    z-index: -1;
+}
 .shadow-hover
 {
     transition: 0.5s;
