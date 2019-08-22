@@ -4,18 +4,18 @@
         <div class="container mt-lg-0 mt-5">
             <div class="row">
                 <div class="col-12 px-4 d-lg-none d-block">
-                        <span>
+                        <span class="text-fut-light">
                         <a href="/">Главная</a>
                         </span>
                     <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
-                    <span>
+                    <span class="text-fut-book">
                         @if($book->genre)
                             <a href="">{{ $book->genre->name }}</a>
                             @endif
                         </span>
-                    <span>
+                    <span class="text-fut-book">
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
@@ -28,20 +28,20 @@
 
 {{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
                         @if(isset($book->discount))
-                        <div class="discount-plate d-flex align-items-center" style="background-color: #3154CF; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                        <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
                         @endif
                     </div>
                 </div>
                 <div class="col-lg-9 col-12 pt-4">
                     <div class="row">
                     <div class="col-12 d-lg-block d-none">
-                        <span>
+                        <span class="text-fut-book">
                         <a href="/">Главная</a>
                         </span>
-                        <span>
+                        <span class="text-fut-book">
                             <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
-                        <span>
+                        <span class="text-fut-book">
                             @if($book->genre)
                             <a href="">{{ $book->genre->name }}</a>
                                 @endif
@@ -49,7 +49,7 @@
                         <span>
                             <i class="fas fa-arrow-right fa-xs"></i>
                         </span>
-                        <span>
+                        <span class="text-fut-book">
                             {{ $book->name }}
                         </span>
                     </div>
@@ -59,13 +59,13 @@
                             </h2>
                             <div class="mt-4" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
                                 @if($book->author)
-                                    <p><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                    <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
                                 @endif
                                 @if($book->publishing)
-                                    <p><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                    <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
                                 @endif
                                     @if($book->series)
-                                        <p><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
                                     @endif
                             </div>
 
@@ -86,7 +86,7 @@
                             {{--</div>--}}
 
                             <div class="mt-4">
-                                <button  class="text-fut-bold mt-5 buy_book" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                <button  class="text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
                                     Добавить в корзину
                                 </button>
                             </div>
@@ -112,36 +112,38 @@
                     <div class="row">
                         @foreach($sames as $same)
                             <div class="col-lg-3 col-12 item mt-3" style="background-color: white;">
-                                <div class="shadow text-scale p-4 h-100">
+                                <div class="shadow p-4 h-100">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
                                         <img class="w-100 h-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$same->image)) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
 
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>
-                                    <h3 class="text-fut-book mt-3 pb-5 text-left"
+                                    <h3 class="text-fut-book mt-3 text-left"
                                         style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
-                                        {{ $same->name }}
+                                        {{\Illuminate\Support\Str::limit($same->name,50,'...')  }}
                                     </h3>
                                 </a>
-                                <div class="container-fluid mr-0 pr-0">
-                                    <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
-                                        <div class="p-0 text-left">
-                                            @guest
-                                                <span class="text-fut-book"
-                                                      style="font-size:18px; letter-spacing: 0.05em;">
+                                    <div class="p-0 text-left">
+                                        @guest
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_retail }} сом
                                                     </span>
-                                            @else
-                                                <span class="text-fut-book"
-                                                      style="font-size:18px; letter-spacing: 0.05em;">
+                                        @else
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_wholesale }} сом
                                                     </span>
-                                            @endguest
-                                        </div>
-                                        <div class=" p-0 ml-auto buy_book">
-                                            <i style="color: #222; cursor:pointer;" class="fas fa-cart-plus fa-lg icon-flip buy_book" data-id="{{ $same->id }}"></i>
-                                        </div>
+                                        @endguest
+                                    </div>
+                                <div class="container-fluid mr-0 pr-0">
+                                    <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
+
+                                        <button class="text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $same->id }}" data-aos="fade-up"
+                                                style="background-color:#4d86ff; font-size: 13px; border:0; cursor: pointer;">
+                                            Добавить в корзину
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +191,7 @@
                 </div>
                     @endforeach
             </div>
-            <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5 pointer" data-aos="fade-up" style="padding: 15px 23px; background-color: #3154CF; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
+            <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5 pointer" data-aos="fade-up" style="padding: 15px 23px; background-color: #4d86ff; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
                 Оставить рецензию
             </button>
         </div>

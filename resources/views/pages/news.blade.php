@@ -3,16 +3,16 @@
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
             <div class="col-12 pt-lg-0 pt-5 px-0 mb-5">
-                        <span>
+                        <span class="text-fut-light font-weight-bold">
                         <a href="/">Главная</a>
                         </span>
                 <span>
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
-                <span>
+                <span class="text-fut-light font-weight-bold">
                 Все новости
             </span>
-                <h2 class="text-fut-bold mt-3" style="font-size: 30px; line-height: 38px; color: #222;">
+                <h2 class="text-fut-light font-weight-bold mt-3" style="font-size: 30px; line-height: 38px; color: #222;">
                     Все новости
                 </h2>
             </div>

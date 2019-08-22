@@ -15,7 +15,7 @@
                         <ul class='page'>
                             <li></li>
                             <li>
-                                <p class="pt-3 text-fut-book px-3" style="color: #222;">
+                                <p class="pt-3 text-fut-book px-3" style="color: #444;">
                                     {{ $bestseller->name }}
                                 </p>
                                 <a class="btn but-hov" href="{{ asset('book/'.$bestseller->id) }}">Посмотреть</a>
