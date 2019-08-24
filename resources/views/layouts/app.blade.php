@@ -211,10 +211,10 @@
 <script src="{{ asset('js/rellax.min.js') }}"></script>
 <script>
     let rellax = new Rellax('.scroll-svg-up', {
-        speed: 0.2
+        speed: 1
     });
     let rellax2 = new Rellax('.scroll-svg-down', {
-        speed: -0.2
+        speed: -1
     });
 </script>
 <script>

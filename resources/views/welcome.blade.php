@@ -294,7 +294,7 @@
     <div class="container-fluid position-relative py-5 my-5">
         <img src="{{ asset('images/svg/8.svg') }}" class="position-absolute scroll-svg-down" style="left: 20%; top: 2%;" alt="">
         <img src="{{ asset('images/svg/9.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 42%;" alt="">
-        <img src="{{ asset('images/svg/10.svg') }}" class="position-absolute scroll-svg-down" style="left: 30%; bottom: 7%;" alt="">
+        <img src="{{ asset('images/svg/10.svg') }}" class="position-absolute scroll-svg-down" style="left: 30%; bottom: -7%;" alt="">
         <img src="{{ asset('images/svg/11.svg') }}" class="position-absolute scroll-svg-up" style="right: -2%; bottom: 7%;" alt="">
         <div class="p-lg-5 p-0 pt-lg-5 pt-5">
         <div class="row p-lg-5">
