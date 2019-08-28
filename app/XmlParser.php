@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Matrix\Exception;
 use \Orchestra\Parser\Xml\Facade as XmlParse;
 
 class XmlParser
@@ -21,13 +22,21 @@ class XmlParser
                     if ($temp->name == $item[0]) {
                         $book = new Book();
                         $book->name = $temp->name;
-                        $book->image = $temp->image ? ImageService::store(file_get_contents($temp->image), 'book_') : null;
+                        if ($temp->image) {
+                            try {
+                                $image = file_get_contents($temp->image);
+                            } catch (\ErrorException $exception) {
+                                $image = null;
+                                echo $exception->getMessage();
+                            }
+                        }
+                        $book->image = $temp->image && $image ? ImageService::store($image, 'book_') : null;
                         $book->price_retail = $item[4];
                         $book->price_wholesale = $item[5];
                         $book->description = $temp->description;
                         $book->save();
                         Log::info('Temps found id '.$temp->id);
-                        $temp->delete();
+                        DB::table('temps')->delete($temp->id);
                         break;
                     }
                 }

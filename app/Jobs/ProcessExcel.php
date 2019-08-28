@@ -71,7 +71,7 @@ class ProcessExcel implements ShouldQueue
                     $resultExcel = ExcelParser::parse(public_path('excels/'.$this->parson->excel));
                     foreach ($resultExcel as $index => $item) {
                         $products = HtmlParser::searchParse($url, $item[0], $params, $index);
-                        if (count(Book::where('name', $item[0])->first())) {
+                        if (Book::where('name', $item[0])->first()) {
                             continue;
                         }
                         if (count($products)) {
