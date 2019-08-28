@@ -146,6 +146,8 @@ body
 .cart-btn {
     color: #6c757d;
     background-color: #fff;
+    width: 30px;
+    height: 30px;
 }
 .cart-btn:hover {
     color: #fff;
@@ -154,12 +156,6 @@ body
 
 .cart-btn:active {
     background-color: #6c757d90;
-}
-.cart-btn:first-child {
-    margin-left: -4px;
-}
-.cart-btn:last-child {
-    margin-right: -4px;
 }
 .feedback-icon path {
     fill: #F7E600;

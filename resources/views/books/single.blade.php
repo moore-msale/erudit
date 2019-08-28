@@ -27,8 +27,8 @@
         </div>
         <div class="container-fluid mr-0 pr-0">
             <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
-                <button class="text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $book->id }}" data-aos="fade-up"
-                        style="background-color:#4d86ff; font-size: 13px; border:0; cursor: pointer;">
+                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $book->id }}" data-aos="fade-up"
+                        style="font-size: 13px; border:0; cursor: pointer;">
                     Добавить в корзину
                 </button>
             </div>

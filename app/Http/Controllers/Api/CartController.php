@@ -15,12 +15,20 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $token = $request->token ? $request->token : uniqid();
-
+        $continue = $request->continue;
         TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
 
         Session::put('cart', $cart->getContent());
         Session::flash('cart_checkout', true);
+        if ($continue) {
+            Session::flash('continue', true);
+
+            return view('cart.checkout', [
+                'cartItems' => $cart->getContent(),
+                'total' => $cart->getTotal(),
+            ]);
+        }
 
         return view('cart.checkout', [
             'cartItems' => $cart->getContent(),
@@ -30,7 +38,7 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        $token = $request->token ? $request->token : uniqid();
+        $token = $request->token ? $request->token : Session::has('token') ? Session::get('token') : uniqid();
 
         TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
@@ -67,10 +75,11 @@ class CartController extends Controller
         return response()->json([
             'message' => 'Cart',
             'status' => 'success',
-            'cart' => $cart->getContent(),
+            'cart' => $cart->getContent()->sortKeys(),
             'token' => $token,
+            'total' => $cart->getTotalQuantity(),
             'html' => view('_partials.cart', [
-                'cartItems' => $cart->getContent(),
+                'cartItems' => $cart->getContent()->sortKeys(),
                 'total' => $cart->getTotal(),
             ])->render(),
         ]);

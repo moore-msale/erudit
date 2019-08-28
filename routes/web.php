@@ -37,6 +37,12 @@ Route::get('/login', function () {
 Route::get('/about_us', function () {
     return view('pages.about_us');
 });
+Route::get('/delivery', function () {
+    return view('pages.delivery');
+});
+Route::get('/partners', function () {
+    return view('pages.partners');
+});
 
 Route::get('/news_page', function () {
     return view('pages.news_page');
@@ -57,8 +63,8 @@ Route::resource('user', 'UserController');
 
 
 Route::get('/cart', 'Api\CartController@index')->name('cart.index');
-Route::post('/cart/checkout', 'Api\CartController@store')->name('cart.store');
 Route::get('/cart/checkout', 'Api\CartController@checkout')->name('cart.checkout');
+Route::post('/cart', 'Api\CartController@store')->name('cart.store');
 Route::get('/cart/add/book', 'Api\CartController@add')->name('cart.add');
 Route::get('/cart/delete/book', 'Api\CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'Api\CartController@remove')->name('cart.remove');

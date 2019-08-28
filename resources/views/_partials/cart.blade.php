@@ -27,15 +27,15 @@
                     <p class=" m-0">{{ $item->price }} сом</p>
                 </div>
                 <div class="col-3">
-                    <div class="border d-flex justify-content-between align-items-center" style="width: 80px;">
-                        <span class="pointer cart-btn p-2 remove_book" data-id="{{ $item->id }}">-</span>
+                    <div class="d-flex justify-content-between align-items-center" style="width: 100px;">
+                        <span class="pointer cart-btn rounded-circle shadow p-2 remove_book d-flex justify-content-center align-items-center" data-id="{{ $item->id }}">-</span>
                         <span class="mx-2">{{ $item->quantity }}</span>
-                        <span class="pointer cart-btn buy_book p-2" data-id="{{ $item->id }}">+</span>
+                        <span class="pointer cart-btn rounded-circle shadow buy_book p-2 d-flex justify-content-center align-items-center" data-id="{{ $item->id }}">+</span>
                     </div>
                 </div>
                 <div class="col-3 d-flex align-items-center">
                     <p class="m-0 text-left">{{ $item->getPriceSum() }} сом</p>
-                    <span class="ml-5 pointer cart-btn p-2 delete_book" data-id="{{ $item->id }}">&times;</span>
+                    <span class="ml-5 pointer cart-btn shadow rounded-circle d-flex justify-content-center align-items-center p-2 delete_book" data-id="{{ $item->id }}">&times;</span>
                 </div>
             </div>
         @endforeach
@@ -53,11 +53,9 @@
             <p class="h3 text-muted">Корзина пуста!</p>
         </div>
     @endif
-    @if(!Session::has('cart_checkout'))
-        <div class="text-right pt-4">
-            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
-                Оформить заказ
-            </a>
-        </div>
-    @endif
+    <div class="text-right pt-4">
+        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
+            Оформить заказ
+        </a>
+    </div>
 </div>

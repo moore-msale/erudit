@@ -277,8 +277,8 @@
                             <div class="container-fluid mr-0 pr-0"
                                  style="position: absolute; bottom:3%; color:#444;">
                                 <div class="row justify-content-center" style="width:87%;">
-                                    <button class="text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $book->id }}" data-aos="fade-up"
-                                            style="background-color:#4d86ff; font-size: 14px; border:0; cursor: pointer;">
+                                    <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $book->id }}" data-aos="fade-up"
+                                            style="font-size: 14px; border:0; cursor: pointer;">
                                         Добавить в корзину
                                     </button>
                                 </div>
@@ -431,13 +431,13 @@
             </div>
             <div class="col-1"></div>
             <div class="col-lg-3 col-12 numbers">
-                <h2 class="font-weight-bold value"
+                <h2 class="font-weight-bold "
                     style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #444; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-                    10160
+                    <span class="value">15</span>+
                 </h2>
                 <p class="text-fut-light pt-3"
                    style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #444;">
-                    Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
+                    Больше 15 видов жанров книг в наличии в наших магазинах
                 </p>
                 <a href="/about_us">
                     <button type="button" class="text-fut-book mt-5 but-hov" data-aos="fade-up"
@@ -449,11 +449,11 @@
             <div class="col-lg-3 col-12 pt-lg-0 pt-4">
                 <h2 class="font-weight-bold numbers"
                     style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #444; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-                    <span class="value">190</span>+
+                    <span class="value">9000</span>+
                 </h2>
                 <p class="text-fut-light pt-3"
                    style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #444;">
-                    Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредото
+                    Самых разных книг Вы сможете найти у нас и с удовольствием почитать
                 </p>
                 <a class="" href="/catalog">
                     <button class="text-fut-book mt-5 but-hov" data-aos="fade-up"

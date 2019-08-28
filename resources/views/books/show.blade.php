@@ -86,7 +86,7 @@
                             {{--</div>--}}
 
                             <div class="mt-4">
-                                <button  class="text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; background-color: #F7E600; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                <button  class="btn-primary text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
                                     Добавить в корзину
                                 </button>
                             </div>
@@ -140,8 +140,8 @@
                                 <div class="container-fluid mr-0 pr-0">
                                     <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
 
-                                        <button class="text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $same->id }}" data-aos="fade-up"
-                                                style="background-color:#4d86ff; font-size: 13px; border:0; cursor: pointer;">
+                                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $same->id }}" data-aos="fade-up"
+                                                style="font-size: 13px; border:0; cursor: pointer;">
                                             Добавить в корзину
                                         </button>
                                     </div>

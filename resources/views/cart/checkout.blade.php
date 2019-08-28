@@ -1,80 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
-        <div class="row">
-            <div class="col-12 modal-body-cart">
-                @include('_partials.cart', ['route' => true])
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-10">
-                <h2>Ваша информация</h2>
-                <form action="{{ route('cart.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="token" value="{{ Session::has('token') ? Session::get('token') : uniqid() }}">
-                    @if(auth()->check())
-                        <div class="form-row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" value="{{ auth()->user()->name ?? '' }}" required>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="email" class="form-control" value="{{ auth()->user()->email ?? '' }}" required>
-                                </div>
-                            </div>
+    @if(\Illuminate\Support\Facades\Session::has('continue') && \Illuminate\Support\Facades\Session::get('continue'))
+        <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
+            <div class="row">
+                <div class="col-lg-7 col-12">
+                    <h2 class="font-weight-bold">Оформите заказ</h2>
+                    <form action="{{ route('cart.store') }}" class="p-4 w-75" style="background: #a6ccda;" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Имя <span class="text-danger">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" name="address" id="address" class="form-control" value="{{ auth()->user()->address ?? '' }}" required>
+                            <label for="address">Адрес <span class="text-danger">*</span></label>
+                            <input type="text" id="address" name="address" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" name="phone" id="phone" class="form-control" value="{{ auth()->user()->phone ?? '' }}" required>
+                            <label for="phone">Телефон <span class="text-danger">*</span></label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
                         </div>
-                    @else
-                        <div class="form-row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="email" class="form-control" required>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control">
                         </div>
-                        <div class="form-row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input type="text" name="address" id="address" class="form-control" required>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-5 mt-4 mt-lg-0">
+                    <div style="max-height: 500px; overflow-y: auto">
+                        @foreach($cartItems as $item)
+                            <div class="d-flex py-3">
+                                <div class="col-5 col-md-4 col-lg-3 pr-0">
+                                    <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="font-weight-bold h5">{{ $item->name }}</p>
+                                    <p><span class="font-weight-bold">Количство:</span> {{ $item->quantity }}</p>
+                                    <p class="text-muted">{{ $item->price }} сом</p>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" name="phone" id="phone" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-                    <div class="text-left pt-4">
-                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
-                            Оформить заказ
-                        </a>
+                        @endforeach
                     </div>
-                </form>
+                    <p class="col-auto mt-4 font-weight-bold h3 mb-5">Итого: {{ $total }} сом</p>
+                    <a href="#" class="btn-success text-fut-book but-hov mx-auto text-white p-2 w-100 mt-4" style="font-size: 13px; border:0; cursor: pointer;" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Оформить</a>
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
+            <div class="row">
+                <div class="col-12 modal-body-cart">
+                    @include('_partials.cart', ['route' => true])
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script>
+    </script>
+@endpush

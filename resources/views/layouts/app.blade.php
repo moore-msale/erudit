@@ -81,7 +81,8 @@
                 token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
             },
             success: data => {
-                let result = freshCartHtml(data.html);
+                console.log(data);
+                let result = freshCartHtml(data.html, data.total);
                 result.find('.buy_book').each((index, item) => {
                     registerCartBuyButtons($(item));
                 });
@@ -117,8 +118,10 @@
                     token: token
                 },
                 success: data => {
-                    btn.find('i.fas').addClass('cart-success').addClass('cart-animate').delay(1000).removeClass('cart-animate');
-                    $('.carts').addClass('cart-success').addClass('cart-animate').delay(1000).removeClass('cart-animate');
+                    btn.addClass('btn-success').delay(2000).queue(function(){
+                        btn.removeClass("btn-success").dequeue();
+                    });
+                    $('.carts').addClass('btn-success');
                     cart = fetchCart();
                 },
                 error: () => {
@@ -194,17 +197,18 @@
         registerCartDeleteButtons($(item));
     });
 
-    function freshCartHtml(html) {
+    function freshCartHtml(html, total) {
+        total > 0 ? $('.cart-count').html(total) : $('.cart-count').html('');
         return $('.modal-body-cart').html(html);
     }
 
     fetchCart();
 
-    $('.cart').click(e => {
-        e.preventDefault();
-        $('#cart-modal').modal('show');
-        // freshCartHtml(fetchedCart);
-    });
+    // $('.cart').click(e => {
+    //     e.preventDefault();
+    //     $('#cart-modal').modal('show');
+    //     // freshCartHtml(fetchedCart);
+    // });
 
 
 </script>

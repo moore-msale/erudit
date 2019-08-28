@@ -4,7 +4,7 @@
         <div class="container">
         <div class="row justify-content-center">
         <h2 class="col-10" style="font-family: 'Monotype Corsiva'; font-size: 30px; line-height: 34px; text-align: center; color: #222;">
-            "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль.."
+            Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших книг.
         </h2>
         </div>
         </div>

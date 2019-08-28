@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4e64c23f05378804325eb4993513ae6",
+    "content-hash": "53646af21b9bd56c9e672fd3e652eaa2",
     "packages": [
         {
             "name": "ammadeuss/laravel-html-dom-parser",

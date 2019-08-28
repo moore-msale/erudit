@@ -1,4 +1,4 @@
-<nav class="navbar menuse navbar-expand-xl py-3 w-100 pr-0 d-md-block d-none" style="z-index: 999; background: transparent; position: fixed;">
+<nav class="navbar menuse navbar-expand-xl py-3 w-100 pr-0 d-lg-block d-none" style="z-index: 999; background: transparent; position: fixed;">
     <div class="container-fluid top-menu">
         <div class="row w-100 mx-5 pb-3" style="border-bottom: 1px #D9D9D9 solid;">
             <div class="col-lg-5 collapse navbar-collapse">
@@ -8,13 +8,13 @@
                             <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Контакты</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
+                            <a href="/delivery" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
                         </li>
                         <li class="nav-item px-3">
                             <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Сотрудничество</a>
+                            <a href="/partners" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Сотрудничество</a>
                         </li>
                     </ul>
                 </nav>
@@ -34,11 +34,12 @@
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 501 433 433</a>
+                            <a href="tel:+996 501 433 433" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 501 433 433</a>
                         </li>
 
-                        <li class="nav-item px-3">
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                        <li class="nav-item px-3 position-relative">
+                            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                                <div class="badge badge-danger rounded-circle shadow small position-absolute cart-count" style="top: -8px; right: 5px;"></div>
                                 {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg"></i>--}}
                                 <img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
                             </a>
@@ -92,8 +93,9 @@
                     <li class="nav-item px-3 mr-4">
                         @include('_partials.search')
                     </li>
-                <li class="nav-item px-3 mr-4 pt-1 ico-menu" style="display: none;">
-                    <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                <li class="nav-item px-3 mr-4 pt-1 ico-menu position-relative" style="display: none;">
+                    <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                        <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count" style="top: -7px; right: 5px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
                         <img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
                     </a>
@@ -122,7 +124,7 @@
         </div>
     </div>
 </nav>
-<nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-md-none d-block" style="z-index: 999; position: fixed;">
+<nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-lg-none d-block" style="z-index: 999; position: fixed;">
     <div class="container-fluid">
         <div class="row w-100 justify-content-end">
             <div class="col-9 text-left pl-0">
@@ -174,7 +176,8 @@
                             <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book pl-5" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
-                        <li class="nav-item px-3 my-2">
+                        <li class="nav-item px-3 my-2 position-relative">
+                            <div class="badge badge-danger rounded-pill">1</div>
                             <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #444444;"><i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i></a>
                         </li>
                         @guest
