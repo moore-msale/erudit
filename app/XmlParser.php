@@ -12,29 +12,29 @@ class XmlParser
     public static function parseExcel($excel)
     {
         $resultExcel = ExcelParser::parse(public_path('excels/'.$excel));
-        $temps = DB::table('temps')->orderBy('id')->chunk(1000, function ($temps) {
-            dd($temps);
-        });
-
-        foreach ($resultExcel as $index => $item) {
-            if (Book::where('name', $item[0])->first()) {
-                continue;
-            }
-            foreach (Temp::cursor() as $temp) {
-                if ($temp->name == $item[0]) {
-                    $book = new Book();
-                    $book->name = $temp->name;
-                    $book->image = $temp->image ? ImageService::store(file_get_contents($temp->image), 'book_') : null;
-                    $book->price_retail = $item[4];
-                    $book->price_wholesale = $item[5];
-                    $book->description = $temp->description;
-                    $book->save();
-                    Log::info('Temps found id '.$temp->id);
-                    $temp->delete();
-                    break;
+        DB::table('temps')->orderBy('id')->chunk(1000, function ($temps) use ($resultExcel) {
+            foreach ($resultExcel as $index => $item) {
+                if (Book::where('name', $item[0])->first()) {
+                    continue;
+                }
+                foreach ($temps as $temp) {
+                    if ($temp->name == $item[0]) {
+                        $book = new Book();
+                        $book->name = $temp->name;
+                        $book->image = $temp->image ? ImageService::store(file_get_contents($temp->image), 'book_') : null;
+                        $book->price_retail = $item[4];
+                        $book->price_wholesale = $item[5];
+                        $book->description = $temp->description;
+                        $book->save();
+                        Log::info('Temps found id '.$temp->id);
+                        $temp->delete();
+                        break;
+                    }
                 }
             }
-        }
+        });
+        Log::info('Excel succeeded');
+
     }
 
     public static function parse($url)
