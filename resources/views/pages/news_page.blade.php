@@ -11,16 +11,16 @@
 
         <div class="container mt-lg-4 mt-0 p-lg-0 p-5">
             <div class="row justify-content-center">
-                <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
-                    {{ $news->text1 }}
-                </p>
+                <div class="col-9" style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
+                    {!! $news->text1 !!}
+                </div>
                 <img class="w-100 h-100 mt-4" src="{{ asset('storage/'.$news->image1) }}" alt="">
 
             </div>
             <div class="row justify-content-center mt-5" style="color:#222;">
-                <p style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
-                    {{ $news->text2 }}
-                </p>
+                <div class="col-9" style="font-family: 'Futura PT'; font-size: 16px; line-height: 21px; text-align: justify; color: #222;">
+                    {!! $news->text2 !!}
+                </div>
                 <img class="w-100 h-100 mt-4" src="{{ asset('storage/'.$news->image2) }}" alt="">
             </div>
         </div>

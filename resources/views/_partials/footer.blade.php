@@ -10,7 +10,7 @@
             </h2>
 
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/delivery" class="text-white text-scale-white" style="text-decoration: none;">
                 Доставка и оплата
                 </a>
             </p>
