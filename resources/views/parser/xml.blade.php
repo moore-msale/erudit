@@ -30,7 +30,7 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="parseXml">
-                        <form action="{{ route('parser.parse', 'xml') }}" method="POST">
+                        <form action="{{ route('parser.parse', 'xml') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label>

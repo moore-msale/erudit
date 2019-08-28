@@ -3,6 +3,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use \Orchestra\Parser\Xml\Facade as XmlParse;
 
 class XmlParser
@@ -10,9 +12,13 @@ class XmlParser
     public static function parseExcel($excel)
     {
         $resultExcel = ExcelParser::parse(public_path('excels/'.$excel));
+        $temps = DB::table('temps')->orderBy('id')->chunk(1000, function ($temps) {
+            return $temps;
+        });
+        dd($temps);
 
         foreach ($resultExcel as $index => $item) {
-            if (count(Book::where('name', $item[0])->first())) {
+            if (Book::where('name', $item[0])->first()) {
                 continue;
             }
             foreach (Temp::cursor() as $temp) {
@@ -24,6 +30,9 @@ class XmlParser
                     $book->price_wholesale = $item[5];
                     $book->description = $temp->description;
                     $book->save();
+                    Log::info('Temps found id '.$temp->id);
+                    $temp->delete();
+                    break;
                 }
             }
         }

@@ -42,6 +42,9 @@ class ParseController extends Controller
         if (!$request->has('name')) {
             $request->merge(['name' => uniqid('xml_')]);
         }
+        if (!$request->has('urlForParse')) {
+            $request->merge(['urlForParse' => uniqid()]);
+        }
 
         $parson = Parson::create($request->request->all());
         ProcessExcel::dispatch($parson);
