@@ -13,9 +13,8 @@ class XmlParser
     {
         $resultExcel = ExcelParser::parse(public_path('excels/'.$excel));
         $temps = DB::table('temps')->orderBy('id')->chunk(1000, function ($temps) {
-            return $temps;
+            dd($temps);
         });
-        dd($temps);
 
         foreach ($resultExcel as $index => $item) {
             if (Book::where('name', $item[0])->first()) {
