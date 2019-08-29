@@ -1,8 +1,8 @@
 <div class="modal fade" id="book_feedback" tabindex="-1" role="form" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-secondary" id="exampleModalLabel">Оставьте свой отзыв.</h5>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-dark font-weight-bold" id="exampleModalLabel">Оставьте свой отзыв.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -12,25 +12,20 @@
                     <form class="text-secondary" action="{{ route('feedback.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <div class="form-row">
-                                <div class="form-group col-6">
-                                    <label for="recipient-name" class="col-form-label">Введите ваше ФИО:</label>
-                                    <input type="text" name="name" class="form-control" id="recipient-name" placeholder="Ваше ФИО" required>
-                                </div>
-                                <div class="form-group col-6 text-center pt-4">
-                                    <label for="like" class="col-form-label">Вам понравилась книга?</label>
-                                    <input class="w-50 h-25" type="checkbox" name="like" id="like">
-                                </div>
-                            </div>
+                            <label for="recipient-name">Имя <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control input-without-focus rounded-0 border-right-0 border-left-0 border-top-0 border-bottom" id="recipient-name" placeholder="Ваше ФИО" required>
+                        </div>
+                        <div class="form-group text-center pt-4">
+                            <label for="like" class="">Вам понравилась книга?
+                                <input class="" type="checkbox" name="like" id="like">
+                            </label>
                         </div>
                         <input type="hidden" name="book_id" value="{{ $book->id }}">
                         <div class="form-group">
-                            <p class="mt-3">
-                                Ваша рецензия :
-                            </p>
-                            <textarea class="form-control h6" id="message-text" name="comment" required></textarea>
+                            <label for="message-text">Ваша рецензия <span class="text-danger">*</span></label>
+                            <textarea class="form-control rounded-0" rows="5" id="message-text" name="comment" required></textarea>
                         </div>
-                        <button class="submit btn-primary ">Отправить</button>
+                        <button type="submit" class="text-fut-bold mt-3 pointer bg-primary text-white border-0 py-2 px-4" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 15px;">Отправить</button>
                     </form>
                 </div>
             </div>

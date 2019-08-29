@@ -9,7 +9,7 @@
         {{--var_dump(file_exists(storage_path('app\\public\\books\\'.$book->image)))--}}
         {{--@endphp--}}
             <h3 class="text-fut-book mt-3 text-left text-desc" style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
-                {{\Illuminate\Support\Str::limit($book->name,50,'...')  }}
+                {{ \Illuminate\Support\Str::limit($book->name,50,'...')  }}
         </h3>
         </a>
         <div class="p-0 text-left">

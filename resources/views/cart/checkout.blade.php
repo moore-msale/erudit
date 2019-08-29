@@ -24,6 +24,10 @@
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <label for="comment">Комментарий к заказу</label>
+                            <textarea id="comment" name="comment" rows="6" class="form-control scrollbar"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="col-12 col-lg-5 mt-4 mt-lg-0">

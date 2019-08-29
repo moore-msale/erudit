@@ -19,7 +19,7 @@
                             <i class="fas fa-arrow-right fa-sm"></i>
                         </span>
                     <span>
-                            {{ $book->name }}
+                            {{ \Illuminate\Support\Str::limit($book->name,30,'...') }}
                         </span>
                 </div>
                 <div class="col-lg-3 col-12 p-4">
@@ -84,7 +84,12 @@
                             {{--<div class="pt-4 bg-secondary">--}}
 
                             {{--</div>--}}
-
+                            <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
+                                О книге
+                            </h3>
+                            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
+                                {{ $book->description }}
+                            </p>
                             <div class="mt-4">
                                 <button  class="btn-primary text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
                                     Добавить в корзину
@@ -94,13 +99,6 @@
                     </div>
                 </div>
             </div>
-
-            <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
-                О книге
-            </h3>
-            <p class="col-10 px-0" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
-                {{ $book->description }}
-            </p>
 
 
 
@@ -121,7 +119,7 @@
                                     </div>
                                     <h3 class="text-fut-book mt-3 text-left"
                                         style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #222;">
-                                        {{\Illuminate\Support\Str::limit($same->name,50,'...')  }}
+                                        {{\Illuminate\Support\Str::limit($same->name,30,'...')  }}
                                     </h3>
                                 </a>
                                     <div class="p-0 text-left">

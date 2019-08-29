@@ -258,7 +258,7 @@
                             </div>
                             <h3 class="text-fut-book mt-3 text-left"
                                 style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
-                                {{\Illuminate\Support\Str::limit($book->name,50,'...')  }}
+                                {{ \Illuminate\Support\Str::limit($book->name,50,'...')  }}
                             </h3>
                     </a>
                     <div class="p-0 text-left">
