@@ -49,15 +49,15 @@
     @endpush
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
-            <div class="row bg-white shadow px-3 pt-3 mt-lg-0 mt-5">
-                <div class="col-lg-3 col-12 pb-1">
+            <div class="row align-items-center bg-white shadow px-3 py-3">
+                <div class="col-lg-3 col-12">
                     <h3 class="text-fut-bold pl-3 mb-0 text-lg-left text-center"
                         style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                         Магазин
                     </h3>
                 </div>
-                <div class="col-lg-2 col-12 text-center pt-2">
-                    <div class="dropdown open pb-1" style=" display: flex; align-items: center; text-align: center; cursor: pointer;">
+                <div class="col-lg-2 col-12 text-center">
+                    <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; cursor: pointer;">
                         <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto"
                            style="border:0; font-size:20px; color: #222;" id="dropdownMenuButton"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,12 +72,12 @@
                     </div>
                 </div>
                 <div class="col-lg-1 col-12 pr-0 text-lg-right text-center">
-                    <p class="text-fut-book"
+                    <p class="text-fut-book m-0"
                        style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: #222;">
                         Цена
                     </p>
                 </div>
-                <div class="col-lg-3 col-12 pb-1">
+                <div class="col-lg-3 col-12">
                     <div class="slidecontainer">
                         <span class="text-fut-book" style="font-size: 14px;">мин: <span id="demo"></span> сом</span>
                         <span class="text-fut-book" style="float:right; font-size: 14px;">макс: 15000 сом</span>
@@ -85,10 +85,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                    <p class="text-fut-book"
+                    <div class="text-fut-book"
                        style="font-size: 20px; line-height: 120%; letter-spacing: 0.05em; color: #222;">
-                        <input type="text" class="border-bottom form-control" id="search_input" placeholder="Поиск">
-                    </p>
+                        <input type="text" class="border-bottom rounded-0 border-top-0 border-left-0 border-right-0 form-control input-without-focus" id="search_input" placeholder="Поиск">
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
@@ -383,7 +383,7 @@
                         let paginationDots = paginationWithDots(data.books.current_page, data.books.last_page);
                         if (data.books.last_page > 1) {
                             if (data.books.current_page != 1) {
-                                pagination.append('<li class="page-item"><a class="page-link" data-page="' + (data.books.current_page - 1) + '" href="#">Пред</a></li>');
+                                pagination.append('<li class="page-item d-none d-sm-inline-block"><a class="page-link" data-page="' + (data.books.current_page - 1) + '" href="#">Пред</a></li>');
                             }
                         }
                         for (let item of paginationDots) {
@@ -398,7 +398,7 @@
                         }
                         if (data.books.last_page > 1) {
                             if (data.books.current_page != data.books.last_page) {
-                                pagination.append('<li class="page-item"><a class="page-link" data-page="' + (data.books.current_page + 1) + '" href="#">След</a></li>');
+                                pagination.append('<li class="page-item d-none d-sm-inline-block"><a class="page-link" data-page="' + (data.books.current_page + 1) + '" href="#">След</a></li>');
                             }
                         }
                     }

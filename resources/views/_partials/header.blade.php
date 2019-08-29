@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row w-100 pt-4 down-menu mx-5">
+        <div class="row w-100 pt-4 down-menu mx-0 align-items-center">
             <nav class="col-6 pt-1">
                 <ul class="navbar-nav" id="pick">
                     <li class="nav-item px-3">
@@ -61,10 +61,10 @@
                     </li>
                     <li class="nav-item px-3">
                         <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
-                            <a class="text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #444;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #444;" id="dropdownMenuButtonGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Жанры
                             </a>
-                            <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton" style="overflow-y:scroll; height:70vh;">
+                            <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">
                                 @foreach(\App\Genre::all() as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="/catalog">
@@ -126,7 +126,7 @@
 </nav>
 <nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-lg-none d-block" style="z-index: 999; position: fixed;">
     <div class="container-fluid">
-        <div class="row w-100 justify-content-end">
+        <div class="row align-items-center w-100 justify-content-end">
             <div class="col-9 text-left pl-0">
                 <a href="/">
                 <img src="{{ asset('images/logo2.png') }}" alt="">
@@ -199,5 +199,26 @@
         </div>
     </div>
 </nav>
+
+@push('scripts')
+    <script>
+        $('#dropdownMenuButtonGenre').hover(e => {
+            let btn = $(e.currentTarget);
+            let dropdown = btn.siblings('.dropdown-menu');
+
+            dropdown.addClass('show');
+            dropdown.hover(e => {
+                $(e.currentTarget).addClass('show');
+            }, e => {
+                $(e.currentTarget).removeClass('show');
+            });
+        }, e => {
+            let btn = $(e.currentTarget);
+            let dropdown = btn.siblings('.dropdown-menu');
+
+            dropdown.removeClass('show');
+        });
+    </script>
+@endpush
 
 

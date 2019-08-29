@@ -1,4 +1,4 @@
-<nav class="nav flex-column text-left" id="search-result-ajax" style="max-height: 500px;overflow-y: auto; width: 350px; overflow-x: hidden;">
+<nav class="nav flex-column text-left scrollbar" id="search-result-ajax" style="max-height: 500px;overflow-y: auto; width: 350px; overflow-x: hidden;">
 
 @if($count)
     @foreach($result as $key => $items)

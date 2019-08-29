@@ -278,26 +278,36 @@ body
  *  STYLE 2
  */
 
-#search-result-ajax::-webkit-scrollbar-track
+.scrollbar::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
 }
+.dropdown-toggle:after {
+     display: inline-block;
+     margin-left: .255em;
+     vertical-align: .155em;
+     content: "";
+     border-top: .3em solid;
+     border-right: .3em solid transparent;
+     border-bottom: 0;
+     border-left: .3em solid transparent;
+ }
 
-#search-result-ajax::-webkit-scrollbar
+.scrollbar::-webkit-scrollbar
 {
     width: 5px;
     border-radius: 50%;
     background-color: #F5F5F5;
 }
 
-#search-result-ajax::-webkit-scrollbar-thumb
+.scrollbar::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #d4cdd6;
 }
-#search-input-select2:active, #search-input-select2:focus, #search-input-select2:visited {
+.input-without-focus:active, .input-without-focus:focus, .input-without-focus:visited {
     border: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
