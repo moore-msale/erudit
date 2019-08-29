@@ -5,7 +5,7 @@
                 <nav class="mr-md-auto ml-0">
                     <ul class="navbar-nav" id="pick">
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Контакты</a>
+                            <a href="/contacts" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Контакты</a>
                         </li>
                         <li class="nav-item px-3">
                             <a href="/delivery" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>

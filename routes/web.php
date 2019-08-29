@@ -37,6 +37,9 @@ Route::get('/login', function () {
 Route::get('/about_us', function () {
     return view('pages.about_us');
 });
+Route::get('/contacts', function () {
+    return view('pages.contacts');
+});
 Route::get('/delivery', function () {
     return view('pages.delivery');
 });
