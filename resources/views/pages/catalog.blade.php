@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-12">
-                    <div class="row px-lg-4 px-1" id="books_catalog">
+                    <div class="row px-lg-4 px-1 mb-4" id="books_catalog">
 
                     </div>
                         <nav aria-label="Page navigation example">
@@ -263,6 +263,9 @@
             let val = btn.data('value');
 
             params.genre = val;
+            if (params.page) {
+                params.page = 1;
+            }
             getProducts(params);
         });
 
@@ -273,6 +276,9 @@
             let val = input.val();
 
             params.search = val;
+            if (params.page) {
+                params.page = 1;
+            }
             getProducts(params);
         });
 
@@ -285,9 +291,15 @@
             if (type == 'Name') {
                 params.sortName = val;
                 params.sortPrice = null;
+                if (params.page) {
+                    params.page = 1;
+                }
             } else {
                 params.sortPrice = val;
                 params.sortName = null;
+                if (params.page) {
+                    params.page = 1;
+                }
             }
             getProducts(params);
         });
@@ -298,6 +310,9 @@
 
             params.min = val;
             params.max = 15000;
+            if (params.page) {
+                params.page = 1;
+            }
 
             getProducts(params)
         });
@@ -309,9 +324,10 @@
                 let btn = $(e.currentTarget);
                 let page = btn.data('page');
 
-                params.page = page;
-
-                getProducts(params);
+                if (page) {
+                    params.page = page;
+                    getProducts(params);
+                }
             })
         }
     </script>
@@ -322,6 +338,38 @@
         @else
             getProducts();
         @endif
+
+        function paginationWithDots(c, m) {
+            var current = c,
+                last = m,
+                delta = 1,
+                left = current - delta,
+                right = current + delta + 1,
+                range = [],
+                rangeWithDots = [],
+                l;
+
+            for (let i = 1; i <= last; i++) {
+                if (i == 1 || i == last || i >= left && i < right) {
+                    range.push(i);
+                }
+            }
+
+            for (let i of range) {
+                if (l) {
+                    if (i - l === 2) {
+                        rangeWithDots.push(l + 1);
+                    } else if (i - l !== 1) {
+                        rangeWithDots.push('...');
+                    }
+                }
+                rangeWithDots.push(i);
+                l = i;
+            }
+
+            return rangeWithDots;
+        }
+
         function getProducts(params = {})
         {
             $.ajax({
@@ -331,15 +379,27 @@
                     console.log(data);
                     let pagination = $('ul.pagination');
                     pagination.empty();
-                    pagination.append('<li class="page-item"><a class="page-link" href="#">Пред</a></li>');
-                    for (let i = 0; i < data.books.last_page; i++) {
-                        if (data.books.current_page == (i + 1)) {
-                            pagination.append('<li class="page-item active"><a class="page-link" data-page="'+(i + 1)+'" href="#">'+(i + 1)+'</a></li>');
-                        } else {
-                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+(i + 1)+'" href="#">'+(i + 1)+'</a></li>');
+                    let paginationDots = paginationWithDots(data.books.current_page, data.books.last_page);
+                    if (data.books.last_page > 1) {
+                        if (data.books.current_page != 1) {
+                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+ (data.books.current_page - 1) +'" href="#">Пред</a></li>');
                         }
                     }
-                    pagination.append('<li class="page-item"><a class="page-link" href="#">След</a></li>');
+                    for (let item of paginationDots) {
+                        if (item == '...') {
+                            console.log(item == '...');
+                            pagination.append('<li class="disabled"><a class="page-link disabled" disabled onclick="event.preventDefault()">'+item+'</a></li>');
+                        } else if (item == data.books.current_page){
+                            pagination.append('<li class="page-item active"><a class="page-link" data-page="'+item+'" href="#">'+item+'</a></li>');
+                        } else {
+                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+item+'" href="#">'+item+'</a></li>');
+                        }
+                    }
+                    if (data.books.last_page > 1) {
+                        if (data.books.current_page != data.books.last_page) {
+                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+ (data.books.current_page + 1) +'" href="#">След</a></li>');
+                        }
+                    }
                     pagination.find('.page-link').each((e, i) => {
                         registerPageButtons($(i));
                     });
