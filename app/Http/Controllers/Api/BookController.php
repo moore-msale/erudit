@@ -17,6 +17,7 @@ class BookController extends Controller
                 'books' => $books,
             ])->render(),
             'books' => $books,
+            'count' => count($books),
             'filters' => $request->query->all(),
         ]);
     }

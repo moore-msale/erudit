@@ -379,25 +379,27 @@
                     console.log(data);
                     let pagination = $('ul.pagination');
                     pagination.empty();
-                    let paginationDots = paginationWithDots(data.books.current_page, data.books.last_page);
-                    if (data.books.last_page > 1) {
-                        if (data.books.current_page != 1) {
-                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+ (data.books.current_page - 1) +'" href="#">Пред</a></li>');
+                    if (data.count) {
+                        let paginationDots = paginationWithDots(data.books.current_page, data.books.last_page);
+                        if (data.books.last_page > 1) {
+                            if (data.books.current_page != 1) {
+                                pagination.append('<li class="page-item"><a class="page-link" data-page="' + (data.books.current_page - 1) + '" href="#">Пред</a></li>');
+                            }
                         }
-                    }
-                    for (let item of paginationDots) {
-                        if (item == '...') {
-                            console.log(item == '...');
-                            pagination.append('<li class="disabled"><a class="page-link disabled" disabled onclick="event.preventDefault()">'+item+'</a></li>');
-                        } else if (item == data.books.current_page){
-                            pagination.append('<li class="page-item active"><a class="page-link" data-page="'+item+'" href="#">'+item+'</a></li>');
-                        } else {
-                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+item+'" href="#">'+item+'</a></li>');
+                        for (let item of paginationDots) {
+                            if (item == '...') {
+                                console.log(item == '...');
+                                pagination.append('<li class="disabled"><a class="page-link disabled" disabled onclick="event.preventDefault()">' + item + '</a></li>');
+                            } else if (item == data.books.current_page) {
+                                pagination.append('<li class="page-item active"><a class="page-link" data-page="' + item + '" href="#">' + item + '</a></li>');
+                            } else {
+                                pagination.append('<li class="page-item"><a class="page-link" data-page="' + item + '" href="#">' + item + '</a></li>');
+                            }
                         }
-                    }
-                    if (data.books.last_page > 1) {
-                        if (data.books.current_page != data.books.last_page) {
-                            pagination.append('<li class="page-item"><a class="page-link" data-page="'+ (data.books.current_page + 1) +'" href="#">След</a></li>');
+                        if (data.books.last_page > 1) {
+                            if (data.books.current_page != data.books.last_page) {
+                                pagination.append('<li class="page-item"><a class="page-link" data-page="' + (data.books.current_page + 1) + '" href="#">След</a></li>');
+                            }
                         }
                     }
                     pagination.find('.page-link').each((e, i) => {
