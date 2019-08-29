@@ -16,9 +16,12 @@ class MainController extends Controller
         $result = $result->merge(collect(['Канцелярские товары' => Book::where('name', 'like', '%' . $search. '%')->where('type', 'stuff')->get()]));
         $result = $result->merge(collect(['Учебные материалы' => Book::where('name', 'like', '%' . $search. '%')->where('type', 'school')->get()]));
         if ($request->ajax()) {
-            return response()->json(view('_partials.search-result-ajax', [
-                'result' => $result,
-            ])->render());
+            return response()->json([
+                'html' => view('_partials.search-result-ajax', [
+                    'result' => $result,
+                    'count' => count($result->collapse()),
+                ])->render(),
+            ]);
         }
         return view('_partials.search-result', [
             'result' => $result,
