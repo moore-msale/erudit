@@ -46,7 +46,7 @@
                         @endforeach
                     </div>
                     <p class="col-auto mt-4 font-weight-bold h3 mb-5">Итого: {{ $total }} сом</p>
-                    <a href="#" class="btn-success text-fut-book but-hov mx-auto text-white p-2 w-100 mt-4" style="font-size: 13px; border:0; cursor: pointer;" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Оформить</a>
+                    <a href="#" class="btn-success text-fut-book but-hov mx-auto text-white p-2 w-100 mt-4 h3" style="font-size: 13px; border:0; cursor: pointer;" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Оформить</a>
                 </div>
             </div>
         </div>

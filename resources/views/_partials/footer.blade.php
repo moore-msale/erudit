@@ -20,22 +20,22 @@
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
                 Акции
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/#news" class="text-white text-scale-white" style="text-decoration: none;">
                 Новости
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
                 Новинки
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/#bestseller" class="text-white text-scale-white" style="text-decoration: none;">
                 Бестселлеры
                 </a>
             </p>
@@ -47,35 +47,30 @@
             </h2>
 
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/login" class="text-white text-scale-white" style="text-decoration: none;">
                 Войти
-                </a>
-            </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
-                Регистрация
                 </a>
             </p>
             <p class="text-fut-bold pb-lg-0 pb-4 pt-lg-0 pt-4" style="font-size: 20px;line-height: 120%;letter-spacing: 0.05em;color: #FFFFFF;">
                 Категории
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/catalog" class="text-white text-scale-white" style="text-decoration: none;">
                 Учебные материалы
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/catalog" class="text-white text-scale-white" style="text-decoration: none;">
                 Канцелярия
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/catalog" class="text-white text-scale-white" style="text-decoration: none;">
                 Товары для творчества
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                <a href="/catalog" class="text-white text-scale-white" style="text-decoration: none;">
                 Настольные игры
                 </a>
             </p>
@@ -89,7 +84,13 @@
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                 <a href="" class="text-white text-scale-white" style="text-decoration: none;">
                     Книжный магазин "Эрудит"
-                    "DORDOI Plaza-2" -1 этаж
+                    <br>"DORDOI Plaza-2" -1 этаж
+                </a>
+            </p>
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
+                    Книжный магазин "Эрудит"
+                    <br>"IMall" 1 этаж
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">

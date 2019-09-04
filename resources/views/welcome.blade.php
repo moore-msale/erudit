@@ -20,7 +20,7 @@
     </div>
     <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;" src="{{ asset('images/main-pic.png') }}" alt="">
 </div>
-<div class="container-fluid pt-5 position-relative">
+<div class="container-fluid pt-5 position-relative" id="bestseller">
     <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 5%;" alt="">
     <div class="row pb-5">
         <div class="col-12">
@@ -102,7 +102,7 @@
 </div>
 </div>
 
-    <div class="container-fluid sells-sector position-relative"
+    <div class="container-fluid sells-sector position-relative" id="actions"
          style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
         <img src="{{ asset('images/svg/7.svg') }}" class="position-absolute scroll-svg-up" style="left: -2%; top: 45%;" alt="">
         <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-down" style="right: -2%; top: 45%;" alt="">
@@ -229,7 +229,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-12 pl-lg-5 pl-4">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-lg-4 col-12 pt-lg-0 pt-5">
                         <h3 class="text-fut-bold"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #444444;">
@@ -245,7 +245,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row mt-4 pt-2">
+                <div class="row mt-4 pt-2 justify-content-center">
                     @foreach($books as $book)
                         @if($book->new == 1)
                         @if($loop->index == 6)
@@ -557,13 +557,14 @@
         </div>
     </div>
 
-    <div class="container pt-lg-0 pt-5 pb-5">
+    <div class="container pt-lg-0 pt-5 pb-5" id="news">
         <div class="row px-lg-5 px-1">
-            <div class="col-12 pb-4">
+            <div class="col-12 pb-4 d-flex align-items-center">
                 <h2 class="text-fut-bold"
                     style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #444444;">
                     Интересное
                 </h2>
+                <a href="/news" class="ml-5">читать все статьи</a>
             </div>
             @foreach($news as $new)
                 <div class="col-lg-4 col-12 pt-lg-0 pt-4">

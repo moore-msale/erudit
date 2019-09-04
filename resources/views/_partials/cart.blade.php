@@ -3,16 +3,16 @@
     @if(count($cartItems))
 
         <div class="row">
-            <div class="col-4">
+            <div class="col-4 h3">
                 Товар
             </div>
-            <div class="col-2">
+            <div class="col-2 h3">
                 Цена
             </div>
-            <div class="col-3">
+            <div class="col-3 h3">
                 Кол-во
             </div>
-            <div class="col-3">
+            <div class="col-3 h3">
                 Цена
             </div>
         </div>
@@ -41,10 +41,10 @@
         @endforeach
 
         <div class="row mt-3">
-            <div class="col-9">
+            <div class="col-9 h3">
                 Итоговая цена:
             </div>
-            <div class="col-3">
+            <div class="col-3 h4">
                 {{ $total }} сом
             </div>
         </div>
@@ -54,7 +54,7 @@
         </div>
     @endif
     <div class="text-right pt-4">
-        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0">
+        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}" class="m-3 bg-success p-2 text-fut-book text-white but-hov border-0 h4">
             Оформить заказ
         </a>
     </div>
