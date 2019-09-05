@@ -122,6 +122,7 @@
                         btn.removeClass("btn-success").dequeue();
                     });
                     $('.carts').addClass('btn-success');
+                    doBounce($('.cart-count'), 3, '5px', 90);
                     cart = fetchCart();
                 },
                 error: () => {
@@ -129,6 +130,12 @@
                 }
             });
         });
+    }
+    function doBounce(element, times, distance, speed) {
+        for(var i = 0; i < times; i++) {
+            element.animate({marginTop: '-='+distance}, speed)
+                .animate({marginTop: '+='+distance}, speed);
+        }
     }
     function registerCartRemoveButtons(data) {
 
