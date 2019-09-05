@@ -205,7 +205,7 @@
     });
 
     function freshCartHtml(html, total) {
-        total > 0 ? $('.cart-count').html(total) : $('.cart-count').html('');
+        total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').removeClass('d-flex').html('');
         return $('.modal-body-cart').html(html);
     }
 
