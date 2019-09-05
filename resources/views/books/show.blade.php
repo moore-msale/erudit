@@ -87,7 +87,7 @@
                             <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
                                 О книге
                             </h3>
-                            <p class="col-10 px-0 text-center text-md-left" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
+                            <p class="col-12 col-md-10 px-0 text-center text-md-left" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
                                 {{ $book->description }}
                             </p>
                             <div class="mt-4">
@@ -113,7 +113,7 @@
                                 <div class="shadow p-4 h-100">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
-                                        <img class="w-100 h-100" style="height: 60%;" src="{{ file_exists(storage_path('app/public/'.$same->image)) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
+                                        <img class="w-100 h-100" style="height: 60%;" src="{{ file_exists('storage/'.$same->image) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
 
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>
@@ -138,9 +138,13 @@
                                 <div class="container-fluid mr-0 pr-0">
                                     <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
 
-                                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100" data-id="{{ $same->id }}" data-aos="fade-up"
+                                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none" data-id="{{ $same->id }}" data-aos="fade-up"
                                                 style="font-size: 13px; border:0; cursor: pointer;">
                                             Добавить в корзину
+                                        </button>
+                                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block" data-id="{{ $same->id }}" data-aos="fade-up"
+                                                style="font-size: 13px; border:0; cursor: pointer;">
+                                            В корзину
                                         </button>
                                     </div>
                                 </div>

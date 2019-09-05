@@ -127,12 +127,20 @@
 <nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-lg-none d-block" style="z-index: 999; position: fixed;">
     <div class="container-fluid">
         <div class="row align-items-center w-100 justify-content-end">
-            <div class="col-9 text-left pl-0">
+            <div class="col text-left">
                 <a href="/">
                 <img src="{{ asset('images/logo2.png') }}" alt="">
                 </a>
             </div>
-            <div class="col-auto my-auto d-xl-none">
+            <div class="col-auto px-0">
+                <ul class="nav">
+                    <li class="nav-item px-3 my-2 position-relative">
+                        <div class="badge badge-danger rounded-pill position-absolute cart-count" style="top: -10px; right: 0;">1</div>
+                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;"><img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-auto pl-0 my-auto d-xl-none">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <i class="fas fa-bars fa-lg text-doc "></i>
                 </button>
@@ -173,12 +181,8 @@
                             <a href="tel:+996 501 433 433" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 501 433 433</a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
-                            <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book pl-5" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
-                        </li>
-                        <li class="nav-item px-3 my-2 position-relative">
-                            <div class="badge badge-danger rounded-pill">1</div>
-                            <a href="#" class="text-fut-book cart" style="text-decoration: none; color: #444444;"><i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i></a>
+                            <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         @guest
                         <li class="nav-item px-3 my-2">
