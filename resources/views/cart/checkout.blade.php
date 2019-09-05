@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-7 col-12">
                     <h2 class="font-weight-bold">Оформите заказ</h2>
-                    <form action="{{ route('cart.store') }}" class="p-4 w-75" style="background: #a6ccda;" method="POST">
+                    <form action="{{ route('cart.store') }}" class="p-4 col-12 col-md-10" style="background: #a6ccda;" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name">Имя <span class="text-danger">*</span></label>
@@ -46,7 +46,7 @@
                         @endforeach
                     </div>
                     <p class="col-auto mt-4 font-weight-bold h3 mb-5">Итого: {{ $total }} сом</p>
-                    <a href="#" class="btn-success text-fut-book but-hov mx-auto text-white p-2 w-100 mt-4 h3" style="font-size: 13px; border:0; cursor: pointer;" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Оформить</a>
+                    <a href="#" class="btn-primary text-fut-book but-hov mx-auto text-white p-2 w-100 mt-4 h3" style="font-size: 13px; border:0; cursor: pointer;" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">Оформить</a>
                 </div>
             </div>
         </div>

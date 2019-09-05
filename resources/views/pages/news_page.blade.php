@@ -9,16 +9,16 @@
         </div>
         </div>
 
-        <div class="container mt-lg-4 mt-0 p-lg-0 p-5">
+        <div class="container mt-lg-4 mt-0 p-3 p-md-0">
             <div class="row justify-content-center">
-                <div class="col-9 text-fut-book text-dark" style="font-size: 130%;">
+                <div class="col-12 col-md-10 text-fut-book text-dark" style="font-size: 130%;">
                     {!! $news->text1 !!}
                 </div>
                 <img class="w-100 h-100 mt-4" src="{{ asset('storage/'.$news->image1) }}" alt="">
 
             </div>
             <div class="row justify-content-center mt-5" style="color:#222;">
-                <div class="col-9 text-fut-book" style="font-size: 130%;">
+                <div class="col-12 col-md-10 text-fut-book" style="font-size: 130%;">
                     {!! $news->text2 !!}
                 </div>
                 <img class="w-100 h-100 mt-4" src="{{ asset('storage/'.$news->image2) }}" alt="">
