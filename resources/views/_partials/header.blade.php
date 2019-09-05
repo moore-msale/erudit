@@ -1,4 +1,4 @@
-<nav class="navbar menuse navbar-expand-xl py-3 w-100 pr-0 d-lg-block d-none" style="z-index: 999; background: transparent; position: fixed;">
+<nav class="navbar menuse navbar-expand-xl py-3 w-100 pr-0 d-xl-block d-none" style="z-index: 999; background: transparent; position: fixed;">
     <div class="container-fluid top-menu">
         <div class="row w-100 mx-5 pb-3" style="border-bottom: 1px #D9D9D9 solid;">
             <div class="col-lg-5 collapse navbar-collapse">
@@ -124,7 +124,7 @@
         </div>
     </div>
 </nav>
-<nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-lg-none d-block" style="z-index: 999; position: fixed;">
+<nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-xl-none d-block" style="z-index: 999; position: fixed;">
     <div class="container-fluid">
         <div class="row align-items-center w-100 justify-content-end">
             <div class="col text-left">
