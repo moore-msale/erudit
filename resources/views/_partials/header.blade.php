@@ -146,7 +146,7 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse col-md-11 col-12"  id="navbarSupportedContent">
-                <nav class="mr-auto ml-0">
+                <nav class="mr-auto ml-0" style="max-height: 400px; overflow-y: auto;">
                     <ul class="navbar-nav mb-3">
                         <li class="nav-item px-3 my-2">
                             <a href="/" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Главная</a>
@@ -154,20 +154,19 @@
                         <li class="nav-item px-3 my-2">
                             <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Магазин</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
-                                <a class="dropdown-toggle text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #444;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Жанры
-                                </a>
-                                <div class="dropdown-menu text-fut-book" aria-labelledby="dropdownMenuButton">
-                                    @foreach(\App\Genre::all() as $genre)
-                                        <p class="px-3 pb-2 mb-0">
-                                            <a href="/catalog">
-                                                {{ $genre->name }}
-                                            </a>
-                                        </p>
-                                    @endforeach
-                                </div>
+
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Жанры
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach(\App\Genre::all() as $genre)
+                                    <p class="px-3 pb-2 mb-0">
+                                        <a href="/catalog">
+                                            {{ $genre->name }}
+                                        </a>
+                                    </p>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item px-3 my-2">
