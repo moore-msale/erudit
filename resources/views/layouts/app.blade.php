@@ -109,7 +109,6 @@
 
             let btn = $(e.currentTarget);
             let id = btn.data('id');
-            let token = token;
             let cart = null;
 
             $.ajax({
@@ -174,7 +173,6 @@
 
             let btn = $(e.currentTarget);
             let id = btn.data('id');
-            let token = '{{ Session::has('token') ? Session::get('token') : uniqid() }}';
             let cart = null;
 
             $.ajax({
