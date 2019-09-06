@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$hamburger-layer-width         : 20px !default;
+$hamburger-layer-height        : 2px !default;
+$hamburger-layer-spacing       : 4px !default;
+@import "~hamburgers/_sass/hamburgers/hamburgers";

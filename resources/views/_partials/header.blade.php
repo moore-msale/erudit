@@ -141,9 +141,11 @@
                 </ul>
             </div>
             <div class="col-auto pl-0 my-auto d-xl-none">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <i class="fas fa-bars fa-lg text-doc "></i>
-                </button>
+                <div class="hamburger hamburger--collapse" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
             </div>
             <div class="collapse navbar-collapse col-md-11 col-12"  id="navbarSupportedContent">
                 <nav class="mr-auto ml-0" style="max-height: 400px; overflow-y: auto;">
@@ -220,6 +222,18 @@
             let dropdown = btn.siblings('.dropdown-menu');
 
             dropdown.removeClass('show');
+        });
+    </script>
+
+    <script>
+        $('.hamburger').click(e => {
+            let status = $('.hamburger').attr('aria-expanded');
+            if (status != 'true') {
+                $('.hamburger').addClass('is-active');
+            }
+            if (status != 'false') {
+                $('.hamburger').removeClass('is-active');
+            }
         });
     </script>
 @endpush
