@@ -18,5 +18,7 @@ class TokenResolve
         } else {
             Session::put('token', $token);
         }
+
+        return Session::get('token');
     }
 }

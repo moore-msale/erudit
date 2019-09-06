@@ -65,7 +65,7 @@ class CartController extends Controller
     {
         $token = $request->token ? $request->token : uniqid();
 
-        TokenResolve::resolve($token);
+        $token = TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
 
         Session::put('cart', $cart->getContent());
@@ -98,7 +98,7 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
-        TokenResolve::resolve($token);
+        $token = TokenResolve::resolve($token);
 
         Cart::add($book, $count, $token);
         Session::put('cart', CartFacade::session($token)->getContent());
@@ -126,7 +126,7 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
-        TokenResolve::resolve($token);
+        $token = TokenResolve::resolve($token);
 
         if (!Cart::remove($book, $count, $token)) {
             return response()->json([
@@ -160,7 +160,7 @@ class CartController extends Controller
                 'status' => 'error'
             ]);
         }
-        TokenResolve::resolve($token);
+        $token = TokenResolve::resolve($token);
 
         if (!Cart::deleteBook($book, $token)) {
             return response()->json([

@@ -74,11 +74,13 @@
     });
 </script>
 <script>
+    let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+
     function fetchCart() {
         $.ajax({
             url: '{{ route('cart.index') }}',
             data: {
-                token: '{{ Session::has('token') ? Session::get('token') : uniqid() }}'
+                token: token
             },
             success: data => {
                 console.log(data);
@@ -107,7 +109,7 @@
 
             let btn = $(e.currentTarget);
             let id = btn.data('id');
-            let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
+            let token = token;
             let cart = null;
 
             $.ajax({
@@ -145,7 +147,6 @@
 
             let btn = $(e.currentTarget);
             let id = btn.data('id');
-            let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
             let cart = null;
 
             $.ajax({
