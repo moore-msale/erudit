@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="nav-item px-3 position-relative">
-                            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                            <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
                                 <div class="badge badge-danger rounded-circle shadow small position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -8px; right: 5px;"></div>
                                 {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg"></i>--}}
                                 <img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
@@ -94,7 +94,7 @@
                         @include('_partials.search')
                     </li>
                 <li class="nav-item px-3 mr-4 pt-1 ico-menu position-relative" style="display: none;">
-                    <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
+                    <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
                         <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: 5px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
                         <img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
@@ -136,7 +136,7 @@
                 <ul class="nav">
                     <li class="nav-item px-3 my-2 position-relative">
                         <div class="badge badge-danger rounded-pill position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -10px; right: 0;"></div>
-                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;"><img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt=""></a>
+                        <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;"><img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt=""></a>
                     </li>
                 </ul>
             </div>

@@ -76,6 +76,10 @@
 <script>
     let token = "{{ Session::has('token') ? Session::get('token') : uniqid() }}";
 
+    let url = $('.cart').attr('href');
+    url += '?token=' + token;
+    $('.cart').attr('href', url);
+
     function fetchCart() {
         $.ajax({
             url: '{{ route('cart.index') }}',
