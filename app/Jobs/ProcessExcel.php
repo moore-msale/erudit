@@ -13,6 +13,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Matrix\Exception;
 
 class ProcessExcel implements ShouldQueue
 {
@@ -85,7 +86,13 @@ class ProcessExcel implements ShouldQueue
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $product[2] ? ImageService::store(file_get_contents($product[2]), 'book_') : null;
+                                            $file = null;
+                                            try {
+                                                $file = file_get_contents($product[2]);
+                                            } catch (Exception $exception) {
+                                                $file = null;
+                                            }
+                                            $newBook->image = $product[2] ? ImageService::store($file, 'book_') : null;
                                             $newBook->save();
                                             $count++;
                                         }
@@ -100,7 +107,13 @@ class ProcessExcel implements ShouldQueue
                                             $newBook->description = $book[1];
                                             $newBook->price_retail = $item[4];
                                             $newBook->price_wholesale = $item[5];
-                                            $newBook->image = $product[2] ? ImageService::store(file_get_contents($product[2]), 'book_') : null;
+                                            $file = null;
+                                            try {
+                                                $file = file_get_contents($product[2]);
+                                            } catch (Exception $exception) {
+                                                $file = null;
+                                            }
+                                            $newBook->image = $product[2] ? ImageService::store($file, 'book_') : null;
                                             $newBook->save();
                                             $count++;
                                         }
@@ -118,7 +131,13 @@ class ProcessExcel implements ShouldQueue
                                 $newBook->description = $book[1];
                                 $newBook->price_retail = $item[4];
                                 $newBook->price_wholesale = $item[5];
-                                $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
+                                $file = null;
+                                try {
+                                    $file = file_get_contents($book[2]);
+                                } catch (Exception $exception) {
+                                    $file = null;
+                                }
+                                $newBook->image = $book[2] ? ImageService::store($file, 'book_') : null;
                                 $newBook->save();
                                 $count++;
                             }
@@ -130,7 +149,13 @@ class ProcessExcel implements ShouldQueue
                         $newBook = new Book();
                         $newBook->name = $book[0];
                         $newBook->description = $book[1];
-                        $newBook->image = $book[2] ? ImageService::store(file_get_contents($book[2]), 'book_') : null;
+                        $file = null;
+                        try {
+                            $file = file_get_contents($book[2]);
+                        } catch (Exception $exception) {
+                            $file = null;
+                        }
+                        $newBook->image = $book[2] ? ImageService::store($file, 'book_') : null;
                         $newBook->save();
                     }
                 }
