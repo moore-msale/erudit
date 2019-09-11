@@ -18,7 +18,7 @@ class HtmlParser
 //        $replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
 //        $data = preg_replace($replacements, $entities, $data);
         $data = rawurlencode($data);
-        $html = file_get_contents($url.$params['searchUrl'].'/'.$data.'/');
+        $html = file_get_contents($url.$params['searchUrl'].$data);
         $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
             Log::info('Failed url ... ' . $index);
