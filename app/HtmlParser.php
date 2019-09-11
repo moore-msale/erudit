@@ -76,7 +76,7 @@ class HtmlParser
         $result = [];
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                $result[] = [$names[$i]->plaintext, $urls[$i]->href, $images[$i]->attr['data-src']];
+                $result[] = [$names[$i]->plaintext, $urls[$i]->href, isset($images[$i]->attr['data-src']) ? $images[$i]->attr['data-src'] : $images[$i]->attr['src']];
             }
         }
 
