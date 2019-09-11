@@ -141,7 +141,7 @@ class HtmlParser
             Log::info('Searching for book image in his page ... ' . $index);
             $image = $html->find($params['image']);
             if (count($image)) {
-                $image = $image[0]->attr['data-src'];
+                $image = isset($image[0]->attr['data-src']) ? $image[0]->attr['data-src'] : $image[0]->attr['src'];
                 Log::info('Found book image in his page ... ' . $index);
             } else {
                 $image = null;
