@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="text-uppercase text-muted h5 py-4">Корзина</h2>
+    <h1 class="text-uppercase h3 py-4">Корзина</h1>
     @if(count($cartItems))
 
         <div class="row d-none d-md-flex">
@@ -42,20 +42,26 @@
             </div>
         @endforeach
 
-        <div class="row align-items-center mt-3">
-            <div class="col-6 h5">
-                Итоговая цена:
+        <div class="row justify-content-end mt-5 py-5">
+            <div class="col-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
+                <div class="col-6 m-0 h6 font-weight-bold">
+                    Итого
+                </div>
+                <div class="col-6 m-0 h5 font-weight-bold">
+                    {{ $total }} сом
+                </div>
             </div>
-            <div class="col-6 h5">
-                {{ $total }} сом
+            <div class="w-100"></div>
+            <div class="col-4 p-0 mt-1">
+                <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}" class="btn btn-danger border-0 w-100 text-light">
+                    <div class="bg-danger rounded text-center font-weight-bold p-4">
+                        Оформить заказ
+                    </div>
+                </a>
             </div>
         </div>
 
-        <div class="text-right pt-4">
-            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}" class="m-3 bg-primary p-2 text-fut-book text-white but-hov border-0 h4">
-                Оформить заказ
-            </a>
-        </div>
+
     @else
         <div class="row justify-content-center">
             <p class="h3 text-muted">Корзина пуста!</p>
