@@ -53,6 +53,12 @@ class CartController extends Controller
         $newCart->email = $request->email;
         $newCart->phone = $request->phone;
         $newCart->address = $request->address;
+        $newCart->total = $request->total;
+        if ($request->delivery == 'on') {
+            $newCart->delivery = true;
+            $newCart->sum = $request->sum;
+            $newCart->diff = $request->diff;
+        }
         $newCart->save();
 
         Session::forget(['cart', 'token']);

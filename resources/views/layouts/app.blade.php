@@ -34,6 +34,75 @@
 {{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
+@push('scripts')
+    <script>
+        let result = $('#search-result-select2');
+
+        result.parent().hide(0);
+        $('#search-input-select2').on('keyup click', function () {
+            let value = $(this).val();
+            console.log(value);
+            if (value != '' && value.length >= 3) {
+                // let searchBtn = $('#search-btn');
+                // searchBtn.prop('href', '');
+                // searchBtn.prop('href', '/search?search=' + value);
+                $.ajax({
+                    url: '{!! route('search') !!}',
+                    data: {'search': value},
+                    success: (data) => {
+                        console.log(data);
+                        result = result.html(data.html);
+                        result.parent().slideDown(400);
+                        result.siblings('span').css('opacity', 1);
+                        result.find('.collapse').each((e, i) => {
+                            registerCollapse($(i));
+                        });
+                        // registerCollapse(result);
+                    },
+                    error: () => {
+                        console.log('error');
+                    }
+                });
+            } else {
+                result.parent().slideUp(400);
+                result.empty();
+            }
+        });
+
+        function registerCollapse(i)
+        {
+            i.on('show.bs.collapse', e => {
+                let btn = $(e.currentTarget);
+                let icons = $(btn.siblings('.collapses').find('span')[1]).find('i');
+                let firstIcon = $(icons[0]);
+                let secondIcon = $(icons[1]);
+                firstIcon.addClass('d-none');
+                secondIcon.removeClass('d-none');
+                console.log(icons);
+            });
+            i.on('hide.bs.collapse', e => {
+                let btn = $(e.currentTarget);
+                let icons = $(btn.siblings('.collapses').find('span')[1]).find('i');
+                let firstIcon = $(icons[0]);
+                let secondIcon = $(icons[1]);
+                secondIcon.addClass('d-none');
+                firstIcon.removeClass('d-none');
+                console.log(icons);
+            });
+        }
+
+        // $('.collapse.collapse-multi').on('show.bs.collapse', e => {
+        //     console.log(e);
+        // });
+
+        $(document).click(function(event) {
+            if (!$(event.target).is("#search-input-select2, #search-result-select2, #search-result-ajax, .collapses, .collapse, .products, .collapses > span, .collapses > span > i")) {
+                $("#search-result-select2").parent().slideUp(400);
+            }
+        });
+    </script>
+@endpush
+
 @stack('scripts')
 <script>
     /*
@@ -235,7 +304,7 @@
 
     $(document).ready(function() {
         let lastScrollTop = $(window).scrollTop();
-        
+
         $(window).scroll(function() {
             var st = $(this).scrollTop();
             if (st > lastScrollTop){
@@ -245,7 +314,7 @@
                 // upscroll code
             }
             lastScrollTop = st;
-            
+
             var height = 50;
             var scrollTop = $(window).scrollTop();
 

@@ -151,6 +151,10 @@
                 <nav class="mr-auto ml-0" style="max-height: 400px; overflow-y: auto;">
                     <ul class="navbar-nav mb-3">
                         <li class="nav-item px-3 my-2">
+                            @include('_partials.search')
+
+                        </li>
+                        <li class="nav-item px-3 my-2">
                             <a href="/" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Главная</a>
                         </li>
                         <li class="nav-item px-3 my-2">
