@@ -12,23 +12,23 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Имя <span class="text-danger">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control input-erudit" required>
                         </div>
                         <div class="form-group">
                             <label for="address">Адрес <span class="text-danger">*</span></label>
-                            <input type="text" id="address" name="address" class="form-control" required>
+                            <input type="text" id="address" name="address" class="form-control input-erudit" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Телефон <span class="text-danger">*</span></label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                            <input type="tel" id="phone" name="phone" class="form-control input-erudit" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control">
+                            <input type="email" id="email" name="email" class="form-control input-erudit">
                         </div>
                         <div class="form-group">
                             <label for="comment">Комментарий к заказу</label>
-                            <textarea id="comment" name="comment" rows="6" class="form-control scrollbar"></textarea>
+                            <textarea id="comment" name="comment" rows="6" class="form-control input-erudit scrollbar"></textarea>
                         </div>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="row justify-content-end mt-5 py-5">
-                <div class="col-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
+                <div class="col-12 col-sm-8 col-md-5 col-lg-4 d-flex p-3" style="background: rgba(0, 0, 0, 0.03);">
                     <div class="col-6 m-0 h6 font-weight-bold">
                         Итого
                     </div>
@@ -59,9 +59,9 @@
                     </div>
                 </div>
                 <div class="w-100"></div>
-                <div class="col-4 p-0 mt-1">
+                <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
                     <a href="#" class="btn btn-danger border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">
-                        <div class="bg-danger rounded text-center font-weight-bold p-4">
+                        <div class="bg-danger rounded text-center font-weight-bold h6 m-0 p-4">
                             Оформить заказ
                         </div>
                     </a>
