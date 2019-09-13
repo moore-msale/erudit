@@ -129,11 +129,11 @@ body
 }
 .car-nav-close .owl-nav .owl-prev
 {
-    display: none;
+    display: inline-block;
 }
 .car-nav-close .owl-nav .owl-next
 {
-    display: none;
+    display: inline-block;
 }
 .sells-sector
 {
