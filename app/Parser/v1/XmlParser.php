@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App;
+namespace App\Parser\v1;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

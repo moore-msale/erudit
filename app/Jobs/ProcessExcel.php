@@ -3,11 +3,11 @@
 namespace App\Jobs;
 
 use App\Book;
-use App\ExcelParser;
-use App\HtmlParser;
+use App\Parser\v1\ExcelParser;
+use App\Parser\v1\HtmlParser;
 use App\ImageService;
 use App\Parson;
-use App\XmlParser;
+use App\Parser\v1\XmlParser;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;

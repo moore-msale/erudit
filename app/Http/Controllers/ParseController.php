@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Book;
-use App\ExcelParser;
-use App\HtmlParser;
+use App\Parser\v1\ExcelParser;
+use App\Parser\v1\HtmlParser;
 use App\ImageService;
 use App\Jobs\ProcessExcel;
 use App\Parson;
-use App\XmlParser;
+use App\Parser\v1\XmlParser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
