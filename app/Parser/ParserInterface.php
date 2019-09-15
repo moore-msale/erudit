@@ -4,9 +4,24 @@
 namespace App\Parser;
 
 
+use App\Parson;
+
 interface ParserInterface
 {
-    public function parse($url, $params, $index);
+    /**
+     * @param $url
+     * @param Parson $parson
+     *
+     * @return ParseObject
+     */
+    public function parse($url, Parson $parson);
 
-    public function parseSearchPage($url, $data, $params, $index);
+    /**
+     * @param $url
+     * @param $data
+     * @param Parson $parson
+     *
+     * @return ParseObject
+     */
+    public function parseSearchPage($url, $data, Parson $parson);
 }

@@ -5,19 +5,20 @@ namespace App\Parser\v2;
 
 
 use App\Imports\BooksImport;
-use App\Parser\ParserInterface;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExcelParser implements ParserInterface
+class ExcelParser
 {
-    public function parse($url, $params, $index)
+
+    /**
+     * @param $url
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function parse($url)
     {
         $result = Excel::toCollection(new BooksImport, $url)->collapse();
-        return $result;
-    }
 
-    public function parseSearchPage($url, $data, $params, $index)
-    {
-        // TODO: Implement parseSearchPage() method.
+        return $result;
     }
 }
