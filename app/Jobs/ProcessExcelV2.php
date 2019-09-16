@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Book;
+use App\ImageService;
 use App\Parser\ParserInterface;
 use App\Parser\v2\ExcelParser;
 use App\Parser\v2\HtmlParser;
@@ -12,6 +14,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Collection;
+use Matrix\Exception;
 
 class ProcessExcelV2 implements ShouldQueue
 {
@@ -45,12 +48,32 @@ class ProcessExcelV2 implements ShouldQueue
             /**
              * @var Collection $resultExcel
              */
-            $resultExcel = (new ExcelParser())->parse($this->parson->excel);
+            $resultExcel = (new ExcelParser())->parse(public_path('excels/'.$this->parson->excel));
 
-            foreach ($resultExcel as $item) {
-                $results = $this->parser->parseSearchPage($url, $item[0], $this->parson);
+            echo "Starting foreach excel\r\n";
+            foreach ($resultExcel as $index => $item) {
+                echo "Parsing... " . ($index + 1) . "\r\n";
+                $result = $this->parser->parseSearchPage($url, $item, $this->parson);
+                echo "Ended parsing... " . ($index + 1) . "\r\n";
+                if ($result) {
+                    dd($result);
+                    $book = new Book();
+                    $book->name = $result->getTitle();
+                    $book->description = $result->getDescription();
+                    $book->price_retail = $item[4];
+                    $book->price_wholesale = $item[5];
+                    $file = null;
+                    try {
+                        $file = file_get_contents($result->getImage());
+                    } catch (Exception $exception) {
+                        $file = null;
+                    }
+                    $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
+                    $book->isbn = $result->getIsbn();
+                    $book->save();
+                }
             }
-
+            echo "Ended foreaching excel\r\n";
 
         } else {
             $result = $this->parser->parse($url, $this->parson);

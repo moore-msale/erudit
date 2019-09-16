@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ProcessExcel;
 use App\Jobs\ProcessExcelV2;
+use App\Parser\ParserInterface;
 use App\Parson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -44,6 +45,10 @@ class ParseController extends Controller
 
         $parson = Parson::create($request->request->all());
 //        ProcessExcel::dispatch($parson);
+
+        /**
+         * @var ParserInterface $class
+         */
         $class = '\\App\\Parser\\v2\\'.ucfirst(strtolower($type)).'Parser';
         ProcessExcelV2::dispatch($parson, new $class());
 

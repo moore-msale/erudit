@@ -13,6 +13,41 @@ class ParseObject
     private $author;
     private $genre;
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
     public function setTitle($plaintext)
     {
         $this->title = $plaintext;

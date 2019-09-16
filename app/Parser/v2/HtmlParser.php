@@ -58,6 +58,7 @@ class HtmlParser implements ParserInterface
             } else {
                 Log::info('Not found book name in his page ... ');
                 $parserObject->setTitle(null);
+                return null;
             }
         }
 
@@ -147,7 +148,7 @@ class HtmlParser implements ParserInterface
             }
         }
 
-        return $parserObject;
+        return $parserObject->getTitle() == '' ? null : $parserObject;
     }
 
     /**
@@ -159,28 +160,32 @@ class HtmlParser implements ParserInterface
      */
     public function parseSearchPage($url, $data, Parson $parson)
     {
-        $data = rawurlencode($data);
+        $rawurl = rawurlencode($data[0]);
+        echo $url.$parson->searchUrl.'/'.$rawurl."\r\n";
         try {
-            $html = file_get_contents($url.$parson->searchUrl.$data);
+            $html = file_get_contents($url.$parson->searchUrl.'/'.$rawurl);
         } catch (\ErrorException $e) {
-            return [];
+            echo "Error while get content\r\n";
+            return null;
         }
         $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
             Log::info('Failed url ... ');
-            return [];
+            echo "Error while get html\r\n";
+            return null;
         }
+        echo "Got html content\r\n";
         Log::info('Found url ... ');
         $names = null;
         $urls = null;
-        $authors = null;
-        $images = null;
 
         if ($parson->name_search) {
             if ($parson->name_search_count !== null) {
+                echo "Searching for book name ... \r\n";
                 Log::info('Searching for book name ... ');
                 $names = $html->find($parson->name_search)[0]->nodes[$parson->name_search_count];
                 Log::info('Found book name ... ');
+                echo "Found book name ... \r\n";
             } else {
                 Log::info('Searching for book name ... ');
                 $names = $html->find($parson->name_search);
@@ -198,30 +203,25 @@ class HtmlParser implements ParserInterface
                 Log::info('Found book url ... ');
             }
         }
-        if ($parson->author) {
-            if ($parson->author_count !== null) {
-                Log::info('Searching for book author ... ');
-                $authors = $html->find($parson->author)[0]->nodes[$parson->author_count];
-                Log::info('Found book author ... ');
-            } else {
-                Log::info('Searching for book author ... ');
-                $authors = $html->find($parson->author);
-                Log::info('Found book author ... ');
-            }
-        }
 
-        if ($parson->search_image) {
-            Log::info('Searching for book image... ');
-            $images = $html->find($parson->search_image);
-            Log::info('Found book image ... ');
-        }
-        $result = [];
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                $result[] = [$names[$i]->plaintext, $urls[$i]->href, isset($images[$i]->attr['data-src']) ? $images[$i]->attr['data-src'] : $images[$i]->attr['src']];
+                dd($names);
+                if ($data[0] == $names[$i]) {
+                    $parseObject = $this->parse($url, $parson);
+                    if ($parseObject) {
+                        dd($parseObject);
+                        if (str_replace('-', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
+                            return $parseObject;
+                            break;
+                        }
+                    }
+                } else {
+                    continue;
+                }
             }
         }
 
-        return $result;
+        return null;
     }
 }
