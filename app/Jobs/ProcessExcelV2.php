@@ -73,6 +73,7 @@ class ProcessExcelV2 implements ShouldQueue
                         $book->save();
                     }
                 }
+                dd();
             }
             echo "Ended foreaching excel\r\n";
 

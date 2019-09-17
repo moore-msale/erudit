@@ -168,6 +168,7 @@ class HtmlParser implements ParserInterface
             echo "Error while get content\r\n";
             return null;
         }
+        echo 'Html found'."\r\n";
         $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
             Log::info('Failed url ... ');
