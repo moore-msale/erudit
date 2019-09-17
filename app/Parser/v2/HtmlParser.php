@@ -161,9 +161,9 @@ class HtmlParser implements ParserInterface
     public function parseSearchPage($url, $data, Parson $parson)
     {
         $rawurl = rawurlencode($data[0]);
-        echo $url.$parson->searchUrl.'/'.$rawurl."\r\n";
+        echo $url.$parson->searchUrl.$rawurl."\r\n";
         try {
-            $html = file_get_contents($url.$parson->searchUrl.'/'.$rawurl);
+            $html = file_get_contents($url.$parson->searchUrl.$rawurl);
         } catch (\ErrorException $e) {
             echo "Error while get content\r\n";
             return null;
