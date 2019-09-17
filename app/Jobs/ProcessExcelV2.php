@@ -69,11 +69,10 @@ class ProcessExcelV2 implements ShouldQueue
                             $file = null;
                         }
                         $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
-                        $book->isbn = preg_replace('/(isbn|ISBN):\s/', '', $result->getIsbn());
+                        $book->isbn = preg_replace('/\D+/', '', $result->getIsbn());
                         $book->save();
                     }
                 }
-                dd();
             }
             echo "Ended foreaching excel\r\n";
 

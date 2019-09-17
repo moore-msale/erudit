@@ -209,7 +209,7 @@ class HtmlParser implements ParserInterface
             for ($i = 0; $i < count($names); $i++) {
                 $parseObject = $this->parse($url.$urls[$i]->href, $parson);
                 if ($parseObject) {
-                    if (preg_replace('/\\D+/', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
+                    if (preg_replace('/\D+/', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
                         return $parseObject;
                         break;
                     } else {
