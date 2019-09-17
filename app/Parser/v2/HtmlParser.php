@@ -95,9 +95,9 @@ class HtmlParser implements ParserInterface
             Log::info('Searching for book image in his page ... ');
             $isbn = $html->find($parson->isbn);
             if (count($isbn)) {
-                if ($parson->description_count) {
+                if ($parson->isbn_count) {
                     Log::info('Searching for book description in his page ... ');
-                    $parserObject->setIsbn($isbn[0]->nodes[$parson->description_count]->plaintext);
+                    $parserObject->setIsbn($isbn[0]->nodes[$parson->isbn_count]->plaintext);
                     Log::info('Found book description in his page ... ');
                 } else {
                     Log::info('Searching for book description in his page ... ');
@@ -114,9 +114,9 @@ class HtmlParser implements ParserInterface
             Log::info('Searching for book image in his page ... ');
             $genre = $html->find($parson->genre);
             if (count($genre)) {
-                if ($parson->description_count) {
+                if ($parson->genre_count) {
                     Log::info('Searching for book description in his page ... ');
-                    $parserObject->setGenre($genre[0]->nodes[$parson->description_count]->plaintext);
+                    $parserObject->setGenre($genre[0]->nodes[$parson->genre_count]->plaintext);
                     Log::info('Found book description in his page ... ');
                 } else {
                     Log::info('Searching for book description in his page ... ');
@@ -133,9 +133,9 @@ class HtmlParser implements ParserInterface
             Log::info('Searching for book image in his page ... ');
             $author = $html->find($parson->author);
             if (count($author)) {
-                if ($parson->description_count) {
+                if ($parson->author_count) {
                     Log::info('Searching for book description in his page ... ');
-                    $parserObject->setAuthor($author[0]->nodes[$parson->description_count]->plaintext);
+                    $parserObject->setAuthor($author[0]->nodes[$parson->author_count]->plaintext);
                     Log::info('Found book description in his page ... ');
                 } else {
                     Log::info('Searching for book description in his page ... ');
@@ -206,18 +206,14 @@ class HtmlParser implements ParserInterface
 
         if ($names && $urls) {
             for ($i = 0; $i < count($names); $i++) {
-                dd($names);
-                if ($data[0] == $names[$i]) {
-                    $parseObject = $this->parse($url, $parson);
-                    if ($parseObject) {
-                        dd($parseObject);
-                        if (str_replace('-', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
-                            return $parseObject;
-                            break;
-                        }
+                $parseObject = $this->parse($url.$urls[$i]->href, $parson);
+                if ($parseObject) {
+                    if (preg_replace('/\\D+/', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
+                        return $parseObject;
+                        break;
+                    } else {
+                        continue;
                     }
-                } else {
-                    continue;
                 }
             }
         }

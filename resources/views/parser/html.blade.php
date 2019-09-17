@@ -120,7 +120,35 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="isbn">Селектор для isbn</label>
+                                        <input type="text" name="isbn" id="isbn" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="isbn_count">Какой по счету текст</label>
+                                        <input type="text" name="isbn_count" id="isbn_count" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="genre">Селектор для жанра</label>
+                                        <input type="text" name="genre" id="genre" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="genre_count">Какой по счету текст</label>
+                                        <input type="text" name="genre_count" id="genre_count" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="image">Селектор для картинки</label>
                                 <input type="text" name="image" class="form-control" id="image">
@@ -166,6 +194,50 @@
                                     <div class="form-group">
                                         <label for="description_count">Какой по счету текст</label>
                                         <input type="text" name="description_count" id="description_count" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="isbn">Селектор для isbn</label>
+                                        <input type="text" name="isbn" id="isbn" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="isbn_count">Какой по счету текст</label>
+                                        <input type="text" name="isbn_count" id="isbn_count" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="genre">Селектор для жанра</label>
+                                        <input type="text" name="genre" id="genre" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="genre_count">Какой по счету текст</label>
+                                        <input type="text" name="genre_count" id="genre_count" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="price_wholesale">Цена для оптовиков</label>
+                                        <input type="text" name="price_wholesale" id="price_wholesale" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="price_retail">Цена для розницы</label>
+                                        <input type="text" name="price_retail" id="price_retail" class="form-control">
                                     </div>
                                 </div>
                             </div>
