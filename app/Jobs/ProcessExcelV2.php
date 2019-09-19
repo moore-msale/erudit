@@ -55,22 +55,25 @@ class ProcessExcelV2 implements ShouldQueue
                 echo "Parsing... " . ($index + 1) . "\r\n";
                 $result = $this->parser->parseSearchPage($url, $item, $this->parson);
                 echo "Ended parsing... " . ($index + 1) . "\r\n";
+
                 if ($result) {
-                    if (!Book::where('name', $result->getTitle())->first()) {
-                        $book = new Book();
-                        $book->name = $result->getTitle();
-                        $book->description = $result->getDescription();
-                        $book->price_retail = $item[4];
-                        $book->price_wholesale = $item[5];
-                        $file = null;
-                        try {
-                            $file = file_get_contents($result->getImage());
-                        } catch (Exception $exception) {
+                    if (str_replace('-', '', $result->getIsbn()) == str_replace('-', '', $item[2])) {;
+                        if (!Book::where('name', $result->getTitle())->first()) {
+                            $book = new Book();
+                            $book->name = $result->getTitle();
+                            $book->description = $result->getDescription();
+                            $book->price_retail = $item[4];
+                            $book->price_wholesale = $item[5];
                             $file = null;
+                            try {
+                                $file = file_get_contents($result->getImage());
+                            } catch (Exception $exception) {
+                                $file = null;
+                            }
+                            $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
+                            $book->isbn = $result->getIsbn();
+                            $book->save();
                         }
-                        $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
-                        $book->isbn = preg_replace('/\D+/', '', $result->getIsbn());
-                        $book->save();
                     }
                 }
             }
@@ -79,21 +82,27 @@ class ProcessExcelV2 implements ShouldQueue
         } else {
             $result = $this->parser->parse($url, $this->parson);
             if ($result) {
-                if (!Book::where('name', $result->getTitle())->first()) {
-                    $book = new Book();
-                    $book->name = $result->getTitle();
-                    $book->description = $result->getDescription();
-                    $book->price_retail = $this->parson->price_retail;
-                    $book->price_wholesale = $this->parson->price_wholesale;
-                    $file = null;
-                    try {
-                        $file = file_get_contents($result->getImage());
-                    } catch (Exception $exception) {
-                        $file = null;
+                foreach ($result->getIsbn() as $isbn) {
+                    if (str_replace('-', '', $isbn) == str_replace('-', '', $this->parson->isbn_custom)) {
+                        $isbnMatches = $isbn;
+                        if (!Book::where('name', $result->getTitle())->first()) {
+                            $book = new Book();
+                            $book->name = $result->getTitle();
+                            $book->description = $result->getDescription();
+                            $book->price_retail = $this->parson->price_retail;
+                            $book->price_wholesale = $this->parson->price_wholesale;
+                            $file = null;
+                            try {
+                                $file = file_get_contents($result->getImage());
+                            } catch (Exception $exception) {
+                                $file = null;
+                            }
+                            $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
+                            $book->isbn = $isbnMatches;
+                            $book->save();
+                            break;
+                        }
                     }
-                    $book->image = $result->getImage() ? ImageService::store($file, 'book_') : null;
-                    $book->isbn = preg_replace('/(isbn|ISBN):\s/', '', $result->getIsbn());
-                    $book->save();
                 }
             }
         }

@@ -246,6 +246,10 @@
                                 <label for="image">Селектор для картинки</label>
                                 <input type="text" name="image" class="form-control" id="image">
                             </div>
+                            <div class="form-group">
+                                <label for="isbn_custom">ISBN товара</label>
+                                <input type="text" name="isbn_custom" class="form-control" id="isbn_custom">
+                            </div>
 
                             <button type="submit" class="btn btn-primary">Начать</button>
                         </form>

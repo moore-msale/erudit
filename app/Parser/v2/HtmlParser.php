@@ -147,6 +147,7 @@ class HtmlParser implements ParserInterface
                 $parserObject->setAuthor(null);
             }
         }
+        $parserObject->setIsbn(preg_split('/[,]+/', preg_replace('/[^0-9,\-]/', '', $parserObject->getIsbn())));
 
         return $parserObject->getTitle() == '' ? null : $parserObject;
     }
@@ -209,11 +210,12 @@ class HtmlParser implements ParserInterface
             for ($i = 0; $i < count($names); $i++) {
                 $parseObject = $this->parse($url.$urls[$i]->href, $parson);
                 if ($parseObject) {
-                    if (preg_replace('/\D+/', '', $parseObject->getIsbn()) == str_replace('-', '', $data[2])) {
-                        return $parseObject;
-                        break;
-                    } else {
-                        continue;
+                    foreach ($parseObject->getIsbn() as $isbn) {
+                        if (str_replace('-', '', $isbn) == str_replace('-', '', $data[2])) {
+                            $parseObject->setIsbn($isbn);
+                            return $parseObject;
+                            break;
+                        }
                     }
                 }
             }
