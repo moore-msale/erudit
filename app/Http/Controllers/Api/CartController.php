@@ -44,10 +44,11 @@ class CartController extends Controller
         $cart = CartFacade::session($token);
 
         $newCart = new Cart();
-        $newCart->cart = serialize([
+        $newCart->cart = [
             'cart' => $cart->getContent(),
             'total' => $cart->getTotal(),
-        ]);
+        ];
+        $newCart->user_id = auth()->check() ? auth()->user()->id : null;
         $newCart->comment = $request->comment;
         $newCart->name = $request->name;
         $newCart->email = $request->email;

@@ -33,9 +33,28 @@
                 </div>
 
                 <div class="tab-pane fade" id="story" role="tabpanel" aria-labelledby="">
-                    <p class="text-fut-bold">
-                        Покупок нет
-                    </p>
+                    @if(count(auth()->user()->carts))
+                        <div class="container">
+                            <div class="row">
+                                @foreach(auth()->user()->carts as $cart)
+                                    @foreach($cart->cart as $item)
+                                        @foreach($item as $product)
+
+                                            <div class="col-10">
+                                                <p>{{ $product['name'] }}</p>
+                                                <p>{{ $product['price'] }}</p>
+                                                <p>{{ $product['quantity'] }}</p>
+                                            </div>
+                                        @endforeach
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <p class="text-fut-bold">
+                            Покупок нет
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>

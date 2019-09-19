@@ -12,8 +12,13 @@ class Cart extends Model
     protected $table = 'carts';
 
     protected $casts = [
-        'cart',
+        'cart' => 'array',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public static function add(Book $book, $count = 1, $token)
     {

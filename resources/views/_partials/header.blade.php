@@ -176,7 +176,16 @@
                             </div>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Новинки</a>
+                            <a href="/delivery" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Доставка и оплата</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="#" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Возврат</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="/partners" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Сотрудничество</a>
+                        </li>
+                        <li class="nav-item px-3 my-2">
+                            <a href="/contacts" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Контакты</a>
                         </li>
                         <li class="nav-item px-3 my-2">
                             <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Канцтовары</a>
