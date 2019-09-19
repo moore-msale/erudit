@@ -164,13 +164,15 @@ class HtmlParser implements ParserInterface
         $rawurl = rawurlencode($data[0]);
         echo $url.$parson->searchUrl.$rawurl."\r\n";
         try {
+            echo "Trying to get content\r\n";
             $html = file_get_contents($url.$parson->searchUrl.$rawurl);
+            echo "Got content\r\n";
         } catch (\ErrorException $e) {
             echo "Error while get content\r\n";
             return null;
         }
-        echo 'Html found'."\r\n";
         $html = HtmlDomParser::str_get_html($html);
+        echo 'Html found'."\r\n";
         if ($html == '') {
             Log::info('Failed url ... ');
             echo "Error while get html\r\n";
