@@ -50,11 +50,8 @@ class ProcessExcelV2 implements ShouldQueue
              */
             $resultExcel = (new ExcelParser())->parse(public_path('excels/'.$this->parson->excel));
 
-            echo "Starting foreach excel\r\n";
             foreach ($resultExcel as $index => $item) {
-                echo "Parsing... " . ($index + 1) . "\r\n";
                 $result = $this->parser->parseSearchPage($url, $item, $this->parson);
-                echo "Ended parsing... " . ($index + 1) . "\r\n";
 
                 if ($result) {
                     if (str_replace('-', '', $result->getIsbn()) == str_replace('-', '', $item[2])) {;
@@ -77,7 +74,6 @@ class ProcessExcelV2 implements ShouldQueue
                     }
                 }
             }
-            echo "Ended foreaching excel\r\n";
 
         } else {
             $result = $this->parser->parse($url, $this->parson);

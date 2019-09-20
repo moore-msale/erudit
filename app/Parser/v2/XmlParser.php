@@ -14,7 +14,6 @@ class XmlParser implements ParserInterface
     public function parse($url, Parson $parson)
     {
         $xml = XmlParse::load(url($url));
-        dd($xml);
         $pages = $xml->parse([
             'pages' => ['uses' => 'pages.all']
         ]);

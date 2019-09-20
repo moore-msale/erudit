@@ -162,32 +162,25 @@ class HtmlParser implements ParserInterface
     public function parseSearchPage($url, $data, Parson $parson)
     {
         $rawurl = rawurlencode($data[0]);
-        echo $url.$parson->searchUrl.$rawurl."\r\n";
         try {
             $html = file_get_contents($url.$parson->searchUrl.$rawurl);
         } catch (\ErrorException $e) {
-            echo "Error while get content\r\n";
             return null;
         }
-        echo 'Html found'."\r\n";
         $html = HtmlDomParser::str_get_html($html);
         if ($html == '') {
             Log::info('Failed url ... ');
-            echo "Error while get html\r\n";
             return null;
         }
-        echo "Got html content\r\n";
         Log::info('Found url ... ');
         $names = null;
         $urls = null;
 
         if ($parson->name_search) {
             if ($parson->name_search_count !== null) {
-                echo "Searching for book name ... \r\n";
                 Log::info('Searching for book name ... ');
                 $names = $html->find($parson->name_search)[0]->nodes[$parson->name_search_count];
                 Log::info('Found book name ... ');
-                echo "Found book name ... \r\n";
             } else {
                 Log::info('Searching for book name ... ');
                 $names = $html->find($parson->name_search);
