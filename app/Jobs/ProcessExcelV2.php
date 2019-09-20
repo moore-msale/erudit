@@ -14,6 +14,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 use Matrix\Exception;
 
 class ProcessExcelV2 implements ShouldQueue
@@ -34,6 +35,14 @@ class ProcessExcelV2 implements ShouldQueue
         $this->parson = $parson;
         $this->parser = $parser;
     }
+
+    public function fail($exception = null)
+    {
+        Mail::raw('Exception: '.$exception, function ($m) {
+            $m->to('tilek.kubanov@gmail.com');
+        });
+    }
+
 
     /**
      * Execute the job.
