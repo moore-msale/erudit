@@ -24,7 +24,11 @@
                 </div>
                 <div class="col-lg-3 col-12 p-4">
                     <div style="position: relative;">
-                        <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
+                        @if (filter_var($book->image, FILTER_VALIDATE_URL))
+                            <img class="w-100" style="height: 60%;" src="{{ $book->image }}" alt="">
+                        @else
+                            <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
+                        @endif
 
 {{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
                         @if(isset($book->discount))
