@@ -4,7 +4,11 @@
             <div class="item my-4 ml-3 mr-3 p-4 shadow" style="background-color: white; height: 480px">
                 <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                     <div style="height: 65%;">
-                        <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                        @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
+                            <img class="w-100 h-100" src="{{ $bestseller->image }}" alt="">
+                        @else
+                            <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                        @endif
                     </div>
 
 

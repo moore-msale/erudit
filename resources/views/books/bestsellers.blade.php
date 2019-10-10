@@ -7,7 +7,11 @@
             <ul class='hardcover_front'>
                 <li>
                     <div class="coverDesign yellow" style="">
-                        <img src="{{ asset('storage/'.$bestseller->image) }}" alt="" width="100%" height="100%">
+                        @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
+                            <img class="w-100" style="height: 60%;" src="{{ $bestseller->image }}" alt="">
+                        @else
+                            <img src="{{ asset('storage/'.$bestseller->image) }}" alt="" width="100%" height="100%">
+                        @endif
                     </div>
                 </li>
                 <li></li>
