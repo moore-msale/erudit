@@ -254,7 +254,11 @@
                 <div class="col-lg-3 col-12 item m-2 p-4 shadow" style="background-color: white; max-width: 259px;">
                     <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
                             <div class="" style="height: 65%;">
-                                <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
+                                    <img class="w-100 h-100" src="{{ $book->image }}" alt="">
+                                @else
+                                    <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                @endif
                             </div>
                             <h3 class="text-fut-book mt-3 text-left"
                                 style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
