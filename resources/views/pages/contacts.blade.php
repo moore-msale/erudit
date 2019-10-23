@@ -19,6 +19,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="mailto:erudit.shop@mail.ru" class="nav-link">
+                            <i class="fas fa-envelope"></i>&nbsp;erudit.shop@mail.ru
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="https://api.whatsapp.com/send?phone=996551433433" class="nav-link text-capitalize">
                             <i class="fab fa-whatsapp"></i>&nbsp;whatsapp
                         </a>

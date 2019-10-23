@@ -102,6 +102,11 @@
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="mailto:erudit.shop@mail.ru" class="text-white text-scale-white" style="text-decoration: none;">
+                erudit.shop@mail.ru
+                </a>
+            </p>
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                     Доставка по всему КР
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">

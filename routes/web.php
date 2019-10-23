@@ -47,6 +47,10 @@ Route::get('/partners', function () {
     return view('pages.partners');
 });
 
+Route::get('/return_of_goods', function () {
+    return view('pages.return_goods');
+});
+
 Route::get('/news_page', function () {
     return view('pages.news_page');
 });

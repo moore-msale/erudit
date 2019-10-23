@@ -11,7 +11,7 @@
                             <a href="/delivery" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="#" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
+                            <a href="/return_of_goods" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
                         </li>
                         <li class="nav-item px-3">
                             <a href="/partners" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Сотрудничество</a>
@@ -131,6 +131,13 @@
                 <a href="/">
                 <img src="{{ asset('images/logo2.png') }}" alt="">
                 </a>
+            </div>
+             <div class="col-auto px-0">
+                <ul class="nav">
+                    <li class="nav-item px-3 my-2 position-relative">
+                        <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" id="search-input-select2" style="text-decoration: none;"><img class="icon-flip" style="height:22px; width: 22px; margin-top:-5px;" src="{{ asset('images/svg/search.svg') }}" alt=""></a>
+                    </li>
+                </ul>
             </div>
             <div class="col-auto px-0">
                 <ul class="nav">

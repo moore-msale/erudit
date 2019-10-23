@@ -3,22 +3,18 @@
     <div class="container" style="padding-top: 15%; padding-bottom: 5%;">
         <div class="row justify-content-center">
             <div class="col-9">
-                <h2 class="font-weight-bold mb-3">Сотрудничество</h2>
+                <h2 class="font-weight-bold mb-3">Возврат</h2>
                 <p>
-                    Если у вас есть свой сайт, блог или любой интернет-ресурс с аудиторией от 40 000 читателей;
+                    Купленный товар возврату не подлежит.
                 </p>
-                <p>Если ваш бизнес может способствовать продаже наших книг;</p>
-                <p style="line-height: 140%;">
-                    Если вы хотите приложить руку к продвижению книг и готовы предложить нам что-то интересное и эффективное,
-                    <br>
-                    — пишите, мы с удовольствием подумаем, как можем быть друг другу полезны.
-                </p>
+                <p>Возврат осуществляется только в том случае, если товар окажется бракованным.</p>
+                <p>Обмен купленного товара возможен, в случае предоставления чека. В чеках указаны филиалы откуда Вам доставили книгу.</p>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <div class="col-9">
-                <h2>Контакты для сотрудничества</h2>
+                <h2>Контакты</h2>
             </div>
             <div class="col-9">
                 <ul class="nav">
@@ -28,8 +24,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="mailto:nurgulan@mail.ru" class="nav-link">
-                            <i class="fas fa-envelope"></i>&nbsp;nurgulan@mail.ru
+                        <a href="mailto:erudit.shop@mail.ru" class="nav-link">
+                            <i class="fas fa-envelope"></i>&nbsp;erudit.shop@mail.ru
                         </a>
                     </li>
                     <li class="nav-item">
