@@ -92,7 +92,7 @@
                     <div class="form-group form-group-default" id="contactGroup">
                         <label>{{ __('Номер телефона') }}</label>
                         <div class="controls">
-                            <input id="contact" type="number" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('name') }}" required controls="none" autocomplete="contact" autofocus>
+                            <input id="contact" type="number" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required controls="none" autocomplete="contact" autofocus>
                         </div>
                         @error('contact')
                         <span class="invalid-feedback" role="alert">
