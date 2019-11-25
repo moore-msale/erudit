@@ -61,16 +61,32 @@
                             <h2 class="text-fut-bold" style="font-size: 30px; line-height: 38px; color: #222;">
                                 {{ $book->name }}
                             </h2>
-                            <div class="mt-4" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
-                                @if($book->author)
-                                    <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
-                                @endif
-                                @if($book->publishing)
-                                    <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
-                                @endif
+                            <div class="mt-4 row" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
+                                <div class="col-4">
+                                    @if($book->author)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                    @endif
+                                    @if($book->publishing)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                    @endif
                                     @if($book->series)
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
                                     @endif
+                                    @if($book->isbn)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">ISBN:</strong> {{ $book->isbn }}</p>
+                                    @endif
+                                </div>
+                                <div class="col-5">
+                                    @if($book->pages)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Кол-во страниц:</strong> {{ $book->pages }}</p>
+                                    @endif
+                                    @if($book->weight)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Вес:</strong> {{ $book->weight }}</p>
+                                    @endif
+                                    @if($book->dimension)
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Размеры:</strong> {{ $book->dimension }}</p>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="mt-4">
