@@ -8,7 +8,7 @@
                 <li>
                     <div class="coverDesign yellow" style="">
                         @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
-                            <img class="w-100" style="height: 60%;" src="{{ $bestseller->image }}" alt="">
+                            <img class="w-100" style="height: 100%;" src="{{ $bestseller->image }}" alt="">
                         @else
                             <img src="{{ asset('storage/'.$bestseller->image) }}" alt="" width="100%" height="100%">
                         @endif
