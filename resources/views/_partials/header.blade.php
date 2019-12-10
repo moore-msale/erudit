@@ -10,9 +10,9 @@
                         <li class="nav-item px-3">
                             <a href="/delivery" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Доставка и оплата</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a href="/return_of_goods" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>
-                        </li>
+                        {{--<li class="nav-item px-3">--}}
+                            {{--<a href="/return_of_goods" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Возврат</a>--}}
+                        {{--</li>--}}
                         <li class="nav-item px-3">
                             <a href="/partners" class="text-fut-light font-weight-bold text-scale" style="text-decoration: none; color: #686868;">Сотрудничество</a>
                         </li>
