@@ -18,9 +18,39 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/book.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
     @stack('styles')
-
+    <style>
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*background-color:grey;*/
+            /*background-image: url('https://to-moore.com/images/beeline.png');*/
+            background-repeat: no-repeat;
+            background-color: white;
+            background-position: center;
+        }
+        @media screen and (min-width: 300px) and (max-width: 700px) {
+            .preloader
+            {
+                background-size:80%;
+            }
+        }
+    </style>
 </head>
 <body>
+<div class="preloader">
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <img class="logo-animate" style="width:50%;" src="{{ asset('images/logo2.png') }}" alt="">
+        <h3 class="text-fut-bold pt-3 logo-text">
+            Эрудит
+        </h3>
+    </div>
+    </div>
+</div>
 <div id="app">
     @include('_partials.header')
     <main class="position-relative" style="overflow: hidden;">
@@ -35,6 +65,14 @@
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
 @push('scripts')
+    <script>
+        function preloader() {
+            $('.preloader').fadeOut('slow').delay(1000);
+        }
+    </script>
+    <script>
+        setTimeout(preloader, 500);
+    </script>
     <script>
         let result = $('#search-result-select2');
 

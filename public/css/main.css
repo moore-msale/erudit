@@ -325,3 +325,33 @@ body
     -o-transition: .4s;
     transition: .4s;
 }
+
+.logo-animate
+{
+    animation: logo 1s infinite;
+}
+.logo-text
+{
+    animation: text 2s infinite;
+}
+@keyframes logo {
+    0% {
+        transform: scale(1) rotateY(0deg);
+    }
+    100%
+    {
+        transform: scale(1) rotateY(360deg);
+    }
+}
+@keyframes text {
+    0% {
+        color:black;
+    }
+    50% {
+        color:white;
+    }
+    100%
+    {
+        color:black;
+    }
+}
