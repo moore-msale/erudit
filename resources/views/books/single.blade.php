@@ -2,7 +2,7 @@
     <div class="p-4 m-2 shadow" style="background-color: white; height:100%; position: relative;">
         <a href="{{ route('book.show', $book) }}" style="text-decoration: none;">
             @if (filter_var($book->image, FILTER_VALIDATE_URL))
-                <img class="w-100" style="height: 60%;" src="{{ $book->image }}" alt="">
+                <img class="w-100" style="height: 60%;" src="{{ asset($book->image)  }}" alt="">
             @else
                 <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
             @endif
