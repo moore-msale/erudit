@@ -3,7 +3,7 @@
         <a href="{{ route('book.show', $book) }}" style="text-decoration: none;">
             @if (filter_var($book->image, FILTER_VALIDATE_URL))
 
-                <img class="w-100" style="height: 60%;" src="{{ filter_var($book->image) }}" alt="">
+                <img class="w-100" style="height: 60%;" src="{{ filter_var($book->image, FILTER_VALIDATE_URL) }}" alt="">
             @else
                 <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
             @endif
