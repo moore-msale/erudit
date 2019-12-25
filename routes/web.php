@@ -54,6 +54,8 @@ Route::get('/return_of_goods', function () {
 Route::get('/news_page', function () {
     return view('pages.news_page');
 });
+Route::get('genre_sort', 'BookController@genre_sort')->name('genre_sort');
+Route::get('site_sort', 'BookController@site_sort')->name('site_sort');
 
 Route::group(['prefix' => 'moo'], function () {
     Voyager::routes();
