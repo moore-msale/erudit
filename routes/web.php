@@ -56,6 +56,7 @@ Route::get('/news_page', function () {
 });
 Route::get('genre_sort', 'BookController@genre_sort')->name('genre_sort');
 Route::get('site_sort', 'BookController@site_sort')->name('site_sort');
+Route::get('delete_duplicate', 'BookController@delete_duplicate')->name('delete_duplicate');
 
 Route::group(['prefix' => 'moo'], function () {
     Voyager::routes();

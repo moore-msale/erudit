@@ -43,6 +43,29 @@ class BookController extends Controller
             }
         }
     }
+    public function delete_duplicate()
+    {
+        $books = Book::all();
+        foreach ($books as $book)
+        {
+            $duplicates = Book::where('name',$book->name)->get();
+            if(count($duplicates) > 1)
+            {
+                foreach ($duplicates as $duplicate)
+                {
+                    $count = 1;
+                    if ($count == 1)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        $duplicate->delete();
+                    }
+                }
+            }
+        }
+    }
 
     public function site_sort()
     {
