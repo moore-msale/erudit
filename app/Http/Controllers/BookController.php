@@ -51,11 +51,12 @@ class BookController extends Controller
             $duplicates = Book::where('name',$book->name)->get();
             if(count($duplicates) > 1)
             {
+                $count = 1;
                 foreach ($duplicates as $duplicate)
                 {
-                    $count = 1;
                     if ($count == 1)
                     {
+                        $count = 2;
                         continue;
                     }
                     else
