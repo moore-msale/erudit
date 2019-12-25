@@ -25,7 +25,7 @@ class BookController extends Controller
         {
             if($book->attributes && $book->pages)
             {
-                $genre = Genre::where('name', $book->attributes);
+                $genre = Genre::where('name', $book->attributes)->get()->first();
 
                 if($genre)
                 {
