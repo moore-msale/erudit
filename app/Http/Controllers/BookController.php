@@ -19,7 +19,7 @@ class BookController extends Controller
 
     public function genre_sort()
     {
-        $books = Book::where('genre_id','!=', null);
+        $books = Book::where('genre_id', null);
 
         foreach ($books as $book)
         {
@@ -43,7 +43,7 @@ class BookController extends Controller
             }
         }
     }
-    
+
     public function site_sort()
     {
         $books = Book::all();
