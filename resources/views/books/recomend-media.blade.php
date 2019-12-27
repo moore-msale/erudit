@@ -20,11 +20,11 @@
                 <div class="p-0 text-left">
                     @guest
                         <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                        {{ $bestseller->price_retail }} сом
+                        {{ $bestseller->price_wholesale }} сом
                     </span>
                     @else
                         <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                        {{ $bestseller->price_wholesale }} сом
+                        {{ $bestseller->price_retail }} сом
                     </span>
                     @endguest
                 </div>

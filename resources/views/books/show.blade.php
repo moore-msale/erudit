@@ -92,11 +92,11 @@
                             <div class="mt-4">
                                 @guest
                                 <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
-                                    {{ $book->price_retail }} сом
+                                     {{$book->price_wholesale}} сом
                                 </p>
                                 @else
                                     <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
-                                        {{isset($book->price_wholesale) ? $book->price_wholesale : $book->price_retail }} сом
+                                        {{isset($book->price_retail) ? $book->price_retail : $book->price_wholesale}} сом
                                     </p>
                                 @endguest
                             </div>
@@ -133,8 +133,12 @@
                                 <div class="shadow p-4 h-100">
                                 <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                     <div class="" style="height: 65%;">
-                                        <img class="w-100 h-100" style="height: 60%;" src="{{ file_exists('storage/'.$same->image) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">
-
+                                        {{--<img class="w-100 h-100" style="height: 60%;" src="{{ file_exists('storage/'.$same->image) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">--}}
+                                        @if (filter_var($same->image, FILTER_VALIDATE_URL))
+                                            <img class="w-100 h-100" style="height: 60%;" src="{{ $book->image }}" alt="">
+                                        @else
+                                            <img class="w-100 h-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
+                                        @endif
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>
                                     <h3 class="text-fut-book mt-3 text-left"
@@ -146,12 +150,12 @@
                                         @guest
                                             <span class="text-fut-book"
                                                   style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $same->price_retail }} сом
+                                                            {{ $same->price_wholesale }} сом
                                                     </span>
                                         @else
                                             <span class="text-fut-book"
                                                   style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $same->price_wholesale }} сом
+                                                            {{ $same->price_retail }} сом
                                                     </span>
                                         @endguest
                                     </div>

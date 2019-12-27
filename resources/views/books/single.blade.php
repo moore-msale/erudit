@@ -24,12 +24,12 @@
             @guest
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_retail }} сом
+                                                            {{ $book->price_wholesale }} сом
                                                     </span>
             @else
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_wholesale }} сом
+                                                            {{ $book->price_retail }} сом
                                                     </span>
             @endguest
         </div>
