@@ -70,12 +70,13 @@ class BookController extends Controller
 
     public function site_sort()
     {
-        $books = Book::all();
-
-        foreach ($books as $book)
+        $book = Book::all()->first();
+        if(stristr($book->attributes, 'фанта') === false && stristr($book->attributes, 'Фанта') === false) {
+            dd(false);
+        }
+        else
         {
-            $book->site = 'labirint';
-            $book->save();
+            dd(true);
         }
     }
 }
