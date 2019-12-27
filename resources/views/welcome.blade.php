@@ -84,7 +84,7 @@
                                class="cat-btn d-flex align-items-center mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
                                style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:#444;"
                                aria-controls="" aria-selected="true"><span class="mx-auto">{{ $genre->name }}</span></a>
-                            @if($loop->index == 20)
+                            @if($loop->index == 19)
                                 @break
                             @endif
                         @endforeach
