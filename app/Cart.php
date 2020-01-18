@@ -27,7 +27,7 @@ class Cart extends Model
                 'quantity' => $count
             ]);
         } else {
-            return CartFacade::session($token)->add($book->id, $book->name, auth()->check() ? $book->price_wholesale : $book->price_retail, $count ? $count : 1);
+            return CartFacade::session($token)->add($book->id, $book->name, auth()->check() ? $book->price_retail : $book->price_wholesale, $count ? $count : 1);
         }
     }
 

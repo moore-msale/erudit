@@ -132,13 +132,13 @@
                 <img src="{{ asset('images/logo2.png') }}" alt="">
                 </a>
             </div>
-             <div class="col-auto px-0">
-                <ul class="nav">
-                    <li class="nav-item px-3 my-2 position-relative">
-                        <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" id="search-input-select2" style="text-decoration: none;"><img class="icon-flip" style="height:22px; width: 22px; margin-top:-5px;" src="{{ asset('images/svg/search.svg') }}" alt=""></a>
-                    </li>
-                </ul>
-            </div>
+             {{--<div class="col-auto px-0">--}}
+                {{--<ul class="nav">--}}
+                    {{--<li class="nav-item px-3 my-2 position-relative">--}}
+                        {{--<a href="{{ route('cart.checkout') }}" class="text-fut-book cart" id="search-input-select2" style="text-decoration: none;"><img class="icon-flip" style="height:22px; width: 22px; margin-top:-5px;" src="{{ asset('images/svg/search.svg') }}" alt=""></a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
             <div class="col-auto px-0">
                 <ul class="nav">
                     <li class="nav-item px-3 my-2 position-relative">

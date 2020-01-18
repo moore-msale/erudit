@@ -1,7 +1,7 @@
 <div class="owl-one owl-carousel car-nav-close">
     @foreach($books as $bestseller)
         @if($bestseller->bestseller == 1)
-            <div class="item my-4 ml-3 mr-3 p-4 shadow" style="background-color: white; height: 480px">
+            <div class="item my-4 ml-1 mr-1 p-4 shadow" style="background-color: white; height: 480px">
                 <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                     <div style="height: 65%;">
                         @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))

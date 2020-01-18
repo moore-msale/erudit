@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Book;
 use App\Cart;
+use App\Mail\cartsend;
 use App\TokenResolve;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -38,6 +40,8 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+
+
         $token = $request->token ? $request->token : Session::has('token') ? Session::get('token') : uniqid();
 
         TokenResolve::resolve($token);
@@ -62,9 +66,10 @@ class CartController extends Controller
         }
         $newCart->save();
 
+
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-
+        Mail::to('mackinkenny@gmail.com')->send(new cartsend($newCart));
         return redirect('/');
     }
 
