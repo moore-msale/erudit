@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['books' => \App\Book::all(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::all(), 'books' => \App\Book::all()]);
+    return view('welcome',['books' => \App\Book::all(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::where('show', 1)->get(), 'books' => \App\Book::all()]);
 });
 
 Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
