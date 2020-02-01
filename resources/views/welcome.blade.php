@@ -258,7 +258,7 @@
                     <div class="col-lg-4 col-12 pt-lg-0 pt-5">
                         <h3 class="text-fut-bold"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #444444;">
-                            Новинки 2019
+                            Новинки
                         </h3>
                     </div>
                     <div class="col-lg-4 col-12 pt-lg-0 pt-4">

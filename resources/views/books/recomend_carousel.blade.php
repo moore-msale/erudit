@@ -1,6 +1,6 @@
 <div class="owl-one owl-carousel">
     @foreach($books as $bestseller)
-        @if($bestseller->bestseller == 1)
+        @if($bestseller->recommend == 1)
             <div class="item my-4 ml-1 mr-1 p-4 shadow" style="background-color: white; height: 480px">
                 <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                     <div style="height: 65%;">
