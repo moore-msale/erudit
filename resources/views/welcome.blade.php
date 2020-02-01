@@ -518,11 +518,12 @@
         <div>
             <div class="row pt-5 pb-5">
                 <div class="owl-one owl-carousel text-center">
-
+                @foreach($galleries as $gallery)
                     <div class="px-lg-3 px-0">
-                        <img class="w-100" style="border: 5px solid #F7E600;" src="{{ asset('images/shop1.png') }}"
+                        <img class="w-100" style="border: 5px solid #F7E600;" src="{{ asset('storage/'.$gallery->image) }}"
                              alt="">
                     </div>
+                @endforeach
                 </div>
             </div>
         </div>
