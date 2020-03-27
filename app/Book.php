@@ -21,4 +21,14 @@ class Book extends Model
     {
         return $this->hasMany(Feedback::class);
     }
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class);
+    }
+
+    public function compilations()
+    {
+        return $this->hasMany(Compilation::class);
+    }
 }

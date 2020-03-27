@@ -73,11 +73,13 @@ body
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
-.owl-one .owl-nav.disabled
+.owl-one .owl-nav.disabled, .owl-holiday .owl-nav.disabled
 {
     display: block!important;
+    text-align: center;
+    align-items: center;
 }
-.owl-one .owl-nav .owl-prev
+.owl-one .owl-nav .owl-prev, .owl-holiday .owl-nav .owl-prev
 {
     position: relative;
     background-image: url('/images/prev-books.png')!important;
@@ -86,11 +88,11 @@ body
     outline: none;
     transition: 0.5s;
 }
-.owl-one .owl-nav .owl-prev:hover
+.owl-one .owl-nav .owl-prev:hover, .owl-holiday .owl-nav .owl-prev:hover
 {
     transform: scale(1.1);
 }
-.owl-one .owl-nav .owl-next
+.owl-one .owl-nav .owl-next, .owl-holiday .owl-nav .owl-next
 {
     position: relative;
     background-image: url('/images/next-books.png')!important;
@@ -99,7 +101,7 @@ body
     outline: none;
     transition: 0.5s;
 }
-.owl-one .owl-nav .owl-next:hover
+.owl-one .owl-nav .owl-next:hover, .owl-holiday .owl-nav .owl-next:hover
 {
     transform: scale(1.1);
 }
@@ -354,4 +356,13 @@ body
     {
         color:black;
     }
+}
+
+.stock-img
+{
+    background-size:cover;
+    background-position: center;
+    height:400px;
+    min-height:300px;
+
 }

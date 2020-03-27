@@ -19,4 +19,6 @@ class Controller extends BaseController
         dd($bestsellers);
         return view('welcome');
     }
+
+
 }

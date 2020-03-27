@@ -28,7 +28,105 @@
         <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;"
              src="{{ asset('images/main-pic.png') }}" alt="">
     </div>
-    <div class="container-fluid pt-5 position-relative" id="bestseller">
+    @if(count($stocks))
+    <div class="container py-5">
+        <h3 class="text-fut-bold text-center"
+            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
+            Действующие акции
+        </h3>
+        <div class="row pt-4">
+            @foreach($stocks as $stock)
+            <div class="col-6">
+                    <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
+                    </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+    <div class="container-fluid sells-sector position-relative" id="actions"
+         style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
+        <img src="{{ asset('images/svg/7.svg') }}" class="position-absolute scroll-svg-up" style="left: -2%; top: 45%;"
+             alt="">
+        <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-down"
+             style="right: -2%; top: 45%;" alt="">
+        <div class="row pt-lg-5 pb-lg-0 pt-5 pb-0">
+
+            <div class="col-lg-12 col-12 pl-lg-5 pl-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-12 pt-lg-0 pt-5">
+                        <h3 class="text-fut-bold text-center"
+                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
+                            Новинки
+                        </h3>
+                    </div>
+                    <div class="col-lg-4 col-12 pt-lg-0 pt-4">
+                        <a href="/catalog">
+                            <button class="text-fut-bold py-3 px-5 but-hov" href=""
+                                    style="background: #3154CF; color: white; border:0px; cursor: pointer;">
+                                Смотреть все
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mt-4 pt-2 justify-content-center">
+                        @foreach($books as $book)
+                            @if($book->new == 1)
+                                @if($loop->index == 6)
+                                    @break
+                                @endif
+                                <div class="col-lg-3 col-12 item m-2 p-4 shadow"
+                                     style="background-color: white; max-width: 259px;">
+                                    <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
+                                        <div class="" style="height: 65%;">
+                                            @if (filter_var($book->image, FILTER_VALIDATE_URL))
+                                                <img class="w-100 h-100" src="{{ $book->image }}" alt="">
+                                            @else
+                                                <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                            @endif
+                                                @if(isset($book->discount))
+                                                    <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                                                @endif
+                                        </div>
+                                        <h3 class="text-fut-book mt-3 text-left"
+                                            style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
+                                            {{ \Illuminate\Support\Str::limit($book->name,50,'...')  }}
+                                        </h3>
+                                    </a>
+                                    <div class="p-0 text-left">
+                                        @guest
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
+                                                    </span>
+                                        @else
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ intval(isset($book->price_retail) ? (isset($book->discount) ? $book->price_retail - ($book->price_retail / 100 * $book->discount) : $book->price_retail) : (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale))}} сом
+                                                    </span>
+                                        @endguest
+                                    </div>
+                                    <div class="container-fluid mr-0 pr-0"
+                                         style="position: absolute; bottom:3%; color:#444;">
+                                        <div class="row justify-content-center" style="width:87%;">
+                                            <button
+                                                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
+                                                    data-id="{{ $book->id }}" data-aos="fade-up"
+                                                    style="font-size: 14px; border:0; cursor: pointer;">
+                                                Добавить в корзину
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-5 position-relative px-0" id="bestseller">
         <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 5%;"
              alt="">
         <div class="row pb-5">
@@ -65,6 +163,64 @@
                         </div>
                     </div>
                 </div>
+                @if($compilation->active == 1)
+                <div class="container-fluid mt-3 px-0" style="background-image: url({{asset('images/bg.png')}}); background-size: cover; background-position: center;">
+                    <div class="container pt-5">
+
+                        <div class="row pb-5 justify-content-center">
+                            <h3 class="text-fut-bold text-center pb-4 px-5"
+                                style="font-size: 38px; line-height: 120%; letter-spacing: 0.05em; color: {{$compilation->title_color}}; max-width: 600px;">
+                                {{ $compilation->title }}
+                            </h3>
+                            <div class="owl-holiday owl-carousel">
+                                @foreach($compilation->books as $bestseller)
+                                    <div class="item my-4 ml-1 mr-1 p-4 shadow" style="background-color: white; height: 480px">
+                                        <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
+                                            <div style="height: 65%;">
+                                                @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
+                                                    <img class="w-100 h-100" src="{{ $bestseller->image }}" alt="">
+                                                @else
+                                                    <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
+                                                @endif
+                                            </div>
+
+
+                                            <h3 class="text-fut-book mt-3 text-left"
+                                                style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
+                                                {{\Illuminate\Support\Str::limit($bestseller->name,50,'...')  }}
+                                            </h3>
+                                        </a>
+                                        <div class="p-0 text-left">
+                                            @guest
+                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
+                         {{ $bestseller->price_wholesale }} сом
+                    </span>
+                                            @else
+                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
+                        {{ $bestseller->price_retail }} сом
+                    </span>
+                                            @endguest
+                                        </div>
+                                        <div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:8%;">
+                                            <div class="row justify-content-center px-1" style="width:83%;">
+                                                {{--<div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">--}}
+                                                {{--<i style="color: #444; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>--}}
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
+                                                        data-id="{{ $bestseller->id }}" data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Добавить в корзину
+                                                </button>
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @endif
 
                 <div class="container-fluid" style="padding: 1% 8%">
                     <div class="row">
@@ -92,8 +248,8 @@
                 </div>
 
                 <div class="container-fluid position-relative" style="padding-top:7%;">
-                    <img src="{{ asset('images/svg/5.svg') }}" class="position-absolute scroll-svg-up"
-                         style="top: 15%; left: 6%;" alt="">
+                    {{--<img src="{{ asset('images/svg/5.svg') }}" class="position-absolute scroll-svg-up"--}}
+                         {{--style="top: 15%; left: 6%;" alt="">--}}
                     <img src="{{ asset('images/svg/6.svg') }}" class="position-absolute scroll-svg-down"
                          style="bottom: -3%; right: -3%;" alt="">
                     <div class="row justify-content-center text-center">
@@ -124,204 +280,7 @@
         </div>
     </div>
 
-    <div class="container-fluid sells-sector position-relative" id="actions"
-         style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
-        <img src="{{ asset('images/svg/7.svg') }}" class="position-absolute scroll-svg-up" style="left: -2%; top: 45%;"
-             alt="">
-        <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-down"
-             style="right: -2%; top: 45%;" alt="">
-        <div class="row pt-lg-5 pb-lg-0 pt-5 pb-0">
-            <div class="col-lg-3 col-12 pr-0">
-                <h3 class="text-fut-bold"
-                    style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
-                    Акции на сегодня
-                </h3>
-                <div class="pr-3" style="border-right: 1px solid rgba(255, 255, 255, 0.4);">
-                    @foreach($books as $discount)
-                        @if($discount->discount)
-                            <a href="/all_stock" style="text-decoration: none;">
-                                <div class="row p-3 mt-5 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">
-                                    <div class="col-8 p-0">
-                                        <div>
-                                            <p class="text-fut-bold"
-                                               style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #444444;">
-                                                {{ $discount->name }}
-                                            </p>
-                                            <p class="text-fut-book mb-0"
-                                               style="font-size: 14px; line-height: 120%; letter-spacing: 0.05em; color: #888888;">
-                                                {{--Осталось 2 дня--}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 p-0">
-                                        <p class="py-4 text-center mb-0"
-                                           style="border: 1px #E86969 solid; color: #E86969; font-size:20px;">
-                                            -{{$discount->discount}}%
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-                    {{--<a href="/all_stock" style="text-decoration: none;">--}}
-                    {{--<div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">--}}
-                    {{--<div class="col-8 p-0">--}}
-                    {{--<div>--}}
-                    {{--<p class="text-fut-bold"--}}
-                    {{--style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #444444;">--}}
-                    {{--Скидка на все канцтовары--}}
-                    {{--</p>--}}
-                    {{--<p class="text-fut-book mb-0"--}}
-                    {{--style="font-size: 14px; line-height: 120%; letter-spacing: 0.05em; color: #888888;">--}}
-                    {{--Осталось 2 дня--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-4 p-0">--}}
-                    {{--<p class="py-4 text-center mb-0" style="border: 1px #3154CF solid; color: #3154CF;">--}}
-                    {{---15%--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="/all_stock" style="text-decoration: none;">--}}
-                    {{--<div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">--}}
-                    {{--<div class="col-8 p-0">--}}
-                    {{--<div>--}}
-                    {{--<p class="text-fut-bold"--}}
-                    {{--style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #444444;">--}}
-                    {{--Скидка на все канцтовары--}}
-                    {{--</p>--}}
-                    {{--<p class="text-fut-book mb-0"--}}
-                    {{--style="font-size: 14px; line-height: 120%; letter-spacing: 0.05em; color: #888888;">--}}
-                    {{--Осталось 2 дня--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-4 p-0">--}}
-                    {{--<p class="py-4 text-center mb-0" style="border: 1px #019D38 solid; color: #019D38;">--}}
-                    {{---5%--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="/all_stock" style="text-decoration: none;">--}}
-                    {{--<div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">--}}
-                    {{--<div class="col-8 p-0">--}}
-                    {{--<div>--}}
-                    {{--<p class="text-fut-bold"--}}
-                    {{--style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #444444;">--}}
-                    {{--Скидка на все канцтовары--}}
-                    {{--</p>--}}
-                    {{--<p class="text-fut-book mb-0"--}}
-                    {{--style="font-size: 14px; line-height: 120%; letter-spacing: 0.05em; color: #888888;">--}}
-                    {{--Осталось 2 дня--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-4 p-0">--}}
-                    {{--<p class="py-4 text-center mb-0" style="border: 1px #E86969 solid; color: #E86969;">--}}
-                    {{---20%--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="/all_stock" style="text-decoration: none;">--}}
-                    {{--<div class="row p-3 mt-4 mb-4 ml-1 mr-4 but-hov" style="background-color: white;">--}}
-                    {{--<div class="col-8 p-0">--}}
-                    {{--<div>--}}
-                    {{--<p class="text-fut-bold"--}}
-                    {{--style="font-size: 18px; line-height: 110%; letter-spacing: 0.05em; color: #444444;">--}}
-                    {{--Скидка на все канцтовары--}}
-                    {{--</p>--}}
-                    {{--<p class="text-fut-book mb-0"--}}
-                    {{--style="font-size: 14px; line-height: 120%; letter-spacing: 0.05em; color: #888888;">--}}
-                    {{--Осталось 2 дня--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-4 p-0">--}}
-                    {{--<p class="py-4 text-center mb-0" style="border: 1px #019D38 solid; color: #019D38;">--}}
-                    {{---5%--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
 
-                    <a class="pl-3 text-fut-bold text-scale" href="all_stock" style="color: #444; font-size: 18px;">...еще {{ \App\Book::where('discount','!=',null)->count()  }}
-                        акции
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-9 col-12 pl-lg-5 pl-4">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-12 pt-lg-0 pt-5">
-                        <h3 class="text-fut-bold"
-                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #444444;">
-                            Новинки
-                        </h3>
-                    </div>
-                    <div class="col-lg-4 col-12 pt-lg-0 pt-4">
-                        <a href="/catalog">
-                            <button class="text-fut-bold py-3 px-5 but-hov" href=""
-                                    style="background: #3154CF; color: white; border:0px; cursor: pointer;">
-                                Смотреть все
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mt-4 pt-2 justify-content-center">
-                    @foreach($books as $book)
-                        @if($book->new == 1)
-                            @if($loop->index == 6)
-                                @break
-                            @endif
-                            <div class="col-lg-3 col-12 item m-2 p-4 shadow"
-                                 style="background-color: white; max-width: 259px;">
-                                <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
-                                    <div class="" style="height: 65%;">
-                                        @if (filter_var($book->image, FILTER_VALIDATE_URL))
-                                            <img class="w-100 h-100" src="{{ $book->image }}" alt="">
-                                        @else
-                                            <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
-                                        @endif
-                                    </div>
-                                    <h3 class="text-fut-book mt-3 text-left"
-                                        style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
-                                        {{ \Illuminate\Support\Str::limit($book->name,50,'...')  }}
-                                    </h3>
-                                </a>
-                                <div class="p-0 text-left">
-                                    @guest
-                                        <span class="text-fut-book"
-                                              style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_retail }} сом
-                                                    </span>
-                                    @else
-                                        <span class="text-fut-book"
-                                              style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_wholesale }} сом
-                                                    </span>
-                                    @endguest
-                                </div>
-                                <div class="container-fluid mr-0 pr-0"
-                                     style="position: absolute; bottom:3%; color:#444;">
-                                    <div class="row justify-content-center" style="width:87%;">
-                                        <button
-                                            class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
-                                            data-id="{{ $book->id }}" data-aos="fade-up"
-                                            style="font-size: 14px; border:0; cursor: pointer;">
-                                            Добавить в корзину
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container-fluid position-relative py-5 my-5">
         <img src="{{ asset('images/svg/8.svg') }}" class="position-absolute scroll-svg-down" style="left: 20%; top: 2%;"

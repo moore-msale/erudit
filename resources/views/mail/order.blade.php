@@ -15,6 +15,9 @@
         @endif
         {{--@dd($newCart)--}}
             <strong>Адрес:</strong> {{ $newCart->address}}<br>
+        @if(isset($newCart->comment))
+        <strong>Комментарий: {{ $newCart->comment }}</strong>
+        @endif
         <br><br>
         <h3>Заказ</h3>
         <div style="display:flex;">
@@ -33,6 +36,13 @@
         @endforeach
         <br><br>
         <h3>Общая цена: {{ $newCart->cart['total'] }} сом</h3>
+        @if(isset($newCart->discount))
+        <h3>Скидка: {{$newCart->discount}}%</h3>
+        @endif
+        @if(isset($newCart->sum))
+        <h3>Вносимая сумма: {{ $newCart->sum }} сом</h3>
+        <h3>Сдача: {{ $newCart->diff }}</h3>
+        @endif
     </div>
     </body>
     </html>

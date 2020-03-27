@@ -23,8 +23,8 @@
             <div class="col-9">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a href="tel:+996 501 433 433" class="nav-link">
-                            <i class="fas fa-phone"></i>&nbsp;+996 501 433 433
+                        <a href="tel:+996 551 433 433" class="nav-link">
+                            <i class="fas fa-phone"></i>&nbsp;+996 551 433 433
                         </a>
                     </li>
                     <li class="nav-item">

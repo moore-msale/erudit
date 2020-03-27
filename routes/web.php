@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['books' => \App\Book::all(), 'news' => \App\News::paginate(3)->reverse(), 'genres' => \App\Genre::where('show', 1)->get(), 'books' => \App\Book::all(), 'galleries' => \App\Gallery::all()]);
+    return view('welcome',[
+        'books' => \App\Book::all(),
+        'news' => \App\News::paginate(3)->reverse(),
+        'genres' => \App\Genre::where('show', 1)->get(),
+        'galleries' => \App\Gallery::all(),
+        'stocks' => \App\Stock::where('date', '>' ,\Carbon\Carbon::now())->get(),
+        'compilation' => \App\Compilation::all()->first(),
+    ]);
 });
 
 Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
@@ -65,7 +72,16 @@ Route::group(['prefix' => 'moo'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('stock_create', 'StockController@create')->name('stock_create');
+Route::post('stock_store', 'StockController@store')->name('stock_store');
+Route::get('stock_edit/{id}', 'StockController@edit')->name('stock_edit');
+Route::get('stock_delete/{id}', 'StockController@delete')->name('stock_delete');
+Route::post('stock_type', 'StockController@stock_type')->name('stock_type');
+Route::post('stock_category', 'StockController@stock_category')->name('stock_category');
 
+Route::get('compilation_create', 'CompilationController@create')->name('compilation_create');
+Route::post('compilation_store', 'CompilationController@store')->name('compilation_store');
+Route::post('compilation_active', 'CompilationController@active')->name('compilation_active');
 
 Route::resource('feedback', 'FeedbackController');
 Route::resource('news', 'NewsController');
@@ -78,3 +94,5 @@ Route::post('/cart', 'Api\CartController@store')->name('cart.store');
 Route::get('/cart/add/book', 'Api\CartController@add')->name('cart.add');
 Route::get('/cart/delete/book', 'Api\CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/book', 'Api\CartController@remove')->name('cart.remove');
+Route::post('/discount_check', 'CatalogController@check')->name('discount_check');
+

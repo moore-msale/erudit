@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Book;
 use App\Cart;
+use App\Certificate;
+use App\Discount;
 use App\Mail\cartsend;
+use App\Promo;
 use App\TokenResolve;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
@@ -40,18 +43,60 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-
-
+//    dd($request->all());
         $token = $request->token ? $request->token : Session::has('token') ? Session::get('token') : uniqid();
-
         TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
 
         $newCart = new Cart();
-        $newCart->cart = [
-            'cart' => $cart->getContent(),
-            'total' => $cart->getTotal(),
-        ];
+        if($request->activate == 1)
+        {
+            if($request->discount_type == 1)
+            {
+                $item = Promo::where('promo',$request->discount)->where('active',null)->first();
+                if($item)
+                {
+                    $item->active = 1;
+                    $item->save();
+                }
+            }
+            if($request->discount_type == 2)
+            {
+                $item = Certificate::where('name',$request->discount)->where('active',null)->first();
+
+                if($item)
+                {
+                    $item->active = 1;
+                    $item->save();
+                }
+            }
+            if($request->discount_type == 3)
+            {
+                $item = Discount::where('name', $request->discount)->where('active',null)->first();
+
+                if($item)
+                {
+                    $item->active = 1;
+                    $item->save();
+                }
+            }
+
+
+            $percent = $item->discount;
+            $newCart->discount = $percent;
+            $newCart->cart = [
+                'cart' => $cart->getContent(),
+                'total' => $cart->getTotal() - ($cart->getTotal() / 100 * $percent),
+            ];
+        }
+        else
+        {
+            $newCart->cart = [
+                'cart' => $cart->getContent(),
+                'total' => $cart->getTotal(),
+            ];
+        }
+
         $newCart->user_id = auth()->check() ? auth()->user()->id : null;
         $newCart->comment = $request->comment;
         $newCart->name = $request->name;
@@ -69,8 +114,11 @@ class CartController extends Controller
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-        Mail::to('erudit.shop@mail.ru')->send(new cartsend($newCart));
-        return redirect('/');
+        if(!count($cart->getContent()) == 0) {
+            Mail::to('mackinkenny@gmail.com')->send(new cartsend($newCart));
+        }
+
+        return view('cart.success', ['cart' => $newCart]);
     }
 
     public function index(Request $request)
@@ -194,4 +242,6 @@ class CartController extends Controller
             'token' => $token,
         ]);
     }
+
+
 }

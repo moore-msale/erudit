@@ -20,7 +20,11 @@
         @foreach($cartItems as $item)
             <div class="row border-top border-bottom py-3 align-items-center">
                 <div class="col-10 col-md-4 col-lg-4 order-0 d-flex align-items-center">
-                    <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                    @if(filter_var(\App\Book::find($item->id)->image, FILTER_VALIDATE_URL))
+                        <img src="{{ \App\Book::find($item->id)->image }}" style="height: 100px; width: auto;" alt="">
+                    @else
+                        <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                    @endif
                     <p class="small m-0 ml-3 font-weight-bold">{{ $item->name }}</p>
                 </div>
                 <div class="col-6 col-md-2 my-3 my-md-0 col-lg-2 order-2">

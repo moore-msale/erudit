@@ -393,6 +393,25 @@
     })
 </script>
 <script>
+    var owl = $('.owl-holiday');
+    owl.owlCarousel({
+        margin: 10,
+        loop: true,
+        // autoplay:true,
+        // autoplayTimeout:5000,
+        // autoplaySpeed: 1500,
+        // autoplayHoverPause:true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            700: {
+                items: 4
+            }
+        }
+    })
+</script>
+<script>
     var owl = $('.owl-two');
     owl.owlCarousel({
         margin: 10,

@@ -82,23 +82,19 @@
             </h2>
 
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
                     Книжный магазин "Эрудит"
                     <br>"DORDOI Plaza-2" -1 этаж
-                </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="" class="text-white text-scale-white" style="text-decoration: none;">
                     Книжный магазин "Эрудит"
                     <br>"IMall" 1 этаж
-                </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                 10:00-22:00
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="tel: +996 501 433 433" class="text-white text-scale-white" style="text-decoration: none;">
-                +996 501 433 433
+                <a href="tel: +996 551 433 433" class="text-white text-scale-white" style="text-decoration: none;">
+                +996 551 433 433
                 </a>
             </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">

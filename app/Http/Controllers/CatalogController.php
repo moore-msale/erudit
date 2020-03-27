@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Certificate;
+use App\Discount;
 use App\Genre;
+use App\Promo;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -21,6 +24,42 @@ class CatalogController extends Controller
         $books = Book::where('genre_id','=',$genre->id)->get();
 
         return view('pages.catalog',['books' => $books, 'genres' => $genres]);
+    }
+
+    public function check(Request $request)
+    {
+
+        if($request->type == 1)
+        {
+
+            $item = Promo::where('promo',$request->discount)->where('active',null)->first();
+//            dd($item);
+        }
+        if($request->type == 2)
+        {
+            $item = Certificate::where('name',$request->discount)->where('active',null)->first();
+
+        }
+        if($request->type == 3)
+        {
+            $item = Discount::where('name', $request->discount)->where('active',null)->first();
+        }
+
+
+        if ($item)
+        {
+            $check = 1;
+        }
+        else
+        {
+            $check = 0;
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'item' => $item,
+            'check' => $check,
+        ]);
     }
 
 }

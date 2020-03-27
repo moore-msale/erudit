@@ -34,7 +34,7 @@
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="tel:+996 501 433 433" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 501 433 433</a>
+                            <a href="tel:+996 551 433 433" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 551 433 433</a>
                         </li>
 
                         <li class="nav-item px-3 position-relative">
@@ -199,7 +199,7 @@
                         </li>
 
                         <li class="nav-item px-3 my-2">
-                            <a href="tel:+996 501 433 433" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 501 433 433</a>
+                            <a href="tel:+996 551 433 433" class="text-fut-book" style="text-decoration: underline; font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">+996 551 433 433</a>
                         </li>
                         <li class="nav-item px-3 my-2">
                             <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>

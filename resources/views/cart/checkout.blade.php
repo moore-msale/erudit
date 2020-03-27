@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@push('styles')
+    <style>
+        .dis
+        {
+            pointer-events: none;
+        }
+    </style>
+@endpush
 @section('content')
     @if(\Illuminate\Support\Facades\Session::has('continue') && \Illuminate\Support\Facades\Session::get('continue'))
 
@@ -66,6 +73,45 @@
                             <label for="comment">Комментарий к заказу</label>
                             <textarea id="comment" name="comment" rows="6" class="form-control input-erudit scrollbar"></textarea>
                         </div>
+                        <div class="row mt-4">
+                           <div class="col-12">
+                               <p class="text-fut-bold">
+                                   Для получения скидки воспользуйтесь:
+                               </p>
+                           </div>
+                            <div class="col-4">
+                                <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="1" style="padding:10px 15px; border:none; cursor:pointer;">
+                                    Промокод
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="2" style="padding:10px 15px; border:none; cursor:pointer;">
+                                    Сертификат
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="3" style="padding:10px 15px; border:none; cursor:pointer;">
+                                    Дисконт
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-4 discount-body" style="display: none;">
+                                <div class="form-group">
+                                    <label id="discount-label" for="discount"></label>
+                                    <input type="text" id="discount" name="discount" class="form-control input-erudit">
+                                    <input type="hidden" id="discount-type" name="discount_type" value="">
+                                    <input type="hidden" id="discount-activate" name="activate" value="0">
+                                </div>
+                                <div class="text-fut-bold btn-info btn-checker text-center" style="padding:10px 15px; border:none; cursor:pointer;">
+                                    Проверить скидку
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4" id="discount-success" style="display: none;">
+                                <p class="text-fut-bold text-success">
+                                    Скидка активирована!
+                                </p>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="col-12 col-lg-5 mt-4 mt-lg-0">
@@ -73,7 +119,12 @@
                         @foreach($cartItems as $item)
                             <div class="d-flex py-3">
                                 <div class="col-5 col-md-4 col-lg-3 pr-0">
-                                    <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                                    @if (filter_var(\App\Book::find($item->id)->image, FILTER_VALIDATE_URL))
+                                        <img src="{{ \App\Book::find($item->id)->image }}" style="height: 100px; width: auto;" alt="">
+                                    @else
+                                        <img src="{{ asset('storage/'.\App\Book::find($item->id)->image) }}" style="height: 100px; width: auto;" alt="">
+                                    @endif
+
                                 </div>
                                 <div class="col p-0">
                                     <p class="font-weight-bold h5">{{ $item->name }}</p>
@@ -91,14 +142,18 @@
                         Итого
                     </div>
                     <div class="col-6 m-0 h5 font-weight-bold">
-                        {{ $total }} сом
+                        <span class="total" data-parent="{{$total}}">{{ $total }}</span> сом
+                        <p class="font-weight-bold total-discount text-success" style="display: none;">
+
+                        </p>
                     </div>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 p-0 mt-1">
-                    <a href="#" class="btn btn-danger border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';">
+                    <a href="#" class="btn-loading btn btn-danger border-0 w-100 text-light" onclick="event.preventDefault(); $('form').validate() ? $('form').submit() : '';" >
                         <div class="bg-danger rounded text-center font-weight-bold h6 m-0 p-4">
-                            Оформить заказ
+                            <span class="mainer">Оформить заказ</span>
+                            <img class="loading" src="{{ asset('images/loading.gif') }}" style="width:40px; display:none;" alt="">
                         </div>
                     </a>
                 </div>
@@ -155,5 +210,77 @@
                 }
             }
         });
+    </script>
+    <script>
+        function turner() {
+            $('.loading').hide();
+            $('.mainer').show();
+            $('.btn-loading').removeClass('dis');
+        }
+        $('.btn-loading').on('click', function () {
+
+            $('.btn-loading').addClass('dis');
+            $('.loading').show();
+            $('.mainer').hide();
+            setTimeout(turner, 3000);
+        })
+    </script>
+    <script>
+        $('.btn-discount').click(function (e) {
+            var btn = $(e.currentTarget);
+            var type = btn.data('id');
+            $('.discount-body').show();
+            if (type == 1){
+                $('#discount-label').html('Промокод');
+                $('#discount-type').val(type);
+            }
+            else if (type == 2)
+            {
+                $('#discount-label').html('Сертификат');
+                $('#discount-type').val(type);
+            }
+            else if (type == 3)
+            {
+                $('#discount-label').html('Дисконт');
+                $('#discount-type').val(type);
+            }
+            })
+    </script>
+    <script>
+        $('.btn-checker').click(function () {
+            var discount = $('#discount').val();
+            var type = $('#discount-type').val();
+            $.ajax({
+                url: '{{ route('discount_check') }}',
+                method: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "type": type,
+                    "discount": discount,
+                },
+                success: data => {
+                    if(data.check == 1)
+                    {
+                        $('#discount-success').show();
+                        $('#discount-activate').val(1);
+
+                        var total = $('.total').data('parent');
+                        var percent = total / 100 * data.item.discount;
+                        // console.log(total,percent);
+                        $('.total').html(parseInt(total - percent));
+                        $('.total-discount').show();
+                        $('.total-discount').html('Скидка - ' + data.item.discount + '%');
+
+                    }
+                    else
+                    {
+                        alert('Таких данных нет!');
+                    }
+                },
+                error: () => {
+                    alert('Ошибка!');
+                }
+            })
+        })
     </script>
 @endpush
