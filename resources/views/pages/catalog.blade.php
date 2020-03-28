@@ -258,19 +258,19 @@
             getProducts(params);
         });
 
-        // $('.category_btn').click(e => {
-        //    e.preventDefault();
-        //
-        //     let btn = $(e.currentTarget);
-        //     let val = btn.data('value');
-        //
-        //     params.category = val;
-        //     if(params.page) {
-        //         params.page = 1;
-        //     }
-        //
-        //     getProducts(params);
-        // });
+        $('.category_btn').click(e => {
+           e.preventDefault();
+
+            let btn = $(e.currentTarget);
+            let val = btn.data('value');
+
+            params.category = val;
+            if(params.page) {
+                params.page = 1;
+            }
+
+            getProducts(params);
+        });
 
         $('#search_input').keyup(e => {
             e.preventDefault();
