@@ -13,8 +13,8 @@
                     <span class="mx-auto text-white">-{{$book->discount}}%</span></div>
                 @elseif($book->bestseller == 1)
                     <div class="discount-plate d-flex align-items-center"
-                         style="background-color: #ffee55; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
-                        <span class="mx-auto text-danger text-fut-bold">Хит!</span></div>
+                         style="background-color: #fff9c6; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
+                        <span class="mx-auto text-fut-bold" style="color:#ff5e00;"><i class="fas fa-award fa-2x"></i></span></div>
                 @elseif($book->new == 1)
                     <div class="discount-plate d-flex align-items-center"
                          style="background-color: #ff0c13; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
