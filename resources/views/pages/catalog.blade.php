@@ -252,6 +252,7 @@
             let val = btn.data('value');
 
             params.genre = val;
+            params.category = null;
             if (params.page) {
                 params.page = 1;
             }
@@ -265,6 +266,7 @@
             let val = btn.data('value');
 
             params.category = val;
+            params.genre = null;
             if(params.page) {
                 params.page = 1;
             }
