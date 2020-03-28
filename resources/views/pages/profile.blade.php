@@ -143,7 +143,7 @@
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
                                             <div class="btn-link text-fut-bold" style="cursor: pointer; color:black; text-decoration: none; font-size:14px;" data-toggle="collapse" data-target="#collapse{{$loop->index}}" aria-expanded="true" aria-controls="collapseOne">
-                                                <span class="mr-4">Имя {{$all->name}}</span><span class="mr-4">Дата заказа {{$all->created_at}}</span><span>Итоговая сумма {{ $all->total }} сом</span>
+                                                <span class="mr-4">Имя {{$all->name}}</span><span class="mr-4">Дата заказа {{$all->created_at}}</span><span class="mr-4">Итоговая сумма {{ $all->total }} сом</span>{{isset($all->discount) ? 'Скидка: '.$all->discount.'%':''}}
                                             </div>
                                         </h5>
                                     </div>
@@ -190,6 +190,9 @@
                                                         <div class="row justify-content-end">
                                                             <p class="text-fut-bold mr-4">Дата покупки: {{$all->created_at}}</p>
                                                             <p class="text-fut-bold">Итоговая сумма: {{$all->total}} сом</p>
+                                                            @if($all->discount)
+                                                            <p class="text-fut-bold ml-4">Скидка: {{$all->discount}}%</p>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

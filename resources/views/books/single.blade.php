@@ -11,6 +11,10 @@
                 <div class="discount-plate d-flex align-items-center"
                      style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
                     <span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                @elseif($book->new == 1)
+                    <div class="discount-plate d-flex align-items-center"
+                         style="background-color: #ff0c13; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
+                        <span class="mx-auto text-white">NEW</span></div>
             @endif
             {{--@php--}}
             {{--var_dump(file_exists(storage_path('app\\public\\books\\'.$book->image)))--}}
