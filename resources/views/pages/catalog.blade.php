@@ -203,24 +203,13 @@
                         </h3>
                         <div class="mt-3 text-fut-book"
                              style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
-                            <p class="text-scale">
-                                Новинки
-                            </p>
-                            <p class="text-scale">
-                                Бестселлеры
-                            </p>
-                            <p class="text-scale">
-                                Товары для творчества
-                            </p>
-                            <p class="text-scale">
-                                Канцелярские товары
-                            </p>
-                            <p class="text-scale">
-                                Настольные игры
-                            </p>
-                            <p class="text-scale">
-                                Учебные материалы
-                            </p>
+                            @foreach($categories as $category)
+                                <a href="{{ route('category', $category) }}" class="category_btn" data-value="{{ $category->id }}">
+                                    <p class="text-scale">
+                                        {{ $category->name }}
+                                    </p>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -268,6 +257,20 @@
             }
             getProducts(params);
         });
+
+        // $('.category_btn').click(e => {
+        //    e.preventDefault();
+        //
+        //     let btn = $(e.currentTarget);
+        //     let val = btn.data('value');
+        //
+        //     params.category = val;
+        //     if(params.page) {
+        //         params.page = 1;
+        //     }
+        //
+        //     getProducts(params);
+        // });
 
         $('#search_input').keyup(e => {
             e.preventDefault();

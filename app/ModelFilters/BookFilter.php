@@ -33,6 +33,9 @@ class BookFilter extends Collection
         if ($genre = $request->genre) {
             $model = $this->filterByGenre($model, $genre);
         }
+        if($category = $request->category) {
+            $model = $this->filterByCategory($model, $category);
+        }
 
         return $model;
     }
@@ -40,6 +43,11 @@ class BookFilter extends Collection
     public function filterByGenre($model, $genre)
     {
         return $model->where('genre_id', $genre);
+    }
+
+    public function filterByCategory ($model, $category)
+    {
+        return $model->where('category_id', $category);
     }
 
     public function searchFilter($model, $name)

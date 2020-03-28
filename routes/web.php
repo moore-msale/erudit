@@ -29,6 +29,7 @@ Route::get('/search', 'MainController@search')->name('search');
 
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
+Route::get('/category/{category}', 'CatalogController@category')->name('category');
 
 Route::get('/book/{book}', 'BookController@show')->name('book.show');
 Route::get('/books', 'Api\BookController@index')->name('book.all');

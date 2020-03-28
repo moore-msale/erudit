@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Category;
 use App\Certificate;
 use App\Discount;
 use App\Genre;
@@ -15,7 +16,8 @@ class CatalogController extends Controller
     {
         $books = Book::all();
         $genres = Genre::all();
-        return view('pages.catalog',['books' => $books, 'genres' => $genres]);
+        $categories = Category::all();
+        return view('pages.catalog',['books' => $books, 'genres' => $genres, 'categories' => $categories]);
     }
 
     public function genre(Genre $genre)
@@ -24,6 +26,14 @@ class CatalogController extends Controller
         $books = Book::where('genre_id','=',$genre->id)->get();
 
         return view('pages.catalog',['books' => $books, 'genres' => $genres]);
+    }
+
+    public function category(Category $category)
+    {
+        $categories = Category::all();
+        $books = Book::where('category_id', '=', $category->id)->get();
+
+        return view('pages.catalog',['books' => $books, 'categoryes' => $categories]);
     }
 
     public function check(Request $request)
