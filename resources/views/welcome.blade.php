@@ -293,7 +293,7 @@
              style="right: -2%; bottom: 7%;" alt="">
         <div class="p-lg-5 p-0 pt-lg-5 pt-5">
             <div class="row p-lg-5">
-                <div class="col-lg-6 col-12 cat-scale"
+                <div class="col-lg-4 col-12 cat-scale"
                      style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog',['category' => 5]) }}">
                         <div class="w-100 h-100">
@@ -314,11 +314,11 @@
                 </div>
 
 
-                <div class="col-lg-6 col-12 cat-scale d-lg-block d-none"
+                <div class="col-lg-4 col-12 cat-scale d-lg-block d-none"
                      style="background-image: url({{ asset('images/cat2.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog', ['category' => 1]) }}">
                         <div class="w-100 h-100">
-                            <div style="position: absolute; bottom: 28%; left: 55%;">
+                            <div style="position: absolute; bottom: 28%; left: 39%;">
                                 <h3 class="text-fut-bold"
                                     style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #CC4B8B;">
                                     Канцелярские
@@ -333,7 +333,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 col-12 cat-scale d-lg-none d-block"
+                <div class="col-lg-4 col-12 cat-scale d-lg-none d-block"
                      style="background-image: url({{ asset('images/cat2-mobile.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog', ['category' => 1]) }}">
                         <div class="w-100 h-100">
@@ -352,8 +352,7 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="col-lg-6 col-12 cat-scale"
+                <div class="col-lg-4 col-12 cat-scale"
                      style="background-image: url({{ asset('images/cat3.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog', ['category' => 3]) }}">
                         <div class="w-100 h-100">
@@ -372,8 +371,27 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-4 col-12 cat-scale"
+                     style="background-image: url({{ asset('images/cat5.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
+                    <a href="{{ route('catalog',['category' => 6]) }}">
+                        <div class="w-100 h-100">
+                            <div style="position: absolute; bottom: 28%; left:10%;">
+                                <h3 class="text-fut-bold"
+                                    style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
+                                    Мягкие
+                                    <br>
+                                    игрушки
+                                </h3>
+                                <p class="text-fut-bold text-scale"
+                                   style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #444;">
+                                    Смотреть <span><img src="{{ asset('images/1arrow.png') }}" alt=""></span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <div class="col-lg-6 col-12 cat-scale d-lg-block d-none"
+                <div class="col-lg-4 col-12 cat-scale d-lg-block d-none"
                      style="background-image: url({{ asset('images/cat4.png') }}); background-position: center; background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog', ['category' => 4]) }}">
                         <div class="w-100 h-100">
@@ -393,7 +411,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 col-12 cat-scale d-lg-none d-block"
+                <div class="col-lg-4 col-12 cat-scale d-lg-none d-block"
                      style="background-image: url({{ asset('images/cat4-mobile.png') }}); background-position: center; background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
                     <a href="{{ route('catalog', ['category' => 4]) }}">
                         <div class="w-100 h-100">
@@ -408,6 +426,44 @@
                                    style="color: #fefefe; font-size: 16px; line-height: 120%; letter-spacing: 0.05em;">
                                     Смотреть <span><img style="filter: invert(100%)"
                                                         src="{{ asset('images/1arrow.png') }}" alt=""></span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-12 cat-scale d-lg-block d-none"
+                     style="background-image: url({{ asset('images/cat6.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
+                    <a href="{{ route('catalog', ['category' => 7]) }}">
+                        <div class="w-100 h-100">
+                            <div style="position: absolute; bottom: 28%; left: 39%;">
+                                <h3 class="text-fut-bold"
+                                    style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #CC4B8B;">
+                                    Вкусная
+                                    <br>
+                                    помощь
+                                </h3>
+                                <p class="text-fut-bold text-scale"
+                                   style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #444;">
+                                    Смотреть <span><img src="{{ asset('images/1arrow.png') }}" alt=""></span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-12 cat-scale d-lg-none d-block"
+                     style="background-image: url({{ asset('images/cat6-mobile.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
+                    <a href="{{ route('catalog', ['category' => 7]) }}">
+                        <div class="w-100 h-100">
+                            <div style="position: absolute; bottom: 28%; left: 10%;">
+                                <h3 class="text-fut-bold"
+                                    style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #CC4B8B;">
+                                    Вкусная
+                                    <br>
+                                    помощь
+                                </h3>
+                                <p class="text-fut-bold text-scale"
+                                   style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #444;">
+                                    Смотреть <span><img src="{{ asset('images/1arrow.png') }}" alt=""></span>
                                 </p>
                             </div>
                         </div>

@@ -43,17 +43,17 @@ class CatalogController extends Controller
         if($request->type == 1)
         {
 
-            $item = Promo::where('promo',$request->discount)->where('active',null)->first();
+            $item = Promo::where('promo',$request->discount)->where('active',null)->orWhere('promo',$request->discount)->where('active',0)->first();
 //            dd($item);
         }
         if($request->type == 2)
         {
-            $item = Certificate::where('name',$request->discount)->where('active',null)->first();
+            $item = Certificate::where('name',$request->discount)->where('active',null)->orWhere('name',$request->discount)->where('active',0)->first();
 
         }
         if($request->type == 3)
         {
-            $item = Discount::where('name', $request->discount)->where('active',null)->first();
+            $item = Discount::where('name', $request->discount)->where('active',null)->orWhere('name',$request->discount)->where('active',0)->first();
         }
 
 

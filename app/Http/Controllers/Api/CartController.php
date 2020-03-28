@@ -53,7 +53,7 @@ class CartController extends Controller
         {
             if($request->discount_type == 1)
             {
-                $item = Promo::where('promo',$request->discount)->where('active',null)->first();
+                $item = Promo::where('promo',$request->discount)->where('active',null)->orWhere('promo',$request->discount)->where('active',0)->first();
                 if($item)
                 {
                     $item->active = 1;
@@ -62,7 +62,7 @@ class CartController extends Controller
             }
             if($request->discount_type == 2)
             {
-                $item = Certificate::where('name',$request->discount)->where('active',null)->first();
+                $item = Certificate::where('name',$request->discount)->where('active',null)->orWhere('name',$request->discount)->where('active',0)->first();
 
                 if($item)
                 {
@@ -72,7 +72,7 @@ class CartController extends Controller
             }
             if($request->discount_type == 3)
             {
-                $item = Discount::where('name', $request->discount)->where('active',null)->first();
+                $item = Discount::where('name', $request->discount)->where('active',null)->orWhere('name',$request->discount)->where('active',0)->first();
 
                 if($item)
                 {
