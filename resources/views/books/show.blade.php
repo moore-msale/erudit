@@ -70,31 +70,117 @@
                                 {{ $book->name }}
                             </h2>
                             <div class="mt-4 row" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
-                                <div class="col-4">
                                     @if($book->author)
+                                    <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                                    </div>
                                     @endif
                                     @if($book->publishing)
+                                            <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
-                                    @endif
+                                            </div>
+                                                @endif
                                     @if($book->series)
+                                            <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                            </div>
                                     @endif
                                     @if($book->isbn)
+                                            <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">ISBN:</strong> {{ $book->isbn }}</p>
+                                            </div>
                                     @endif
-                                </div>
-                                <div class="col-5">
                                     @if($book->pages)
-                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Кол-во страниц:</strong> {{ $book->pages }}</p>
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Кол-во страниц:</strong> {{ $book->pages }}</p>
+                                            </div>
                                     @endif
                                     @if($book->weight)
+                                            <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Вес:</strong> {{ $book->weight }}</p>
+                                            </div>
                                     @endif
                                     @if($book->dimension)
+                                            <div class="col-6">
                                         <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Размеры:</strong> {{ $book->dimension }}</p>
+                                            </div>
                                     @endif
-                                </div>
+                                        @if($book->age_restr)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Возрастное ограничение:</strong> {{ $book->age_restr }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->decor)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Оформление:</strong> {{ $book->decor }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->editor)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Редактор:</strong> {{ $book->editor }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->translator)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Переводчик:</strong> {{ $book->translator }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->book_form)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Формат книги:</strong> {{ $book->book_form }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->binding)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Переплет:</strong> {{ $book->binding }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->paper_type)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Тип бумаги:</strong> {{ $book->paper_type }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->tiraj)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Тираж:</strong> {{ $book->tiraj }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->issue_date)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Дата издания:</strong> {{ $book->issue_date }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->language)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Язык:</strong> {{ $book->language }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->artist)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Художник:</strong> {{ $book->artist }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->original_name)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Оригинальное название:</strong> {{ $book->original_name }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->illustrations)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Иллюстрации:</strong> {{ $book->illustrations }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->illustrations_type)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Тип иллюстраций:</strong> {{ $book->illustrations_type }}</p>
+                                            </div>
+                                        @endif
+                                        @if($book->cover_type)
+                                            <div class="col-6">
+                                                <p class="text-fut-light font-weight-bold"><strong class="text-fut-book">Тип обложки:</strong> {{ $book->cover_type }}</p>
+                                            </div>
+                                        @endif
+
                             </div>
 
                             <div class="mt-4">
