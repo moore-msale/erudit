@@ -76,7 +76,7 @@
                         </div>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="{{ route('category', ['category' => 1]) }}" class="text-fut-book text-scale" style="text-decoration: none; color: #444444; font-size: 17px; width:70px;">Канцтовары</a>
+                        <a href="{{ route('catalog', ['category' => 1]) }}" class="text-fut-book text-scale" style="text-decoration: none; color: #444444; font-size: 17px; width:70px;">Канцтовары</a>
                     </li>
                     <li class="nav-item px-3">
                         <a href="{{ route('news.index') }}" class="text-fut-book text-scale" style="text-decoration: none; color: #444444; font-size: 17px; width:70px;">Новости</a>
@@ -192,7 +192,7 @@
                             <a href="/contacts" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Контакты</a>
                         </li>
                         <li class="nav-item px-3 my-2">
-                            <a href="{{ route('category', ['category' => 1]) }}" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Канцтовары</a>
+                            <a href="{{ route('catalog', ["category" => 1]) }}" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Канцтовары</a>
                         </li>
 
                         <li class="nav-item px-3 my-2">

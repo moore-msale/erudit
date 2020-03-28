@@ -47,7 +47,7 @@
             }
         </style>
     @endpush
-    {{--@dd(request()->query())--}}
+
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
             <div class="row align-items-center bg-white shadow px-3 py-3">
@@ -342,6 +342,7 @@
     <script>
         @if(request()->query('genre'))
             params.genre = '{{ request()->query('genre') }}';
+            params.category = null;
             getProducts(params);
         @else
             getProducts();
@@ -349,7 +350,8 @@
 
         @if(request()->query('category'))
             params.category = '{{request()->query('category')}}';
-        getProducts(params);
+            params.genre = null;
+            getProducts(params);
         @else
             getProducts();
         @endif
