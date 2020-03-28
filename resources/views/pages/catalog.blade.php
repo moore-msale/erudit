@@ -204,11 +204,13 @@
                         <div class="mt-3 text-fut-book"
                              style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
                             @foreach($categories as $category)
+                                @if($category->name != 'Книги')
                                 <a href="{{ route('category', $category) }}" class="category_btn" data-value="{{ $category->id }}">
                                     <p class="text-scale">
                                         {{ $category->name }}
                                     </p>
                                 </a>
+                                @endif
                             @endforeach
                         </div>
                     </div>
