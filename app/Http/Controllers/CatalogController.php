@@ -23,17 +23,18 @@ class CatalogController extends Controller
     public function genre(Genre $genre)
     {
         $genres = Genre::all();
+        $categories = Category::all();
         $books = Book::where('genre_id','=',$genre->id)->get();
 
-        return view('pages.catalog',['books' => $books, 'genres' => $genres]);
+        return view('pages.catalog',['books' => $books, 'genres' => $genres, 'categories' => $categories]);
     }
 
     public function category(Category $category)
     {
         $categories = Category::all();
         $books = Book::where('category_id', '=', $category->id)->get();
-
-        return view('pages.catalog',['books' => $books, 'categoryes' => $categories]);
+        $genres = Genre::all();
+        return view('pages.catalog',['books' => $books, 'genres' => $genres, 'categories' => $categories]);
     }
 
     public function check(Request $request)
