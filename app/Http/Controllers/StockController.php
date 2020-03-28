@@ -15,25 +15,19 @@ class StockController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request->all());
-        if ($request->type == 1)
+        if(isset($request->id))
         {
-        if (isset($request->items))
+            $stock = Stock::find($request->id);
+        }
+        else
         {
-            if(isset($request->id))
-            {
-                $stock = Stock::find($request->id);
-            }
-            else
-            {
-                $stock = new Stock();
-            }
+            $stock = new Stock();
+        }
 
         $stock->name = $request->desc;
         $stock->date = $request->date;
         $stock->discount = $request->discount;
-        $stock->type = $request->type;
-        $stock->category = $request->category;
+
         if ($file = $request->file('image')) {
             $name = mb_strtolower("stocks/" . 'stockstype'. rand(1,1400) . '.png');
             if ($file->move('stocks', $name)) {
@@ -41,6 +35,13 @@ class StockController extends Controller
                 $stock->save();
             }
         }
+        $stock->save();
+        if ($request->type == 1)
+        {
+            $stock->type = $request->type;
+            $stock->category = $request->category;
+
+
         $items = $request->items;
         $books = Book::find($items);
 
@@ -52,6 +53,7 @@ class StockController extends Controller
             }
         }
 
+        if($request->items){
         if ($bookssync = $request->items) {
             $stock->books()->sync($bookssync);
         }
@@ -60,12 +62,24 @@ class StockController extends Controller
             $book->discount = $stock->discount;
             $book->save();
         }
+        }
 
+        elseif ($request->category)
+        {
+            $books = Book::where('genre_id',$request->category)->get();
+
+            $stock->books()->sync($books);
+
+            foreach ($books as $book)
+            {
+                $book->discount = $stock->discount;
+                $book->save();
+            }
+        }
+            $stock->save();
 
         }
-        return redirect()->route('stock_edit',$stock->id);
-//        $stock->name =
-        }
+        return redirect()->route('stock_edit', $stock->id);
     }
 
     public function edit($id)
