@@ -47,6 +47,7 @@
             }
         </style>
     @endpush
+    {{--@dd(request()->query())--}}
     <div style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
             <div class="row align-items-center bg-white shadow px-3 py-3">

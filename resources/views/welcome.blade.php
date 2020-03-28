@@ -295,7 +295,7 @@
             <div class="row p-lg-5">
                 <div class="col-lg-6 col-12 cat-scale"
                      style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category',['category' => 5]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left:10%;">
                                 <h3 class="text-fut-bold"
@@ -316,7 +316,7 @@
 
                 <div class="col-lg-6 col-12 cat-scale d-lg-block d-none"
                      style="background-image: url({{ asset('images/cat2.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category', ['category' => 1]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left: 55%;">
                                 <h3 class="text-fut-bold"
@@ -335,7 +335,7 @@
                 </div>
                 <div class="col-lg-6 col-12 cat-scale d-lg-none d-block"
                      style="background-image: url({{ asset('images/cat2-mobile.png') }}); background-size: cover; background-position: center; height: 324px;box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category', ['category' => 1]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left: 10%;">
                                 <h3 class="text-fut-bold"
@@ -355,7 +355,7 @@
 
                 <div class="col-lg-6 col-12 cat-scale"
                      style="background-image: url({{ asset('images/cat3.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category', ['category' => 3]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left:10%;">
                                 <h3 class="text-fut-bold"
@@ -375,7 +375,7 @@
 
                 <div class="col-lg-6 col-12 cat-scale d-lg-block d-none"
                      style="background-image: url({{ asset('images/cat4.png') }}); background-position: center; background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category', ['category' => 4]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left:55%;">
                                 <h3 class="text-fut-bold"
@@ -395,7 +395,7 @@
                 </div>
                 <div class="col-lg-6 col-12 cat-scale d-lg-none d-block"
                      style="background-image: url({{ asset('images/cat4-mobile.png') }}); background-position: center; background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
-                    <a href="/catalog">
+                    <a href="{{ route('category', ['category' => 4]) }}">
                         <div class="w-100 h-100">
                             <div style="position: absolute; bottom: 28%; left:10%;">
                                 <h3 class="text-fut-bold"
