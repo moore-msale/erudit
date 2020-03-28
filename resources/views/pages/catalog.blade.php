@@ -342,6 +342,13 @@
             getProducts();
         @endif
 
+        @if(request()->query('category'))
+            params.category = '{{request()->query('category')}}';
+        getProducts(params);
+        @else
+            getProducts();
+        @endif
+
         function paginationWithDots(c, m) {
             var current = c,
                 last = m,
