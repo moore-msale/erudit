@@ -60,9 +60,11 @@
                         Список книг на акцию
                     </h3>
                     {{--@dd($stock->books)--}}
+                    @if(isset($stock->category))
                     <p class="font-weight-bold">
                         Категория: {{ \App\Genre::find($stock->category)->name }}
                     </p>
+                    @endif
                     @foreach($stock->books as $book)
                     <p>
                         {{ $book->name }}
