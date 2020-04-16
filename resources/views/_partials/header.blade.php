@@ -1,3 +1,9 @@
+<?php
+use Jenssegers\Agent\Agent;
+
+$agent = new Agent();
+?>
+@if(!$agent->isPhone())
 <nav class="navbar menuse navbar-expand-xl py-3 w-100 pr-0 d-xl-block d-none" style="z-index: 999; background: transparent; position: fixed;">
     <div class="container-fluid top-menu">
         <div class="row w-100 mx-5 pb-3" style="border-bottom: 1px #D9D9D9 solid;">
@@ -121,6 +127,7 @@
         </div>
     </div>
 </nav>
+@else
 <nav class="px-0 navbar solid-nav navbar-expand-xl py-1 w-100 bg-white d-xl-none d-block" style="z-index: 999; position: fixed;">
     <div class="container-fluid">
         <div class="row align-items-center w-100 justify-content-end">
@@ -154,10 +161,6 @@
             <div class="collapse navbar-collapse col-md-11 col-12"  id="navbarSupportedContent">
                 <nav class="mr-auto ml-0" style="max-height: 400px; overflow-y: auto;">
                     <ul class="navbar-nav mb-3">
-                        <li class="nav-item px-3 my-2">
-                            @include('_partials.search')
-
-                        </li>
                         <li class="nav-item px-3 my-2">
                             <a href="/" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Главная</a>
                         </li>
@@ -220,8 +223,11 @@
             </div>
         </div>
     </div>
+    <div class="position-absolute px-4 py-1" style="top:99%; left:0%; width:100%;background-color:#f8fafa;">
+        @include('_partials.search')
+    </div>
 </nav>
-
+@endif
 @push('scripts')
     <script>
         $('#dropdownMenuButtonGenre').hover(e => {

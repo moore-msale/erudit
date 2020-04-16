@@ -21,7 +21,11 @@
                     <a class="nav-link products px-4" href="{{ route('book.show', $value->id) }}">
                 <span class="d-flex align-items-center border-bottom pb-2">
                     <span class="col-2 p-0">
-                        <img src="{{ asset('storage/'.$value->image) }}" class="img-fluid" alt="">
+                        @if (filter_var($value->image, FILTER_VALIDATE_URL))
+                            <img class="img-fluid" src="{{ $value->image }}" alt="">
+                        @else
+                            <img class="img-fluid" src="{{ asset('storage/'.$value->image)}}" alt="">
+                        @endif
                     </span>
                     <span class="col">
                         {{ $value->name }}
@@ -34,7 +38,7 @@
     @endforeach
 
     @if(count($result->collapse()) > 10)
-        <button class="btn btn-primary position-absolute" style="bottom: 0; left: 0; width: 100%;">Показать все</button>
+        <button class="btn-primary text-fut-book but-hov mx-auto text-white py-2 w-100 position-absolute" style="bottom: 0; left: 0; width: 100%;font-size: 14px; border: 0px; cursor: pointer;">Показать все</button>
     @endif
 
 @else

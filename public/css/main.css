@@ -252,8 +252,27 @@ body
     text-decoration: underline!important;
     transition: text-shadow 200ms linear 0ms;
 }
+#search-input-select2
+{
+    background-color: transparent;
+}
 
 @media only screen and (max-width: 700px){
+    #search-input-select2
+    {
+        width:325px!important;
+        background-color: #fefefe;
+    }
+    #resulter
+    {
+        left:-10px!important;
+        top:110%!important;
+    }
+    .fa-search
+    {
+        right: 12px !important;
+        top:11px !important;
+    }
     .h2-text-media
     {
         font-size: 40px;
