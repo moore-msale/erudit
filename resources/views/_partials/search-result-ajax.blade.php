@@ -37,9 +37,9 @@
         </div>
     @endforeach
 
-    @if(count($result->collapse()) > 10)
-        <button class="btn-primary text-fut-book but-hov mx-auto text-white py-2 w-100 position-absolute" style="bottom: 0; left: 0; width: 100%;font-size: 14px; border: 0px; cursor: pointer;">Показать все</button>
-    @endif
+    {{--@if(count($result->collapse()) > 10)--}}
+        {{--<button class="btn-primary text-fut-book but-hov mx-auto text-white py-2 w-100 position-absolute" style="bottom: 0; left: 0; width: 100%;font-size: 14px; border: 0px; cursor: pointer;">Показать все</button>--}}
+    {{--@endif--}}
 
 @else
 
