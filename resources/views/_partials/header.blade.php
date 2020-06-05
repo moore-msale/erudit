@@ -184,10 +184,10 @@ $agent = new Agent();
 
                         <li class="nav-item dropdown px-3">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Жанры
+                                Книги
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @foreach(\App\Genre::all() as $genre)
+                                @foreach(\App\Genre::all()->sortBy('name') as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="{{ route('catalog',["genre" => $genre->id]) }}">
                                             {{ $genre->name }}
@@ -219,6 +219,18 @@ $agent = new Agent();
                             <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
+                        @guest
+                        <li class="nav-item px-3">
+                            <a href="/login" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">Войти</a>
+                        </li>
+                            @else
+                            <a class="text-fut-book pl-3 text-scale" style="font-size: 15px; color:#444; padding:5px 15px;" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Выход') }}
+                            </a>
+
+                        @endguest
 
                         @guest
                         <li class="nav-item px-3 my-2">
@@ -227,11 +239,13 @@ $agent = new Agent();
                             </a>
                         </li>
                             @else
-                            <li class="nav-item px-3 my-2">
-                                <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #444 solid;">
-                                    Личный кабинет
-                                </button>
-                            </li>
+                                @if(Auth::user()->role_id != 3)
+                                <li class="nav-item px-3 my-2">
+                                    <button class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #444 solid;">
+                                        Личный кабинет
+                                    </button>
+                                </li>
+                                @endif
                         @endguest
                     </ul>
                 </nav>

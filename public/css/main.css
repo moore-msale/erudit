@@ -436,3 +436,8 @@ body
 .owl-carousel .owl-stage{
   margin: 0 auto;
 }
+@media only screen and (max-width: 500px){
+  #all_results_btn_inner{
+    right: -5%!important;
+  }
+}
