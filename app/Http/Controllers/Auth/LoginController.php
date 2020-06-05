@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Redirect;
 class LoginController extends Controller
 {
     /*
@@ -25,7 +25,25 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
+        protected $redirectTo;
+
+    public function redirectTo()
+    {   
+        switch(Auth::user()->role_id){
+            case 1:
+            $this->redirectTo = '/moo';
+            return $this->redirectTo;
+            break;
+            case 2||3:
+            $this->redirectTo =  session('link');
+            return $this->redirectTo;
+            break;
+            default:
+                $this->redirectTo = '/';
+                return $this->redirectTo;
+        }
+    } 
 
     /**
      * Create a new controller instance.

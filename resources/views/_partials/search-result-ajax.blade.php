@@ -40,11 +40,15 @@
     {{--@if(count($result->collapse()) > 10)--}}
         {{--<button class="btn-primary text-fut-book but-hov mx-auto text-white py-2 w-100 position-absolute" style="bottom: 0; left: 0; width: 100%;font-size: 14px; border: 0px; cursor: pointer;">Показать все</button>--}}
     {{--@endif--}}
-
+    <script type="text/javascript">
+        $('#all_results_btn_a').show();
+    </script>
 @else
 
     <p class="text-center m-0 py-4">Нет результата</p>
-
+    <script type="text/javascript">
+        $('#all_results_btn_a').hide();
+    </script>
 @endif
 
 </nav>

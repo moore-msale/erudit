@@ -50,6 +50,11 @@ $agent = new Agent();
                                 <img class="icon-flip" style="height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
                             </a>
                         </li>
+                        @guest
+                        <li class="nav-item px-3">
+                            <a href="/login" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">Войти</a>
+                        </li>
+                        @endguest
                     </ul>
                 </nav>
             </div>
@@ -68,10 +73,10 @@ $agent = new Agent();
                     <li class="nav-item px-3">
                         <div class="dropdown open" style=" display: flex; align-items: center; text-align: center; width:70px;">
                             <a class="text-fut-book bg-transparent m-0 mx-auto pointer text-scale" style="border:0; font-size:17px; color: #444;" id="dropdownMenuButtonGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Жанры
+                                Книги
                             </a>
                             <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">
-                                @foreach(\App\Genre::all() as $genre)
+                                @foreach(\App\Genre::all()->sortBy('name') as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="{{ route('catalog',["genre" => $genre->id]) }}">
                                     {{ $genre->name }}
@@ -96,7 +101,7 @@ $agent = new Agent();
                     <li class="nav-item px-3 mr-4">
                         @include('_partials.search')
                     </li>
-                <li class="nav-item px-3 mr-4 pt-1 ico-menu position-relative" style="display: none;">
+                <li class="nav-item px-3  pt-1 ico-menu position-relative" style="display: none;">
                     <a href="{{ route('cart.checkout') }}" class="text-fut-book cart" style="text-decoration: none; color: #444444;">
                         <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: 5px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
@@ -104,13 +109,22 @@ $agent = new Agent();
                     </a>
                 </li>
                     @guest
+                        <li class="nav-item  ico-menu mr-2" style="display: none;">
+                            <a href="/login" class="text-fut-book text-scale" style="font-size: 14px; line-height: 17px; text-align: center; text-transform: uppercase; color: #444444;">Войти</a>
+                        </li>
+                    
                             <a href="/login" class="text-fut-book but-hov" data-aos="fade-up" style="font-size: 13px; color: #444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.35) solid; text-decoration:none;">
                                 Оптовым покупателям
                             </a>
                     @else
+
+                            @if(Auth::user()->role_id != 3)
                             <a href="{{ route('user.index') }}" class="text-fut-book but-hov" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
                                 Личный кабинет
                             </a>
+                            @endif
+
+
                         <a class="text-fut-book pl-3 text-scale" style="font-size: 15px; color:#444; padding:5px 15px;" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -205,6 +219,7 @@ $agent = new Agent();
                             <a href="https://www.instagram.com/erudit_kg/?hl=ru" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-instagram fa-lg icon-flip"></i></a>
                             <a href="https://api.whatsapp.com/send?phone=996551433433" class="text-fut-book p-1" style="text-decoration: none; color: #444444;"><i class="fab fa-whatsapp fa-lg icon-flip"></i></a>
                         </li>
+
                         @guest
                         <li class="nav-item px-3 my-2">
                             <a href="/login" class="text-fut-bold" data-aos="fade-up" style="padding: 5px 15px; background-color: transparent; border: 1px #444 solid;">
@@ -230,6 +245,8 @@ $agent = new Agent();
 @endif
 @push('scripts')
     <script>
+
+
         $('#dropdownMenuButtonGenre').hover(e => {
             let btn = $(e.currentTarget);
             let dropdown = btn.siblings('.dropdown-menu');

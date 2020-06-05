@@ -65,10 +65,17 @@
                             Сортировка
                         </a>
                         <div class="dropdown-menu text-fut-book" style="cursor: pointer;" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="asc">Название: по возрастанию</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">Название: по убыванию</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Стоимость: по возрастанию</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="desc">Стоимость: по убыванию</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Updated_at" data-value="desc">По новым</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Updated_at" data-value="asc">По старым</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="asc">По название: А > Я</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">По название: Я > А</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="asc">По автору: А > Я</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="desc">По автору: Я > А</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Дешевые</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="desc">Дорогие</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Discount" data-value="desc">С макс. скидкой</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Bestseller" data-value="1">Лидеры продаж</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Reviewed" data-value="1">Рецензируемые</a>
                         </div>
                     </div>
                 </div>
@@ -174,30 +181,8 @@
                         </div>
                     </div>
                 </div>
-                        <div class="col-lg-3 col-12 p-0 d-lg-block d-none">
-                            <div class="bg-white p-5">
-                        <h3 class="text-fut-bold mb-0"
-                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
-                            Жанры
-                        </h3>
-                        <div class="mt-3 text-fut-book"
-                             style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
-                            <a href="" class="genre_btn"  data-value="{{null}}">
-                                <p class="text-scale">
-                                    Все жанры
-                                </p>
-                            </a>
-                            @foreach($genres as $genre)
-                            <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
-                                <p class="text-scale">
-                                    {{ $genre->name }}
-                                </p>
-                            </a>
-                            @endforeach
-                        </div>
-
-                    </div>
-                    <div class="bg-white p-5 mt-4 d-lg-block d-none">
+                <div class="col-lg-3 col-12 p-0 d-lg-block d-none">
+                    <div class="bg-white p-5 d-lg-block d-none">
                         <h3 class="text-fut-bold mb-0"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                             Категории
@@ -205,12 +190,36 @@
                         <div class="mt-3 text-fut-book"
                              style="font-size: 18px; line-height: 120%; letter-spacing: 0.05em; color:#222; cursor: pointer;">
                             @foreach($categories as $category)
-                                @if($category->name != 'Книги')
-                                <a href="{{ route('category', $category) }}" class="category_btn" data-value="{{ $category->id }}">
-                                    <p class="text-scale">
-                                        {{ $category->name }}
-                                    </p>
-                                </a>
+                                @if($category->name == 'Книги')
+                                  <div class="accordion category_btn" id="accordionExample">
+                                    <div class="card border-0">
+                                        <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
+                                            <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="margin-bottom:1rem;color:#2c3e50;">
+                                                {{$category->name}}
+                                            </button>
+                                        </div>
+                                        <div id="collapse-{{$category->id}}" class="collapse pt-1" aria-labelledby="cat-{{$category->id}}" data-parent="#accordionExample">
+                                          <a href="" data-value="" class="genre_btn">
+                                            <p class="text-scale pl-3 mb-2">
+                                                Все жанры
+                                            </p>
+                                          </a>
+                                          @foreach($genres as $genre)
+                                            <a href="{{ route('genre',$genre) }}" class="genre_btn" data-value="{{ $genre->id }}">
+                                                <p class="text-scale pl-3 mb-2">
+                                                    {{ $genre->name }}
+                                                </p>
+                                            </a>
+                                          @endforeach
+                                        </div>
+                                    </div>
+                                  </div>
+                                @else
+                                  <a href="{{ route('category', $category) }}" class="category_btn" data-value="{{ $category->id }}">
+                                      <p class="text-scale">
+                                          {{ $category->name }}
+                                      </p>
+                                  </a>
                                 @endif
                             @endforeach
                         </div>
@@ -296,18 +305,32 @@
             let btn = $(e.currentTarget);
             let val = btn.data('value');
             let type = btn.data('type');
+            params.sortName = null;
+            params.sortPrice = null;
+            params.sortAuthor = null;
+            params.sortIssueDate = null;
+            params.sortByDiscount = null;
+            params.sortByBestseller = null;
+            params.sortByReviewed = null;
+            $('#dropdownMenuButton').html(btn.html());
+            if (params.page) {
+                params.page = 1;
+            }
             if (type == 'Name') {
                 params.sortName = val;
-                params.sortPrice = null;
-                if (params.page) {
-                    params.page = 1;
-                }
+            }else if (type == 'Author') {
+                console.log(val);
+                params.sortAuthor = val;
+            }else if (type == 'Updated_at') {
+                params.sortIssueDate = val;
+            }else if (type == 'Discount') {
+                params.sortByDiscount = val;
+            }else if (type == 'Bestseller') {
+                params.sortByBestseller = val;
+            }else if (type == 'Reviewed') {
+                params.sortByReviewed = val;
             } else {
                 params.sortPrice = val;
-                params.sortName = null;
-                if (params.page) {
-                    params.page = 1;
-                }
             }
             getProducts(params);
         });

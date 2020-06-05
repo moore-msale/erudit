@@ -11,10 +11,6 @@
                 <div class="modal-body">
                     <form class="text-secondary" action="{{ route('feedback.store') }}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="recipient-name">Имя <span class="text-danger">*</span></label>
-                            <input type="text" name="name" class="form-control input-without-focus rounded-0 border-right-0 border-left-0 border-top-0 border-bottom" id="recipient-name" placeholder="Ваше ФИО" required>
-                        </div>
                         <div class="form-group text-center pt-4">
                             <label for="like" class="">Вам понравилась книга?
                                 <input class="" type="checkbox" name="like" id="like">

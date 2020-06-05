@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use Auth;
 
 class FeedbackController extends Controller
 {
@@ -12,7 +13,7 @@ class FeedbackController extends Controller
     {
         $feedback = new Feedback();
 
-        $feedback->name = $request->name;
+        $feedback->name = Auth::user()->name;
         if($request->like == 'on')
         {
             $feedback->like = true;

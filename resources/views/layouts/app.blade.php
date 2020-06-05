@@ -79,6 +79,8 @@
         result.parent().hide(0);
         $('#search-input-select2').on('keyup click', function () {
             let value = $(this).val();
+            $('#all_results_btn_a').attr('href','/search?search='+value);
+
             console.log(value);
             if (value != '' && value.length >= 3) {
                 // let searchBtn = $('#search-btn');
@@ -376,7 +378,7 @@
 <script>
     var owl = $('.owl-one');
     owl.owlCarousel({
-        margin: 10,
+        margin: 5,
         loop: true,
         // autoplay:true,
         // autoplayTimeout:5000,
@@ -387,7 +389,26 @@
                 items: 1
             },
             700: {
-                items: 4
+                items: 2
+            },1000: {
+                items: 6
+            }
+        }
+    })
+</script>
+<script>
+    var owl = $('.owl-promotional');
+    owl.owlCarousel({
+        margin: 5,
+        loop: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            700: {
+                items: 2
+            },1000: {
+                items: 6
             }
         }
     })
@@ -395,7 +416,7 @@
 <script>
     var owl = $('.owl-holiday');
     owl.owlCarousel({
-        margin: 10,
+        margin: 5,
         loop: true,
         // autoplay:true,
         // autoplayTimeout:5000,
@@ -406,7 +427,9 @@
                 items: 1
             },
             700: {
-                items: 4
+                items: 2
+            },1000: {
+                items: 6
             }
         }
     })

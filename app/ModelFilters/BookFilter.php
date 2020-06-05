@@ -10,6 +10,7 @@ namespace App\ModelFilters;
 
 
 use App\Book;
+use App\Feedback;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,21 @@ class BookFilter extends Collection
         }
         if ($sortPrice = $request->sortPrice) {
             $model = $this->sortByPrice($model, $sortPrice);
+        }
+        if ($sortIssueDate = $request->sortIssueDate) {
+            $model = $this->filterByIssueDate($model, $sortIssueDate);
+        }
+        if ($sortAuthor = $request->sortAuthor) {
+            $model = $this->sortByAuthor($model, $sortAuthor);
+        }
+        if ($sortByDiscount = $request->sortByDiscount) {
+            $model = $this->sortByDiscount($model, $sortByDiscount);
+        }
+        if ($sortByBestseller = $request->sortByBestseller) {
+            $model = $this->sortByBestseller($model, $sortByBestseller);
+        }
+        if ($sortByReviewed = $request->sortByReviewed) {
+            $model = $this->sortByReviewed($model, $sortByReviewed);
         }
         if ($genre = $request->genre) {
             $model = $this->filterByGenre($model, $genre);
@@ -93,5 +109,56 @@ class BookFilter extends Collection
         }
 
         return $model->sortBy('name');
+    }
+    public function sortByAuthor($model, $direction)
+    {
+
+        $model = $model->map(function($item){
+          $item['author'] = mb_convert_case($item['author'],MB_CASE_TITLE, "UTF-8");
+          return $item;
+        });
+
+        if ($direction == 'asc') {
+            return $model->sortBy('author')->where('author','!=',null);
+        } elseif ($direction == 'desc') {
+            return $model->sortByDesc('author')->where('author','!=',null);
+        }
+
+        return $model->sortBy('author');
+    }
+    public function sortByDiscount($model, $direction)
+    {
+
+        if ($direction == 'asc') {
+            return $model->sortBy('discount');
+        } elseif ($direction == 'desc') {
+            return $model->sortByDesc('discount');
+        }
+        return $model->sortBy('discount');
+    }
+    public function sortByBestseller($model, $direction)
+    {
+        if ($direction == 1) {
+            return $model->where('bestseller',1);
+        }
+        return $model->sortBy('name');
+    }
+    public function sortByReviewed($model, $direction)
+    {
+        $feedbacks = Feedback::all()->pluck('book_id');
+        if ($direction == 1) {
+            return $model->find($feedbacks);
+        }
+        return $model->sortBy('name');
+    }
+    public function filterByIssueDate($model, $direction)
+    {
+        if ($direction == 'asc') {
+            return $model->sortBy('issue_date');
+        } elseif ($direction == 'desc') {
+            return $model->sortByDesc('issue_date');
+        }
+
+        return $model->sortBy('issue_date');
     }
 }

@@ -12,7 +12,7 @@
                         </span>
                     <span class="text-fut-book">
                         @if($book->genre)
-                            <a href="">{{ $book->genre->name }}</a>
+                            <a href="/search_genre?search={{$book->genre->id}}">{{ $book->genre->name }}</a>
                             @endif
                         </span>
                     <span class="text-fut-book">
@@ -55,8 +55,8 @@
                         </span>
                         <span class="text-fut-book">
                             @if($book->genre)
-                            <a href="">{{ $book->genre->name }}</a>
-                                @endif
+                            <a href="/search_genre?search={{$book->genre->id}}">{{ $book->genre->name }}</a>
+                            @endif
                         </span>
                         <span>
                             <i class="fas fa-arrow-right fa-xs"></i>
@@ -72,17 +72,29 @@
                             <div class="mt-4 row" style="font-size:16px; color: #222; font-family:'Futura PT Medium Italic';">
                                     @if($book->author)
                                     <div class="col-6">
-                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong> {{ $book->author }}</p>
+                            <!--             <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong><a href="/search_author?search={{$book->author}}"> {{ $book->author }}</a></p> -->
+                                        <?php 
+                                            $authors_all = explode(',', $book->author);
+                                         ?>
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Автор:</strong>
+                                         @foreach($authors_all as $author_1)
+                                            <a href="/search_author?search={{$author_1}}"> {{ $author_1 }}</a>
+                                         @endforeach
+                                         </p>
                                     </div>
                                     @endif
                                     @if($book->publishing)
+                                        <?php 
+                                            $publishing_split = explode(',', $book->publishing);
+                                         ?>
+
                                             <div class="col-6">
-                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> {{ $book->publishing }}</p>
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Издательство:</strong> <a href="/search_publisher?search={{$publishing_split[0]}}">{{ $book->publishing }}</a></p>
                                             </div>
                                                 @endif
                                     @if($book->series)
                                             <div class="col-6">
-                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Серия:</strong> {{ $book->series }}</p>
+                                        <p class="text-fut-light font-weight-bold"><strong class="text-fut-bold">Серия:</strong> <a href="/search_series?search={{$book->series}}">{{ $book->series }}</a></p>
                                             </div>
                                     @endif
                                     @if($book->isbn)
@@ -311,10 +323,34 @@
                 </div>
                     @endforeach
             </div>
+
+
+
+
+
+
+
+        @guest
+            <button data-toggle="modal" data-target="#user_register_modal" class="text-fut-bold mt-5 pointer" data-aos="fade-up" style="padding: 15px 23px; background-color: #4d86ff; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
+                Зарегистрируйтесь или войдите чтобы оставить рецензию
+            </button>
+            <?php 
+                Session::put('link', Request::url());
+             ?>
+        @endguest
+        @auth
             <button data-toggle="modal" data-target="#book_feedback" class="text-fut-bold mt-5 pointer" data-aos="fade-up" style="padding: 15px 23px; background-color: #4d86ff; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0; color: white;">
                 Оставить рецензию
             </button>
+        @endauth
+
+
+
+
+
+
         </div>
     </div>
     @include('modals.book_feedbacks')
+    @include('modals.user_register')
 @endsection
