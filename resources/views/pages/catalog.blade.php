@@ -67,8 +67,8 @@
                         <div class="dropdown-menu text-fut-book" style="cursor: pointer;" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item sort_products" href="#" data-type="Updated_at" data-value="desc">По новым</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Updated_at" data-value="asc">По старым</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="asc">По название: А > Я</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">По название: Я > А</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="asc">По названию: А > Я</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">По названию: Я > А</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="asc">По автору: А > Я</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="desc">По автору: Я > А</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Дешевые</a>
