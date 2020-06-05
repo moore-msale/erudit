@@ -26,7 +26,10 @@ Route::get('/parser/{type}', 'ParseController@index')->name('parser.index');
 Route::post('/parser/{type}', 'ParseController@parse')->name('parser.parse');
 
 Route::get('/search', 'MainController@search')->name('search');
-
+Route::get('/search_author', 'MainController@search_author')->name('search_author');
+Route::get('/search_publisher', 'MainController@search_publisher')->name('search_publisher');
+Route::get('/search_series', 'MainController@search_series')->name('search_series');
+Route::get('/search_genre', 'MainController@search_genre')->name('search_genre');
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/genre/{genre}', 'CatalogController@genre')->name('genre');
 Route::get('/category/{category}', 'CatalogController@category')->name('category');
@@ -97,3 +100,4 @@ Route::get('/cart/delete/book', 'Api\CartController@delete')->name('cart.delete'
 Route::get('/cart/remove/book', 'Api\CartController@remove')->name('cart.remove');
 Route::post('/discount_check', 'CatalogController@check')->name('discount_check');
 
+Route::post('/register_user', 'UserController@register_user')->name('register_user');

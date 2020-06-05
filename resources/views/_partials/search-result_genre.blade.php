@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
     <div class="row text-center pt-5">
-        <h2>Результаты поиска:{{$search_input}}</h2>
+        <h2>Все товары по жанру: {{ $search_input }}</h2>
     </div>
     <div class="row justify-content-center">
         <div class="col-8">

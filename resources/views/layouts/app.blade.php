@@ -79,6 +79,8 @@
         result.parent().hide(0);
         $('#search-input-select2').on('keyup click', function () {
             let value = $(this).val();
+            $('#all_results_btn_a').attr('href','/search?search='+value);
+
             console.log(value);
             if (value != '' && value.length >= 3) {
                 // let searchBtn = $('#search-btn');
