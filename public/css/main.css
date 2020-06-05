@@ -433,6 +433,6 @@ body
 .outline-none:focus{
   outline: none!important;
 }
-.owl-promotional .owl-stage{
+.owl-carousel .owl-stage{
   margin: 0 auto;
 }

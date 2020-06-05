@@ -133,7 +133,7 @@
                             </h3>
                             <div class="owl-holiday owl-carousel">
                                 @foreach($compilation->books as $bestseller)
-                                    <div class="item my-4 ml-1 mr-1 px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
+                                    <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
                                       <div class="w-100" style="height:340px;">
                                         <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                                             <div style="height: 65%;">
