@@ -105,6 +105,39 @@ body
 {
     transform: scale(1.1);
 }
+
+.owl-promotional .owl-nav.disabled, .owl-holiday .owl-nav.disabled
+{
+    display: block!important;
+    text-align: center;
+    align-items: center;
+}
+.owl-promotional .owl-nav .owl-prev, .owl-holiday .owl-nav .owl-prev
+{
+    position: relative;
+    background-image: url('/images/prev-books.png')!important;
+    width:70px;
+    height:70px;
+    outline: none;
+    transition: 0.5s;
+}
+.owl-promotional .owl-nav .owl-prev:hover, .owl-holiday .owl-nav .owl-prev:hover
+{
+    transform: scale(1.1);
+}
+.owl-promotional .owl-nav .owl-next, .owl-holiday .owl-nav .owl-next
+{
+    position: relative;
+    background-image: url('/images/next-books.png')!important;
+    width:70px;
+    height:70px;
+    outline: none;
+    transition: 0.5s;
+}
+.owl-promotional .owl-nav .owl-next:hover, .owl-holiday .owl-nav .owl-next:hover
+{
+    transform: scale(1.1);
+}
 .owl-two .owl-nav.disabled
 {
     display: block!important;
@@ -384,4 +417,22 @@ body
     height:400px;
     min-height:300px;
 
+}
+@media only screen and (min-width: 1000px){
+  #actions{
+    padding-top: 200px!important;
+  }
+}
+#actions{
+  padding-top: 30px;
+}
+#bestseller{
+  padding:100px 0;
+}
+
+.outline-none:focus{
+  outline: none!important;
+}
+.owl-promotional .owl-stage{
+  margin: 0 auto;
 }

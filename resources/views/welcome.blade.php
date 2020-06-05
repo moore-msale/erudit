@@ -1,49 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid main-blog position-relative">
-        <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down"
-             style="bottom: -6%; left: 24%; z-index: 1;" alt="">
-        <div class="row"
-             style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
-            <div class="col-lg-5 col-12" style="padding-left: 7%; padding-top:15%;">
-                <h1 class="text-fut-bold font-weight-bold text-white"
-                    style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;">
-                    Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших
-                    книг.
-                </h1>
-
-                <p class="text-fut-light" style="padding-top:5%; font-size: 15px; line-height: 140%; color: #444;">
-                    Огромный ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и
-                    удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах
-                    максимально комфортно.
-                </p>
-                <a href="/catalog">
-                    <button class="text-fut-book but-hov"
-                            style="margin-top: 5%; font-size: 16px; line-height: 21px; color:#444; padding: 15px 21px; border: 1px rgba(34,34,34,0.36) solid; background: transparent; cursor: pointer;">
-                        Смотреть все книги
-                    </button>
-                </a>
-            </div>
-        </div>
-        <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;"
-             src="{{ asset('images/main-pic.png') }}" alt="">
-    </div>
-    @if(count($stocks))
-    <div class="container py-5">
-        <h3 class="text-fut-bold text-center"
-            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
-            Действующие акции
-        </h3>
-        <div class="row pt-4">
-            @foreach($stocks as $stock)
-            <div class="col-6">
-                    <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
-                    </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-    @endif
     <div class="container-fluid sells-sector position-relative" id="actions"
          style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
         <img src="{{ asset('images/svg/7.svg') }}" class="position-absolute scroll-svg-up" style="left: -2%; top: 45%;"
@@ -52,7 +8,9 @@
              style="right: -2%; top: 45%;" alt="">
         <div class="row pt-lg-5 pb-lg-0 pt-5 pb-0">
 
-            <div class="col-lg-12 col-12 pl-lg-5 pl-4">
+            <div class="col-lg-12 col-12 pl-lg-5 pl-4 pb-5">
+              <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down"
+                   style="bottom:-6%;left: 15%; z-index: 1;" alt="">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-12 pt-lg-0 pt-5">
                         <h3 class="text-fut-bold text-center"
@@ -60,7 +18,7 @@
                             Новинки
                         </h3>
                     </div>
-                    <div class="col-lg-4 col-12 pt-lg-0 pt-4">
+                    <div class="col-lg-4 col-12 pt-lg-0 pt-4 d-lg-block d-flex justify-content-center">
                         <a href="/catalog">
                             <button class="text-fut-bold py-3 px-5 but-hov" href=""
                                     style="background: #3154CF; color: white; border:0px; cursor: pointer;">
@@ -76,8 +34,8 @@
                                 @if($loop->index == 6)
                                     @break
                                 @endif
-                                <div class="col-lg-3 col-12 item m-2 p-4 shadow"
-                                     style="background-color: white; max-width: 259px;">
+                                <div class="col-lg-2 col-md-3 col-12 item p-1" style="max-width: 259px;">
+                                  <div class="p-2 shadow h-100 w-100" style="background-color: white;">
                                     <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
                                         <div class="" style="height: 65%;">
                                             @if (filter_var($book->image, FILTER_VALIDATE_URL))
@@ -118,6 +76,7 @@
                                             </button>
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
@@ -126,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid pt-5 position-relative px-0" id="bestseller">
+    <div class="container-fluid position-relative px-0" id="bestseller">
         <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-up" style="left: -1%; top: 5%;"
              alt="">
         <div class="row pb-5">
@@ -174,7 +133,8 @@
                             </h3>
                             <div class="owl-holiday owl-carousel">
                                 @foreach($compilation->books as $bestseller)
-                                    <div class="item my-4 ml-1 mr-1 p-4 shadow" style="background-color: white; height: 480px">
+                                    <div class="item my-4 ml-1 mr-1 px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
+                                      <div class="w-100" style="height:340px;">
                                         <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                                             <div style="height: 65%;">
                                                 @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
@@ -201,17 +161,16 @@
                     </span>
                                             @endguest
                                         </div>
-                                        <div class="container-fluid mr-0 pr-0" style="position: absolute; bottom:8%;">
-                                            <div class="row justify-content-center px-1" style="width:83%;">
-                                                {{--<div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">--}}
-                                                {{--<i style="color: #444; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>--}}
-                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
-                                                        data-id="{{ $bestseller->id }}" data-aos="fade-up"
-                                                        style="font-size: 13px; border:0; cursor: pointer;">
-                                                    Добавить в корзину
-                                                </button>
-                                                {{--</div>--}}
-                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center px-2 w-100">
+                                            {{--<div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">--}}
+                                            {{--<i style="color: #444; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>--}}
+                                            <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
+                                                    data-id="{{ $bestseller->id }}" data-aos="fade-up"
+                                                    style="font-size: 13px; border:0; cursor: pointer;">
+                                                Добавить в корзину
+                                            </button>
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 @endforeach
@@ -237,7 +196,7 @@
                     <div class="row justify-content-center">
                         @foreach($genres as $genre)
                             <a href="{{ route('catalog', ['genre' => $genre->id]) }}"
-                               class="cat-btn d-flex align-items-center mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-light"
+                               class="cat-btn d-flex align-items-center mx-lg-2 mt-3 col-lg-2 col-6 py-lg-4 text-center font-weight-bold text-fut-book"
                                style="background-image: url({{ asset('images/border-tab.png') }}); background-size: 100% 100%; border:0px; background-color: transparent; font-size:18px; line-height: 120%; color:#444;"
                                aria-controls="" aria-selected="true"><span class="mx-auto">{{ str_limit($genre->name,25)   }}</span></a>
                             @if($loop->index == 19)
@@ -263,18 +222,42 @@
 
                         </div>
 
-                        <div class="container" style="padding-top: 4%;">
+                        <div class="container px-0">
                             <div class="row justify-content-center">
-                                <div class="col-11 d-lg-block d-none">
+                                <div class="col-12 d-lg-block d-none">
                                     @include('books.recomend_carousel')
                                 </div>
-                                <div class="col-11 d-lg-none d-block">
+                                <div class="col-12 d-lg-none d-block">
                                     @include('books.recomend-media ')
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="container-fluid position-relative" style="padding-top:7%;">
+                    {{--<img src="{{ asset('images/svg/5.svg') }}" class="position-absolute scroll-svg-up"--}}
+                         {{--style="top: 15%; left: 6%;" alt="">--}}
+                    <img src="{{ asset('images/svg/6.svg') }}" class="position-absolute scroll-svg-down"
+                         style="bottom: -3%; right: -3%;" alt="">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h2 class="font-weight-bold text-fut-bold"
+                                style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; padding-right:32px; color:#444;">
+                                Акционные книги
+                            </h2>
+                        </div>
+                        <div class="col-12">
 
+                        </div>
+
+                        <div class="container px-0">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    @include('books.promotional_carousel')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -472,7 +455,48 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid main-blog position-relative">
+        <div class="row"
+             style="background-image: url({{ asset('images/mainbg.png') }}); background-size: cover; height: 677px;">
+            <div class="col-lg-5 col-12" style="padding-left: 7%; padding-top:15%;">
+                <h1 class="text-fut-bold font-weight-bold text-white"
+                    style="font-size: 35px; line-height: 100%; letter-spacing: 0.05em;">
+                    Магазины книжной сети «Эрудит» - это волшебный и загадочный мир, который живет в каждой из наших
+                    книг.
+                </h1>
 
+                <p class="text-fut-book" style="padding-top:5%; font-size: 15px; line-height: 140%; color: #444;">
+                    Огромный ассортимент художественной и детской литературы, бизнеса и психологии, мягкие диваны и
+                    удобные места для гостей специально созданы, чтобы каждый человек чувствовал себя у нас в магазинах
+                    максимально комфортно.
+                </p>
+                <a href="/catalog">
+                    <button class="text-fut-book but-hov"
+                            style="margin-top: 5%; font-size: 16px; line-height: 21px; color:#444; padding: 15px 21px; border: 1px rgba(34,34,34,0.36) solid; background: transparent; cursor: pointer;">
+                        Смотреть все книги
+                    </button>
+                </a>
+            </div>
+        </div>
+        <img class="d-lg-none d-none" style="position: absolute; bottom: -13%; left:25%;"
+             src="{{ asset('images/main-pic.png') }}" alt="">
+    </div>
+    @if(count($stocks))
+    <div class="container py-5">
+        <h3 class="text-fut-bold text-center"
+            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
+            Действующие акции
+        </h3>
+        <div class="row pt-4">
+            @foreach($stocks as $stock)
+            <div class="col-6">
+                    <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
+                    </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 
     <div class="container pt-lg-0 pt-4" id="schet" style="margin-top: 5%;">
         <img src="{{ asset('images/svg/12.svg') }}" class="position-absolute scroll-svg-down" style="left: 0;" alt="">
@@ -488,7 +512,7 @@
                     книжный магазин <br>
                     «Эрудит»
                 </h2>
-                <p class="text-fut-light pt-3"
+                <p class="text-fut-book pt-3"
                    style="font-size: 18px; line-height: 140%; letter-spacing: 0.05em; color: #444;">
                     Мы одними из первых получаем новинки всех главных книжных издательств и всегда идем в ногу со
                     временем. Огромный ассортимент художественной и детской литературы, бизнеса и психологии, мягкие
@@ -502,7 +526,7 @@
                     style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #444; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                     <span class="value">15</span>+
                 </h2>
-                <p class="text-fut-light pt-3"
+                <p class="text-fut-book pt-3"
                    style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #444;">
                     Больше 15 видов жанров книг в наличии в наших магазинах
                 </p>
@@ -518,7 +542,7 @@
                     style="font-family: 'Roboto', sans-serif; font-size: 72px; line-height: 140%; letter-spacing: 0.05em; color: #444; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                     <span class="value">9000</span>+
                 </h2>
-                <p class="text-fut-light pt-3"
+                <p class="text-fut-book pt-3"
                    style="font-size: 16px; line-height: 140%; letter-spacing: 0.05em; color: #444;">
                     Самых разных книг Вы сможете найти у нас и с удовольствием почитать
                 </p>
