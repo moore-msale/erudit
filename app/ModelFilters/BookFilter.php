@@ -70,7 +70,7 @@ class BookFilter extends Collection
 //                ->select('*')
 //                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')->get();
 
-                return $model;
+                return $model->sortByDesc('recommend');
 
         }else{
             $cons = [];
@@ -99,18 +99,11 @@ class BookFilter extends Collection
                 array_push($i, $value_2);
                 }
             }
-//            dd($i);
+
         }
-//        dd($i);
-//        dd($model,"wer");
-//        dd($model->whereIn('isbn', $i));
-//        print_r($i);
-       ;
-        return $model->whereIn('isbn', $i);
+
+        return $model->whereIn('isbn', $i)->sortByDesc('discount')->sortByDesc('recommend')->unique('name');
     }
-
-//->sortByDesc('recommend')->unique('name')
-
 
     public function filterByCategory ($model, $category)
     {
@@ -130,10 +123,10 @@ class BookFilter extends Collection
     public function rangeCost($model, $min, $max)
     {
         if (auth()->check()) {
-            return $model->where('price_wholesale', '>=', $min)->where('price_wholesale', '<=', $max);
+            return $model->where('price_retail', '>=', $min)->where('price_retail', '<=', $max);
         }
 
-        return $model->where('price_retail', '>=', $min)->where('price_retail', '<=', $max);
+        return $model->where('price_wholesale', '>=', $min)->where('price_wholesale', '<=', $max);
     }
 
     public function sortByPrice($model, $direction)

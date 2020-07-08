@@ -8,7 +8,26 @@
             <h2 class="text-fut-bold pb-lg-0 pb-4" style="font-size: 20px;line-height: 120%;letter-spacing: 0.05em;color: #FFFFFF;">
                 Полезно
             </h2>
-
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
+                    Акции
+                </a>
+            </p>
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
+                    Новинки
+                </a>
+            </p>
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="/#bestseller" class="text-white text-scale-white" style="text-decoration: none;">
+                    Бестселлеры
+                </a>
+            </p>
+            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
+                <a href="/#news" class="text-white text-scale-white" style="text-decoration: none;">
+                    Новости
+                </a>
+            </p>
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                 <a href="/delivery" class="text-white text-scale-white" style="text-decoration: none;">
                 Доставка и оплата
@@ -19,26 +38,10 @@
                 Возврат товара
                 </a>
             </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
-                Акции
-                </a>
-            </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="/#news" class="text-white text-scale-white" style="text-decoration: none;">
-                Новости
-                </a>
-            </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="/#actions" class="text-white text-scale-white" style="text-decoration: none;">
-                Новинки
-                </a>
-            </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                <a href="/#bestseller" class="text-white text-scale-white" style="text-decoration: none;">
-                Бестселлеры
-                </a>
-            </p>
+
+
+
+
 
         </div>
         <div class="col-lg-3 col-12 pt-lg-0 pt-4">

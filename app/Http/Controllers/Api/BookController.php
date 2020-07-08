@@ -12,7 +12,8 @@ class BookController extends Controller
     public function index(Request $request)
     {
 //        $books = DB::table('books')->select('*')->->get()->sortByDesc('id')->;
-        $books = Book::all()->sortByDesc('id')->filterCollection($request);
+        $books = Book::all()->sortByDesc('id')->filterCollection($request)->paginate(15);
+//        dd($books);
         return response()->json([
             'html' => view('api.books', [
                 'books' => $books,

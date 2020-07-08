@@ -2,15 +2,16 @@
 
 @section('content')
     <div class="container" style="padding-top: 15%; padding-bottom: 10%;">
-        <div class="row text-center pt-5">
-            <h2>Все товары по жанру: {{ $search_input }}</h2>
+        <div class="text-center pt-5">
+            <h2>Все товары по жанру: <span class="nav-link font-weight-bold  mt-2 py-0 disabled h1" >{{ $search_input }}</span></h2>
         </div>
         <div class="row justify-content-center">
             <div class="col-8">
                 @foreach($result as $key => $items)
-                    @if(count($items))
-                        <a class="nav-link font-weight-bold  mt-2 py-0 disabled h1"  data-toggle="collapse" data-target="#collapse{{ $loop->index }}" aria-expanded="false" aria-controls="collapse{{ $loop->index }}" tabindex="-1" aria-disabled="true">{{ $key }}</a>
-                    @endif
+{{--                    @if(count($items))--}}
+{{--                        <a class="nav-link font-weight-bold  mt-2 py-0 disabled h1"  data-toggle="collapse" data-target="#collapse{{ $loop->index }}" aria-expanded="false" aria-controls="collapse{{ $loop->index }}" tabindex="-1" aria-disabled="true">{{ $key }}</a>--}}
+{{--                        <h1>{{$items}}</h1>--}}
+{{--                    @endif--}}
 
                     <div class="row collapse collapse-multi show" id="collapse{{ $loop->index }}">
                         @foreach($items as $value)

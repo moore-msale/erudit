@@ -104,7 +104,6 @@ class MainController extends Controller
             ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
             ->where('book_genre.genre_id', '=', $search)
             ->where('type', 'book')
-
             ->get()]);
         $result = $result->merge(collect(['Игры' => Book::all()->where('genre_id',$search)->where('type', 'game')]));
         $result = $result->merge(collect(['Товары для творчества' => Book::all()->where('genre_id',$search)->where('type', 'game')]));
