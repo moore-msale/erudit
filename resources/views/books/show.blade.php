@@ -27,9 +27,9 @@
                 <div class="col-lg-3 col-12 p-4">
                     <div style="position: relative;">
                         @if (filter_var($book->image, FILTER_VALIDATE_URL))
-                            <img class="w-100" style="height: 60%;" src="{{ $book->image }}" alt="">
+                            <img class="w-100" style="height: 300px; object-fit: contain;" src="{{ $book->image }}" alt="">
                         @else
-                            <img class="w-100" style="height: 60%;" src="{{ asset('storage/'.$book->image)}}" alt="">
+                            <img class="w-100" style="height: 300px;object-fit: contain;" src="{{ asset('storage/'.$book->image)}}" alt="">
                         @endif
 
 {{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
@@ -242,9 +242,9 @@
                                     <div class="" style="height: 65%;">
                                         {{--<img class="w-100 h-100" style="height: 60%;" src="{{ file_exists('storage/'.$same->image) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">--}}
                                         @if (filter_var($same->image, FILTER_VALIDATE_URL))
-                                            <img class="w-100 h-100" style="height: 60%;" src="{{ $same->image }}" alt="">
+                                            <img class="w-100 h-100" style="height: 300px; object-fit: contain;" src="{{ $same->image }}" alt="">
                                         @else
-                                            <img class="w-100 h-100" style="height: 60%;" src="{{ asset('storage/'.$same->image)}}" alt="">
+                                            <img class="w-100 h-100" style="height: 300px; object-fit: contain;" src="{{ asset('storage/'.$same->image)}}" alt="">
                                         @endif
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>
