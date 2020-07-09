@@ -277,7 +277,7 @@
              style="right: -2%; bottom: 7%;" alt="">
         <!-- <div class="px-lg-5 pb-0 p-0 pt-5"> -->
         <div class="px-lg-5 pb-0 p-0 pt-0">
-            <div class="row pt-0 pl-lg-5 pr-lg-5">
+            <div class="row pt-0 pl-lg-5 pr-lg-5 mb-5">
             <!-- <div class="row p-lg-5">     -->
                 <div class="col-lg-4 col-12 cat-scale"
                      style="background-image: url({{ asset('images/cat1.png') }}); background-size: cover; height: 324px; box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);">
