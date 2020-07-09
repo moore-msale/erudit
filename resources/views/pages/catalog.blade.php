@@ -67,7 +67,7 @@
                             <a class="dropdown-item sort_products" href="#" data-type="Name" data-value="desc">По названию: Я > А</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="asc">По автору: А > Я</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Author" data-value="desc">По автору: Я > А</a>
-                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Дешевые</a>
+                            <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="asc">Бюджетные</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Price" data-value="desc">Дорогие</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Discount" data-value="desc">С макс. скидкой</a>
                             <a class="dropdown-item sort_products" href="#" data-type="Bestseller" data-value="1">Лидеры продаж</a>
