@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGeneralGenresTable extends Migration
+class CreateGeneralGenreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateGeneralGenresTable extends Migration
      */
     public function up()
     {
-        Schema::create('general_genres', function (Blueprint $table) {
+        Schema::create('general_genre', function (Blueprint $table) {
+
             $table->bigIncrements('id');
+            $table->text('name');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateGeneralGenresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('general_genres');
+        Schema::dropIfExists('general_genre');
     }
 }
