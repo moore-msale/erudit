@@ -16,7 +16,7 @@ $agent = new Agent();
                                 Книги
                             </a>
                             <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">
-                                @foreach(\App\Genre::all()->sortBy('name') as $genre)
+                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="{{ route('catalog',["genre" => $genre->id]) }}">
                                     {{ $genre->name }}
@@ -209,7 +209,7 @@ $agent = new Agent();
                                 Книги
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @foreach(\App\Genre::all()->sortBy('name') as $genre)
+                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)
                                     <p class="px-3 pb-2 mb-0">
                                         <a href="{{ route('catalog',["genre" => $genre->id]) }}">
                                             {{ $genre->name }}

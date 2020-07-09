@@ -63,19 +63,11 @@ class BookFilter extends Collection
     {
 
         if (strpos('all', $genre) !== false){
-//            dd($model);
-//            dd(gettype($model->all()));
-//            return $model->all();
-//            $model = DB::table('books')
-//                ->select('*')
-//                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')->get();
-
                 return $model->sortByDesc('recommend');
 
         }else{
             $cons = [];
             $i = [];
-//            dd($i);
             $modelaa = DB::table('genres')
                 ->select('id')
                 ->where('general_id', '=', $genre)->get();
@@ -90,7 +82,6 @@ class BookFilter extends Collection
                 ->select('*')
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
                 ->whereIn('book_genre.genre_id',$cons)->get();
-//                ->sortByDesc('recommend')->unique('name');
 
         }
         foreach ($book_id as $key=>$item){
