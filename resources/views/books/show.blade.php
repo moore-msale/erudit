@@ -242,9 +242,9 @@
                                     <div class="" style="height: 65%;">
                                         {{--<img class="w-100 h-100" style="height: 60%;" src="{{ file_exists('storage/'.$same->image) ? asset('storage/'.$same->image) : asset('images/default_book.png') }}" alt="">--}}
                                         @if (filter_var($same->image, FILTER_VALIDATE_URL))
-                                            <img class="w-100 h-100" style="height: 275px; object-fit: contain;" src="{{ $same->image }}" alt="">
+                                            <img class="w-100 h-100" style="height: 350px; object-fit: contain;" src="{{ $same->image }}" alt="">
                                         @else
-                                            <img class="w-100 h-100" style="height: 275px; object-fit: contain;" src="{{ asset('storage/'.$same->image)}}" alt="">
+                                            <img class="w-100 h-100" style="height: 350px; object-fit: contain;" src="{{ asset('storage/'.$same->image)}}" alt="">
                                         @endif
 {{--                                        <img class="w-100 h-100" src="{{ asset('storage/'.$same->image) }}" alt="">--}}
                                     </div>

@@ -33,7 +33,7 @@
                 {{ \Illuminate\Support\Str::limit($book->name,30,'...')  }}
             </h3>
         </a>
-        <div class="p-0 text-left">
+        <div class="p-0 text-left mb-4">
             @guest
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
