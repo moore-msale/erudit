@@ -124,20 +124,20 @@ class BookFilter extends Collection
     {
         if ($direction == 'asc') {
             if (auth()->check()) {
-                return $model->sortBy('price_wholesale');
+                return $model->sortBy('price_retail');
             }
-            return $model->sortBy('price_retail');
+            return $model->sortBy('price_wholesale');
         } elseif ($direction == 'desc') {
             if (auth()->check()) {
-                return $model->sortByDesc('price_wholesale');
+                return $model->sortByDesc('price_retail');
             }
-            return $model->sortByDesc('price_retail');
+            return $model->sortByDesc('price_wholesale');
         }
 
         if (auth()->check()) {
-            return $model->sortBy('price_wholesale');
+            return $model->sortBy('price_retail');
         }
-        return $model->sortBy('price_retail');
+        return $model->sortBy('price_wholesale');
     }
 
     public function sortByName($model, $direction)
