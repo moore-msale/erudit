@@ -49,7 +49,6 @@ class BookFilter extends Collection
             $model = $this->sortByReviewed($model, $sortByReviewed);
         }
         if ($genre = $request->genre) {
-//            dd($genre, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
             $model = $this->filterByGenre($model, $genre);
         }
         if($category = $request->category) {
@@ -63,7 +62,7 @@ class BookFilter extends Collection
     {
 
         if (strpos('all', $genre) !== false){
-                return $model->sortByDesc('recommend');
+                return $model->sortByDesc('recommend')->sortByDesc('discount');
 
         }else{
             $cons = [];

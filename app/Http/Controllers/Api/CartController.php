@@ -44,6 +44,13 @@ class CartController extends Controller
     public function store(Request $request)
     {
 //    dd($request->all());
+//        $request->validate([
+//            'name' => 'required',
+//            'email' => 'required',
+//            'phone' => 'required',
+//            'address' => 'required',
+//        ]);
+
         $token = $request->token ? $request->token : Session::has('token') ? Session::get('token') : uniqid();
         TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
@@ -96,6 +103,7 @@ class CartController extends Controller
                 'total' => $cart->getTotal(),
             ];
         }
+
 
         $newCart->user_id = auth()->check() ? auth()->user()->id : null;
         $newCart->comment = $request->comment;
