@@ -1,6 +1,6 @@
-<div class="container" style="">
+<div class="container delivery" style="">
     <div class="row">
-        <div class="col-9">
+        <div class="col">
 
         </div>
     </div>

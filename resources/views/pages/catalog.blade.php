@@ -44,7 +44,7 @@
         </style>
     @endpush
 
-    <div style="padding-top: 15%; padding-bottom: 10%;">
+    <div class="catalog_for_media" style="padding-top: 15%; padding-bottom: 10%;">
         <div class="container">
             <div class="row align-items-center bg-white shadow px-3 py-3">
                 <div class="col-lg-3 col-12">
