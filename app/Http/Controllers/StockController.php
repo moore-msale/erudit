@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Stock;
+use Doctrine\DBAL\Schema\Table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
@@ -18,12 +20,14 @@ class StockController extends Controller
         if(isset($request->id))
         {
             $stock = Stock::find($request->id);
+//            dd($stock);
         }
         else
         {
             $stock = new Stock();
+//            dd($stock);
         }
-
+//        dd($request,'gg');
         $stock->name = $request->desc;
         $stock->date = $request->date;
         $stock->discount = $request->discount;
@@ -54,19 +58,47 @@ class StockController extends Controller
         }
 
         if($request->items){
-        if ($bookssync = $request->items) {
-            $stock->books()->sync($bookssync);
-        }
-        foreach ($books as $book)
-        {
-            $book->discount = $stock->discount;
-            $book->save();
-        }
+            if ($bookssync = $request->items) {
+                $stock->books()->sync($bookssync);
+            }
+            foreach ($books as $book)
+            {
+                $book->discount = $stock->discount;
+                $book->save();
+            }
         }
 
         elseif ($request->category)
         {
-            $books = Book::where('genre_id',$request->category)->get();
+//            $books = Book::where('genre_id',$request->category)->get();
+            $cons = [];
+            $i = [];
+
+            $genre = DB::table('genres')
+                ->select('id')
+                ->where('general_id', '=', $request->category)->get();
+            foreach ($genre as $key=>$items){
+                foreach ($items as $key_value=>$value){
+                    array_push($cons, $value);
+                }
+
+            }
+
+            $book_id = DB::table('books')
+                ->select('*')
+                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                ->whereIn('book_genre.genre_id',$cons)->get();
+
+
+            foreach ($book_id as $key=>$item){
+                foreach ($item as $key_value_2=>$value_2){
+                    if ($key_value_2 == 'isbn'){
+                        array_push($i, $value_2);
+                    }
+                }
+            }
+
+            $books = Book::whereIn('isbn', $i)->get();
 
             $stock->books()->sync($books);
 
@@ -78,6 +110,13 @@ class StockController extends Controller
         }
             $stock->save();
 
+        }elseif ($request->ula){
+            $books = Book::all();
+            foreach ($books as $book)
+            {
+                $book->discount = $stock->discount;
+                $book->save();
+            }
         }
         return redirect()->route('stock_edit', $stock->id);
     }
@@ -120,7 +159,34 @@ class StockController extends Controller
 
     public function stock_category(Request $request)
     {
-        $books = Book::where('genre_id', $request->category)->get();
+        $cons = [];
+        $i = [];
+
+        $genre = DB::table('genres')
+            ->select('id')
+            ->where('general_id', '=', $request->category)->get();
+        foreach ($genre as $key=>$items){
+            foreach ($items as $key_value=>$value){
+                array_push($cons, $value);
+            }
+
+        }
+
+        $book_id = DB::table('books')
+            ->select('*')
+            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+            ->whereIn('book_genre.genre_id',$cons)->get();
+
+
+            foreach ($book_id as $key=>$item){
+                foreach ($item as $key_value_2=>$value_2){
+                    if ($key_value_2 == 'isbn'){
+                        array_push($i, $value_2);
+                    }
+                }
+            }
+
+        $books = Book::whereIn('isbn', $i)->get();
 
         $view = view('stocks.includes.books', ['books' => $books])->render();
 

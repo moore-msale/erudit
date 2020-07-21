@@ -23,10 +23,8 @@ class CatalogController extends Controller
 
     public function genre(Genre $genre)
     {
-//        dd("genre");
         $genres = Genre::all()->sortBy('name');
         $categories = Category::all();
-//        $books = Book::where('genre_id','=',$genre->id)->get();
         $books = DB::table('books')
             ->select('*')
             ->join('book_genre', 'books.id', '=', 'book_genre.book_id')

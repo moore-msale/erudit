@@ -35,6 +35,10 @@
                         <label for="image">Баннер <span class="text-danger">*</span></label>
                         <input type="file" id="image" name="image" class="form-control input-erudit" accept="image/*" {{isset($stock) ? '' : 'required'}}>
                     </div>
+                    <div class="form-check mb-3 pl-0">
+                        <label for="blankCheckbox" class="mr-4">Отметить все книги?</label>
+                        <input class="form-check-input  position-static pt-1" name="ula" type="checkbox" id="blankCheckbox"  aria-label="...">
+                    </div>
 
                     <div class="form-group">
                         <label for="type">Выберите тип</label>
@@ -60,9 +64,9 @@
                         Список книг на акцию
                     </h3>
                     {{--@dd($stock->books)--}}
-                    @if(isset($stock->category))
+                    @if($stock->category)
                     <p class="font-weight-bold">
-                        Категория: {{ \App\Genre::find($stock->category)->name }}
+                        Категория: {{ \App\GeneralGenre::find($stock->category)->name }}
                     </p>
                     @endif
                     @foreach($stock->books as $book)

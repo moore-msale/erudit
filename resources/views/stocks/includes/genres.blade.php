@@ -4,7 +4,7 @@
     <p class="text-fut-light"></p>
     <select class="form-control input-erudit" name="category" id="category">
         <option value="0">Выберите категорию</option>
-        @foreach(\App\Genre::all()->sortBy('name') as $genre)
+        @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)
             <option value="{{$genre->id}}">{{$genre->name}}</option>
         @endforeach
     </select>
