@@ -132,14 +132,26 @@ class StockController extends Controller
     {
         $stock = Stock::find($id);
         $books = $stock->books;
+        if(count($books)){
+            foreach ($books as $book)
+            {
+                $book->discount = null;
+                $book->save();
+            }
 
-        foreach ($books as $book)
-        {
-            $book->discount = null;
-            $book->save();
+            $stock->delete();
+        }
+        else{
+            $books = Book::all();
+            foreach ($books as $book)
+            {
+                $book->discount = null;
+                $book->save();
+            }
+
+            $stock->delete();
         }
 
-        $stock->delete();
 
         return redirect()->route('user.index');
     }
