@@ -88,10 +88,10 @@
                     Книжный магазин "Эрудит"
                     <br>"DORDOI Plaza-2" -1 этаж
             </p>
-            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
-                    Книжный магазин "Эрудит"
-                    <br>"IMall" 1 этаж
-            </p>
+{{--            <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">--}}
+{{--                    Книжный магазин "Эрудит"--}}
+{{--                    <br>"IMall" 1 этаж--}}
+{{--            </p>--}}
             <p class="text-fut-book" style="font-size: 15px; line-height: 19px; color: #FFFFFF;">
                 10:00-22:00
             </p>
