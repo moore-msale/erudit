@@ -220,7 +220,7 @@ $agent = new Agent();
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row align-items-center w-100 justify-content-end">
+        <div class="row align-items-center w-100 justify-content-end" style="background-color: #6fa6ac1a;">
             <div class="col-12 pl-0 my-auto d-flex" style="height: 33px;padding-right:8px;">
                 <div class="hamburger hamburger--collapse" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <div class="hamburger-box">
