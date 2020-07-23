@@ -222,18 +222,33 @@
                                                 </button>
                                             </div>
                                             <div id="collapse-{{$category->id}}" class="collapse pt-1" aria-labelledby="cat-{{$category->id}}" data-parent="#accordionExample">
-                                                <a href="{{ route('genre', '2') }}" data-value="all" class="genre_btn">
+                                                <a href="{{ route('genre', 'all') }}" data-value="all" class="stationery_btn">
                                                     <p class="text-scale pl-3 mb-2">
-                                                        Все жанры
+                                                        Все товары
                                                     </p>
                                                 </a>
-                                                @foreach($genres as $genre)
-                                                    <a href="{{ route('genre',$genre->id) }}" class="genre_btn" data-value="{{ $genre->id }}">
-                                                        <p class="text-scale pl-3 mb-2">
-                                                            {{ $genre->name }}
-                                                        </p>
-                                                    </a>
-                                                @endforeach
+                                                <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Ручки
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Тетради
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Блокноты
+                                                    </p>
+                                                </a>
+{{--                                                @foreach($genres as $genre)--}}
+{{--                                                    <a href="{{ route('genre',$genre->id) }}" class="stationery_btn" data-value="{{ $genre->id }}">--}}
+{{--                                                        <p class="text-scale pl-3 mb-2">--}}
+{{--                                                            {{ $genre->name }}--}}
+{{--                                                        </p>--}}
+{{--                                                    </a>--}}
+{{--                                                @endforeach--}}
                                             </div>
                                         </div>
                                     </div>
@@ -279,6 +294,22 @@
     <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
     <script>
         let params = {};
+        if ($('.stationery_btn')){
+            $('.stationery_btn').click(e => {
+                console.log("stationery");
+                e.preventDefault();
+                e.stopPropagation();
+                let btn = $(e.currentTarget);
+                let val = btn.data('value');
+                params.stationery = val;
+                params.genre = null;
+                params.category = null;
+                if (params.page) {
+                    params.page = 1;
+                }
+                getProducts(params);
+
+            })}
         if ($('.genre_btn')){
         $('.genre_btn').click(e => {
             console.log("genrer");
@@ -294,6 +325,7 @@
             getProducts(params);
 
         })}
+
         if($('.category_btn')){
         $('.category_btn').click(e => {
             console.log("cats");

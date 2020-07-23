@@ -54,9 +54,47 @@ class BookFilter extends Collection
         if($category = $request->category) {
             $model = $this->filterByCategory($model, $category);
         }
+        if($stationery = $request->stationery) {
+            $model = $this->filterByStationery($model, $stationery);
+        }
 
         return $model;
     }
+
+    public function filterByStationery($model, $stationery){
+//        dd($stationery);
+        if (strpos('all', $stationery) !== false) {
+            return $model->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
+        }else {
+            $genre_stationery = [];
+            $books_stationery = [];
+            $modelaa = DB::table('genres')
+                ->select('id')
+                ->where('name', 'like', '%' . $stationery . '%')->get();
+            foreach ($modelaa as $key => $items) {
+                foreach ($items as $key_value => $value) {
+                    array_push($genre_stationery, $value);
+                }
+
+            }
+//            dd($modelaa, 'srgverge');
+            $book_id = DB::table('books')
+                ->select('*')
+                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                ->whereIn('book_genre.genre_id', $genre_stationery)->get();
+
+
+            foreach ($book_id as $key => $item) {
+                foreach ($item as $key_value_2 => $value_2) {
+                    if ($key_value_2 == 'isbn') {
+                        array_push($books_stationery, $value_2);
+                    }
+                }
+
+            }
+        }
+            return $model->whereIn('isbn', $books_stationery)->sortByDesc('recommend')->sortByDesc('discount');
+        }
 
     public function filterByGenre($model, $genre)
     {
