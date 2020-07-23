@@ -43,10 +43,27 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
+        ]);
+//        $messages = array(
+//            'required' => 'Поле :attribute должно быть заполнено.',
+//        );
+//        $v = Validator::make($request->all(), [
+//            'name' => 'required',
+//            'phone' => 'required',
+//            'address' => 'required'
+//        ]);
+//
+//        if ($v->fails())
+//        {
+//            return redirect()->back()->withErrors($v->errors());
+//        }
 //    dd($request->all());
 //        $request->validate([
 //            'name' => 'required',
-//            'email' => 'required',
 //            'phone' => 'required',
 //            'address' => 'required',
 //        ]);

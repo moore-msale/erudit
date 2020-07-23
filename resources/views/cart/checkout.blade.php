@@ -24,6 +24,15 @@
             </div>
             <div class="row">
                 <div class="col-lg-7 col-12">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form action="{{ route('cart.store') }}" class="col-12 col-md-10" style="" method="POST">
                         @csrf
                         <div class="form-group">
@@ -179,6 +188,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_ru.js">
     </script>
+
     <script>
         $('#cbx').change(e => {
             let check = $(e.currentTarget);
