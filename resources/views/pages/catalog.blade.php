@@ -285,7 +285,7 @@
                         </ul>
                     </nav>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
-
+                        <h1>test</h1>
                         <div class="row pl-4 ml-0 pt-3">
                             {{ $books->appends(request()->query())->links() }}
                         </div>
@@ -325,6 +325,7 @@
             let val = btn.data('value');
             params.genre = val;
             params.category = null;
+            params.stationery = null;
             if (params.page) {
                 params.page = 1;
             }
@@ -340,6 +341,7 @@
             let val = btn.data('value');
             params.category = val;
             params.genre = null;
+            params.stationery = null;
             if(params.page) {
                 params.page = 1;
             }
