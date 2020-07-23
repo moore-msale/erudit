@@ -69,11 +69,15 @@ class BookFilter extends Collection
             $genre_stationery = [];
             $books_stationery = [];
             $modelaa = DB::table('genres')
-                ->select('id')
+                ->select('*')
                 ->where('name', 'like', '%' . $stationery . '%')->get();
             foreach ($modelaa as $key => $items) {
                 foreach ($items as $key_value => $value) {
-                    array_push($genre_stationery, $value);
+//                    dd($value);
+//                    if($value == 'id'){
+                        array_push($genre_stationery, $value);
+//                    }
+
                 }
 
             }
@@ -93,6 +97,7 @@ class BookFilter extends Collection
 
             }
         }
+
             return $model->whereIn('isbn', $books_stationery)->sortByDesc('recommend')->sortByDesc('discount');
         }
 

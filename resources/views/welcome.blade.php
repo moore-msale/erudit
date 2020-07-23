@@ -369,9 +369,7 @@
                             <div style="position: absolute; bottom: 28%; left:10%;">
                                 <h3 class="text-fut-bold"
                                     style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
-                                    Мягкие
-                                    <br>
-                                    игрушки
+                                    Игрушки
                                 </h3>
                                 <p class="text-fut-bold text-scale"
                                    style="font-size: 16px; line-height: 120%; letter-spacing: 0.05em; color: #444;">

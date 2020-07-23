@@ -285,6 +285,7 @@
                         </ul>
                     </nav>
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
+
                         <div class="row pl-4 ml-0 pt-3">
                             {{ $books->appends(request()->query())->links() }}
                         </div>
@@ -311,6 +312,7 @@
                 if (params.page) {
                     params.page = 1;
                 }
+                console.log(params, 'rsgfrsgsg')
                 getProducts(params);
 
             })}
