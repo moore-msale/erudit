@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <img src="{{ asset('images/covid.png') }}" class="covid"
+    <img src="{{ asset('images/covid.png') }}" class="covid my-4"
          alt="">
 
     <div class="container-fluid sells-sector position-relative" id="actions"

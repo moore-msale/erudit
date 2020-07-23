@@ -212,6 +212,31 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    @elseif($category->name == 'Канцелярские товары')
+                                    <div class="accordion category_btn" id="accordionExample">
+                                        <div class="card border-0">
+                                            <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
+                                                <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="margin-bottom:1rem;color:#2c3e50;">
+                                                    {{$category->name}}
+                                                </button>
+                                            </div>
+                                            <div id="collapse-{{$category->id}}" class="collapse pt-1" aria-labelledby="cat-{{$category->id}}" data-parent="#accordionExample">
+                                                <a href="{{ route('genre', '2') }}" data-value="all" class="genre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Все жанры
+                                                    </p>
+                                                </a>
+                                                @foreach($genres as $genre)
+                                                    <a href="{{ route('genre',$genre->id) }}" class="genre_btn" data-value="{{ $genre->id }}">
+                                                        <p class="text-scale pl-3 mb-2">
+                                                            {{ $genre->name }}
+                                                        </p>
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 @else
                                     <a href="{{ route('category', $category->name) }}" class="category_btn" data-value="{{ $category->id }}">
                                         <p class="text-scale">
