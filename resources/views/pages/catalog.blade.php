@@ -269,6 +269,7 @@
                 </div>
                 <div class="col-lg-9 col-12">
                     <div class="row px-lg-4 px-1 mb-4" id="books_catalog">
+                        <h1>test</h1>
 
                     </div>
                     <nav aria-label="Page navigation example">
@@ -284,8 +285,9 @@
                             </li>
                         </ul>
                     </nav>
+
                     @if($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                        <h1>test</h1>
+
                         <div class="row pl-4 ml-0 pt-3">
                             {{ $books->appends(request()->query())->links() }}
                         </div>
