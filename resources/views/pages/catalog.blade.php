@@ -252,6 +252,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                @elseif($category->name == 'Мягкие игрушки')
+                                    <a href="{{ route('category', $category->name) }}" class="category_btn" data-value="{{ $category->id }}">
+                                        <p class="text-scale">Игрушки</p>
+                                    </a>
                                 @else
                                     <a href="{{ route('category', $category->name) }}" class="category_btn" data-value="{{ $category->id }}">
                                         <p class="text-scale">
