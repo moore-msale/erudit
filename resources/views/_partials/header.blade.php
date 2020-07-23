@@ -168,6 +168,57 @@ $agent = new Agent();
 </nav>
 @else
 <nav class="px-0 navbar solid-nav navbar-expand-xl py-0 w-100 bg-white d-xl-none d-block" style="z-index: 999; position: fixed;">
+    <div class="row w-100 mx-0  mob-menu" style="background: #6FA6AC;height: 80px;">
+        <div class="col-12 mob" style="padding:0 8px;">
+            <ul class="navbar-nav justify-content-start align-items-center flex-row h-100">
+                <li class="nav-item" style="width:85px;">
+                    <a href="/">
+                        <img class="logo" src="{{ asset('images/logo-mob.png') }}" alt="">
+                    </a>
+                </li>
+                @guest
+                    <li class="nav-item ml-auto">
+                        <a href="/login" class="text-fut-bold text-scale" style="   color:#fff;">Войти</a>
+                    </li>
+                @else
+                    <li class="nav-item ml-auto">
+                        <div class="dropdown" style="width:140px;">
+                            <img src="{{asset('images/book1-w.svg')}}" alt="">
+                            <button class="text-fut-bold text-scale dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #6FA6AC;color:#fff;">
+                                Мой эрудит
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @if(Auth::user()->role_id == 2)
+                                    <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
+                                        Личный Кабинет
+                                    </a>
+                                @endif
+                                <a class="text-fut-book pl-3 text-scale" style="font-size: 15px; color:#444; padding:5px 15px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    {{ __('Выход') }}
+                                </a>
+                            </div>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                @endguest
+            </ul>
+        </div>
+        <div class="col-12 mob" style="padding:0 8px;">
+            <ul>
+                <li class="nav-item w-100">
+                    <div class="w-100 search-main">
+                        <input type="text" class="border-0 form-control input-without-focus w-100 text-fut-book" id="search-input-select2" placeholder="Поиск...">
+                        <div id="resulter" class="bg-white shadow position-absolute" style="top:63px;z-index: 99;">
+                            <a id="all_results_btn_a" href=""><button class="btn btn-default p-2 ml-2" id="all_results_btn_inner">Все результаты</button></a>
+                            <div id="search-result-select2" class="position-relative" style="z-index: 4;"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row align-items-center w-100 justify-content-end">
             <div class="col-12 pl-0 my-auto d-flex" style="height: 33px;padding-right:8px;">
@@ -295,57 +346,7 @@ $agent = new Agent();
             </div>
         </div>
     </div>
-    <div class="row w-100 mx-0  mob-menu" style="background: #6FA6AC;height: 80px;">
-        <div class="col-12 mob" style="padding:0 8px;">
-          <ul class="navbar-nav justify-content-start align-items-center flex-row h-100">
-            <li class="nav-item" style="width:85px;">
-              <a href="/">
-                <img class="logo" src="{{ asset('images/logo-mob.png') }}" alt="">
-              </a>
-            </li>
-            @guest
-              <li class="nav-item ml-auto">
-                  <a href="/login" class="text-fut-bold text-scale" style="color:#fff;">Войти</a>
-              </li>
-            @else
-            <li class="nav-item ml-auto">
-              <div class="dropdown" style="width:130px;">
-                <img src="{{asset('images/book1-w.svg')}}" alt="">
-                <button class="text-fut-bold text-scale dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #6FA6AC;color:#fff;">
-                  Мой эрудит
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  @if(Auth::user()->role_id == 2)
-                    <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
-                        Личный Кабинет
-                    </a>
-                  @endif
-                  <a class="text-fut-book pl-3 text-scale" style="font-size: 15px; color:#444; padding:5px 15px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                      {{ __('Выход') }}
-                  </a>
-                </div>
-              </div>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-            </li>
-            @endguest
-            </ul>
-        </div>
-        <div class="col-12 mob" style="padding:0 8px;">
-          <ul>
-            <li class="nav-item w-100">
-              <div class="w-100 search-main">
-                <input type="text" class="border-0 form-control input-without-focus w-100 text-fut-book" id="search-input-select2" placeholder="Поиск...">
-                <div id="resulter" class="bg-white shadow position-absolute" style="top:63px;z-index: 99;">
-                    <a id="all_results_btn_a" href=""><button class="btn btn-default p-2 ml-2" id="all_results_btn_inner">Все результаты</button></a>
-                    <div id="search-result-select2" class="position-relative" style="z-index: 4;"></div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-  </div>
+
 </nav>
 @endif
 @push('scripts')
