@@ -150,6 +150,10 @@ $agent = new Agent();
                         <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
                             Личный Кабинет
                         </a>
+                        @elseif(Auth::user()->role_id == 1)
+                            <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
+                                Личный Кабинет
+                            </a>
                       @endif
                       <a class="text-fut-book pl-3 text-scale" style="font-size: 15px; color:#444; padding:5px 15px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                           {{ __('Выход') }}
@@ -189,6 +193,10 @@ $agent = new Agent();
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 @if(Auth::user()->role_id == 2)
+                                    <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
+                                        Личный Кабинет
+                                    </a>
+                                    @elseif(Auth::user()->role_id == 1)
                                     <a href="{{ route('user.index') }}" class="text-fut-book but-hov dropdown-item" data-aos="fade-up" style="font-size: 13px; color:#444!important; padding: 5px 15px; background-color: transparent; border: 1px rgba(34,34,34,0.36) solid; text-decoration: none;">
                                         Личный Кабинет
                                     </a>
@@ -323,6 +331,7 @@ $agent = new Agent();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Выход') }}
                             </a>
+
 
                         @endguest
 

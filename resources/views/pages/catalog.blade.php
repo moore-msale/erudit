@@ -192,7 +192,7 @@
                                     <div class="accordion category_btn" id="accordionExample">
                                         <div class="card border-0">
                                             <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
-                                                <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="margin-bottom:1rem;color:#2c3e50;">
+                                                <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="       margin-bottom:1rem;color:#2c3e50;">
                                                     {{$category->name}}
                                                 </button>
                                             </div>
@@ -227,6 +227,14 @@
                                                         Все товары
                                                     </p>
                                                 </a>
+{{--                                                <div class="btn-group dropright">--}}
+{{--                                                    <button type="button" data-value="ручки" class="stationery_btn btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                                        Dropright--}}
+{{--                                                    </button>--}}
+{{--                                                    <div class="dropdown-menu">--}}
+{{--                                                        <!-- Dropdown menu links -->--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                                 <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ручки
@@ -268,8 +276,19 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-12">
+
+
+{{--                 1111111111111111111111111111      --}}
+
+
+                    <h1>test</h1>
+                    <p>{{$genre->name}}</p>
+
+
+{{--                    1111111111111111111111111           --}}
+
+
                     <div class="row px-lg-4 px-1 mb-4" id="books_catalog">
-                        <h1>test</h1>
 
                     </div>
                     <nav aria-label="Page navigation example">
