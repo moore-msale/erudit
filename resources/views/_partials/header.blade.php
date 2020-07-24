@@ -67,6 +67,7 @@ $agent = new Agent();
                   <li class="nav-item scroll-none d-none">
                       <a href="/login" class="text-fut-bold text-scale">Войти</a>
                   </li>
+
                 @else
                   <div class="scroll-none dropdown d-none">
                     <img src="{{asset('images/book1.svg')}}" alt="">
@@ -181,9 +182,16 @@ $agent = new Agent();
                     </a>
                 </li>
                 @guest
-                    <li class="nav-item ml-auto">
+                    <li class="nav-item ml-auto mr-3">
                         <a href="/login" class="text-fut-bold text-scale" style="   color:#fff;">Войти</a>
                     </li>
+                    <li class="nav-item d-flex" style="padding-right:8px;">
+                        <img src="{{asset('images/shopping-bag.svg')}}" alt="">
+                        <a href="/login" class="text-fut-bold"  style="color: #fff!important; background-color: transparent;width:66px;padding-left: 2px; font-size: 10px;">
+                            Оптовым покупателям
+                        </a>
+                    </li>
+
                 @else
                     <li class="nav-item ml-auto">
                         <div class="dropdown" style="width:140px;">
