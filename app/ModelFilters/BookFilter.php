@@ -98,7 +98,7 @@ class BookFilter extends Collection
             }
         }
 
-            return $model->whereIn('isbn', $books_stationery)->sortByDesc('recommend')->sortByDesc('discount');
+            return $model->whereIn('isbn', $books_stationery)->where()->sortByDesc('recommend')->sortByDesc('discount');
         }
 
     public function filterByGenre($model, $genre)

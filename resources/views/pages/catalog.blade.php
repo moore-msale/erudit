@@ -280,9 +280,13 @@
 
 {{--                 1111111111111111111111111111      --}}
 
+{{--                    <div class="col-12 d-lg-block d-none" id="sub_genre">--}}
+{{--                        <span class="text-fut-book"><a href="/">Главная</a></span>--}}
 
-                    <h1>test</h1>
-                    <p>{{$genre->name}}</p>
+{{--                    </div>--}}
+
+{{--                    <h1>test</h1>--}}
+{{--                    <p>{{$genre->name}}</p>--}}
 
 
 {{--                    1111111111111111111111111           --}}
@@ -315,11 +319,30 @@
             </div>
         </div>
     </div>
+    subgenre
 @endsection
 @push('scripts')
     <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
     <script>
         let params = {};
+        if ($('.subgenre_btn')){
+            $('.subgenre_btn').click(e => {
+                console.log("stationery");
+                e.preventDefault();
+                e.stopPropagation();
+                let btn = $(e.currentTarget);
+                let val = btn.data('value');
+                params.subgenre = val;
+                params.stationery = null;
+                params.genre = null;
+                params.category = null;
+                if (params.page) {
+                    params.page = 1;
+                }
+                console.log(params, 'rsgfrsgsg')
+                getProducts(params);
+
+            })}
         if ($('.stationery_btn')){
             $('.stationery_btn').click(e => {
                 console.log("stationery");
@@ -328,13 +351,15 @@
                 let btn = $(e.currentTarget);
                 let val = btn.data('value');
                 params.stationery = val;
+                params.subgenre = null;
                 params.genre = null;
                 params.category = null;
                 if (params.page) {
                     params.page = 1;
                 }
                 console.log(params, 'rsgfrsgsg')
-                getProducts(params);
+                // getProducts(params);
+                getGenre(params)
 
             })}
         if ($('.genre_btn')){
@@ -346,6 +371,7 @@
             let val = btn.data('value');
             params.genre = val;
             params.category = null;
+            params.subgenre = null;
             params.stationery = null;
             if (params.page) {
                 params.page = 1;
@@ -362,6 +388,7 @@
             let val = btn.data('value');
             params.category = val;
             params.genre = null;
+            params.subgenre = null;
             params.stationery = null;
             if(params.page) {
                 params.page = 1;
@@ -514,6 +541,25 @@
                     let result = $('#books_catalog').html(data.html);
                     result.find('.buy_book').each((e, i) => {
                         registerCartBuyButtons($(i));
+                    });
+                },
+                error: () => {
+                    console.log('error');
+                }
+            });
+        }
+
+        function getGenre(params = {})
+        {
+            $.ajax({
+                url: '{{ route('book.all') }}',
+                data: params,
+                success: data => {
+                    console.log(data);
+                    var _select = document.getElementById("sub_genre");
+                    _select.innerHTML = "";
+                    $.each(data, function(key, val) {
+                        $('#sub_genre').append('<p value="' + val + '">' + val, key + '</p>');
                     });
                 },
                 error: () => {
