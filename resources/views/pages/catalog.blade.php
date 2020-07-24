@@ -583,7 +583,7 @@
                     var _select = document.getElementById("sub_genre");
                     _select.innerHTML = "";
                     $.each(data.genre, function(key, val) {
-                        $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn"><p class="text-scale pl-3 mb-2">'+val.name+'</p></a>');
+                        $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 subgenre_btn_bred"><p class="px-1 mb-0">'+val.name+'</p></a>');
                     });
                 // <p value="' + val + '">' + val.name +
                 },
