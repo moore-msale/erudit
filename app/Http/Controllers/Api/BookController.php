@@ -16,8 +16,10 @@ class BookController extends Controller
 //        $genres = Genre::all()->where()
 
 //        dd($books);
-        return response()->json([
-            'html' => view('api.books', [
+        return
+            response()->json([
+            'html' => view('api.books',
+                [
                 'books' => $books,
 
             ])->render(),

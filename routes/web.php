@@ -36,6 +36,7 @@ Route::get('/category/{category}', 'CatalogController@category')->name('category
 
 Route::get('/book/{book}', 'BookController@show')->name('book.show');
 Route::get('/books', 'Api\BookController@index')->name('book.all');
+Route::get('/genre', 'Api\GenreController@index')->name('genre.all');
 
 Route::get('/all_stock', function () {
     return view('pages.all_stock_page',['discounts' => \App\Book::where('discount','!=',null)->get()->reverse()]);

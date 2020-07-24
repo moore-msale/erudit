@@ -222,7 +222,7 @@
                                                 </button>
                                             </div>
                                             <div id="collapse-{{$category->id}}" class="collapse pt-1" aria-labelledby="cat-{{$category->id}}" data-parent="#accordionExample">
-                                                <a href="{{ route('genre', 'all') }}" data-value="all" class="stationery_btn">
+                                                <a href="{{ route('genre', 'all') }}" data-value="all" class="subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Все товары
                                                     </p>
@@ -235,17 +235,17 @@
 {{--                                                        <!-- Dropdown menu links -->--}}
 {{--                                                    </div>--}}
 {{--                                                </div>--}}
-                                                <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn">
+                                                <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ручки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn">
+                                                <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Тетради
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn">
+                                                <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Блокноты
                                                     </p>
@@ -280,10 +280,11 @@
 
 {{--                 1111111111111111111111111111      --}}
 
-{{--                    <div class="col-12 d-lg-block d-none" id="sub_genre">--}}
-{{--                        <span class="text-fut-book"><a href="/">Главная</a></span>--}}
+                    <div class="col-12 d-lg-block d-none" id="sub_genre">
 
-{{--                    </div>--}}
+
+
+                    </div>
 
 {{--                    <h1>test</h1>--}}
 {{--                    <p>{{$genre->name}}</p>--}}
@@ -325,7 +326,28 @@
     <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
     <script>
         let params = {};
-        if ($('.subgenre_btn')){
+        $('#sub_genre').click(e => {
+            if ($('.subgenre_btn')) {
+                $('.subgenre_btn').click(e => {
+                    console.log("stationery");
+                    e.preventDefault();
+                    e.stopPropagation();
+                    let btn = $(e.currentTarget);
+                    let val = btn.data('value');
+                    params.subgenre = val;
+                    params.stationery = null;
+                    params.genre = null;
+                    params.category = null;
+                    if (params.page) {
+                        params.page = 1;
+                    }
+                    console.log(params, 'rsgfrsgsg')
+                    getProducts(params);
+
+                })
+            }
+        })
+        if ($('.subgenre_btn')) {
             $('.subgenre_btn').click(e => {
                 console.log("stationery");
                 e.preventDefault();
@@ -342,16 +364,17 @@
                 console.log(params, 'rsgfrsgsg')
                 getProducts(params);
 
-            })}
+            })
+        }
         if ($('.stationery_btn')){
             $('.stationery_btn').click(e => {
-                console.log("stationery");
+                console.log("stationery 123456");
                 e.preventDefault();
                 e.stopPropagation();
                 let btn = $(e.currentTarget);
                 let val = btn.data('value');
                 params.stationery = val;
-                params.subgenre = null;
+                params.subgenre = val;
                 params.genre = null;
                 params.category = null;
                 if (params.page) {
@@ -359,7 +382,8 @@
                 }
                 console.log(params, 'rsgfrsgsg')
                 // getProducts(params);
-                getGenre(params)
+                getGenre(params);
+                getProducts(params);
 
             })}
         if ($('.genre_btn')){
@@ -509,7 +533,7 @@
                 url: '{{ route('book.all') }}',
                 data: params,
                 success: data => {
-                    console.log(data);
+                    console.log(url);
                     let pagination = $('ul.pagination');
                     pagination.empty();
                     if (data.count) {
@@ -552,15 +576,16 @@
         function getGenre(params = {})
         {
             $.ajax({
-                url: '{{ route('book.all') }}',
+                url: '{{ route('genre.all') }}',
                 data: params,
                 success: data => {
                     console.log(data);
                     var _select = document.getElementById("sub_genre");
                     _select.innerHTML = "";
-                    $.each(data, function(key, val) {
-                        $('#sub_genre').append('<p value="' + val + '">' + val, key + '</p>');
+                    $.each(data.genre, function(key, val) {
+                        $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn"><p class="text-scale pl-3 mb-2">'+val.name+'</p></a>');
                     });
+                // <p value="' + val + '">' + val.name +
                 },
                 error: () => {
                     console.log('error');

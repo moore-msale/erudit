@@ -2,7 +2,6 @@
     @foreach($books as $book)
         @include('books.single')
     @endforeach
-
 @else
 
     <div class="col-12 bg-white p-5">

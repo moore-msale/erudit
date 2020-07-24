@@ -54,6 +54,9 @@ class BookFilter extends Collection
         if($category = $request->category) {
             $model = $this->filterByCategory($model, $category);
         }
+        if($subgenre = $request->subgenre) {
+            $model = $this->filterBySubgenre($model, $subgenre);
+        }
         if($stationery = $request->stationery) {
             $model = $this->filterByStationery($model, $stationery);
         }
@@ -61,13 +64,29 @@ class BookFilter extends Collection
         return $model;
     }
 
-    public function filterByStationery($model, $stationery){
+    public function filterByStationery($model, $stationery)
+    {
+        dd('stationary');
+        $genre_stationery = [];
+        $modelaa = DB::table('genres')
+            ->select('id')
+            ->where('name', 'like', '%' . $stationery . '%')->get();
+        foreach ($modelaa as $key => $items) {
+            foreach ($items as $key_value => $value) {
+                array_push($genre_stationery, $value);
+            }
+        }
+        return $model->whereIn('id', $genre_stationery);
+    }
+
+    public function filterBySubgenre($model, $stationery){
 //        dd($stationery);
         if (strpos('all', $stationery) !== false) {
             return $model->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }else {
-            $genre_stationery = [];
+
             $books_stationery = [];
+            $genre_stationery = [];
             $modelaa = DB::table('genres')
                 ->select('*')
                 ->where('name', 'like', '%' . $stationery . '%')->get();
@@ -98,7 +117,7 @@ class BookFilter extends Collection
             }
         }
 
-            return $model->whereIn('isbn', $books_stationery)->where()->sortByDesc('recommend')->sortByDesc('discount');
+            return $model->whereIn('isbn', $books_stationery)->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }
 
     public function filterByGenre($model, $genre)
