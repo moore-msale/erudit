@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Compilation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompilationController extends Controller
 {
@@ -30,8 +32,17 @@ class CompilationController extends Controller
         $compilation->save();
         if (isset($request->items))
             {
+
                 if ($bookssync = $request->items) {
                     $compilation->books()->sync($bookssync);
+                }
+                $books_id = $request->items;
+                foreach ($books_id as $key=>$value){
+//                    dd($value);
+//                    $book_name = DB::table('books')->select('*')->where('id', 'like', $value);
+                    $book_name = Book::where('id', '=', $value)->pluck('name');
+//                    dd($book_name[0]);
+                    DB::table('book_compilation')->where('book_id', '=', $value)->update(['name'=> $book_name[0]]);
                 }
             }
             return redirect()->route('compilation_create');
