@@ -596,8 +596,8 @@ body
     font-size: 12px;
 }
 .subgenre_btn_bred:hover {
-    transform: translateY(-3px);
-    /*background-color: #3490dc;*/
-    /*box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.20);*/
-    box-shadow: 0px 4px 5px 1px #2485d6;
+    transform: translateY(-1px);
+    /* background-color: #3490dc; */
+    /* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.20); */
+    box-shadow: 0px 3px 4px 0px #2485d68a;
 }

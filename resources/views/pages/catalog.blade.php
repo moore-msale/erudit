@@ -250,6 +250,31 @@
                                                         Блокноты
                                                     </p>
                                                 </a>
+                                                <a href="{{ route('genre', 'папки') }}" data-value="папки" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Папки
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'ежедневник') }}" data-value="ежедневник" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Ежедневники
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'пенал') }}" data-value="пенал" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Пеналы
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'карты') }}" data-value="атласы" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Атласы и карты
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'карандаш') }}" data-value="карандаш" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Карандаши
+                                                    </p>
+                                                </a>
 {{--                                                @foreach($genres as $genre)--}}
 {{--                                                    <a href="{{ route('genre',$genre->id) }}" class="stationery_btn" data-value="{{ $genre->id }}">--}}
 {{--                                                        <p class="text-scale pl-3 mb-2">--}}
