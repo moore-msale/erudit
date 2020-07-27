@@ -111,11 +111,11 @@ class CartController extends Controller
             }else{
                 $percent = $item->discount;
             }
-                $newCart->discount = $percent;
-                $newCart->cart = [
-                    'cart' => $cart->getContent(),
-                    'total' => $cart->getTotal() - ($cart->getTotal() / 100 * $percent),
-                ];
+            $newCart->discount = $percent;
+            $newCart->cart = [
+                'cart' => $cart->getContent(),
+                'total' => $cart->getTotal() - ($cart->getTotal() / 100 * $percent),
+            ];
 
         }
         else

@@ -5,13 +5,41 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     public function show(Book $book)
     {
+        $genres_id = [];
+        $books_id = [];
+        $genres = DB::table('genres')
+            ->select('genre_id')
+            ->join('book_genre', 'genres.id', '=', 'book_genre.genre_id')
+            ->where('book_genre.book_id', 'like', $book->id)->get();
+        foreach ($genres as $key=>$items){
+            foreach ($items as $key_value=>$value){
+//                if ($value == 'id') {
+                    array_push($genres_id, $value);
+//                }
+            }
+        }
+        $book_id = DB::table('books')
+            ->select('*')
+            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+            ->whereIn('book_genre.genre_id', $genres_id)->get();
 
-        $sames = Book::all()->take(4)->reverse();
+        foreach ($book_id as $key=>$item){
+            foreach ($item as $key_value_2=>$value_2){
+                if ($key_value_2 == 'isbn'){
+                    array_push($books_id, $value_2);
+                }
+            }
+
+        }
+
+//        dd($book_id);
+        $sames = Book::all()->whereIn('isbn', $books_id)->take(4)->reverse();
         return view('books/show', [
             'book' => $book,
             'sames' => $sames
