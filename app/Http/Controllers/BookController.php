@@ -19,7 +19,7 @@ class BookController extends Controller
             ->where('book_genre.book_id', 'like', $book->id)->get();
         foreach ($genres as $key=>$items){
             foreach ($items as $key_value=>$value){
-                if ($value != 186) {
+                if ($value != 5) {
                     array_push($genres_id, $value);
                 }
             }
