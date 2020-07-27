@@ -9,6 +9,7 @@ use App\Discount;
 use App\Mail\cartsend;
 use App\Promo;
 use App\TokenResolve;
+use App\User;
 use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -105,13 +106,17 @@ class CartController extends Controller
                 }
             }
 
+            if (auth()->user()->role_id == 2) {
+                $percent = 0;
+            }else{
+                $percent = $item->discount;
+            }
+                $newCart->discount = $percent;
+                $newCart->cart = [
+                    'cart' => $cart->getContent(),
+                    'total' => $cart->getTotal() - ($cart->getTotal() / 100 * $percent),
+                ];
 
-            $percent = $item->discount;
-            $newCart->discount = $percent;
-            $newCart->cart = [
-                'cart' => $cart->getContent(),
-                'total' => $cart->getTotal() - ($cart->getTotal() / 100 * $percent),
-            ];
         }
         else
         {

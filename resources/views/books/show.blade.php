@@ -34,7 +34,10 @@
 
 {{--                        <img class="w-100 shadow-lg" src="{{ asset('storage/books/'.$book->image) }}" alt="">--}}
                         @if(isset($book->discount))
-                        <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                                @if(Auth::user()->role_id == 2)
+                                    @else
+                                        <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                                    @endif
                             @elseif($book->bestseller == 1)
                                 <div class="discount-plate d-flex align-items-center"
                                      style="background-color: #fff9c6; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
@@ -287,12 +290,16 @@
             </div>
 
             <div class="" style="margin-top: 10%;">
-                <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
-                    Рецензии на книгу "{{ $book->name }}"
-                </h3>
-                @if(!count($book->feedbacks))
+
+                @if(!($book->feedbacks))
                     Рецензий нет
+                @else
+                    <h3 class="text-fut-bold mt-4 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
+                        Рецензии на книгу "{{ $book->name }}"
+                    </h3>
+
                 @endif
+
                 @foreach($book->feedbacks as $feedback)
                 <p class="text-fut-bold mt-5" style="font-size: 16px; line-height: 21px; color: #222;">
                     {{ $feedback->name }}
