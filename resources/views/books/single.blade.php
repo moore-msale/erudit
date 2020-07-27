@@ -17,7 +17,7 @@
                          <div class="discount-plate d-flex align-items-center"
                               style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
                              <span class="mx-auto text-white">-{{$book->discount}}%</span></div>
-                         
+
                          @endguest
 
 
