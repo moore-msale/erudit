@@ -8,9 +8,9 @@
 
             @if (filter_var($book->image, FILTER_VALIDATE_URL))
 
-                <img class="w-100" style="height: 275px; object-fit: contain;" src="{{ filter_var($book->image, FILTER_VALIDATE_URL) }}" alt="">
+                <img class="w-100 single_img" src="{{ filter_var($book->image, FILTER_VALIDATE_URL) }}" alt="">
             @else
-                <img class="w-100" style="height: 275px; object-fit: contain;" src="{{ asset('storage/'.$book->image)}}" alt="">
+                <img class="w-100 single_img" src="{{ asset('storage/'.$book->image)}}" alt="">
             @endif
             @if($book->discount)
                      @guest
