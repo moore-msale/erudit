@@ -31,9 +31,10 @@
                 {{--@dd($item)--}}
                 <a href="http://eruditshop.com/book/{{ $item['id'] }}"><div style="width:50%;">{{ $item['name'] }}</div></a>
                 <div style="width:25%;">{{ $item['quantity'] }}</div>
-             
+
                 <div style="width:25%;">{{ $item['price'] }} сом</div>
             </div>
+            <hr/>
         @endforeach
         <br><br>
         <h3>Общая цена: {{ $newCart->cart['total'] }} сом</h3>
