@@ -16,10 +16,18 @@ class MainController extends Controller
         $search = $request->search;
 
         if ($request->ajax()) {
-            $result = collect(['Книги' => Book::where('name', 'like', "%$search%")->orWhere('author', 'like', "%$search%")->orWhere('publishing', 'like', "%$search%")->where('type', 'book')->take(10)->get()]);
+            $result = collect(['Книги' => Book::where('name', 'like', "%$search%")
+                ->orWhere('author', 'like', "%$search%")
+                ->orWhere('publishing', 'like', "%$search%")
+                ->orWhere('isbn', 'like', "%$search%")
+                ->where('type', 'book')->take(10)->get()]);
         }
         else {
-            $result = collect(['Книги' => Book::where('name', 'like', "%$search%")->orWhere('author', 'like', "%$search%")->orWhere('publishing', 'like', "%$search%")->where('type', 'book')->get()]);
+            $result = collect(['Книги' => Book::where('name', 'like', "%$search%")
+                ->orWhere('author', 'like', "%$search%")
+                ->orWhere('publishing', 'like', "%$search%")
+                ->orWhere('isbn', 'like', "%$search%")
+                ->where('type', 'book')->get()]);
         }
 
 

@@ -167,7 +167,8 @@ class BookFilter extends Collection
     {
         $model = DB::table('books')
             ->select('*')
-            ->where('name', 'LIKE', '%' . $name . '%')->get();
+            ->where('name', 'LIKE', '%' . $name . '%')
+            ->orWhere('isbn', 'LIKE', '%' . $name . '%')->get();
         return $model;
 
     }
