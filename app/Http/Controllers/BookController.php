@@ -19,9 +19,9 @@ class BookController extends Controller
             ->where('book_genre.book_id', 'like', $book->id)->get();
         foreach ($genres as $key=>$items){
             foreach ($items as $key_value=>$value){
-//                if ($value == 'id') {
+                if ($value != 186) {
                     array_push($genres_id, $value);
-//                }
+                }
             }
         }
         $book_id = DB::table('books')
@@ -39,7 +39,7 @@ class BookController extends Controller
         }
 
 //        dd($book_id);
-        $sames = Book::all()->whereIn('isbn', $books_id)->take(4)->reverse();
+        $sames = Book::all()->whereIn('isbn', $books_id)->whereNotIn('isbn', $book->isbn)->take(4)->reverse();
         return view('books/show', [
             'book' => $book,
             'sames' => $sames
