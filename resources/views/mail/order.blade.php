@@ -29,10 +29,10 @@
 
             <div style="display:flex;">
                 {{--@dd($item)--}}
-                <div style="width:50%;">{{ $item['name'] }}</div>
-                <div style="width:20%;">{{ $item['quantity'] }}</div>
-{{--                <div style="width:20%;">{{ $item['quantity'] }}</div>--}}
-                <div style="width:20%;">{{ $item['price'] }} сом</div>
+                <a href="http://eruditshop.com/book/{{ $item['id'] }}"><div style="width:50%;">{{ $item['name'] }}</div></a>
+                <div style="width:25%;">{{ $item['quantity'] }}</div>
+             
+                <div style="width:25%;">{{ $item['price'] }} сом</div>
             </div>
         @endforeach
         <br><br>
