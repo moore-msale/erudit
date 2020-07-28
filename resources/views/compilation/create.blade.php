@@ -93,7 +93,7 @@
             })
         })
     </script>
-    <script>
+    <script>    
         $(document).on('change','#category',  function () {
             let btn = $('#category').val();
 

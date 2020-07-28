@@ -24,18 +24,28 @@ class CompilationController extends Controller
         $compilation->title_color = $request->color;
         if ($file = $request->file('image')) {
             $name = mb_strtolower("compilations/" . 'compilate'. rand(1,1400) . '.png');
+            dd($name);
             if ($file->move('stocks', $name)) {
                 $compilation->image = $name; //remane img_path
                 $compilation->save();
+                dd($compilation);
             }
         }
+//        dd($compilation);
         $compilation->save();
         if (isset($request->items))
             {
-
+//                dd($request->items);
+//
                 if ($bookssync = $request->items) {
-                    $compilation->books()->sync($bookssync);
+                    foreach ($bookssync as $key=>$value){
+//                        $compilation->books()->insert($value);
+                        DB::table('book_compilation')
+                            ->insert(['book_id'=> $value, 'compilation_id'=>1]);
+                    }
+//                    $compilation->books()->addselect($bookssync);
                 }
+
                 $books_id = $request->items;
                 foreach ($books_id as $key=>$value){
 //                    dd($value);
