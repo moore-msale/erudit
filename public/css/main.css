@@ -611,3 +611,8 @@ body
         height: 135px;
     }
 }
+.image_in_cart{
+    max-height: 100%;
+    max-width: fit-content;
+    margin: auto;
+}

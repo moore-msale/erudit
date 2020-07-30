@@ -44,9 +44,9 @@
                                     <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
                                         <div class="" style="height: 63%;">
                                             @if (filter_var($book->image, FILTER_VALIDATE_URL))
-                                                <img class="w-100 h-100" src="{{ $book->image }}" alt="">
+                                                <img class="w-100 h-100 image_in_cart" src="{{ $book->image }}" alt="">
                                             @else
-                                                <img class="w-100 h-100" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                                <img class="w-100 h-100 image_in_cart" src="{{ asset('storage/'.$book->image) }}" alt="">
                                             @endif
                                                 @if(isset($book->discount))
                                                     <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
@@ -142,9 +142,9 @@
                                     <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
                                       <div class="w-100" style="height:340px;">
                                         <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
-                                            <div style="height: 65%;">
+                                            <div style="height: 80%;">
                                                 @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
-                                                    <img class="w-100 h-100" src="{{ $bestseller->image }}" alt="">
+                                                    <img class="w-100 h-100 image_in_cart" src="{{ $bestseller->image }}" alt="">
                                                 @else
                                                     <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                                                 @endif
