@@ -42,7 +42,7 @@
                                 <div class="col-lg-2 col-md-3 col-12 item p-1" style="max-width: 259px;">
                                   <div class="p-2 shadow h-100 w-100" style="background-color: white;">
                                     <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
-                                        <div class="" style="height: 63%;">
+                                        <div class="" style="height: 85%;">
                                             @if (filter_var($book->image, FILTER_VALIDATE_URL))
                                                 <img class="w-100 h-100 image_in_cart" src="{{ $book->image }}" alt="">
                                             @else
