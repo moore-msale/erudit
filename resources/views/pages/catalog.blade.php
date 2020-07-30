@@ -101,11 +101,11 @@
                         <div class="d-lg-none d-block">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
-                                            <div class="card bg-transparent border-0 ">
+                                            <div class="card bg-transparent border-0 px-3" style="text-align: center">
                                                 <div class="card-header bg-transparent border-0" id="headingOne">
-                                                    <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 17px;" type="button" data-toggle="collapse"
+                                                    <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 12px;" type="button" data-toggle="collapse"
                                                             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                         <i class="fas fa-angle-down mr-2"></i>Жанры
                                                     </button>
@@ -113,7 +113,7 @@
 
                                                 <div id="collapseOne" class="collapse pt-3" aria-labelledby="headingOne"
                                                      data-parent="#accordionExample">
-                                                    <div class="card-body font-weight-light text-dark pt-0">
+                                                    <div class="card-body font-weight-light text-dark pt-0 px-0">
                                                         <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                                                             <a href="" class="genre_btn"  data-value="{{null}}">
                                                                 <p class="text-scale">
@@ -131,41 +131,112 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-4 px-1">
+                                        <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
+                                            <div class="card bg-transparent border-0 px-0"  style="text-align: center">
+                                                <div class="card-header bg-transparent border-0 px-1" id="headingTwo">
+                                                    <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 12px;" type="button" data-toggle="collapse"
+                                                            data-target="#headingTwomoo" aria-expanded="true" aria-controls="headingTwomoo">
+                                                        <i class="fas fa-angle-down mr-2"></i>Канцелярские товары
+                                                    </button>
+                                                </div>
+
+                                                <div id="headingTwomoo" class="collapse pt-3" aria-labelledby="headingTwo"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body font-weight-light text-dark pt-0 px-0">
+                                                        <div class="mt-3 text-fut-book" style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
+                                                            <a href="{{ route('genre', 'all') }}" data-value="all" class="subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Все товары
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Ручки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Тетради
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Блокноты
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'папки') }}" data-value="папки" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Папки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'ежедневник') }}" data-value="ежедневник" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Ежедневники
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'пенал') }}" data-value="пенал" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Пеналы
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'карты') }}" data-value="атласы" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Атласы и карты
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'карандаш') }}" data-value="карандаш" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-0 mb-2">
+                                                                    Карандаши
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
                                             <div class="card bg-transparent border-0 ">
-                                                <div class="card-header bg-transparent border-0" id="headingOne">
-                                                    <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 17px;" type="button" data-toggle="collapse"
+                                                <div class="card-header bg-transparent border-0 px-1" id="headingTwo">
+                                                    <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 12px;" type="button" data-toggle="collapse"
                                                             data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                                         <i class="fas fa-angle-down mr-2"></i>Категории
                                                     </button>
                                                 </div>
 
-                                                <div id="collapseTwo" class="collapse pt-3" aria-labelledby="headingOne"
+                                                <div id="collapseTwo" class="collapse pt-3" aria-labelledby="headingTwo"
                                                      data-parent="#accordionExample">
-                                                    <div class="card-body font-weight-light text-dark pt-0">
+                                                    <div class="card-body font-weight-light text-dark pt-0 px-0">
                                                         <div class="mt-3 text-fut-book"
                                                              style="font-size: 15px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222; cursor: pointer;">
-                                                            <p class="text-scale">
-                                                                Новинки
-                                                            </p>
-                                                            <p class="text-scale">
-                                                                Бестселлеры
-                                                            </p>
-                                                            <p class="text-scale">
-                                                                Товары для творчества
-                                                            </p>
-                                                            <p class="text-scale">
-                                                                Канцелярские товары
-                                                            </p>
-                                                            <p class="text-scale">
-                                                                Настольные игры
-                                                            </p>
-                                                            <p class="text-scale">
-                                                                Учебные материалы
-                                                            </p>
+
+
+                                                            <a href="{{ route('category', 'Настольные игры') }}" class="category_btn" data-value="3">
+                                                                <p class="text-scale">
+                                                                    Настольные игры
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('category', 'игрушки') }}" class="category_btn" data-value="6">
+                                                                <p class="text-scale">
+                                                                    Игрушки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('category', 'Товары для творчества') }}" class="category_btn" data-value="5">
+                                                                <p class="text-scale">
+                                                                    Товары для творчества
+                                                                </p>
+                                                            </a>
+
+                                                            <a href="{{ route('category', 'Учебные материалы') }}" class="category_btn" data-value="4">
+                                                                <p class="text-scale">
+                                                                    Учебные материалы
+                                                                </p>
+                                                            </a>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +263,7 @@
                                     <div class="accordion category_btn" id="accordionExample">
                                         <div class="card border-0">
                                             <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
-                                                <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="       margin-bottom:1rem;color:#2c3e50;">
+                                                <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="margin-bottom:1rem;color:#2c3e50;">
                                                     {{$category->name}}
                                                 </button>
                                             </div>

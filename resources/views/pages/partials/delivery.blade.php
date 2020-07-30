@@ -36,7 +36,7 @@
     </div>
 <div class="row justify-content-center mt-3">
     <div class="col-12">
-        <h2>Контакты</h2>
+        <h2 class="font-weight-bold mb-3">Контакты</h2>
     </div>
     <div class="col-12">
         <ul class="nav">
