@@ -272,7 +272,7 @@ $agent = new Agent();
                         </li>
 
                         <li class="nav-item dropdown px-3">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-fut-book" href="#" style="font-size: 17px"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Книги
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
