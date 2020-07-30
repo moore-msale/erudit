@@ -1,10 +1,10 @@
 <div class="owl-one owl-carousel">
     @foreach($books as $bestseller)
         @if($bestseller->recommend == 1)
-            <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom:20px; background-color: white; height: 450px!important;align-content:space-between;max-width:256px;">
-                <div class="w-100" style="height:360px;">
+            <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom:20px; background-color: white; height: 420px!important;align-content:space-between;max-width:256px;">
+                <div class="w-100" style="height:330px;">
                   <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
-                      <div style="height: 77%;">
+                      <div style="height: 65%;">
                           @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
                               <img class="w-100 h-100 image_in_cart" src="{{ $bestseller->image }}" alt="">
                           @else
