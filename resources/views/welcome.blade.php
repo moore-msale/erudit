@@ -495,9 +495,10 @@
         </h3>
         <div class="row pt-4">
             @foreach($stocks as $stock)
-            <div class="col-6">
-                    <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
-                    </div>
+            <div class="col-12 col-md-6">
+                <img type="image" style="max-width: 100%;" src="{{ asset($stock->image)}}" alt="">
+{{--                    <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">--}}
+
             </div>
             @endforeach
         </div>
