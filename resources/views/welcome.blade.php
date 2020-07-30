@@ -234,7 +234,7 @@
                                     @include('books.recomend_carousel')
                                 </div>
                                 <div class="col-12 d-lg-none d-block">
-                                    @include('books.recomend-media ')
+                                    @include('books.recomend_carousel')
                                 </div>
                             </div>
                         </div>
