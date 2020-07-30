@@ -22,14 +22,14 @@
         <h3>Заказ</h3>
         <div style="display:flex;">
             <div style="width:50%;">Название</div>
-            <div style="width:25%;">Кол-во</div>
-            <div style="width:25%;">Цена</div>
+            <div style="width:25%; text-align: center">Кол-во</div>
+            <div style="width:25%; text-align: center">Цена</div>
         </div>
         @foreach($newCart->cart['cart'] as $item)
 
             <div style="display:flex;">
                 {{--@dd($item)--}}
-                <a href="http://eruditshop.com/book/{{ $item['id'] }}"><div style="width:50%;">{{ $item['name'] }}</div></a>
+                <a style="width:50%;" href="http://eruditshop.com/book/{{ $item['id'] }}"><div style="width:100%;">{{ $item['name'] }}</div></a>
                 <div style="width:25%;">{{ $item['quantity'] }}</div>
 
                 <div style="width:25%;">{{ $item['price'] }} сом</div>
