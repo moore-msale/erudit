@@ -142,7 +142,7 @@
                                     <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
                                       <div class="w-100" style="height:340px;">
                                         <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
-                                            <div style="height: 80%;">
+                                            <div style="height: 70%;">
                                                 @if (filter_var($bestseller->image, FILTER_VALIDATE_URL))
                                                     <img class="w-100 h-100 image_in_cart" src="{{ $bestseller->image }}" alt="">
                                                 @else
