@@ -98,9 +98,14 @@
         function preloader() {
             $('.preloader').fadeOut('slow').delay(1000);
         }
+        function preloader_catalog() {
+            $('.preloader_catalog').fadeOut('slow').delay(1000);
+        }
+
     </script>
     <script>
         setTimeout(preloader, 500);
+        setTimeout(preloader_catalog, 500);
     </script>
     <script>
         let result = $('#search-result-select2');
