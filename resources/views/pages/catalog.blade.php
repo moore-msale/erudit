@@ -103,7 +103,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="accordion text-white text-uppercase bg-transparent" id="accordionExample">
-                                            <div class="card bg-transparent border-0 px-3" style="text-align: center">
+                                            <div class="card bg-transparent border-0 px-0" style="text-align: center">
                                                 <div class="card-header bg-transparent border-0" id="headingOne">
                                                     <button class="btn-link border-0 text-dark text-fut-bold text-uppercase" style="font-size: 12px;" type="button" data-toggle="collapse"
                                                             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -625,6 +625,7 @@
         }
         function getProducts(params = {})
         {
+            $(".preloader").fadeIn(100)
             $.ajax({
                 url: '{{ route('book.all') }}',
                 data: params,
@@ -662,15 +663,18 @@
                     result.find('.buy_book').each((e, i) => {
                         registerCartBuyButtons($(i));
                     });
+                    $(".preloader").fadeOut(100)
                 },
                 error: () => {
                     console.log('error');
+                    $(".preloader").fadeOut(100)
                 }
             });
         }
 
         function getGenre(params = {})
         {
+            $(".preloader").fadeIn(100)
             $.ajax({
                 url: '{{ route('genre.all') }}',
                 data: params,
@@ -681,10 +685,12 @@
                     $.each(data.genre, function(key, val) {
                         $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 subgenre_btn_bred"><p class="px-1 mb-0">'+val.name+'</p></a>');
                     });
+                    $(".preloader").fadeOut(100)
                 // <p value="' + val + '">' + val.name +
                 },
                 error: () => {
                     console.log('error');
+                    $(".preloader").fadeOut(100)
                 }
             });
         }
