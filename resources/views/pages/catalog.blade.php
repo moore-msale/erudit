@@ -625,7 +625,7 @@
         }
         function getProducts(params = {})
         {
-            $(".preloader").fadeIn(100)
+            $(".preloader_catalog").fadeIn(100)
             $.ajax({
                 url: '{{ route('book.all') }}',
                 data: params,
@@ -663,18 +663,18 @@
                     result.find('.buy_book').each((e, i) => {
                         registerCartBuyButtons($(i));
                     });
-                    $(".preloader").fadeOut(100)
+                    $(".preloader_catalog").fadeOut(100)
                 },
                 error: () => {
                     console.log('error');
-                    $(".preloader").fadeOut(100)
+                    $(".preloader_catalog").fadeOut(100)
                 }
             });
         }
 
         function getGenre(params = {})
         {
-            $(".preloader").fadeIn(100)
+            $(".preloader_catalog").fadeIn(100)
             $.ajax({
                 url: '{{ route('genre.all') }}',
                 data: params,
@@ -685,12 +685,12 @@
                     $.each(data.genre, function(key, val) {
                         $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 subgenre_btn_bred"><p class="px-1 mb-0">'+val.name+'</p></a>');
                     });
-                    $(".preloader").fadeOut(100)
+                    $(".preloader_catalog").fadeOut(100)
                 // <p value="' + val + '">' + val.name +
                 },
                 error: () => {
                     console.log('error');
-                    $(".preloader").fadeOut(100)
+                    $(".preloader_catalog").fadeOut(100)
                 }
             });
         }

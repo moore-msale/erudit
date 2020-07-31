@@ -38,6 +38,25 @@
                 background-size:80%;
             }
         }
+        .preloader_catalog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*background-color:grey;*/
+            /*background-image: url('https://to-moore.com/images/beeline.png');*/
+            background-repeat: no-repeat;
+            background-color: #ffffff00;
+            background-position: center;
+        }
+        @media screen and (min-width: 300px) and (max-width: 700px) {
+            .preloader_catalog
+            {
+                background-size:80%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -49,6 +68,16 @@
             Эрудит
         </h3>
     </div>
+    </div>
+</div>
+<div class="preloader_catalog">
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <img class="logo-animate" style="width:50%;" src="{{ asset('images/logo2.png') }}" alt="">
+            <h3 class="text-fut-bold pt-3 logo-text">
+                Эрудит
+            </h3>
+        </div>
     </div>
 </div>
 <div id="app">

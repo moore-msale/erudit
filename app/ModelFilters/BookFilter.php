@@ -66,7 +66,6 @@ class BookFilter extends Collection
 
     public function filterByStationery($model, $stationery)
     {
-        dd('stationary');
         $genre_stationery = [];
         $modelaa = DB::table('genres')
             ->select('id')
@@ -82,7 +81,7 @@ class BookFilter extends Collection
     public function filterBySubgenre($model, $stationery){
 //        dd($stationery);
         if (strpos('all', $stationery) !== false) {
-            return $model->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
+            return $model->where('category_id', '=', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }else {
 
             $books_stationery = [];
@@ -124,7 +123,7 @@ class BookFilter extends Collection
     {
 
         if (strpos('all', $genre) !== false){
-                return $model->sortByDesc('recommend')->sortByDesc('discount');
+                return $model->where('category_id', '=', 2)->sortByDesc('recommend')->sortByDesc('discount');
 
         }else{
             $cons = [];
