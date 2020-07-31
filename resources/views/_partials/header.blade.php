@@ -367,26 +367,26 @@ $agent = new Agent();
 </nav>
 @endif
 @push('scripts')
-    <script>
+{{--    <script>--}}
 
 
-        $('#dropdownMenuButtonGenre').hover(e => {
-            let btn = $(e.currentTarget);
-            let dropdown = btn.siblings('.dropdown-menu');
+{{--        $('#dropdownMenuButtonGenre').hover(e => {--}}
+{{--            let btn = $(e.currentTarget);--}}
+{{--            let dropdown = btn.siblings('.dropdown-menu');--}}
 
-            dropdown.addClass('show');
-            dropdown.hover(e => {
-                $(e.currentTarget).addClass('show');
-            }, e => {
-                $(e.currentTarget).removeClass('show');
-            });
-        }, e => {
-            let btn = $(e.currentTarget);
-            let dropdown = btn.siblings('.dropdown-menu');
+{{--            dropdown.addClass('show');--}}
+{{--            dropdown.hover(e => {--}}
+{{--                $(e.currentTarget).addClass('show');--}}
+{{--            }, e => {--}}
+{{--                $(e.currentTarget).removeClass('show');--}}
+{{--            });--}}
+{{--        }, e => {--}}
+{{--            let btn = $(e.currentTarget);--}}
+{{--            let dropdown = btn.siblings('.dropdown-menu');--}}
 
-            dropdown.removeClass('show');
-        });
-    </script>
+{{--            dropdown.removeClass('show');--}}
+{{--        });--}}
+{{--    </script>--}}
 
     <script>
         $('.hamburger').click(e => {

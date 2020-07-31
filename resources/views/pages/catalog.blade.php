@@ -249,7 +249,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12 p-0 d-lg-block d-none">
-                    <div class="bg-white p-5 d-lg-block d-none">
+                    <div class="bg-white p-5 d-lg-block d-none mt-2">
                         <h3 class="text-fut-bold mb-0"
                             style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; text-transform: capitalize; color:#222;">
                             Категории

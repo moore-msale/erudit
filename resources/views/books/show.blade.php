@@ -217,7 +217,11 @@
                             <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
                                 О книге
                             </h3>
-                            <p class="col-12 col-md-10 px-0 text-center text-md-left" style="font-size: 15px; line-height: 140%; color: #222;; font-family: 'Futura PT'">
+                            <p class="col-12 col-md-10 px-0 text-center text-md-left" style="font-size: 15px;
+                                                                                             line-height: 140%;
+                                                                                             color: rgb(34, 34, 34);
+                                                                                             font-weight: 600!important;
+                                                                                             font-family:'Futura PT Light',serif;">
                                 {{ $book->description }}
                             </p>
                             <div class="mt-4">
