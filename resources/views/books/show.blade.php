@@ -206,10 +206,11 @@
                                     </p>
                                 @else
                                     <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
-                                        {{ intval(isset($book->price_retail) ? (isset($book->discount) ? $book->price_retail - ($book->price_retail / 100 * $book->discount) : $book->price_retail) : (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale))}} сом
+                                        {{ $book->price_retail }} сом
                                     </p>
                                 @endguest
                             </div>
+{{--                            {{ intval(isset($book->price_retail) ? (isset($book->discount) ? $book->price_retail - ($book->price_retail / 100 * $book->discount) : $book->price_retail) : (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale))}} сом--}}
 
                             {{--<div class="pt-4 bg-secondary">--}}
 
