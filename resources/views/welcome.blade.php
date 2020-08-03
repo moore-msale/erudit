@@ -627,7 +627,7 @@
     <div class="container position-relative px-5" style="padding-top:5%;">
         <img src="{{ asset('images/svg/13.svg') }}" class="position-absolute scroll-svg-down svg feedback-icon" alt="">
         <img src="{{ asset('images/svg/14.svg') }}" class="position-absolute scroll-svg-up hide_mobile"
-             style="right: 10%; top: 0; opacity: 0.3;"
+             style="right: 10%; top: 0; opacity: 0.1;"
              alt="">
         <img src="{{ asset('images/svg/9.svg') }}" class="position-absolute scroll-svg-down"
              style="left: -14%; bottom: 0; width: 194px; height: 194px; -webkit-transform: rotate(83deg);-moz-transform: rotate(83deg);-ms-transform: rotate(83deg);-o-transform: rotate(83deg);transform: rotate(83deg);"
