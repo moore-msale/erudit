@@ -376,7 +376,7 @@
 
 {{--                 1111111111111111111111111111      --}}
 
-                    <div class="col-12 d-lg-block d-none" id="sub_genre">
+                    <div class="col-12 d-lg-block d-none pb-3" id="sub_genre">
 
 
 
@@ -683,7 +683,7 @@
                     var _select = document.getElementById("sub_genre");
                     _select.innerHTML = "";
                     $.each(data.genre, function(key, val) {
-                        $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 subgenre_btn_bred"><p class="px-1 mb-0">'+val.name+'</p></a>');
+                        $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 sub_genre_btn"><p class="px-1 mb-0">'+val.name+'</p></a>');
                     });
                     $(".preloader_catalog").fadeOut(100)
                 // <p value="' + val + '">' + val.name +

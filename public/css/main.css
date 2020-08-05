@@ -589,13 +589,18 @@ body
         padding-top: 112px;
     }
 }
-.subgenre_btn_bred{
-    background-color: #d0d0d0;
+.sub_genre_btn{
+    background-color: #6fa6ac;
     /* border-radius: 0px; */
     text-decoration: none !important;
     font-size: 13px;
+    padding: 0.5%;
 }
-.subgenre_btn_bred:hover {
+.sub_genre_btn p{
+    color: white;
+}
+
+.sub_genre_btn:hover {
     /*transform: translateY(-1px);*/
     background-color: #3490dc61;
     /* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.20); */
