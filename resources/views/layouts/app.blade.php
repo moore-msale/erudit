@@ -98,8 +98,12 @@
         function preloader() {
             $('.preloader').fadeOut('slow').delay(1000);
         }
+
         function preloader_catalog() {
-            $('.preloader_catalog').fadeOut('slow').delay(1000);
+            $(document).ready(function(){
+                $('.preloader_catalog').fadeOut('slow').delay(1000);
+            });
+            // $('.preloader_catalog').fadeOut('slow').delay(1000);
         }
 
     </script>
