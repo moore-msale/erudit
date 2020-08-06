@@ -38,6 +38,20 @@ $agent = new Agent();
 
                     <li class="nav-item">
                         <a href="{{ route('catalog', ['category' => 1]) }}" class="text-fut-bold text-scale">Канцтовары</a>
+{{--                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">--}}
+{{--                            <a class="text-fut-bold bg-transparent m-0 mx-auto pointer text-scale border-0" id="dropdownMenuButtonGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                Книги--}}
+{{--                            </a>--}}
+{{--                            <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">--}}
+{{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
+{{--                                    <p class="px-3 pb-2 mb-0">--}}
+{{--                                        <a href="{{ route('catalog',["genre" => $genre->id]) }}">--}}
+{{--                                            {{ $genre->name }}--}}
+{{--                                        </a>--}}
+{{--                                    </p>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </li>
 
                     <li class="nav-item">

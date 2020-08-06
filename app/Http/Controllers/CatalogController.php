@@ -23,6 +23,7 @@ class CatalogController extends Controller
 
     public function genre(Genre $genre)
     {
+        dd($genre);
         $genres = Genre::all()->sortBy('name');
         $categories = Category::all();
         $books = DB::table('books')
@@ -35,6 +36,7 @@ class CatalogController extends Controller
 
     public function category(Category $category)
     {
+        dd($category);
         $categories = Category::all();
         $books = Book::where('category_id', '=', $category->id)->get();
         $genres = Genre::all()->sortBy('name');
