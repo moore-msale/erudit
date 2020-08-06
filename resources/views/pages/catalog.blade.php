@@ -298,14 +298,6 @@
                                                         Все товары
                                                     </p>
                                                 </a>
-{{--                                                <div class="btn-group dropright">--}}
-{{--                                                    <button type="button" data-value="ручки" class="stationery_btn btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                                        Dropright--}}
-{{--                                                    </button>--}}
-{{--                                                    <div class="dropdown-menu">--}}
-{{--                                                        <!-- Dropdown menu links -->--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
                                                 <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ручки
@@ -346,13 +338,47 @@
                                                         Карандаши
                                                     </p>
                                                 </a>
-{{--                                                @foreach($genres as $genre)--}}
-{{--                                                    <a href="{{ route('genre',$genre->id) }}" class="stationery_btn" data-value="{{ $genre->id }}">--}}
-{{--                                                        <p class="text-scale pl-3 mb-2">--}}
-{{--                                                            {{ $genre->name }}--}}
-{{--                                                        </p>--}}
-{{--                                                    </a>--}}
-{{--                                                @endforeach--}}
+                                                <a href="{{ route('genre', 'обложки') }}" data-value="обложк" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Обложки
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Планинги') }}" data-value="планинг" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Планинги
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Дневники') }}" data-value="дневник" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Дневники
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Подставки') }}" data-value="подставки" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Подставки для книг
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'ленейки') }}" data-value="ленейк" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Ленейки
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Альбомы') }}" data-value="альбомы" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Альбомы для рисования
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Рюкзаки') }}" data-value="сумки" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Рюкзаки, сумки
+                                                    </p>
+                                                </a>
+                                                <a href="{{ route('genre', 'Скетчпады ') }}" data-value="скетчпады" class="stationery_btn subgenre_btn">
+                                                    <p class="text-scale pl-3 mb-2">
+                                                        Скетчпады
+                                                    </p>
+                                                </a>
+                                                
                                             </div>
                                         </div>
                                     </div>
