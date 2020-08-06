@@ -380,6 +380,107 @@ $agent = new Agent();
                                 @endforeach
                             </div>
                         </li>
+                        <li class="nav-item px-3 my-2">
+                            {{--                            <a href="{{ route('catalog', ["category" => 1]) }}" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Канцтовары</a>--}}
+                            <a class="nav-link dropdown-toggle text-fut-book" href="#" style="font-size: 17px"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Канцтовары
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ручки"]) }}">
+                                        Ручки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "тетради"]) }}">
+                                        Тетради
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "блокнот"]) }}">
+                                        Блокноты
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "папки"]) }}">
+                                        Папки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ежедневник"]) }}">
+                                        Ежедневники
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "атлас"]) }}">
+                                        Атласы и карты
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "пенал"]) }}">
+                                        Пеналы
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "карандаш"]) }}">
+                                        Карандаши
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "обложки"]) }}">
+                                        Обложки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "планинг"]) }}">
+                                        Планинги
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "дневник"]) }}">
+                                        Дневники
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ручки"]) }}">
+                                        Ручки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "подставки"]) }}">
+                                        Подставки для книг
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ленейки"]) }}">
+                                        Ленейки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "альбомы"]) }}">
+                                        Альбомы для рисования
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "сумки"]) }}">
+                                        Рюкзаки, сумки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "скетчпады"]) }}">
+                                        Скетчпады
+                                    </a>
+                                </p>
+{{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
+{{--                                    <p class="px-3 pb-2 mb-0">--}}
+{{--                                        <a href="{{ route('catalog',["genre" => $genre->id]) }}">--}}
+{{--                                            {{ $genre->name }}--}}
+{{--                                        </a>--}}
+{{--                                    </p>--}}
+{{--                                @endforeach--}}
+                            </div>
+                        </li>
 
 
                         <li class="nav-item px-3 my-2">
@@ -391,9 +492,7 @@ $agent = new Agent();
                         <li class="nav-item px-3 my-2">
                             <a href="/comp_books" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Подборки</a>
                         </li>
-                        <li class="nav-item px-3 my-2">
-                            <a href="{{ route('catalog', ["category" => 1]) }}" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Канцтовары</a>
-                        </li>
+
 
                         <li class="nav-item px-3 my-2">
                             <a href="/catalog" class="text-fut-book" style="text-decoration: none; color: #444444; font-size: 17px;">Магазин</a>

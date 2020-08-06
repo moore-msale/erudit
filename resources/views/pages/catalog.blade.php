@@ -153,43 +153,83 @@
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Ручки
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Тетради
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Блокноты
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'папки') }}" data-value="папки" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Папки
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'ежедневник') }}" data-value="ежедневник" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Ежедневники
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'пенал') }}" data-value="пенал" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Пеналы
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'карты') }}" data-value="атласы" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Атласы и карты
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('genre', 'карандаш') }}" data-value="карандаш" class="stationery_btn subgenre_btn">
-                                                                <p class="text-scale pl-0 mb-2">
+                                                                <p class="text-scale pl-3 mb-2">
                                                                     Карандаши
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'обложки') }}" data-value="обложк" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Обложки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Планинги') }}" data-value="планинг" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Планинги
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Дневники') }}" data-value="дневник" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Дневники
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Подставки') }}" data-value="подставки" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Подставки для книг
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'ленейки') }}" data-value="ленейк" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Ленейки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Альбомы') }}" data-value="альбомы" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Альбомы для рисования
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Рюкзаки') }}" data-value="сумки" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Рюкзаки, сумки
+                                                                </p>
+                                                            </a>
+                                                            <a href="{{ route('genre', 'Скетчпады ') }}" data-value="скетчпады" class="stationery_btn subgenre_btn">
+                                                                <p class="text-scale pl-3 mb-2">
+                                                                    Скетчпады
                                                                 </p>
                                                             </a>
                                                         </div>
