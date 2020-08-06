@@ -37,21 +37,102 @@ $agent = new Agent();
                     </li> -->
 
                     <li class="nav-item">
-                        <a href="{{ route('catalog', ['category' => 1]) }}" class="text-fut-bold text-scale">Канцтовары</a>
-{{--                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">--}}
-{{--                            <a class="text-fut-bold bg-transparent m-0 mx-auto pointer text-scale border-0" id="dropdownMenuButtonGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                Книги--}}
-{{--                            </a>--}}
-{{--                            <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">--}}
-{{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
-{{--                                    <p class="px-3 pb-2 mb-0">--}}
-{{--                                        <a href="{{ route('catalog',["genre" => $genre->id]) }}">--}}
-{{--                                            {{ $genre->name }}--}}
-{{--                                        </a>--}}
-{{--                                    </p>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+{{--                        <a href="{{ route('catalog', ['category' => 1]) }}" class="text-fut-bold text-scale">Канцтовары</a>--}}
+                        <div class="dropdown open" style=" display: flex; align-items: center; text-align: center;">
+                            <a class="text-fut-bold bg-transparent m-0 mx-auto pointer text-scale border-0" id="dropdownMenuButtonGenre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Канцтовары
+                            </a>
+                            <div class="dropdown-menu text-fut-book scrollbar" aria-labelledby="dropdownMenuButtonGenre" style="overflow-y:scroll; height:70vh;">
+
+                                    <p class="px-3 pb-2 mb-0">
+                                        <a href="{{ route('catalog',['category' => "ручки"]) }}">
+                                            Ручки
+                                        </a>
+                                    </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "тетради"]) }}">
+                                        Тетради
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "блокнот"]) }}">
+                                        Блокноты
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "папки"]) }}">
+                                        Папки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ежедневник"]) }}">
+                                        Ежедневники
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "атлас"]) }}">
+                                        Атласы и карты
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "пенал"]) }}">
+                                        Пеналы
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "карандаш"]) }}">
+                                        Карандаши
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "обложки"]) }}">
+                                        Обложки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "планинг"]) }}">
+                                        Планинги
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "дневник"]) }}">
+                                        Дневники
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ручки"]) }}">
+                                        Ручки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "подставки"]) }}">
+                                        Подставки для книг
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "ленейки"]) }}">
+                                        Ленейки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "альбомы"]) }}">
+                                        Альбомы для рисования
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "сумки"]) }}">
+                                        Рюкзаки, сумки
+                                    </a>
+                                </p>
+                                <p class="px-3 pb-2 mb-0">
+                                    <a href="{{ route('catalog',['category' => "скетчпады"]) }}">
+                                        Скетчпады
+                                    </a>
+                                </p>
+
+
+                            </div>
+                        </div>
                     </li>
 
                     <li class="nav-item">
