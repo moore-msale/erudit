@@ -685,7 +685,7 @@
                     $.each(data.genre, function(key, val) {
                         $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 sub_genre_btn"><p class="px-1 mb-0">'+val.name+'</p></a>');
                     });
-                    $(".preloader_catalog").fadeOut(100)
+                    // $(".preloader_catalog").fadeOut(100)
                 // <p value="' + val + '">' + val.name +
                 },
                 error: () => {
