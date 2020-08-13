@@ -114,16 +114,13 @@ class BookFilter extends Collection
 
     public function filterByCategory ($model, $category)
     {
-//    dd($category);
         $book_id = DB::table('books')
             ->select('*')
             ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
             ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-            ->where('name', 'like', '%' . $category . '%')->pluck('isbn');
-//            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-//            ->whereIn('book_genre.genre_id', $genre_stationery)->get();
+            ->where('genres.name', 'like', '%' . $category . '%')->pluck('isbn');
 
-        return $model->whereIn('isbn', $book_id)->sortByDesc('recommend')->sortByDesc('discount');
+        return $model->whereIn('isbn', $book_id);
     }
 
     public function searchFilter($model, $name)
