@@ -490,7 +490,6 @@
         $('#sub_genre').click(e => {
             if ($('.subgenre_btn')) {
                 $('.subgenre_btn').click(e => {
-                    console.log("stationery");
                     e.preventDefault();
                     e.stopPropagation();
                     let btn = $(e.currentTarget);
@@ -502,7 +501,6 @@
                     if (params.page) {
                         params.page = 1;
                     }
-                    console.log(params, 'rsgfrsgsg')
                     getProducts(params);
 
                 })
@@ -510,7 +508,6 @@
         })
         if ($('.subgenre_btn')) {
             $('.subgenre_btn').click(e => {
-                console.log("stationery");
                 e.preventDefault();
                 e.stopPropagation();
                 let btn = $(e.currentTarget);
@@ -522,14 +519,12 @@
                 if (params.page) {
                     params.page = 1;
                 }
-                console.log(params, 'rsgfrsgsg')
                 getProducts(params);
 
             })
         }
         if ($('.stationery_btn')){
             $('.stationery_btn').click(e => {
-                console.log("stationery 123456");
                 e.preventDefault();
                 e.stopPropagation();
                 let btn = $(e.currentTarget);
@@ -541,15 +536,12 @@
                 if (params.page) {
                     params.page = 1;
                 }
-                console.log(params, 'rsgfrsgsg')
-                // getProducts(params);
                 getGenre(params);
                 getProducts(params);
 
             })}
         if ($('.genre_btn')){
         $('.genre_btn').click(e => {
-            console.log("genrer");
             e.preventDefault();
             e.stopPropagation();
             let btn = $(e.currentTarget);
@@ -567,7 +559,6 @@
 
         if($('.category_btn')){
         $('.category_btn').click(e => {
-            console.log("cats");
             e.preventDefault();
             let btn = $(e.currentTarget);
             let val = btn.data('value');
@@ -610,7 +601,6 @@
             if (type == 'Name') {
                 params.sortName = val;
             }else if (type == 'Author') {
-                console.log(val);
                 params.sortAuthor = val;
             }else if (type == 'Updated_at') {
                 params.sortIssueDate = val;
@@ -696,7 +686,6 @@
                 url: '{{ route('book.all') }}',
                 data: params,
                 success: data => {
-                    console.log(url);
                     let pagination = $('ul.pagination');
                     pagination.empty();
                     if (data.count) {
@@ -708,7 +697,6 @@
                         }
                         for (let item of paginationDots) {
                             if (item == '...') {
-                                console.log(item == '...');
                                 pagination.append('<li class="disabled"><a class="page-link disabled" disabled onclick="event.preventDefault()">' + item + '</a></li>');
                             } else if (item == data.books.current_page) {
                                 pagination.append('<li class="page-item active"><a class="page-link" data-page="' + item + '" href="#">' + item + '</a></li>');
@@ -745,7 +733,6 @@
                 url: '{{ route('genre.all') }}',
                 data: params,
                 success: data => {
-                    console.log(data);
                     var _select = document.getElementById("sub_genre");
                     _select.innerHTML = "";
                     $.each(data.genre, function(key, val) {

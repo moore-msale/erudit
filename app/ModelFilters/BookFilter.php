@@ -83,24 +83,15 @@ class BookFilter extends Collection
             return $model->where('category_id', '=', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }else {
 
-            $books_stationery = [];
             $book_id = DB::table('books')
                 ->select('*')
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
                 ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-                ->where('genres.name', 'like', '%' . $stationery . '%')->paginate(2);
+                ->where('genres.name', 'like', '%' . $stationery . '%')->pluck('isbn');
 
-
-            foreach ($book_id as $key => $item) {
-                foreach ($item as $key_value_2 => $value_2) {
-                    if ($key_value_2 == 'isbn') {
-                        array_push($books_stationery, $value_2);
-                    }
-                }
-            }
         }
 
-            return $model->whereIn('isbn', $books_stationery)->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
+            return $model->whereIn('isbn', $book_id)->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }
 
     public function filterByGenre($model, $genre)
@@ -123,34 +114,16 @@ class BookFilter extends Collection
 
     public function filterByCategory ($model, $category)
     {
-//        dd($model, $category, 'ddddddddddd');
-        $books_stationery = [];
-        $genre_stationery = [];
-        $modelaa = DB::table('genres')
-            ->select('id')
-            ->where('name', 'like', '%' . $category . '%')->get();
-        foreach ($modelaa as $key => $items) {
-            foreach ($items as $key_value => $value) {
-                array_push($genre_stationery, $value);
-            }
-        }
+//    dd($category);
         $book_id = DB::table('books')
             ->select('*')
             ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-            ->whereIn('book_genre.genre_id', $genre_stationery)->get();
+            ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+            ->where('name', 'like', '%' . $category . '%')->pluck('isbn');
+//            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+//            ->whereIn('book_genre.genre_id', $genre_stationery)->get();
 
-
-        foreach ($book_id as $key => $item) {
-            foreach ($item as $key_value_2 => $value_2) {
-                if ($key_value_2 == 'isbn') {
-                    array_push($books_stationery, $value_2);
-                }
-            }
-
-        }
-//        dd($books_stationery);
-
-        return $model->whereIn('isbn', $books_stationery);
+        return $model->whereIn('isbn', $book_id)->sortByDesc('recommend')->sortByDesc('discount');
     }
 
     public function searchFilter($model, $name)
