@@ -325,9 +325,10 @@
                                     </div>
 
                                     @elseif($category->name == 'Канцелярские товары')
-                                    <div class="accordion category_btn" id="accordionExample">
+                                    <div class="accordion" id="accordionExample">
                                         <div class="dropdown">
-                                            <div class="dropdown-menu" id="sub_genre" aria-labelledby="dropdownMenuButton" style="transform: translate3d(236px, -524px, 0px); width: 200%; height: 70%;">
+                                            <div class="dropdown-menu subgenre_btn" id="sub_genre" aria-labelledby="dropdownMenuButton" style="transform: translate3d(236px, -524px, 0px);
+                                             width: 200%; min-height: 100%; padding-left: 25%; padding-right: 25%;">
                                             </div>
                                         <div class="card border-0">
                                             <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
@@ -578,6 +579,7 @@
                 params.page = 1;
             }
             getProducts(params);
+
         })};
         $('#search_input').keyup(e => {
             e.preventDefault();
