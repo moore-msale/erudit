@@ -88,7 +88,7 @@ class BookFilter extends Collection
                 ->select('*')
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
                 ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-                ->where('genres.name', 'like', '%' . $stationery . '%')->paginate(15);
+                ->where('genres.name', 'like', '%' . $stationery . '%')->paginate(2);
 
 
             foreach ($book_id as $key => $item) {
