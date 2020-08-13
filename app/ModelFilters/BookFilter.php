@@ -79,31 +79,16 @@ class BookFilter extends Collection
     }
 
     public function filterBySubgenre($model, $stationery){
-//        dd($stationery);
         if (strpos('all', $stationery) !== false) {
             return $model->where('category_id', '=', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }else {
 
             $books_stationery = [];
-            $genre_stationery = [];
-            $modelaa = DB::table('genres')
-                ->select('*')
-                ->where('name', 'like', '%' . $stationery . '%')->get();
-            foreach ($modelaa as $key => $items) {
-                foreach ($items as $key_value => $value) {
-//                    dd($value);
-//                    if($value == 'id'){
-                        array_push($genre_stationery, $value);
-//                    }
-
-                }
-
-            }
-//            dd($modelaa, 'srgverge');
             $book_id = DB::table('books')
                 ->select('*')
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                ->whereIn('book_genre.genre_id', $genre_stationery)->get();
+                ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                ->where('genres.name', 'like', '%' . $stationery . '%')->get();
 
 
             foreach ($book_id as $key => $item) {
@@ -112,7 +97,6 @@ class BookFilter extends Collection
                         array_push($books_stationery, $value_2);
                     }
                 }
-
             }
         }
 
