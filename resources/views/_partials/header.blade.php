@@ -4,7 +4,7 @@ use Jenssegers\Agent\Agent;
 $agent = new Agent();
 ?>
 @if(!$agent->isPhone())
-<nav class="navbar menuse navbar-expand-xl p-0 w-100 d-xl-block d-none" style="z-index: 999; background: transparent; position: fixed;">
+<nav class="navbar menuse navbar-expand-xl p-0 w-100 d-xl-block d-none" style="z-index: 9999; background: transparent; position: fixed;">
     <div class="container-fluid top-menu-first px-0">
         <div class="row w-100 down-menu mx-0 align-items-center pt-0">
             <nav class="col-6 mob-padding" style="padding-left:67px;">
@@ -267,7 +267,7 @@ $agent = new Agent();
     </div>
 </nav>
 @else
-<nav class="px-0 navbar solid-nav navbar-expand-xl py-0 w-100 bg-white d-xl-none d-block" style="z-index: 999; position: fixed;">
+<nav class="px-0 navbar solid-nav navbar-expand-xl py-0 w-100 bg-white d-xl-none d-block" style="z-index: 9999; position: fixed;">
     <div class="row w-100 mx-0  mob-menu" style="background: #6FA6AC;height: 80px;">
         <div class="col-12 mob" style="padding:0 8px;">
             <ul class="navbar-nav justify-content-start align-items-center flex-row h-100">

@@ -326,100 +326,111 @@
 
                                     @elseif($category->name == 'Канцелярские товары')
                                     <div class="accordion category_btn" id="accordionExample">
+                                        <div class="dropdown">
+                                            <div class="dropdown-menu" id="sub_genre" aria-labelledby="dropdownMenuButton" style="transform: translate3d(236px, -524px, 0px); width: 200%; height: 70%;">
+                                            </div>
                                         <div class="card border-0">
                                             <div class="card-header p-0  bg-white" id="cat-{{$category->id}}">
                                                 <button class="text-scale border-0 bg-white outline-none" type="button" data-toggle="collapse" data-target="#collapse-{{$category->id}}" aria-expanded="false" aria-controls="collapse-{{$category->id}}" style="margin-bottom:1rem;color:#2c3e50;">
                                                     {{$category->name}}
                                                 </button>
                                             </div>
+
                                             <div id="collapse-{{$category->id}}" class="collapse pt-1" aria-labelledby="cat-{{$category->id}}" data-parent="#accordionExample">
+
                                                 <a href="{{ route('genre', 'all') }}" data-value="all" class="subgenre_btn">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Все товары
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn">
+
+                                                <a href="{{ route('genre', 'ручки') }}" data-value="ручки" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ручки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'тетради') }}" data-value="тетради" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Тетради
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'блокнот') }}" data-value="блокнот" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Блокноты
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'папки') }}" data-value="папки" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'папки') }}" data-value="папки" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Папки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'ежедневник') }}" data-value="ежедневник" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'ежедневник') }}" data-value="ежедневник" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ежедневники
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'пенал') }}" data-value="пенал" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'пенал') }}" data-value="пенал" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Пеналы
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'карты') }}" data-value="атласы" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'карты') }}" data-value="атласы" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Атласы и карты
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'карандаш') }}" data-value="карандаш" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'карандаш') }}" data-value="карандаш" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Карандаши
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'обложки') }}" data-value="обложк" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'обложки') }}" data-value="обложк" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Обложки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Планинги') }}" data-value="планинг" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Планинги') }}" data-value="планинг" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Планинги
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Дневники') }}" data-value="дневник" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Дневники') }}" data-value="дневник" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Дневники
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Подставки') }}" data-value="подставки" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Подставки') }}" data-value="подставки" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Подставки для книг
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'ленейки') }}" data-value="ленейк" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'ленейки') }}" data-value="ленейк" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Ленейки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Альбомы') }}" data-value="альбомы" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Альбомы') }}" data-value="альбомы" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Альбомы для рисования
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Рюкзаки') }}" data-value="сумки" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Рюкзаки') }}" data-value="сумки" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Рюкзаки, сумки
                                                     </p>
                                                 </a>
-                                                <a href="{{ route('genre', 'Скетчпады ') }}" data-value="скетчпады" class="stationery_btn subgenre_btn">
+                                                <a href="{{ route('genre', 'Скетчпады ') }}" data-value="скетчпады" class="stationery_btn subgenre_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <p class="text-scale pl-3 mb-2">
                                                         Скетчпады
                                                     </p>
                                                 </a>
 
                                             </div>
+                                        </div>
+
+
+
+
                                         </div>
                                     </div>
                                 @elseif($category->name == 'Мягкие игрушки')
@@ -439,21 +450,9 @@
                 </div>
                 <div class="col-lg-9 col-12">
 
-
-{{--                 1111111111111111111111111111      --}}
-
                     <div class="col-12 d-lg-block d-none pb-3" id="sub_genre">
 
-
-
                     </div>
-
-{{--                    <h1>test</h1>--}}
-{{--                    <p>{{$genre->name}}</p>--}}
-
-
-{{--                    1111111111111111111111111           --}}
-
 
                     <div class="row px-lg-4 px-1 mb-4" id="books_catalog">
 
@@ -482,7 +481,6 @@
             </div>
         </div>
     </div>
-    subgenre
 @endsection
 @push('scripts')
     <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
@@ -750,6 +748,7 @@
                     _select.innerHTML = "";
                     $.each(data.genre, function(key, val) {
                         $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1 sub_genre_btn"><p class="px-1 mb-0">'+val.name+'</p></a>');
+                        $('#sub_genre').addClass('show')
                     });
                     // $(".preloader_catalog").fadeOut(100)
                 // <p value="' + val + '">' + val.name +
@@ -760,6 +759,12 @@
                 }
             });
         }
+        window.onclick = function(event) {
+            $('#sub_genre').removeClass('show');
+        }
+        // $('.js-close-campaign').click(function() {
+        //     $('.js-overlay-campaign').fadeOut();
+        // });
     </script>
 
     <script>
