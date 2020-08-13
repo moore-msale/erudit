@@ -12,7 +12,7 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $books = Book::all()->sortByDesc('id')->filterCollection($request)->paginate(15);
+        $books = Book::all()->sortByDesc('id')->filterCollection($request);
 //        $genres = Genre::all()->where()
 
 //        dd($books);
