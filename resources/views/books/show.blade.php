@@ -244,7 +244,7 @@
                 <div class="col-lg-10 col-12">
                     <div class="row">
                         @foreach($sames as $same)
-                            <div class="col-lg-3 col-12 item mt-3" style="background-color: white;">
+                            <div class="col-lg-3 col-12 item mt-3" style="background-color: white; height: 450px">
                                 <div class="shadow p-4 h-100">
                                     <a href="{{ asset('book/'.$same->id) }}" style="text-decoration: none;">
                                         <div class="" style="height: 65%;">

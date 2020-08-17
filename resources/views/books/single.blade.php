@@ -43,8 +43,12 @@
             @guest
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_wholesale }} сом
-                                                    </span>
+                    {{  intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale) }} сом
+                    <br>
+                    @if($book->discount)
+                    <span style="text-decoration: line-through; font-size: small;">{{$book->price_wholesale}} сом</span>
+                        @endif
+                </span>
             @else
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
