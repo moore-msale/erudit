@@ -435,11 +435,11 @@
                                         </div>
                                     </div>
                                 @elseif($category->name == 'Мягкие игрушки')
-                                    <a href="{{ route('category', $category->name) }}" class="category_btn" data-value="{{ $category->id }}">
+                                    <a href="{{ route('category', $category->name) }}" class="category_general_btn" data-value="{{ $category->id }}">
                                         <p class="text-scale">Игрушки</p>
                                     </a>
                                 @else
-                                    <a href="{{ route('category', $category->name) }}" class="category_btn" data-value="{{ $category->id }}">
+                                    <a href="{{ route('category', $category->name) }}" class="category_general_btn" data-value="{{ $category->id }}">
                                         <p class="text-scale">
                                             {{ $category->name }}
                                         </p>
@@ -496,6 +496,7 @@
                     let val = btn.data('value');
                     params.subgenre = val;
                     params.stationery = null;
+                    params.category_general = null;
                     params.genre = null;
                     params.category = null;
                     if (params.page) {
@@ -514,6 +515,7 @@
                 let val = btn.data('value');
                 params.subgenre = val;
                 params.stationery = null;
+                params.category_general = null;
                 params.genre = null;
                 params.category = null;
                 if (params.page) {
@@ -532,6 +534,7 @@
                 params.stationery = val;
                 params.subgenre = val;
                 params.genre = null;
+                params.category_general = null;
                 params.category = null;
                 if (params.page) {
                     params.page = 1;
@@ -548,6 +551,7 @@
             let val = btn.data('value');
             params.genre = val;
             params.category = null;
+            params.category_general = null;
             params.subgenre = null;
             params.stationery = null;
             if (params.page) {
@@ -560,9 +564,11 @@
         if($('.category_btn')){
         $('.category_btn').click(e => {
             e.preventDefault();
+            e.stopPropagation();
             let btn = $(e.currentTarget);
             let val = btn.data('value');
             params.category = val;
+            params.category_general = null;
             params.genre = null;
             params.subgenre = null;
             params.stationery = null;
@@ -572,6 +578,23 @@
             getProducts(params);
 
         })};
+        if($('.category_general_btn')){
+            $('.category_general_btn').click(e => {
+                e.preventDefault();
+                e.stopPropagation();
+                let btn = $(e.currentTarget);
+                let val = btn.data('value');
+                params.category_general = val;
+                params.category = null;
+                params.genre = null;
+                params.subgenre = null;
+                params.stationery = null;
+                if(params.page) {
+                    params.page = 1;
+                }
+                getProducts(params);
+
+            })};
         $('#search_input').keyup(e => {
             e.preventDefault();
             let input = $(e.currentTarget);

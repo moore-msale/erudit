@@ -60,6 +60,9 @@ class BookFilter extends Collection
         if($stationery = $request->stationery) {
             $model = $this->filterByStationery($model, $stationery);
         }
+        if ($category_general = $request->category_general){
+            $model = $this->categoryGeneral($model, $category_general);
+        }
 
         return $model;
     }
@@ -121,6 +124,11 @@ class BookFilter extends Collection
             ->where('genres.name', 'like', '%' . $category . '%')->pluck('isbn');
 
         return $model->whereIn('isbn', $book_id);
+    }
+
+    public function categoryGeneral($model, $category_general){
+        dd($category_general);
+        return $model-$this->where('category_id', $category_general);
     }
 
     public function searchFilter($model, $name)
