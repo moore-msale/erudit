@@ -127,8 +127,8 @@ class BookFilter extends Collection
     }
 
     public function categoryGeneral($model, $category_general){
-        dd($category_general);
-        return $model-$this->where('category_id', $category_general);
+//        dd($category_general);
+        return $model->where('category_id', $category_general);
     }
 
     public function searchFilter($model, $name)
