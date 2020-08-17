@@ -117,17 +117,23 @@ class BookFilter extends Collection
 
     public function filterByCategory ($model, $category)
     {
-        $book_id = DB::table('books')
-            ->select('*')
-            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-            ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-            ->where('genres.name', 'like', '%' . $category . '%')->pluck('isbn');
+        if (is_numeric($category)){
+            return $model->where('category_id', $category);
+        }
+        else{
+            $book_id = DB::table('books')
+                ->select('*')
+                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                ->where('genres.name', 'like', '%' . $category . '%')->pluck('isbn');
 
-        return $model->whereIn('isbn', $book_id);
+            return $model->whereIn('isbn', $book_id);
+
+        }
+
     }
 
     public function categoryGeneral($model, $category_general){
-//        dd($category_general);
         return $model->where('category_id', $category_general);
     }
 
