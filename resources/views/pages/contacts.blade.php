@@ -36,21 +36,21 @@
                 </ul>
             </div>
 
-            <div class="col-6">
+            <div class="col-12">
                 <p class="nav-link m-0 font-weight-bold">Книжный магазин "Эрудит"
                     <br>"DORDOI Plaza-2" -1 этаж</p>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.9355903327996!2d74.61588031494024!3d42.87420361047025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7b88acd14ab%3A0x72406e3d43498df7!2z0JTQvtGA0LTQvtC5INCf0LvQsNC30LA!5e0!3m2!1sru!2skg!4v1567070922633!5m2!1sru!2skg"
                     frameborder="0" style="border:0;width: 100%; height: 400px;" allowfullscreen=""></iframe>
             </div>
-            <div class="col-6">
 
-                <p class="nav-link m-0 font-weight-bold">Книжный магазин "Эрудит"
-                    <br>"IMall" 1 этаж</p>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.8832169430634!2d74.58088155304593!3d42.87530900454463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec92eeaa7a033%3A0x4ff86d380c291735!2z0KLQpiBJLU1hbGw!5e0!3m2!1sru!2skg!4v1567589605173!5m2!1sru!2skg"
-                    frameborder="0" style="border:0;width: 100%; height: 400px;" allowfullscreen=""></iframe>
-            </div>
+{{--            <div class="col-6">--}}
+{{--                <p class="nav-link m-0 font-weight-bold">Книжный магазин "Эрудит"--}}
+{{--                    <br>"IMall" 1 этаж</p>--}}
+{{--                <iframe--}}
+{{--                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.8832169430634!2d74.58088155304593!3d42.87530900454463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec92eeaa7a033%3A0x4ff86d380c291735!2z0KLQpiBJLU1hbGw!5e0!3m2!1sru!2skg!4v1567589605173!5m2!1sru!2skg"--}}
+{{--                    frameborder="0" style="border:0;width: 100%; height: 400px;" allowfullscreen=""></iframe>--}}
+{{--            </div>--}}
 
 
 

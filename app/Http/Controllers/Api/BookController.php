@@ -7,6 +7,7 @@ use App\Genre;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\ModelFilters\BookFilter;
 
 class BookController extends Controller
 {
@@ -14,6 +15,7 @@ class BookController extends Controller
     {
         $books = Book::all()->sortByDesc('id')->filterCollection($request)->paginate(15);
 //        $genres = Genre::all()->where()
+//        $books = DB::table('books')->filterCollection($request)->paginate(15);
 
 //        dd($books);
         return
