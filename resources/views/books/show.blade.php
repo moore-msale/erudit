@@ -216,10 +216,10 @@
 
                             {{--</div>--}}
                             <h3 class="text-fut-book mt-5 mb-3" style="font-size: 20px; line-height: 26px; color: #222;">
-                                @if($book->category_id == 1)
-                                    О товаре
-                                    @else
+                                @if($book->category_id == 2)
                                     О книге
+                                    @else
+                                    О товаре
                                 @endif
                             </h3>
                             <p class="col-12 col-md-10 px-0 text-center text-md-left" style="font-size: 15px;
