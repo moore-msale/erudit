@@ -564,7 +564,7 @@
         if($('.category_btn')){
         $('.category_btn').click(e => {
             e.preventDefault();
-            e.stopPropagation();
+            // e.stopPropagation();
             let btn = $(e.currentTarget);
             let val = btn.data('value');
             params.category = val;
