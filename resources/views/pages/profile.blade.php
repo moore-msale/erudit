@@ -212,7 +212,11 @@
                             <a class="btn-info text-fut-bold" href="{{ route('stock_create') }}" style="padding:10px 15px; border:none;">
                                 Добавить акцию
                             </a>
+                            <a class="btn-danger text-fut-bold ml-2" href="{{ route('delete_all') }}" name="all" style="padding:10px 15px; border:none;">
+                                удалить все скидки
+                            </a>
                         </div>
+
 
                         @foreach(\App\Stock::all() as $stock)
                         <div class="col-6">

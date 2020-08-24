@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\BookStock;
+use App\GeneralGenre;
 use App\Stock;
 use Doctrine\DBAL\Schema\Table;
 use Illuminate\Http\Request;
@@ -10,6 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
+    public function all_delete()
+    {
+        $books = Book::all();
+        foreach ($books as $book)
+        {
+            $book->discount = null;
+            $book->save();
+        }
+        return redirect()->route('user.index');
+    }
+
     public function create()
     {
         return view('stocks.create');
@@ -19,15 +32,12 @@ class StockController extends Controller
     {
         if(isset($request->id))
         {
-            $stock = Stock::find($request->id);
-//            dd($stock);
+            $stock = Stock::find($request->id);;
         }
         else
         {
             $stock = new Stock();
-//            dd($stock);
         }
-//        dd($request,'gg');
         $stock->name = $request->desc;
         $stock->date = $request->date;
         $stock->discount = $request->discount;
@@ -40,77 +50,168 @@ class StockController extends Controller
             }
         }
         $stock->save();
-        if ($request->type == 1)
+        if ($request->type == 2)
         {
+                $stock->type = $request->type;
+                $stock->category = $request->category;
+
+
+            $items = $request->items;
+            $books = Book::find($items);
+
+//            if($stock->books)
+//            {
+//                foreach ($stock->books as $book) {
+//                    $book->discount = null;
+//                    $book->save();
+//                }
+//            }
+
+            if($request->items){
+                if ($bookssync = $request->items) {
+                    if(isset($request->id)){
+                        foreach ($bookssync as $id){
+                            $new_stock = new BookStock();
+                            $new_stock->stock_id = $request->id;
+                            $new_stock->book_id = $id;
+                            $new_stock->save();
+                        }
+                    }
+                    else{
+                        $stock->books()->sync($bookssync);
+                    }
+
+                }
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
+            }
+
+            elseif ($request->category)
+            {
+                $book_id = DB::table('books')
+                    ->select('*')
+                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                    ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                    ->where('general_id', '=', $request->category)->pluck('isbn');
+
+                $books = Book::whereIn('isbn', $book_id)->get();
+
+                $stock->books()->sync($books);
+
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
+            }
+
+
+        }elseif ($request->type == 1){
             $stock->type = $request->type;
             $stock->category = $request->category;
 
+            $items = $request->items;
+            $books = Book::find($items);
 
-        $items = $request->items;
-        $books = Book::find($items);
-
-        if($stock->books)
-        {
-            foreach ($stock->books as $book) {
-                $book->discount = null;
-                $book->save();
-            }
-        }
-
-        if($request->items){
-            if ($bookssync = $request->items) {
-                $stock->books()->sync($bookssync);
-            }
-            foreach ($books as $book)
-            {
-                $book->discount = $stock->discount;
-                $book->save();
-            }
-        }
-
-        elseif ($request->category)
-        {
-//            $books = Book::where('genre_id',$request->category)->get();
-            $cons = [];
-            $i = [];
-
-            $genre = DB::table('genres')
-                ->select('id')
-                ->where('general_id', '=', $request->category)->get();
-            foreach ($genre as $key=>$items){
-                foreach ($items as $key_value=>$value){
-                    array_push($cons, $value);
-                }
-
-            }
-
-            $book_id = DB::table('books')
-                ->select('*')
-                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                ->whereIn('book_genre.genre_id',$cons)->get();
-
-
-            foreach ($book_id as $key=>$item){
-                foreach ($item as $key_value_2=>$value_2){
-                    if ($key_value_2 == 'isbn'){
-                        array_push($i, $value_2);
+//            if($stock->books)
+//            {
+//                foreach ($stock->books as $book) {
+//                    $book->discount = null;
+//                    $book->save();
+//                }
+//            }
+            if($request->items){
+                if ($bookssync = $request->items) {
+                    if(isset($request->id)){
+                        foreach ($bookssync as $id){
+                            $new_stock = new BookStock();
+                            $new_stock->stock_id = $request->id;
+                            $new_stock->book_id = $id;
+                            $new_stock->save();
+                        }
+                    }
+                    else{
+                        $stock->books()->sync($bookssync);
                     }
                 }
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
             }
 
-            $books = Book::whereIn('isbn', $i)->get();
-
-            $stock->books()->sync($books);
-
-            foreach ($books as $book)
+            elseif ($request->category)
             {
-                $book->discount = $stock->discount;
-                $book->save();
+                $book_id = DB::table('books')
+                    ->select('*')
+                    ->where('category_id', '=', 1)
+                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                    ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                    ->where('genres.name', 'like', '%'.$request->category.'%')->pluck('isbn');
+
+                $books = Book::whereIn('isbn', $book_id)->get();
+
+                $stock->books()->sync($books);
+
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
+            }
+//            $stock->save();
+        }
+        elseif ($request->type == 3){
+            $stock->type = $request->type;
+            $stock->category = $request->category;
+
+            $items = $request->items;
+            $books = Book::find($items);
+
+            if($request->items){
+                if ($bookssync = $request->items) {
+                    if(isset($request->id)){
+                        foreach ($bookssync as $id){
+                            $new_stock = new BookStock();
+                            $new_stock->stock_id = $request->id;
+                            $new_stock->book_id = $id;
+                            $new_stock->save();
+                        }
+                    }
+                    else{
+                        $stock->books()->sync($bookssync);
+                    }
+                }
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
+            }
+
+            elseif ($request->category)
+            {
+                $id_num = (preg_replace('/[a-zA-Zа-яА-Я-]/', '', $request->category));
+                $book_id = DB::table('books')
+                    ->select('*')
+                    ->where('category_id', '=', $id_num)
+                    ->pluck('isbn');
+                $books = Book::whereIn('isbn', $book_id)->get();
+
+                $stock->books()->sync($books);
+
+                foreach ($books as $book)
+                {
+                    $book->discount = $stock->discount;
+                    $book->save();
+                }
             }
         }
-            $stock->save();
-
-        }elseif ($request->ula){
+        elseif ($request->ula){
             $books = Book::all();
             foreach ($books as $book)
             {
@@ -129,7 +230,16 @@ class StockController extends Controller
     }
 
     public function delete($id)
-    {
+        {
+        if ($id == 'delete_all'){
+        $books = Book::all();
+            foreach ($books as $book)
+            {
+                $book->discount = null;
+                $book->save();
+            }
+            return redirect()->route('user.index');
+        }
         $stock = Stock::find($id);
         $books = $stock->books;
         if(count($books)){
@@ -141,6 +251,7 @@ class StockController extends Controller
 
             $stock->delete();
         }
+
         else{
             $books = Book::all();
             foreach ($books as $book)
@@ -156,49 +267,66 @@ class StockController extends Controller
         return redirect()->route('user.index');
     }
 
+    public function stock_delete(Request $request)
+    {
+        $book = Book::find($request->id);
+        $book->discount = null;
+        $book->save();
+        DB::table('book_stock')->where('book_id', '=', $request->id)->delete();
+
+    }
 
     public function stock_type(Request $request)
     {
-        if($request->type == 1)
+        if($request->type == 2)
         {
-            $view = view('stocks.includes.genres')->render();
+            $genre = GeneralGenre::all();
 
-            return response()->json([
-                'view' => $view,
-            ]);
+        }elseif ($request->type == 1){
+            $genre = 'stationery';
+        }else{
+            $genre = 'other';
         }
+
+        return response()->json([
+            'genre' => $genre,
+        ]);
     }
 
     public function stock_category(Request $request)
     {
-        $cons = [];
-        $i = [];
-
-        $genre = DB::table('genres')
-            ->select('id')
-            ->where('general_id', '=', $request->category)->get();
-        foreach ($genre as $key=>$items){
-            foreach ($items as $key_value=>$value){
-                array_push($cons, $value);
-            }
+        if(is_numeric($request->category)){
+            $book_id = DB::table('books')
+                ->select('*')
+                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                ->where('general_id', '=', $request->category)->pluck('isbn');
 
         }
+        elseif ($request->category == 'all') {
+            $book_id = Book::all()->where('category_id', '=', 1)->pluck('isbn');
 
-        $book_id = DB::table('books')
-            ->select('*')
-            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-            ->whereIn('book_genre.genre_id',$cons)->get();
+        }elseif ($request->category == 'all_book'){
+            $book_id = Book::all()->where('category_id','=', 2)->pluck('isbn');
+
+        }elseif (stristr($request->category, 'other') == true){
+            $id_num = (preg_replace('/[a-zA-Zа-яА-Я-]/', '', $request->category));
+            $books = Book::where('category_id','=', $id_num)->get();
+            $view = view('stocks.includes.books', ['books' => $books])->render();
+            return response()->json([
+                'view' => $view,
+            ]);
+        }
+        else{
+            $book_id = DB::table('books')
+                ->select('*')
+                ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
+                ->where('genres.name', 'like', '%' . $request->category . '%')->pluck('isbn');
+        }
 
 
-            foreach ($book_id as $key=>$item){
-                foreach ($item as $key_value_2=>$value_2){
-                    if ($key_value_2 == 'isbn'){
-                        array_push($i, $value_2);
-                    }
-                }
-            }
-
-        $books = Book::whereIn('isbn', $i)->get();
+        $books = Book::whereIn('isbn', $book_id)->get();
 
         $view = view('stocks.includes.books', ['books' => $books])->render();
 
@@ -207,3 +335,4 @@ class StockController extends Controller
         ]);
     }
 }
+

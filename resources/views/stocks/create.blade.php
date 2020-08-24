@@ -36,7 +36,7 @@
                         <input type="file" id="image" name="image" class="form-control input-erudit" accept="image/*" {{isset($stock) ? '' : 'required'}}>
                     </div>
                     <div class="form-check mb-3 pl-0">
-                        <label for="blankCheckbox" class="mr-4">Отметить все книги?</label>
+                        <label for="blankCheckbox" class="mr-4">Отметить все товары?</label>
                         <input class="form-check-input  position-static pt-1" name="ula" type="checkbox" id="blankCheckbox"  aria-label="...">
                     </div>
 
@@ -44,11 +44,25 @@
                         <label for="type">Выберите тип</label>
                         <select class="form-control input-erudit" name="type" id="type">
                             <option value="0">Выберите тип</option>
-                            <option value="1">Книги</option>
+                            <option value="2">Книги</option>
+                            <option value="1">Канцелярские товары</option>
+                            <option value="3">Другое</option>
                         </select>
                     </div>
 
                     <div class="genre">
+                        <div class="form-group">
+                            <p class="text-danger">Если вы ставите скидку на категорию, выберите категорию,
+                                но не выбирайте товар скидка будет присвоена всей категории или жанру.</p>
+                            <label for="category">Выберите категорию</label>
+                            <p class="text-fut-light"></p>
+                            <select class="form-control input-erudit" name="category" id="category">
+                                <option value="0">Выберите категорию</option>
+{{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
+{{--                                    <option value="{{$genre->id}}">{{$genre->name}}</option>--}}
+{{--                                @endforeach--}}
+                            </select>
+                        </div>
 
                     </div>
 
@@ -59,7 +73,7 @@
                 </div>
                 @if(isset($stock))
                     <input type="hidden" name="id" value="{{ $stock->id }}">
-                <div class="col-6">
+                <div class="col-6" id="load_elem">
                     <h3 class="text-fut-bold mb-4">
                         Список книг на акцию
                     </h3>
@@ -70,9 +84,11 @@
                     </p>
                     @endif
                     @foreach($stock->books as $book)
-                    <p>
+                        <p><button class="del_btn" data-value="{{$book->id}}" style="color: #ff0000; border: none">✖</button>
                         {{ $book->name }}
+
                     </p>
+
                     @endforeach
                     <a href="{{route('stock_delete',['id' => $stock->id])}}">
                         <div class="text-fut-bold btn-danger text-center" style="padding:10px 15px; border:none; width:150px;">
@@ -94,6 +110,30 @@
 @push('scripts')
     <script src="{{ asset('js/select2.js') }}"></script>
     <script>
+        if ($('.del_btn')){
+            $('.del_btn').click(e => {
+                e.preventDefault();
+                e.stopPropagation();
+                let btn = $(e.currentTarget);
+                let val = btn.data('value');
+                console.log(val)
+                $.ajax({
+                    url: '{{ route('stock_delete_one') }}',
+                    method: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": val,
+                    },
+                    success: data => {
+                        $("#load_elem").load(location.href + " #load_elem");
+                        // $('.genre').html(data.view).show('slide', {direction: 'left'}, 400);
+                    },
+                    error: () => {
+                        alert('Ошибка!');
+                    }
+                })
+            })}
+
         $('#type').on('change', function (e) {
             let btn = $('#type').val();
 
@@ -114,9 +154,62 @@
         })
     </script>
     <script>
+        $('#type').on('change', function (e) {
+            let btn = $('#type').val();
+            // $(".preloader_catalog").fadeIn(100)
+            $.ajax({
+                url: '{{ route('stock_type') }}',
+                method: 'POST',
+                data:  {
+                    "_token": "{{ csrf_token() }}",
+                    "type": btn,
+                },
+                success: data => {
+                    var _select = document.getElementById("category");
+                    _select.innerHTML = "";
+                    // console.log(data.genre)
+                    if (data.genre == 'stationery'){
+                        $('#category').append('<option value="all" class="text-scale pl-3 ml-1">все товары</option>' +
+                            '<option value="ручки" class="text-scale pl-3 ml-1">ручки</option>' +
+                            '<option value="тетради" class="text-scale pl-3 ml-1">тетради</option>' +
+                            '<option value="блокнот" class="text-scale pl-3 ml-1">блокноты</option>' +
+                            '<option value="папки" class="text-scale pl-3 ml-1">папки</option>' +
+                            '<option value="ежедневник" class="text-scale pl-3 ml-1">ежедневники</option>' +
+                            '<option value="атласы" class="text-scale pl-3 ml-1">атласы и карты</option>' +
+                            '<option value="карандаш" class="text-scale pl-3 ml-1">карандаши</option>' +
+                            '<option value="обложк" class="text-scale pl-3 ml-1">обложки</option>' +
+                            '<option value="планинг" class="text-scale pl-3 ml-1">планинги</option>' +
+                            '<option value="дневник" class="text-scale pl-3 ml-1">дневники</option>' +
+                            '<option value="подставки" class="text-scale pl-3 ml-1">подставки для книг</option>' +
+                            '<option value="ленейк" class="text-scale pl-3 ml-1">ленейки</option>' +
+                            '<option value="альбом" class="text-scale pl-3 ml-1">альбомы</option>' +
+                            '<option value="сумки" class="text-scale pl-3 ml-1">сумки, рюкзаки</option>' +
+                            '<option value="скетчпады" class="text-scale pl-3 ml-1">скетчпады</option>');
+                    }
+                    else if (data.genre == 'other'){
+                        $('#category').append('<option value="3other" class="text-scale pl-3 ml-1">настольные игры</option>' +
+                            '<option value="4other" class="text-scale pl-3 ml-1">учебный материалы</option>' +
+                            '<option value="5other" class="text-scale pl-3 ml-1">товары для творчества</option>' +
+                            '<option value="6other" class="text-scale pl-3 ml-1">игрушки</option>');
+                    }
+                    else{
+                        $('#category').append('<option value="all_book" class="text-scale pl-3 ml-1">все книги</option>');
+                        $.each(data.genre, function(key, val) {
+                            $('#category').append('<option value="'+ val.id +'" class="text-scale pl-3 ml-1">'+val.name+'</option>');
+                        });
+                    }
+
+                },
+                error: () => {
+                    console.log('error');
+                    // $(".preloader_catalog").fadeOut(100)
+                }
+            });
+        })
+
         $(document).on('change','#category',  function () {
             let btn = $('#category').val();
-
+            // console.log(btn.split(), 'btn')
             $.ajax({
                 url: '{{ route('stock_category') }}',
                 method: 'POST',

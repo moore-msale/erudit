@@ -104,6 +104,7 @@ class MainController extends Controller
 
         public function search_genre(Request $request)
     {
+//        dd($request);
         $search = $request->search;
         // dd($search);
         // dd(Genre::find(83));
@@ -111,8 +112,7 @@ class MainController extends Controller
             ->select('*')
             ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
             ->where('book_genre.genre_id', '=', $search)
-            ->where('type', 'book')
-            ->get()]);
+            ->where('type', 'book')->paginate(50)]);
         $result = $result->merge(collect(['Игры' => Book::all()->where('genre_id',$search)->where('type', 'game')]));
         $result = $result->merge(collect(['Товары для творчества' => Book::all()->where('genre_id',$search)->where('type', 'game')]));
         $result = $result->merge(collect(['Канцелярские товары' => Book::all()->where('genre_id',$search)->where('type', 'stuff')]));

@@ -762,8 +762,6 @@
                         $('#sub_genre').append('<a type="button" data-value="'+ val.name +'" class="subgenre_btn ml-1"><p class="text-scale pl-3 mb-2">'+val.name+'</p></a>');
                         $('#sub_genre').addClass('show')
                     });
-                    // $(".preloader_catalog").fadeOut(100)
-                // <p value="' + val + '">' + val.name +
                 },
                 error: () => {
                     console.log('error');

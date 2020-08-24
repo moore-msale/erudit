@@ -86,6 +86,8 @@ Route::group(['prefix' => 'moo'], function () {
 
 Auth::routes();
 
+Route::post('stock_delete/stock_delete', 'StockController@stock_delete')->name('stock_delete_one');
+Route::post('stock_delete/delete_all', 'StockController@all_delete')->name('delete_all');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('stock_create', 'StockController@create')->name('stock_create');
 Route::post('stock_store', 'StockController@store')->name('stock_store');
