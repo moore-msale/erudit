@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="type">Выберите тип</label>
+                        <label for="type">Выберите Категорию</label>
                         <select class="form-control input-erudit" name="type" id="type">
                             <option value="0">Выберите Категорию</option>
                             <option value="2">Книги</option>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <p class="text-danger">Если вы ставите скидку на категорию, выберите категорию,
                                 но не выбирайте товар скидка будет присвоена всей категории или жанру.</p>
-                            <label for="category">Выберите категорию</label>
+                            <label for="category">Выберите под категорию или жанр</label>
                             <p class="text-fut-light"></p>
                             <select class="form-control input-erudit" name="category" id="category">
                                 <option value="0">Выберите под категорию или жанр</option>
