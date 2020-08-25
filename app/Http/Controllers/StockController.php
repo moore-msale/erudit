@@ -70,6 +70,7 @@ class StockController extends Controller
             if($request->items){
                 if ($bookssync = $request->items) {
                     if(isset($request->id)){
+//                        dd('dfsdfsdf', $request->id);
                         foreach ($bookssync as $id){
                             $new_stock = new BookStock();
                             $new_stock->stock_id = $request->id;
@@ -99,7 +100,17 @@ class StockController extends Controller
 
                 $books = Book::whereIn('isbn', $book_id)->get();
 
-                $stock->books()->sync($books);
+                if(isset($request->id)){
+                    foreach ($books as $id){
+                        $new_stock = new BookStock();
+                        $new_stock->stock_id = $request->id;
+                        $new_stock->book_id = $id->id;
+                        $new_stock->save();
+                    }
+                }
+                else{
+                    $stock->books()->sync($books);
+                }
 
                 foreach ($books as $book)
                 {
@@ -155,9 +166,19 @@ class StockController extends Controller
 
                 $books = Book::whereIn('isbn', $book_id)->get();
 
-                $stock->books()->sync($books);
+                if(isset($request->id)){
+                    foreach ($books as $id){
+                        $new_stock = new BookStock();
+                        $new_stock->stock_id = $request->id;
+                        $new_stock->book_id = $id->id;
+                        $new_stock->save();
+                    }
+                }
+                else {
+                    $stock->books()->sync($books);
+                }
 
-                foreach ($books as $book)
+                    foreach ($books as $book)
                 {
                     $book->discount = $stock->discount;
                     $book->save();
@@ -202,9 +223,19 @@ class StockController extends Controller
                     ->pluck('isbn');
                 $books = Book::whereIn('isbn', $book_id)->get();
 
-                $stock->books()->sync($books);
+                if(isset($request->id)){
+                    foreach ($books as $id){
+                        $new_stock = new BookStock();
+                        $new_stock->stock_id = $request->id;
+                        $new_stock->book_id = $id->id;
+                        $new_stock->save();
+                    }
+                }
+                else {
+                    $stock->books()->sync($books);
+                }
 
-                foreach ($books as $book)
+                    foreach ($books as $book)
                 {
                     $book->discount = $stock->discount;
                     $book->save();

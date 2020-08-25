@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="type">Выберите тип</label>
                         <select class="form-control input-erudit" name="type" id="type">
-                            <option value="0">Выберите тип</option>
+                            <option value="0">Выберите Категорию</option>
                             <option value="2">Книги</option>
                             <option value="1">Канцелярские товары</option>
                             <option value="3">Другое</option>
@@ -57,7 +57,7 @@
                             <label for="category">Выберите категорию</label>
                             <p class="text-fut-light"></p>
                             <select class="form-control input-erudit" name="category" id="category">
-                                <option value="0">Выберите категорию</option>
+                                <option value="0">Выберите под категорию или жанр</option>
 {{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
 {{--                                    <option value="{{$genre->id}}">{{$genre->name}}</option>--}}
 {{--                                @endforeach--}}
@@ -83,13 +83,13 @@
                         Категория: {{ \App\GeneralGenre::find($stock->category)->name }}
                     </p>
                     @endif
-                    @foreach($stock->books as $book)
-                        <p><button class="del_btn" data-value="{{$book->id}}" style="color: #ff0000; border: none">✖</button>
-                        {{ $book->name }}
-
-                    </p>
-
-                    @endforeach
+                    <div style="overflow: scroll; max-height: 500px">
+                        @foreach($stock->books as $book)
+                            <p id="{{$book->id}}"><button class="del_btn" data-value="{{$book->id}}" id="{{$book->id}}" style="color: #ff0000; border: none">✖</button>
+                                {{ $book->name }}
+                            </p>
+                        @endforeach
+                    </div>
                     <a href="{{route('stock_delete',['id' => $stock->id])}}">
                         <div class="text-fut-bold btn-danger text-center" style="padding:10px 15px; border:none; width:150px;">
                             Удалить акцию
@@ -116,6 +116,8 @@
                 e.stopPropagation();
                 let btn = $(e.currentTarget);
                 let val = btn.data('value');
+                let btn_id = btn.attr('id')
+                console.log(btn_id)
                 console.log(val)
                 $.ajax({
                     url: '{{ route('stock_delete_one') }}',
@@ -125,7 +127,8 @@
                         "id": val,
                     },
                     success: data => {
-                        $("#load_elem").load(location.href + " #load_elem");
+                        // $("#load_elem").load(location.href + " #load_elem");
+                        $( "#"+btn_id ).remove();
                         // $('.genre').html(data.view).show('slide', {direction: 'left'}, 400);
                     },
                     error: () => {
