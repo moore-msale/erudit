@@ -239,3 +239,17 @@ class BookFilter extends Collection
         return $model->sortBy('issue_date');
     }
 }
+
+//    public function stock_delete(Request $request)
+//    {
+//        $book_id = DB::table('books')
+//            ->where('book_id', '=', $request->id)
+//            ->pluck('book_id');
+//        DB::table('books')
+//            ->whereIn('id', '=', $book_id)
+//            ->update(['discount' => null]);
+//        DB::table('book_stock')->where('book_id', '=', $request->id)->delete();
+//
+//        return view ('stocks.create',['stock' => $request->id]);
+//
+//    }

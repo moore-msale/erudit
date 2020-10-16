@@ -260,6 +260,20 @@ class StockController extends Controller
         return view ('stocks.create',['stock' => $stock]);
     }
 
+//    public function delete_discount($id)
+//    {
+//        $stock_id = Stock::find($id);
+//        dd($stock_id);
+//        $book = Book::find();
+//        $book->discount = null;
+//        $book->save();
+//        DB::table('book_stock')->where('book_id', '=', $request->id)->delete();
+
+//
+//        return redirect()->route('user.index');
+//    }
+
+
     public function delete($id)
         {
         if ($id == 'delete_all'){

@@ -117,7 +117,7 @@
         $(document).on('keyup click','#search-input-select2', function () {
             let value = $(this).val();
             $('#all_results_btn_a').attr('href','/search?search='+value);
-            if (value != '' && value.length >= 3) {
+            if (value !== '' && value.length >= 3) {
                 // let searchBtn = $('#search-btn');
                 // searchBtn.prop('href', '');
                 // searchBtn.prop('href', '/search?search=' + value);

@@ -85,9 +85,12 @@
                     @endif
                     <div style="overflow: scroll; max-height: 500px">
                         @foreach($stock->books as $book)
-                            <p id="{{$book->id}}"><button class="del_btn" data-value="{{$book->id}}" id="{{$book->id}}" style="color: #ff0000; border: none">✖</button>
+                            <p id="{{$book->id}}" class="mb-1"><button class="del_btn" data-value="{{$book->id}}" id="{{$book->id}}"
+                                                          style="color: #ff0000; border: none;
+                                                           background: none;font-size: 18px;">✖</button>
                                 {{ $book->name }}
                             </p>
+                            <hr id="{{$book->id}}"  class="my-0">
                         @endforeach
                     </div>
                     <a href="{{route('stock_delete',['id' => $stock->id])}}">
@@ -95,6 +98,13 @@
                             Удалить акцию
                         </div>
                     </a>
+{{--                    <a href="{{route('stock_delete_one',['id' => $stock->id])}}">--}}
+{{--                        <div class="text-fut-bold btn-danger text-center" style="padding:10px 15px; border:none; width:150px;">--}}
+{{--                            Удалить все скидки от этой акции--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+
+
                 </div>
 
 

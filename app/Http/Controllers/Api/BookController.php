@@ -20,11 +20,7 @@ class BookController extends Controller
 //        dd($books);
         return
             response()->json([
-            'html' => view('api.books',
-                [
-                'books' => $books,
-
-            ])->render(),
+            'html' => view('api.books', ['books' => $books,])->render(),
             'books' => $books,
             'count' => count($books),
             'filters' => $request->query->all(),
