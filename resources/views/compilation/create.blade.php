@@ -43,10 +43,10 @@
                     <div id="genre" class="genre">
                         <div class="form-group">
 
-                            <label for="category">Выберите под категорию или жанр</label>
+                            <label for="category">книги</label>
                             <p class="text-fut-light"></p>
                             <select class="form-control input-erudit" name="category" id="category">
-                                <option value="0">Выберите под категорию или жанр</option>
+                                <option value="0">Выберите жанр или все</option>
                                 {{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
                                 {{--                                    <option value="{{$genre->id}}">{{$genre->name}}</option>--}}
                                 {{--                                @endforeach--}}
