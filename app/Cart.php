@@ -30,6 +30,7 @@ class Cart extends Model
             return CartFacade::session($token)->add($book->id, $book->name,
                 auth()->check() ? intval(isset($book->price_retail) ?
                     (isset($book->discount) ? $book->price_retail : $book->price_retail) :
+
                     (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount)
                         : $book->price_wholesale)) :(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale /
                         100 * $book->discount) : $book->price_wholesale) , $count ? $count : 1);

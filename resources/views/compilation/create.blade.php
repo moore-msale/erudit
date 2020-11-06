@@ -35,12 +35,23 @@
                     <div class="form-group">
                         <label for="type">Выберите тип</label>
                         <select class="form-control input-erudit" name="type" id="type">
-                            <option value="0">Выберите тип</option>
-                            <option value="1">Книги</option>
+                            <option value="">Выберите тип</option>
+                            <option value="2">Книги</option>
                         </select>
                     </div>
 
-                    <div class="genre">
+                    <div id="genre" class="genre">
+                        <div class="form-group">
+
+                            <label for="category">Выберите под категорию или жанр</label>
+                            <p class="text-fut-light"></p>
+                            <select class="form-control input-erudit" name="category" id="category">
+                                <option value="0">Выберите под категорию или жанр</option>
+                                {{--                                @foreach(\App\GeneralGenre::all()->sortBy('name') as $genre)--}}
+                                {{--                                    <option value="{{$genre->id}}">{{$genre->name}}</option>--}}
+                                {{--                                @endforeach--}}
+                            </select>
+                        </div>
 
                     </div>
 
@@ -85,7 +96,12 @@
                     "type": btn,
                 },
                 success: data => {
-                    $('.genre').html(data.view).show('slide', {direction: 'left'}, 400);
+                    console.log(data.genre)
+                    $('#category').append('<option value="all_book" class="text-scale pl-3 ml-1">все книги</option>');
+                    $.each(data.genre, function(key, val) {
+                        $('#category').append('<option value="'+ val.id +'" class="text-scale pl-3 ml-1">'+val.name+'</option>');
+                    });
+                    // $('#genre').html(data.genre.value(name)).show('slide', {direction: 'left'}, 400);
                 },
                 error: () => {
                     alert('Ошибка!');

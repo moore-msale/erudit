@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Tilek
- * Date: 11.08.2019
- * Time: 22:16
- */
-
 namespace App\ModelFilters;
-
 
 use App\Book;
 use App\Feedback;
