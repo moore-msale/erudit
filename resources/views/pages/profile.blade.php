@@ -219,12 +219,28 @@
 
 
                         @foreach(\App\Stock::all() as $stock)
-                        <div class="col-6">
-                                <a href="{{ route('stock_edit', ['id' => $stock->id]) }}">
-                                <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
+                            @if($stock->image !== null)
+                                <div class="col-6">
+                                    <a href="{{ route('stock_edit', ['id' => $stock->id]) }}">
+                                        <div class="stock-img" style="background-image: url({{ asset($stock->image)}})">
+                                        </div>
+                                    </a>
                                 </div>
-                                </a>
-                        </div>
+                                @else
+                                <div class="col-6">
+                                    <a href="{{ route('stock_edit', ['id' => $stock->id]) }}">
+                                        <div class="stock-img" style="background-color: #69898c;">
+                                            <h3 class="pt-5" style="color: white">
+                                                Акция без баннера: {{$stock->name}}
+                                            </h3>
+
+
+                                        </div>
+
+                                    </a>
+                                </div>
+                                @endif
+
                         @endforeach
                     </div>
                     </div>
