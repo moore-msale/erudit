@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Баннер <span class="text-danger">*</span></label>
-                        <input type="file" id="image" name="image" class="form-control input-erudit" accept="image/*" {{isset($stock) ? '' : 'required'}}>
+                        <input type="file" id="image" name="image" class="form-control input-erudit" accept="image/*" {{isset($stock) ? '' : ''}}>
                     </div>
                     <div class="form-check mb-3 pl-0">
                         <label for="blankCheckbox" class="mr-4">Отметить все товары?</label>
