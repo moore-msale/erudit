@@ -1,7 +1,7 @@
 <div class="owl-one owl-carousel text-center car-nav-close">
     @foreach($books as $bestseller)
         @if($bestseller->bestseller ==  1)
-    <div class="item" style="padding:15%;">
+    <div class="item" style="">
         <div style="float: right; padding:10%;">
         <figure class='book'>
             <ul class='hardcover_front'>

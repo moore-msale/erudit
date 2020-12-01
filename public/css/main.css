@@ -439,7 +439,7 @@ body
 }
 
 #actions{
-  padding-top: 30px;
+  padding-top: 15px!important;
 }
 /*#bestseller{
   padding:100px 0;
@@ -618,7 +618,6 @@ body
     }
 }
 .image_in_cart{
-    max-height: 100%;
-    max-width: fit-content;
-    margin: auto;
+    width: 100%;
+    height: auto;
 }

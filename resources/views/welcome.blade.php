@@ -11,22 +11,22 @@
              alt="">
         <img src="{{ asset('images/svg/3.svg') }}" class="position-absolute scroll-svg-down"
              style="right: -2%; top: 45%;" alt="">
-        <div class="row pt-lg-5 pb-lg-0 pt-5 pb-0">
+        <div class="row pt-lg-5 pb-lg-0 pt-2 pb-0">
 
             <div class="col-lg-12 col-12 pl-lg-5 pl-4 pb-5">
               <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down"
                    style="bottom:-6%;left: 15%; z-index: 1;" alt="">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-12 pt-lg-0 pt-5">
+                <div class=" justify-content-center">
+{{--                    <div class="col-lg-4 col-12 pt-lg-0 pt-5">--}}
                         <h3 class="text-fut-bold text-center"
-                            style="font-size: 30px; line-height: 120%; letter-spacing: 0.05em; color: #3154CF;">
+                            style="font-size: 50px; line-height: 120%; letter-spacing: 0.05em; color: white;">
                             Новинки
                         </h3>
-                    </div>
-                    <div class="col-lg-4 col-12 pt-lg-0 pt-4 d-lg-block d-flex justify-content-center">
+{{--                    </div>--}}
+                    <div class="col-lg-12 col-12 pt-lg-0 pt-4 d-flex justify-content-end">
                         <a href="/catalog">
                             <button class="text-fut-bold py-3 px-5 but-hov" href=""
-                                    style="background: #3154CF; color: white; border:0px; cursor: pointer;">
+                                    style="background: #75a1ff; color: white; border:0px; cursor: pointer;">
                                 Смотреть все
                             </button>
                         </a>
@@ -34,25 +34,26 @@
                 </div>
                 <div class="container">
                     <div class="row mt-4 pt-2 justify-content-center">
+                        <div class="owl-one owl-carousel text-center">
                         @foreach($books as $book)
                             @if($book->new == 1)
                                 @if($loop->index == 6)
                                     @break
                                 @endif
-                                <div class="col-lg-2 col-md-3 col-12 item p-1" style="max-width: 259px;">
-                                  <div class="p-2 shadow h-100 w-100" style="background-color: white;">
+                                <div class="item p-1" style="height: 400px;">
+                                  <div class="p-2 shadow" style="background-color: white; height: 100%">
                                     <a href="{{ asset('book/'.$book->id) }}" style="text-decoration: none;">
-                                        <div class="" style="height: 85%;">
+                                        <div class="" style="height: 60%;">
                                             @if (filter_var($book->image, FILTER_VALIDATE_URL))
-                                                <img class="w-100 h-100 image_in_cart" src="{{ $book->image }}" alt="">
+                                                <img class=" image_in_cart" src="{{ $book->image }}" alt="">
                                             @else
-                                                <img class="w-100 h-100 image_in_cart" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                                <img class=" image_in_cart" src="{{ asset('storage/'.$book->image) }}" alt="">
                                             @endif
                                                 @if(isset($book->discount))
                                                     <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
                                                 @endif
                                         </div>
-                                        <h3 class="text-fut-book mt-3 text-left"
+                                        <h3 class="text-fut-book mt-2 text-left"
                                             style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
                                             {{ \Illuminate\Support\Str::limit($book->name,50,'...')  }}
                                         </h3>
@@ -85,6 +86,7 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,7 +106,7 @@
                     style="line-height: 139px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                     Бестселлеры
                 </h2>
-                <div class="container-fluid d-lg-block d-none position-relative" style="margin-top:-140px;">
+                <div class="container-fluid d-lg-block d-none position-relative" style="">
                     <img src="{{ asset('images/svg/4.svg') }}" class="position-absolute scroll-svg-down"
                          style="left: 35%; bottom: 0;" alt="">
                     <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-up"
