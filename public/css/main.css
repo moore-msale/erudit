@@ -618,6 +618,6 @@ body
     }
 }
 .image_in_cart{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
 }
