@@ -14,8 +14,7 @@
         <div class="row pt-lg-5 pb-lg-0 pt-2 pb-0">
 
             <div class="col-lg-12 col-12 pl-lg-5 pl-4 pb-5">
-              <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down"
-                   style="bottom:-6%;left: 15%; z-index: 1;" alt="">
+
                 <div class=" justify-content-center">
 {{--                    <div class="col-lg-4 col-12 pt-lg-0 pt-5">--}}
                         <h3 class="text-fut-bold text-center"
@@ -32,6 +31,8 @@
                         </a>
                     </div>
                 </div>
+                <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-down"
+                     style="bottom:-6%;left: 15%; z-index: 0;" alt="">
                 <div class="container">
                     <div class="row mt-4 pt-2 justify-content-center">
                         <div class="owl-one owl-carousel text-center">
