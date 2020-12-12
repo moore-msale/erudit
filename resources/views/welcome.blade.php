@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <img src="{{ asset('images/new_year.jpg') }}" class="covid my-3"
+    <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-1"
          alt="">
 
     <div class="container-fluid sells-sector position-relative" id="actions"
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="container-fluid mr-0 pr-0"
                                          style="position: absolute; bottom:3%; color:#444;">
-                                        <div class="row justify-content-center" style="width:87%;">
+                                        <div class="row justify-content-center" style="width:94%;">
                                             <button
                                                     class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
                                                     data-id="{{ $book->id }}" data-aos="fade-up"
@@ -156,7 +156,7 @@
 
                                             <h3 class="text-fut-book mt-3 text-left"
                                                 style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
-                                                {{\Illuminate\Support\Str::limit($bestseller->name,50,'...')  }}
+                                                {{\Illuminate\Support\Str::limit($bestseller->name,40,'...')  }}
                                             </h3>
                                         </a>
                                         <div class="p-0 text-left">
