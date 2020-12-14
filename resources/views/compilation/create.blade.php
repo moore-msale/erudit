@@ -23,6 +23,7 @@
                         <label for="title">Описание подборки <span class="text-danger">*</span></label>
                         <input type="text" id="title" name="title" class="form-control input-erudit" value="{{isset($compilation) ? $compilation->title : ''}}" required>
                     </div>
+                    <input type="hidden" id="id_comp" name="id" class="form-control input-erudit" value="{{isset($compilation) ? $compilation->id : ''}}">
                     <div class="form-group">
                         <label for="color">Цвет описания <span class="text-danger">*</span></label>
                         <input type="color" id="color" name="color" class="form-control input-erudit" value="{{isset($compilation) ? $compilation->title_color : ''}}" required>
@@ -65,11 +66,29 @@
                         <h3 class="text-fut-bold mb-4">
                             Список книг в подборке
                         </h3>
-                        @foreach($compilation->books as $book)
-                            <p>
-                                {{ $book->name }}
-                            </p>
-                        @endforeach
+{{--                        @foreach($compilation->books as $book)--}}
+{{--                            <p>--}}
+{{--                                {{ $book->name }}--}}
+{{--                            </p>--}}
+{{--                        @endforeach--}}
+                        <div style="overflow: scroll; max-height: 500px">
+                            @foreach($compilation->books as $book)
+                                <p id="{{$book->id}}" class="mb-1"><button class="del_btn_acc" data-attr="{{$compilation->id}}" data-value="{{$book->id}}" id="{{$book->id}}"
+                                                                           style="color: #ff0000; border: none;
+                                                           background: none;font-size: 18px;">✖</button>
+                                    {{ $book->name }}
+                                </p>
+                                <hr id="{{$book->id}}"  class="my-0">
+                            @endforeach
+                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="books">Товары</label>--}}
+{{--                            <select class="form-control m-0 w-100" name="items[]" id="books" multiple="" style="height: 300px">--}}
+{{--                                @foreach($compilation->books as $book)--}}
+{{--                                    <option value="{{ $book->id }}" {{ isset($stock) && $stock->type == 1 ? $stock->data->where('id', $book->id)->isNotEmpty() ? 'selected' : '' : ''}}>{{ $book->name }}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
                     </div>
 
 
@@ -85,6 +104,33 @@
 @push('scripts')
     <script src="{{ asset('js/select2.js') }}"></script>
     <script>
+        if ($('.del_btn_acc')){
+            $('.del_btn_acc').click(e => {
+                e.preventDefault();
+                e.stopPropagation();
+                let btn = $(e.currentTarget);
+                let val = btn.data('value');
+                let data_attr = btn.attr('data-attr');
+                let btn_id = btn.attr('id')
+
+                $.ajax({
+                    url: '{{ route('comp_delete') }}',
+                    method: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "book_id": val,
+                        "conp_id":data_attr
+                    },
+                    success: data => {
+                        // $("#load_elem").load(location.href + " #load_elem");
+                        $( "#"+btn_id ).remove();
+                        // $('.genre').html(data.view).show('slide', {direction: 'left'}, 400);
+                    },
+                    error: () => {
+                    }
+                })
+            })}
+
         $('#type').on('change', function (e) {
             let btn = $('#type').val();
 

@@ -18,7 +18,7 @@ Route::get('/', function () {
         'genres' => \App\Genre::all(),
         'galleries' => \App\Gallery::all(),
         'stocks' => \App\Stock::where('date', '>' ,\Carbon\Carbon::now())->get(),
-        'compilation' => \App\Compilation::all()->first(),
+        'compilations' => \App\Compilation::all(),
     ]);
 });
 
@@ -97,8 +97,12 @@ Route::post('stock_type', 'StockController@stock_type')->name('stock_type');
 Route::post('stock_category', 'StockController@stock_category')->name('stock_category');
 
 Route::get('compilation_create', 'CompilationController@create')->name('compilation_create');
+Route::get('compilation_update/{id}', 'CompilationController@update')->name('compilation_update');
+Route::get('compilation_delete/{id}', 'CompilationController@delete')->name('compilation_delete');
 Route::post('compilation_store', 'CompilationController@store')->name('compilation_store');
 Route::post('compilation_active', 'CompilationController@active')->name('compilation_active');
+Route::post('compilation_delete/in', 'CompilationController@comp_delete')->name('comp_delete');
+
 
 Route::resource('feedback', 'FeedbackController');
 Route::resource('news', 'NewsController');

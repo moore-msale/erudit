@@ -142,7 +142,6 @@
                         // $('.genre').html(data.view).show('slide', {direction: 'left'}, 400);
                     },
                     error: () => {
-                        alert('Ошибка!');
                     }
                 })
             })}

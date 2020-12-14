@@ -246,18 +246,29 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="holidays" style="min-height:500px;" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="d-flex justify-content-end px-5">
+                        <a class="btn-info text-fut-bold m-2" href="{{ route('compilation_create') }}" style="padding:10px 15px; border:none; text-decoration: none;">
+                            Добавить подборку
+                        </a>
+                    </div>
+
                     <?php
-                    $compilation = \App\Compilation::all()->first();
+                    $compilations = \App\Compilation::all();
                     ?>
+                    @foreach($compilations as $compilation)
+
+
                     <div class="mt-5 d-flex justify-content-center">
-                        <a class="btn-info text-fut-bold" href="{{ route('compilation_create') }}" style="padding:10px 15px; border:none; text-decoration: none;">
+                        <a class="btn-info text-fut-bold" href="{{ route('compilation_update', $compilation->id) }}" style="padding:10px 15px; border:none; text-decoration: none;">
                             Изменить подборку
                         </a>
-                        <div class="btn-danger text-fut-bold ml-1 btn-off" style="padding:10px 15px; border:none; cursor:pointer; {{ $compilation->active == null ? 'display:none;' : ''}}">Выключить подборку</div>
-                        <div class="btn-success text-fut-bold ml-1 btn-on" style="padding:10px 15px; border:none; cursor:pointer; {{ $compilation->active == 1 ? 'display:none;' : ''}}">Включить подборку</div>
-
+                        <div class="btn-danger text-fut-bold ml-1 btn-off" style="padding:10px 15px; border:none; cursor:pointer; {{ $compilation->active == null ? 'display:none;' : ''}}" data-val="{{$compilation->id}}">Выключить подборку</div>
+                        <div class="btn-success text-fut-bold ml-1 btn-on" style="padding:10px 15px; border:none; cursor:pointer; {{ $compilation->active == 1 ? 'display:none;' : ''}}" data-val="{{$compilation->id}}">Включить подборку</div>
+                        <a class="btn-danger text-fut-bold ml-4" href="{{ route('compilation_delete', $compilation->id) }}" style="padding:10px 15px; border:none; text-decoration: none;">
+                            Удалить подборку
+                        </a>
                     </div>
-                    <div class="container-fluid mt-3" style="background-image: url({{asset('images/bg.png')}}); background-size: cover; background-position: center;">
+                    <div class="container-fluid mt-3" style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
                     <div class="container pt-5">
 
                     <div class="row pb-5 justify-content-center">
@@ -313,6 +324,7 @@
                     </div>
                     </div>
                     </div>
+                        @endforeach
                 </div>
 
             </div>
@@ -327,6 +339,7 @@
     <script>
         $(document).on('click','.btn-off', function (e) {
             var btn = $(e.currentTarget);
+            let value_id = $(this).attr('data-val')
 
 
             $.ajax({
@@ -334,6 +347,7 @@
                 method: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",
+                    "id":value_id
                 },
                 success: data => {
                     btn.hide();
@@ -348,13 +362,14 @@
     <script>
         $(document).on('click','.btn-on', function (e) {
             var btn = $(e.currentTarget);
-
+            let value_id = $(this).attr('data-val')
 
             $.ajax({
                 url: '{{ route('compilation_active') }}',
                 method: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",
+                    "id":value_id
                 },
                 success: data => {
                     btn.hide();

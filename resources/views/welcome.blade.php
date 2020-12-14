@@ -111,7 +111,7 @@
                     style="line-height: 139px; text-align: center; text-transform: uppercase; color: #CC4B8B;">
                     Бестселлеры
                 </h2>
-                <div class="container-fluid d-lg-block d-none position-relative" style="">
+                <div class="container-fluid d-lg-block d-none position-relative mb-4" style="">
                     <img src="{{ asset('images/svg/4.svg') }}" class="position-absolute scroll-svg-down"
                          style="left: 35%; bottom: 0;" alt="">
                     <img src="{{ asset('images/svg/1.svg') }}" class="position-absolute scroll-svg-up"
@@ -135,8 +135,11 @@
                         </div>
                     </div>
                 </div>
+                @foreach($compilations as $compilation)
+
+
                 @if($compilation->active == 1)
-                <div class="container-fluid mt-3 px-0" style="background-image: url({{asset('images/bg.png')}}); background-size: cover; background-position: center;">
+                <div class="container-fluid px-0" style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
                     <div class="container pt-5">
 
                         <div class="row pb-5 justify-content-center">
@@ -179,15 +182,7 @@
                                                             {{ intval(isset($bestseller->discount) ? $bestseller->price_wholesale - ($bestseller->price_wholesale / 100 * $bestseller->discount) : $bestseller->price_wholesale)}} сом
                                                     </span>
                                             @endif
-{{--                                            @guest--}}
-{{--                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
-{{--                         {{ $bestseller->price_wholesale }} сом--}}
-{{--                    </span>--}}
-{{--                                            @else--}}
-{{--                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
-{{--                        {{ $bestseller->price_retail }} сом--}}
-{{--                    </span>--}}
-{{--                                            @endguest--}}
+
                                         </div>
                                         </div>
                                         <div class="d-flex justify-content-center px-2 w-100">
@@ -208,6 +203,7 @@
                     </div>
                 </div>
                 @endif
+                @endforeach
 
                 <div class="container-fluid" style="padding: 1% 8%">
                     <!-- <div class="row">
@@ -251,7 +247,7 @@
                         </div>
 
                         <div class="container px-0">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center mb-4">
                                 <div class="col-12 d-lg-block d-none">
                                     @include('books.recomend_carousel')
                                 </div>
