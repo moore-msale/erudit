@@ -622,3 +622,12 @@ body
     height: 100%;
     object-fit: contain;
 }
+
+.nav-item.mob-links img{
+    width: 21px;
+    height: 21px;
+}
+.top-menu-first .nav-item.links img{
+    height: 23px;
+    width: 23px;
+}

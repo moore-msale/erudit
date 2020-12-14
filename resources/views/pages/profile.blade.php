@@ -5,8 +5,8 @@
     <div style="background-size:cover; background-image: url({{ asset('images/mainbg.png') }}); background-position: center center; width:100%; height:500px;"></div>
     {{--<div style="height:160px; display:block; width:100%"></div>--}}
     <div class="pt-5" style="position:relative; z-index:9; text-align:center;">
-        <h4 class="text-fut-bold">{{ ucwords(app('VoyagerAuth')->user()->name) }}</h4>
-        <div class="user-email text-muted">{{ ucwords(app('VoyagerAuth')->user()->email) }}</div>
+        <h4 class="text-fut-bold">{{ auth()->user()->name }}</h4>
+        <div class="user-email text-muted">{{ auth()->user()->email }}</div>
         <p></p>
         @if(\Illuminate\Support\Facades\Auth::user()->role_id != 1)
         <div class="row justify-content-center">

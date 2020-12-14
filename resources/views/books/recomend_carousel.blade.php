@@ -10,6 +10,9 @@
                           @else
                               <img class="w-100 h-100 image_in_cart" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                           @endif
+                              @if(isset($book->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
+                                  <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                              @endif
                       </div>
 
 

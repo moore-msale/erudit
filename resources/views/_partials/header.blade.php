@@ -225,15 +225,39 @@ $agent = new Agent();
                   </div>
                 </li>
                 @guest
-                    <li class="nav-item">
-                        <a href="/login" class="text-fut-bold text-scale" style="color: #fff!important;">Войти</a>
+                    <li class="nav-item" style="padding-right:40px;">
+                        <div class="dropdown" style="width:155px;">
+                            <img src="{{asset('images/book1-w.svg')}}" alt="">
+                            <button class="text-fut-bold text-scale dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #6FA6AC;color:#fff; width: 100px;padding-left: 8px">
+                                Вход в мой эрудит
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 180px;">
+                                    <a href="/login" class="text-fut-bold text-scale" style="display: block;font-size: 13px;  padding: 5px 15px; background-color: transparent; text-decoration: none;">Войти</a>
+                                <br class="my-2">
+                                    <a href="/login" class="text-fut-bold"   style="display: block;font-size: 13px;  padding: 5px 15px; background-color: transparent; ">
+                                        Оптовым покупателям
+                                    </a>
+                                <br class="my-2">
+                                <button data-toggle="modal" data-target="#user_register_modal" class="text-fut-bold  pointer" data-aos="fade-up"  style="font-size: 13px;  padding: 5px 15px; border: none; background: none; text-decoration: none;">
+                                    Зарегистрироватся
+                                </button>
+                                <?php
+                                Session::put('link', Request::url());
+                                ?>
+                            </div>
+                        </div>
+
                     </li>
-                    <li class="nav-item d-flex" style="padding-right:8px;">
-                      <img src="{{asset('images/shopping-bag.svg')}}" alt="">
-                      <a href="/login" class="text-fut-bold"  style="color: #fff!important; background-color: transparent;width:180px;padding-left: 8px">
-                          Оптовым покупателям
-                      </a>
-                    </li>
+
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="/login" class="text-fut-bold text-scale" style="color: #fff!important;">Войти</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item d-flex" style="padding-right:8px;">--}}
+{{--                      <img src="{{asset('images/shopping-bag.svg')}}" alt="">--}}
+{{--                      <a href="/login" class="text-fut-bold"  style="color: #fff!important; background-color: transparent;width:180px;padding-left: 8px">--}}
+{{--                          Оптовым покупателям--}}
+{{--                      </a>--}}
+{{--                    </li>--}}
                 @else
                 <li class="nav-item" style="padding-right:24px;">
                   <div class="dropdown" style="width:125px;">
@@ -277,15 +301,38 @@ $agent = new Agent();
                     </a>
                 </li>
                 @guest
-                    <li class="nav-item ml-auto mr-3">
-                        <a href="/login" class="text-fut-bold text-scale" style="   color:#fff;">Войти</a>
+                    <li class="nav-item ml-auto" style="padding-right:40px;">
+                        <div class="dropdown" style="width:155px;">
+                            <img src="{{asset('images/book1-w.svg')}}" alt="">
+                            <button class="text-fut-bold text-scale dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #6FA6AC;color:#fff; width: 100px;padding-left: 8px">
+                                Вход в мой эрудит
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 180px;">
+                                <a href="/login" class="text-fut-bold text-scale" style="display: block; font-size: 13px;  padding: 5px 15px; background-color: transparent; text-decoration: none;">Войти</a>
+                                <br class="my-2">
+                                <a href="/login" class="text-fut-bold"   style="display: block; font-size: 13px;  padding: 5px 15px; background-color: transparent; ">
+                                    Оптовым покупателям
+                                </a>
+                                <br class="my-2">
+                                <button data-toggle="modal" data-target="#user_register_modal" class="text-fut-bold  pointer" data-aos="fade-up"  style="font-size: 13px;  padding: 5px 15px; border: none; background: none; text-decoration: none;">
+                                    Зарегистрироватся
+                                </button>
+                                <?php
+                                Session::put('link', Request::url());
+                                ?>
+                            </div>
+                        </div>
+
                     </li>
-                    <li class="nav-item d-flex" style="padding-right:8px;">
-                        <img src="{{asset('images/shopping-bag.svg')}}" alt="">
-                        <a href="/login" class="text-fut-bold"  style="color: #fff!important; background-color: transparent;width:66px;padding-left: 2px; font-size: 10px;">
-                            Оптовым покупателям
-                        </a>
-                    </li>
+{{--                    <li class="nav-item ml-auto mr-3">--}}
+{{--                        <a href="/login" class="text-fut-bold text-scale" style="   color:#fff;">Войти</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item d-flex" style="padding-right:8px;">--}}
+{{--                        <img src="{{asset('images/shopping-bag.svg')}}" alt="">--}}
+{{--                        <a href="/login" class="text-fut-bold"  style="color: #fff!important; background-color: transparent;width:66px;padding-left: 2px; font-size: 10px;">--}}
+{{--                            Оптовым покупателям--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
                 @else
                     <li class="nav-item ml-auto">

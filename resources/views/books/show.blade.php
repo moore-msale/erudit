@@ -200,15 +200,28 @@
                             </div>
 
                             <div class="mt-4">
-                                @guest
-                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
-                                        {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
-                                    </p>
-                                @else
+{{--                                {{}}--}}
+
+                                @if(auth()->check() and auth()->user()->role_id !== 3)
                                     <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
                                         {{ $book->price_retail }} сом
                                     </p>
-                                @endguest
+
+                                    @else
+                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">
+                                        {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
+                                    </p>
+
+                                    @endif
+{{--                                @guest--}}
+{{--                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">--}}
+{{--                                        {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом--}}
+{{--                                    </p>--}}
+{{--                                @else--}}
+{{--                                    <p class="text-fut-bold" style="font-size: 25px; line-height: 140%; color:#222;">--}}
+{{--                                        {{ $book->price_retail }} сом--}}
+{{--                                    </p>--}}
+{{--                                @endguest--}}
                             </div>
 {{--                            {{ intval(isset($book->price_retail) ? (isset($book->discount) ? $book->price_retail - ($book->price_retail / 100 * $book->discount) : $book->price_retail) : (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale))}} сом--}}
 
@@ -266,20 +279,35 @@
                                         </h3>
                                     </a>
                                     <div class="p-0 text-left">
-                                        @guest
-                                            <span class="text-fut-book"
-                                                  style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $same->price_wholesale }} сом
-                                                    </span>
-                                        @else
+
+                                        @if(auth()->check() and auth()->user()->role_id !== 3)
                                             <span class="text-fut-book"
                                                   style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ $same->price_retail }} сом
                                                     </span>
-                                        @endguest
+
+                                        @else
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $same->price_wholesale }} сом
+                                                    </span>
+
+                                        @endif
+
+{{--                                        @guest--}}
+{{--                                            <span class="text-fut-book"--}}
+{{--                                                  style="font-size:18px; letter-spacing: 0.05em;">--}}
+{{--                                                            {{ $same->price_wholesale }} сом--}}
+{{--                                                    </span>--}}
+{{--                                        @else--}}
+{{--                                            <span class="text-fut-book"--}}
+{{--                                                  style="font-size:18px; letter-spacing: 0.05em;">--}}
+{{--                                                            {{ $same->price_retail }} сом--}}
+{{--                                                    </span>--}}
+{{--                                        @endguest--}}
                                     </div>
                                     <div class="container-fluid mr-0 pr-0">
-                                        <div class="row" style="width:70%;position: absolute; bottom:5%; color:#222;">
+                                        <div class="row" style="width:67%;position: absolute; bottom:5%; color:#222;">
 
                                             <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none" data-id="{{ $same->id }}" data-aos="fade-up"
                                                     style="font-size: 13px; border:0; cursor: pointer;">
@@ -369,5 +397,5 @@
         </div>
     </div>
     @include('modals.book_feedbacks')
-    @include('modals.user_register')
+
 @endsection

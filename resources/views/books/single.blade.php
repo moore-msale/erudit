@@ -12,7 +12,8 @@
             @else
                 <img class="w-100 single_img" src="{{ asset('storage/'.$book->image)}}" alt="">
             @endif
-            @if($book->discount)
+
+            @if(isset($book->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
                      @guest
                          <div class="discount-plate d-flex align-items-center"
                               style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;">
@@ -40,21 +41,39 @@
             </h3>
         </a>
         <div class="p-0 text-left mb-4">
-            @guest
+
+
+            @if(auth()->check() and auth()->user()->role_id !== 3)
+                <span class="text-fut-book text-desc"
+                      style="font-size:18px; letter-spacing: 0.05em;">
+                    {{ $book->price_retail }} сом
+                </span>
+            @else
                 <span class="text-fut-book text-desc"
                       style="font-size:18px; letter-spacing: 0.05em;">
                     {{  intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale) }} сом
                     <br>
                     @if($book->discount)
-                    <span style="text-decoration: line-through; font-size: small;">{{$book->price_wholesale}} сом</span>
-                        @endif
+                        <span style="text-decoration: line-through; font-size: small;">{{$book->price_wholesale}} сом</span>
+                    @endif
                 </span>
-            @else
-                <span class="text-fut-book text-desc"
-                      style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_retail }} сом
-                                                    </span>
-            @endguest
+
+            @endif
+{{--            @guest--}}
+{{--                <span class="text-fut-book text-desc"--}}
+{{--                      style="font-size:18px; letter-spacing: 0.05em;">--}}
+{{--                    {{  intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale) }} сом--}}
+{{--                    <br>--}}
+{{--                    @if($book->discount)--}}
+{{--                    <span style="text-decoration: line-through; font-size: small;">{{$book->price_wholesale}} сом</span>--}}
+{{--                        @endif--}}
+{{--                </span>--}}
+{{--            @else--}}
+{{--                <span class="text-fut-book text-desc"--}}
+{{--                      style="font-size:18px; letter-spacing: 0.05em;">--}}
+{{--                                                            {{ $book->price_retail }} сом--}}
+{{--                                                    </span>--}}
+{{--            @endguest--}}
 {{--            {{$book->book_id}}--}}
         </div>
         <div class="container-fluid mr-0 pr-0">

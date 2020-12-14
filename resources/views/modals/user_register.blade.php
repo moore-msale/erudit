@@ -1,6 +1,6 @@
 <div class="modal fade" id="user_register_modal" tabindex="-1" role="form" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-0">
+    <div class="modal-dialog pt-5" role="document">
+        <div class="modal-content rounded-0" style="top: 70px;">
             <div class="modal-header border-0">
                 <h5 class="modal-title text-dark font-weight-bold" id="exampleModalLabel">Зарегистрируйтесь.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

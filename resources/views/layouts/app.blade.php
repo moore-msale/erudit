@@ -83,6 +83,7 @@
 <div id="app">
     @include('_partials.header')
     <main class="position-relative" style="overflow: hidden;">
+        @include('modals.user_register')
 @yield('content')
     </main>
     @include('_partials.footer')

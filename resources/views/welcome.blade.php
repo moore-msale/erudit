@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-1"
+    <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-md-1 m-0"
          alt="">
 
     <div class="container-fluid sells-sector position-relative" id="actions"
@@ -50,7 +50,8 @@
                                             @else
                                                 <img class=" image_in_cart" src="{{ asset('storage/'.$book->image) }}" alt="">
                                             @endif
-                                                @if(isset($book->discount))
+
+                                                @if(isset($book->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
                                                     <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
                                                 @endif
                                         </div>
@@ -60,17 +61,20 @@
                                         </h3>
                                     </a>
                                     <div class="p-0 text-left">
-                                        @guest
+
+                                        @if(auth()->check() and auth()->user()->role_id !== 3)
+                                            <span class="text-fut-book"
+                                                  style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $book->price_retail }} сом
+                                                    </span>
+
+                                        @else
                                             <span class="text-fut-book"
                                                   style="font-size:18px; letter-spacing: 0.05em;">
                                                             {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
                                                     </span>
-                                        @else
-                                            <span class="text-fut-book"
-                                                  style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ intval(isset($book->price_retail) ? (isset($book->discount) ? $book->price_retail - ($book->price_retail / 100 * $book->discount) : $book->price_retail) : (isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale))}} сом
-                                                    </span>
-                                        @endguest
+                                        @endif
+
                                     </div>
                                     <div class="container-fluid mr-0 pr-0"
                                          style="position: absolute; bottom:3%; color:#444;">
@@ -142,7 +146,7 @@
                             </h3>
                             <div class="owl-holiday owl-carousel">
                                 @foreach($compilation->books as $bestseller)
-                                    <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
+                                    <div class="item  mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom: 30px;align-content:space-between;background-color: white; height:400px!important;max-width:256px;">
                                       <div class="w-100" style="height:340px;">
                                         <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                                             <div style="height: 70%;">
@@ -151,6 +155,9 @@
                                                 @else
                                                     <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                                                 @endif
+                                                    @if(isset($book->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
+                                                        <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                                                    @endif
                                             </div>
 
 
@@ -160,15 +167,27 @@
                                             </h3>
                                         </a>
                                         <div class="p-0 text-left">
-                                            @guest
-                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                         {{ $bestseller->price_wholesale }} сом
-                    </span>
+                                            @if(auth()->check() and auth()->user()->role_id !== 3)
+                                                <span class="text-fut-book"
+                                                      style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ $book->price_retail }} сом
+                                                    </span>
+
                                             @else
-                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                        {{ $bestseller->price_retail }} сом
-                    </span>
-                                            @endguest
+                                                <span class="text-fut-book"
+                                                      style="font-size:18px; letter-spacing: 0.05em;">
+                                                            {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
+                                                    </span>
+                                            @endif
+{{--                                            @guest--}}
+{{--                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
+{{--                         {{ $bestseller->price_wholesale }} сом--}}
+{{--                    </span>--}}
+{{--                                            @else--}}
+{{--                                                <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
+{{--                        {{ $bestseller->price_retail }} сом--}}
+{{--                    </span>--}}
+{{--                                            @endguest--}}
                                         </div>
                                         </div>
                                         <div class="d-flex justify-content-center px-2 w-100">
