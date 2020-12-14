@@ -10,8 +10,8 @@
                           @else
                               <img class="w-100 h-100" src="{{ asset('storage/'.$bestseller->image) }}" alt="">
                           @endif
-                              @if(isset($book->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
-                                  <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$book->discount}}%</span></div>
+                              @if(isset($bestseller->discount) and  ((auth()->check() and auth()->user()->role_id == 3) or auth()->check() == false))
+                                  <div class="discount-plate d-flex align-items-center" style="background-color: #4d86ff; position: absolute; right:0%; top:0%;  width:59px; height:54px; border-bottom-left-radius: 50%;"><span class="mx-auto text-white">-{{$bestseller->discount}}%</span></div>
                               @endif
                       </div>
 
@@ -22,15 +22,17 @@
                       </h3>
                   </a>
                   <div class="p-0 text-left">
-                      @guest
-                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                           {{ $bestseller->price_wholesale }} сом
-                      </span>
+                      @if(auth()->check() and auth()->user()->role_id !== 3)
+                          <span class="text-fut-book"
+                                style="font-size:18px; letter-spacing: 0.05em;">
+                              {{ $bestseller->price_retail }} сом
+                          </span>
+
                       @else
-                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                          {{ $bestseller->price_retail }} сом
-                      </span>
-                      @endguest
+                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em;">
+                              {{ intval(isset($bestseller->discount) ? $bestseller->price_wholesale - ($bestseller->price_wholesale / 100 * $bestseller->discount) : $bestseller->price_wholesale)}} сом
+                          </span>
+                      @endif
                   </div>
                 </div>
                 <div class="d-flex justify-content-center w-100 px-2" style="height:25px;">

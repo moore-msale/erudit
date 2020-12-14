@@ -1,7 +1,7 @@
 <div class="owl-one owl-carousel">
     @foreach($books as $bestseller)
         @if($bestseller->recommend == 1)
-            <div class="item my-4 mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom:15px; background-color: white; height: 425px!important;align-content:space-between;max-width:256px;">
+            <div class="item  mx-auto px-2 pt-2 shadow d-flex flex-wrap" style="padding-bottom:15px; background-color: white; height: 425px!important;align-content:space-between;max-width:256px;">
                 <div class="w-100" style="height:330px;">
                   <a href="{{ route('book.show', $bestseller->id) }}" style="text-decoration: none;">
                       <div style="height: 80%;">
@@ -18,19 +18,30 @@
 
                       <h3 class="text-fut-book mt-3 text-left"
                           style="font-size: 16px; line-height: 110%; letter-spacing: 0.05em; color: #444;">
-                          {{\Illuminate\Support\Str::limit($bestseller->name,50,'...')  }}
+                          {{\Illuminate\Support\Str::limit($bestseller->name,40,'...')  }}
                       </h3>
                   </a>
                   <div class="p-0 text-left">
-                      @guest
-                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                           {{ $bestseller->price_wholesale }} сом
-                      </span>
+                      @if(auth()->check() and auth()->user()->role_id !== 3)
+                          <span class="text-fut-book"
+                                style="font-size:18px; letter-spacing: 0.05em;">
+                              {{ $bestseller->price_retail }} сом
+                          </span>
                       @else
-                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">
-                          {{ $bestseller->price_retail }} сом
-                      </span>
-                      @endguest
+
+                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em;">
+                              {{ intval(isset($bestseller->discount) ? $bestseller->price_wholesale - ($bestseller->price_wholesale / 100 * $bestseller->discount) : $bestseller->price_wholesale)}} сом
+                          </span>
+                      @endif
+{{--                      @guest--}}
+{{--                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
+{{--                           {{ $bestseller->price_wholesale }} сом--}}
+{{--                      </span>--}}
+{{--                      @else--}}
+{{--                          <span class="text-fut-book" style="font-size:18px; letter-spacing: 0.05em; color: #444;">--}}
+{{--                          {{ $bestseller->price_retail }} сом--}}
+{{--                      </span>--}}
+{{--                      @endguest--}}
                   </div>
                 </div>
                 <div class="d-flex justify-content-center w-100 px-2" style="height:25px;">

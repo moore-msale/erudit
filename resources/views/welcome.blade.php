@@ -170,13 +170,13 @@
                                             @if(auth()->check() and auth()->user()->role_id !== 3)
                                                 <span class="text-fut-book"
                                                       style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ $book->price_retail }} сом
+                                                            {{ $bestseller->price_retail }} сом
                                                     </span>
 
                                             @else
                                                 <span class="text-fut-book"
                                                       style="font-size:18px; letter-spacing: 0.05em;">
-                                                            {{ intval(isset($book->discount) ? $book->price_wholesale - ($book->price_wholesale / 100 * $book->discount) : $book->price_wholesale)}} сом
+                                                            {{ intval(isset($bestseller->discount) ? $bestseller->price_wholesale - ($bestseller->price_wholesale / 100 * $bestseller->discount) : $bestseller->price_wholesale)}} сом
                                                     </span>
                                             @endif
 {{--                                            @guest--}}
