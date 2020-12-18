@@ -79,12 +79,20 @@
                                     <div class="container-fluid mr-0 pr-0"
                                          style="position: absolute; bottom:3%; color:#444;">
                                         <div class="row justify-content-center" style="width:94%;">
-                                            <button
-                                                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
-                                                    data-id="{{ $book->id }}" data-aos="fade-up"
-                                                    style="font-size: 14px; border:0; cursor: pointer;">
-                                                Добавить в корзину
-                                            </button>
+                                            @if($book->presence)
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
+                                                        data-id="{{ $book->id }}" data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Добавить в корзину
+                                                </button>
+                                            @else
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
+                                                        disabled data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Нет в наличии
+                                                </button>
+
+                                            @endif
                                         </div>
                                     </div>
                                     </div>
@@ -188,11 +196,20 @@
                                         <div class="d-flex justify-content-center px-2 w-100">
                                             {{--<div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">--}}
                                             {{--<i style="color: #444; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>--}}
-                                            <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
-                                                    data-id="{{ $bestseller->id }}" data-aos="fade-up"
-                                                    style="font-size: 13px; border:0; cursor: pointer;">
-                                                Добавить в корзину
-                                            </button>
+                                            @if($bestseller->presence)
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100"
+                                                        data-id="{{ $bestseller->id }}" data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Добавить в корзину
+                                                </button>
+                                            @else
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
+                                                        disabled data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Нет в наличии
+                                                </button>
+
+                                            @endif
                                             {{--</div>--}}
                                         </div>
                                     </div>

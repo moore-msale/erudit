@@ -77,39 +77,53 @@
 {{--            {{$book->book_id}}--}}
         </div>
         <div class="container-fluid mr-0 pr-0">
-            @isset($book->book_id)
-            <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
-                <button
-                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none"
-                    data-id="{{ $book->book_id }}" data-aos="fade-up"
-                    style="font-size: 13px; border:0; cursor: pointer;">
-                    Добавить в корзину
-                </button>
-                <button
-                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block"
-                    data-id="{{ $book->book_id }}" data-aos="fade-up"
-                    style="font-size: 13px; border:0; cursor: pointer;">
-                    В корзину
-                </button>
-            </div>
+
+            @if($book->presence)
+                @isset($book->book_id)
+                    <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
+                        <button
+                            class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none"
+                            data-id="{{ $book->book_id }}" data-aos="fade-up"
+                            style="font-size: 13px; border:0; cursor: pointer;">
+                            Добавить в корзину
+                        </button>
+                        <button
+                            class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block"
+                            data-id="{{ $book->book_id }}" data-aos="fade-up"
+                            style="font-size: 13px; border:0; cursor: pointer;">
+                            В корзину
+                        </button>
+                    </div>
+                @else
+
+                    <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
+                        <button
+                            class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none"
+                            data-id="{{ $book->id }}" data-aos="fade-up"
+                            style="font-size: 13px; border:0; cursor: pointer;">
+                            Добавить в корзину
+                        </button>
+                        <button
+                            class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block"
+                            data-id="{{ $book->id }}" data-aos="fade-up"
+                            style="font-size: 13px; border:0; cursor: pointer;">
+                            В корзину
+                        </button>
+                    </div>
+
+                @endisset
             @else
+                <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
+                    <button
+                        class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none"
+                        disabled data-aos="fade-up"
+                        style="font-size: 13px; border:0; cursor: pointer;">
+                        нет в наличии
+                    </button>
+                </div>
 
-            <div class="row cart-range" style="width:80%;position: absolute; bottom:5%; color:#222;">
-                <button
-                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none"
-                    data-id="{{ $book->id }}" data-aos="fade-up"
-                    style="font-size: 13px; border:0; cursor: pointer;">
-                    Добавить в корзину
-                </button>
-                <button
-                    class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block"
-                    data-id="{{ $book->id }}" data-aos="fade-up"
-                    style="font-size: 13px; border:0; cursor: pointer;">
-                    В корзину
-                </button>
-            </div>
+            @endif
 
-            @endisset
 
         </div>
     </div>

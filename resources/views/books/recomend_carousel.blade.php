@@ -47,11 +47,20 @@
                 <div class="d-flex justify-content-center w-100 px-2" style="height:25px;">
                     {{--<div class="p-0 ml-auto buy_book" data-id="{{ $bestseller->id }}">--}}
                     {{--<i style="color: #444; cursor: pointer;" class="fas fa-cart-plus fa-lg icon-flip buy"></i>--}}
-                    <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
-                            data-id="{{ $bestseller->id }}" data-aos="fade-up"
-                            style="font-size: 13px; border:0; cursor: pointer;">
-                        Добавить в корзину
-                    </button>
+                    @if($bestseller->presence)
+                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
+                                data-id="{{ $bestseller->id }}" data-aos="fade-up"
+                                style="font-size: 13px; border:0; cursor: pointer;">
+                            Добавить в корзину
+                        </button>
+                        @else
+                        <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-1 w-100"
+                                disabled data-aos="fade-up"
+                                style="font-size: 13px; border:0; cursor: pointer;">
+                            Нет в наличии
+                        </button>
+
+                    @endif
                     {{--</div>--}}
                 </div>
             </div>

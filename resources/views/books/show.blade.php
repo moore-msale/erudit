@@ -243,9 +243,17 @@
                                 {{ $book->description }}
                             </p>
                             <div class="mt-4">
-                                <button  class="btn-primary text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
-                                    Добавить в корзину
-                                </button>
+                                @if($book->presence)
+                                    <button  class="btn-primary text-fut-bold mt-5 buy_book but-hov" data-id="{{ $book->id }}" data-aos="fade-up" style="padding: 15px 23px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                        Добавить в корзину
+                                    </button>
+                                    @else
+                                    <button  class="btn-primary text-fut-bold mt-5 buy_book but-hov" disabled data-aos="fade-up" style="padding: 15px 23px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); border:0;">
+                                        нет в наличии
+                                    </button>
+                                @endif
+
+
                             </div>
                         </div>
                     </div>
@@ -309,14 +317,24 @@
                                     <div class="container-fluid mr-0 pr-0">
                                         <div class="row" style="width:67%;position: absolute; bottom:5%; color:#222;">
 
-                                            <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none" data-id="{{ $same->id }}" data-aos="fade-up"
-                                                    style="font-size: 13px; border:0; cursor: pointer;">
-                                                Добавить в корзину
-                                            </button>
-                                            <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block" data-id="{{ $same->id }}" data-aos="fade-up"
-                                                    style="font-size: 13px; border:0; cursor: pointer;">
-                                                В корзину
-                                            </button>
+                                            @if($same->presence)
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none" data-id="{{ $same->id }}" data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    Добавить в корзину
+                                                </button>
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-none d-block" data-id="{{ $same->id }}" data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    В корзину
+                                                </button>
+                                            @else
+                                                <button class="btn-primary text-fut-book but-hov mx-auto text-white buy_book py-2 w-100 d-lg-block d-none" disabled data-aos="fade-up"
+                                                        style="font-size: 13px; border:0; cursor: pointer;">
+                                                    нет в наличии
+                                                </button>
+
+                                            @endif
+
+
                                         </div>
                                     </div>
                                 </div>
