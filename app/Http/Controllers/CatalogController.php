@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Cart;
 use App\Category;
 use App\Certificate;
 use App\Discount;
@@ -46,9 +47,18 @@ class CatalogController extends Controller
 
         if($request->type == 1)
         {
-
-            $item = Promo::where('promo',$request->discount)->where('active',null)->orWhere('promo',$request->discount)->where('active',0)->first();
+            if ($request->phone == null or $request->phone == ''){
+                $item = 'none';
+            }else{
+                $item = Promo::where('promo',$request->discount)->where('active',null)->orWhere('promo',$request->discount)->where('active',0)->first();
+                $find_cart = Cart::where('promo', $item->promo)->where('phone', $request->phone)->first();
+//                dd($find_cart != null);
+                if ($find_cart != null){
+                    $item = null;
+                }
 //            dd($item);
+            }
+
         }
         if($request->type == 2)
         {
@@ -60,8 +70,11 @@ class CatalogController extends Controller
             $item = Discount::where('name', $request->discount)->where('active',null)->orWhere('name',$request->discount)->where('active',0)->first();
         }
 
-
-        if ($item)
+        if ($item == "none")
+        {
+            $check = 'none';
+        }
+        else if ($item)
         {
             $check = 1;
         }

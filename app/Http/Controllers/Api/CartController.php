@@ -78,11 +78,11 @@ class CartController extends Controller
         {
             if($request->discount_type == 1)
             {
+
                 $item = Promo::where('promo',$request->discount)->where('active',null)->orWhere('promo',$request->discount)->where('active',0)->first();
                 if($item)
                 {
-                    $item->active = 1;
-                    $item->save();
+                    $newCart->promo = $item->promo;
                 }
             }
             if($request->discount_type == 2)
@@ -106,7 +106,7 @@ class CartController extends Controller
                 }
             }
 
-            if (auth()->user()->role_id == 2) {
+            if (isset(auth()->user()->role_id) and auth()->user()->role_id == 2) {
                 $percent = 0;
             }else{
                 $percent = $item->discount;

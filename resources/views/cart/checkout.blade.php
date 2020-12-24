@@ -260,6 +260,7 @@
         $('.btn-checker').click(function () {
             var discount = $('#discount').val();
             var type = $('#discount-type').val();
+            var phone = $('#phone').val();
             $.ajax({
                 url: '{{ route('discount_check') }}',
                 method: 'POST',
@@ -267,6 +268,7 @@
                     "_token": "{{ csrf_token() }}",
                     "type": type,
                     "discount": discount,
+                    "phone": phone,
                 },
                 success: data => {
                     if(data.check == 1)
@@ -281,6 +283,8 @@
                         $('.total-discount').show();
                         $('.total-discount').html('Скидка - ' + data.item.discount + '%');
 
+                    }else if(data.check == 'none'){
+                        alert('заполните все поля!');
                     }
                     else
                     {
