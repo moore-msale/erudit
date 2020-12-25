@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
+    <a href="#compeletion">
+        <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-md-1 m-0"
+             alt="">
+    </a>
 
-    <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-md-1 m-0"
-         alt="">
 
     <div class="container-fluid sells-sector position-relative" id="actions"
          style="background-image: url({{ asset('images/3sector.png') }}); background-size: cover;">
@@ -147,7 +149,7 @@
 
 
                 @if($compilation->active == 1)
-                <div class="container-fluid px-0" style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
+                <div class="container-fluid px-0" id="compeletion" style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
                     <div class="container pt-5">
 
                         <div class="row pb-5 justify-content-center">
