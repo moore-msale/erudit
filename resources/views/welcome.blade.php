@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a href="#compeletion">
+    <a href="{{ route('search_genre', ['search'=> '1858'])}}">
         <img src="{{ asset('images/new_year.jpg') }}" class="covid mt-md-1 m-0"
              alt="">
     </a>
