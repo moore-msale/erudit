@@ -82,15 +82,16 @@ class BookFilter extends Collection
                 ->select('*')
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
                 ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-                ->where('genres.name', 'like', '%' . $stationery . '%')->get();
+                ->where('genres.name', 'like', '%' . $stationery . '%')->pluck('isbn');
 
         }
-        return  collect($book_id);
-//            return $model->whereIn('isbn', $book_id)->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
+
+            return $model->whereIn('isbn', $book_id)->where('category_id', 1)->sortByDesc('recommend')->sortByDesc('discount');
         }
 
     public function filterByGenre($model, $genre)
     {
+
         if (strpos('all', $genre) !== false){
                 return $model->where('category_id', '=', 2)->sortByDesc('recommend')->sortByDesc('discount');
 
@@ -101,10 +102,10 @@ class BookFilter extends Collection
                 ->where('category_id', '=', 2)
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
                 ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-                ->where('general_id', '=', $genre)->get();
+                ->where('general_id', '=', $genre)->pluck('isbn');
         }
-        return  collect($book_id);
-//        return $model->where('category_id', '=', 2)->whereIn('isbn', $book_id)->sortByDesc('discount')->sortByDesc('recommend')->unique('name');
+
+        return $model->where('category_id', '=', 2)->whereIn('isbn', $book_id)->sortByDesc('discount')->sortByDesc('recommend')->unique('name');
     }
 
     public function filterByCategory ($model, $category)
