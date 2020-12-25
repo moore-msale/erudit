@@ -149,9 +149,11 @@
 
 
                 @if($compilation->active == 1)
-                <div class="container-fluid px-0" id="compeletion" style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
+                <div class="container-fluid px-0"  style="background-image: url({{asset('stocks/'.$compilation->image)}}); background-size: cover; background-position: center;">
                     <div class="container pt-5">
-
+                    @if($compilation->id == 2)
+                        <div id="compeletion"></div>
+                        @endif
                         <div class="row pb-5 justify-content-center">
                             <h3 class="text-fut-bold text-center pb-4 px-5"
                                 style="font-size: 38px; line-height: 120%; letter-spacing: 0.05em; color: {{$compilation->title_color}}; max-width: 600px;">
