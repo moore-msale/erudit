@@ -98,14 +98,16 @@ class BookFilter extends Collection
         }else{
 
             $book_id = DB::table('books')
-                ->select('*')
+                ->select('*')->from('books')
                 ->where('category_id', '=', 2)
                 ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                ->join('genres', 'book_genre.genre_id', '=', 'genres.id')
-                ->where('general_id', '=', $genre)->pluck('isbn');
+                ->whereIn('book_genre.genre_id', DB::table('genres')
+                    ->select('id')->where('general_id', '=', $genre)->pluck('id'))
+                ->get()->unique('isbn');
         }
+        return collect($book_id)->sortByDesc('discount')->sortByDesc('recommend');
 
-        return $model->where('category_id', '=', 2)->whereIn('isbn', $book_id)->sortByDesc('discount')->sortByDesc('recommend')->unique('name');
+//        return $model->where('category_id', '=', 2)->whereIn('isbn', $book_id)->sortByDesc('discount')->sortByDesc('recommend')->unique('name');
     }
 
     public function filterByCategory ($model, $category)
