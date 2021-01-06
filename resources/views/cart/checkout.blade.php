@@ -88,17 +88,17 @@
                                    Для получения скидки воспользуйтесь:
                                </p>
                            </div>
-                            <div class="col-4">
+                            <div class="col-4 px-1">
                                 <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="1" style="padding:10px 15px; border:none; cursor:pointer;">
                                     Промокод
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 px-1">
                                 <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="2" style="padding:10px 15px; border:none; cursor:pointer;">
                                     Сертификат
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 px-1">
                                 <div class="text-fut-bold btn-info w-100 btn-discount text-center" data-id="3" style="padding:10px 15px; border:none; cursor:pointer;">
                                     Дисконт
                                 </div>
