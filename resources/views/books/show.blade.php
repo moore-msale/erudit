@@ -258,6 +258,29 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="mt-3 col-md-9 col-12 d-flex pb-5 justify-content-between" style="position: relative">
+                    @isset($book->images)
+                        <div class="your-class col-md-4 " style="overflow: hidden">
+                            @foreach(json_decode($book->images, true) as $image)
+                                <img style="object-fit: scale-down; max-height: 6rem" src="{{ asset('storage/'.$image)}}" alt="">
+                            @endforeach
+                        </div>
+                        <div class="slider-for slider col-md-8 col-8">
+                            @foreach(json_decode($book->images, true) as $image)
+                          
+                                <img id="image-file" src="{{ asset('storage/'.$image)}}"  style="width: lwpx; height: lhpx;">
+
+                            @endforeach
+                        </div>
+                    @endisset
+                </div>
+
+
+
+
             </div>
 
 
@@ -341,6 +364,7 @@
                             </div>
                         @endforeach
                     </div>
+
                 </div>
             </div>
 

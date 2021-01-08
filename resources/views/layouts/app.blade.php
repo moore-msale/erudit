@@ -95,7 +95,36 @@
 {{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 @push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.your-class .slick-slide').eq(0).addClass('slick-active');
+            $('.your-class').slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                // dots: false,
+                // centerMode: true,
+                // // centerMode: true,
+                // focusOnSelect: true,
+                // vertical: true,
+                arrows: false,
+                dots: false,
+                centerMode: true,
+                focusOnSelect: true,
+                vertical: true
+            });
+
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                // asNavFor: '.your-class'
+            });
+        });
+    </script>
     <script>
         function preloader() {
             $('.preloader').fadeOut('slow').delay(1000);
@@ -114,6 +143,7 @@
         setTimeout(preloader_catalog, 500);
     </script>
     <script>
+
         let result = $('#search-result-select2');
         result.parent().hide(0);
         $(document).on('keyup click','#search-input-select2', function () {
